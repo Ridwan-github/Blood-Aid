@@ -104,6 +104,11 @@ class Donor implements User {
 
     public static void main(String[] args) {
         Donor donor = new Donor();
+        donor.setName("Donor 1");
+        donor.setDonorID("D001");
+        donor.setBloodGroup("A+");
+        donor.setPoints(10);
+        donor.setIsEligible(true);
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
 
