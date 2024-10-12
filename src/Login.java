@@ -12,12 +12,12 @@ public class Login {
         while (running) {
             // Display the full UI, including placeholders for username and password inputs
             System.out.println("==============================================================================================");
-            System.out.println(RED + "  ____  _                 _          _     _ ");
-            System.out.println(" |  _ \\| |               | |   /\\   (_)   | |");
-            System.out.println(" | |_) | | ___   ___   __| |  /  \\   _  __| |");
-            System.out.println(" |  _ <| |/ _ \\ / _ \\ / _` | / /\\ \\ | |/ _` |");
-            System.out.println(" | |_) | | (_) | (_) | (_| |/ ____ \\| | (_| |");
-            System.out.println(" |____/|_|\\___/ \\___/ \\__,_/_/    \\_\\_|\\__,_|" + RESET);
+            System.out.println(RED + "\t\t\t\t  ____  _                 _          _     _ ");
+            System.out.println("\t\t\t\t |  _ \\| |               | |   /\\   (_)   | |");
+            System.out.println("\t\t\t\t | |_) | | ___   ___   __| |  /  \\   _  __| |");
+            System.out.println("\t\t\t\t |  _ <| |/ _ \\ / _ \\ / _` | / /\\ \\ | |/ _` |");
+            System.out.println("\t\t\t\t | |_) | | (_) | (_) | (_| |/ ____ \\| | (_| |");
+            System.out.println("\t\t\t\t |____/|_|\\___/ \\___/ \\__,_/_/    \\_\\_|\\__,_|" + RESET);
             System.out.println("==============================================================================================");
 
             // Display options for the user, already visible in the initial print

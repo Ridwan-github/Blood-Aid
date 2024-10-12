@@ -51,9 +51,11 @@ class Recipient implements User {
 
     public static void main(String[] args) {
         Recipient recipient = new Recipient();
+        recipient.name = "Recipient 1";
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
 
+        System.out.println("\n\n\n\n\n\n\n\n\n\n");
         System.out.println("==============================================================================================");
         System.out.println("                                    Dashboard");
         System.out.println("==============================================================================================");
