@@ -1,14 +1,14 @@
 import java.util.List;
 import java.util.Scanner;
 
-class Donor implements User {
+class Donor_UI implements User {
 
     private String name;
     private String phoneNumber;
     private String DonorID;
     private String address;
     private String bloodGroup;
-    private List<DonationHistory> donationHistory;
+    private List<DonationHistory_UI> donationHistory;
     private int points;
     private boolean isEligible;
 
@@ -53,7 +53,7 @@ class Donor implements User {
         return bloodGroup;
     }
 
-    public List<DonationHistory> getDonationHistory() {
+    public List<DonationHistory_UI> getDonationHistory() {
         return donationHistory;
     }
 
@@ -81,7 +81,7 @@ class Donor implements User {
         this.bloodGroup = bloodGroup;
     }
 
-    public void setDonationHistory(List<DonationHistory> donationHistory) {
+    public void setDonationHistory(List<DonationHistory_UI> donationHistory) {
         this.donationHistory = donationHistory;
     }
 
@@ -103,7 +103,7 @@ class Donor implements User {
 
 
     public static void main(String[] args) {
-        Donor donor = new Donor();
+        Donor_UI donor = new Donor_UI();
         donor.setName("Donor 1");
         donor.setDonorID("D001");
         donor.setBloodGroup("A+");
@@ -147,7 +147,7 @@ class Donor implements User {
                 break;
             case 4:
                 System.out.printf("Logging out...");
-                Login.main(args);
+                Login_UI.main(args);
                 break;
             default:
                 System.out.println("Invalid choice. Please select 1, 2, 3, or 4.");

@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class BloodRequests {
+public class BloodRequests_UI {
     public static void main(String[] args) {
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
@@ -31,7 +31,7 @@ public class BloodRequests {
                 System.out.println("Accept request of Recipient 3...");
                 break;
             case 4:
-                Donor.main(args);
+                Donor_UI.main(args);
                 break;
             default:
                 System.out.println("Invalid choice. Please select 1, 2, or 3.");

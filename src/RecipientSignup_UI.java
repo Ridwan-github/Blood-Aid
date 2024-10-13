@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class RecipientSignup {
+public class RecipientSignup_UI {
     public static void main(String[] args) {
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
@@ -24,10 +24,10 @@ public class RecipientSignup {
 
         switch (choice) {
             case 1:
-                Recipient.main(args);
+                Recipient_UI.main(args);
                 break;
             case 2:
-                Login.main(args);
+                Login_UI.main(args);
                 break;
             default:
                 System.out.println("Invalid choice. Please select 1 or 2.");

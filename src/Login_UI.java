@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Login {
+public class Login_UI {
 
     public static void main(String[] args) {
         final String RED = "\033[31m";
@@ -42,7 +42,7 @@ public class Login {
                     System.out.println("Logging in ");
                     running = false;
 
-                    Donor.main(args);
+                    Donor_UI.main(args);
 
                     break;
                 case 2:

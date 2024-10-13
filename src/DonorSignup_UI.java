@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class DonorSignup {
+public class DonorSignup_UI {
     public static void main(String[] args) {
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
@@ -26,10 +26,10 @@ public class DonorSignup {
 
         switch (choice) {
             case 1:
-                Donor.main(args);
+                Donor_UI.main(args);
                 break;
             case 0:
-                Login.main(args);
+                Login_UI.main(args);
                 break;
             default:
                 System.out.println("Invalid choice. Please select 1 or 0.");

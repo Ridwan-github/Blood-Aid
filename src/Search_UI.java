@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Search {
+public class Search_UI {
     public static void main(String[] args) {
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
@@ -38,7 +38,7 @@ public class Search {
                 System.out.println("Searching for Power Red donors...");
                 break;
             case 0:
-                Recipient.main(args);
+                Recipient_UI.main(args);
                 break;
             default:
                 System.out.println("Invalid choice. Please select 1, 2, 3, 4, or 0.");

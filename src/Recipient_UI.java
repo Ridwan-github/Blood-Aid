@@ -1,8 +1,6 @@
-import java.util.List;
-import java.util.ArrayList;
 import java.util.Scanner;
 
-class Recipient implements User {
+class Recipient_UI implements User {
     private String name;
     private String phoneNumber;
     private String address;
@@ -50,7 +48,7 @@ class Recipient implements User {
 
 
     public static void main(String[] args) {
-        Recipient recipient = new Recipient();
+        Recipient_UI recipient = new Recipient_UI();
         recipient.name = "Recipient 1";
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
@@ -99,7 +97,7 @@ class Recipient implements User {
                 // View donation history
                 break;
             case 4:
-                Login.main(args);
+                Login_UI.main(args);
                 break;
             default:
                 System.out.println("Invalid choice. Please select 1, 2, 3, or 4.");

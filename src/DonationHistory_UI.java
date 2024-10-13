@@ -1,5 +1,5 @@
-class DonationHistory {
-    private Donor donor;
+class DonationHistory_UI {
+    private Donor_UI donor;
     private String donationType;
 
     public boolean checkCooldown() {
@@ -12,8 +12,8 @@ class DonationHistory {
     }
 
     public static void main(String[] args) {
-        DonationHistory donationHistory = new DonationHistory();
-        donationHistory.donor = new Donor();
+        DonationHistory_UI donationHistory = new DonationHistory_UI();
+        donationHistory.donor = new Donor_UI();
         donationHistory.donationType = "Whole Blood";
         final String RED = "\033[31m";
         final String RESET = "\033[0m";

@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
-class DonorList {
-    private Recipient recipient;
+class DonorList_UI {
+    private Recipient_UI recipient;
     private String bloodGroup;
     private String region;
     private boolean isFulfilled;
