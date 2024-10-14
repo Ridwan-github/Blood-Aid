@@ -1,7 +1,9 @@
+package UI;
+
 import java.util.List;
 import java.util.Scanner;
 
-class Donor_UI implements User {
+class Donor_UI  {
 
     private String name;
     private String phoneNumber;

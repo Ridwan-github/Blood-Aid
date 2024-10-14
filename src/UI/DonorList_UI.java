@@ -1,3 +1,5 @@
+package UI;
+
 import java.util.Scanner;
 
 class DonorList_UI {

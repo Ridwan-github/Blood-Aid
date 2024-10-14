@@ -1,6 +1,8 @@
+package UI;
+
 import java.util.Scanner;
 
-class Recipient_UI implements User {
+class Recipient_UI  {
     private String name;
     private String phoneNumber;
     private String address;

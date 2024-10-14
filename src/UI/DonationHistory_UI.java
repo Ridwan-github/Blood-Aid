@@ -1,3 +1,5 @@
+package UI;
+
 class DonationHistory_UI {
     private Donor_UI donor;
     private String donationType;

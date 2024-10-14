@@ -1,3 +1,5 @@
+package UI;
+
 import java.util.Scanner;
 
 public class RecipientSignup_UI {
