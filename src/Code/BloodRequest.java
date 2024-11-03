@@ -1,3 +1,5 @@
+package Code;
+
 class BloodRequest {
     private Recipient recipient;
     private String bloodGroup;

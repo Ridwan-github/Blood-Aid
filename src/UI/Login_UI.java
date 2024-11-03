@@ -1,5 +1,9 @@
 package UI;
+import Code.Donor;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.Scanner;
 
 public class Login_UI {
@@ -37,15 +41,24 @@ public class Login_UI {
             // Handle menu options
             switch (choice) {
                 case 1:
-                    System.out.printf("Username: ");
-                    String username = scanner.nextLine();
-                    System.out.printf("Password: ");
-                    String password = scanner.nextLine();
-                    System.out.println("Logging in ");
-                    running = false;
+                    System.out.println("==============================================================================================");
+                    System.out.println(RED + "[1]" + RESET + " Donor");
+                    System.out.println(RED + "[2]" + RESET + " Recipient");
+                    System.out.println("==============================================================================================");
+                    System.out.print("Enter your choice: ");
+                    int userTypeLogin = scanner.nextInt();
+                    scanner.nextLine();
 
-                    Donor_UI.main(args);
-
+                    switch (userTypeLogin) {
+                        case 1:
+//                            User Login
+                            break;
+                        case 2:
+//                            Recipient Login
+                            break;
+                        default:
+                            System.out.println("Invalid choice. Please select 1 or 2.");
+                    }
                     break;
                 case 2:
                     System.out.println("==============================================================================================");
@@ -54,7 +67,7 @@ public class Login_UI {
                     System.out.println("==============================================================================================");
                     System.out.print("Enter your choice: ");
                     int userType = scanner.nextInt();
-                    scanner.nextLine(); 
+                    scanner.nextLine();
 
                     switch (userType) {
                         case 1:
@@ -76,6 +89,7 @@ public class Login_UI {
 
             System.out.println("==============================================================================================");
 
+            // Clear the console (may not work on all systems)
             System.out.print("\033[H\033[2J");
             System.out.flush();
         }

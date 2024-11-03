@@ -1,17 +1,12 @@
 package UI;
+import Code.Recipient;
 
 import java.util.Scanner;
 
 class Recipient_UI  {
-    private String name;
-
-    public String getName() {
-        return name;
-    }
 
     public static void main(String[] args) {
-        Recipient_UI recipient = new Recipient_UI();
-        recipient.name = "Recipient 1";
+        Recipient recipient = new Recipient();
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
 

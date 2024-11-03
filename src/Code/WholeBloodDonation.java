@@ -1,3 +1,5 @@
+package Code;
+
 class WholeBloodDonation implements DonationType {
     private static final int COOLDOWN_PERIOD = 60;
 

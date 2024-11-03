@@ -17,7 +17,7 @@ class DonationHistory_UI {
 
     public static void main(String[] args) {
         DonationHistory_UI donationHistory = new DonationHistory_UI();
-        donationHistory.donor = new Donor_UI();
+//        donationHistory.donor = new Donor_UI();
         donationHistory.donationType = "Whole Blood";
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
