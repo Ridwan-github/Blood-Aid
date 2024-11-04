@@ -44,7 +44,7 @@ class DonationHistory_UI {
 
         switch (choice) {
             case 0:
-                Donor_UI.main(args);
+//                Donor_UI.main(args);
                 break;
             default:
                 System.out.println("Invalid choice. Please select 0.");

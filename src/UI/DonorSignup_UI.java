@@ -36,7 +36,7 @@ public class DonorSignup_UI {
         donor.setBloodGroup(bloodGroup);
 
         System.out.printf(RED + "5." + RESET + " NID Number: ");
-        donor.setDonorID(scanner.nextLine());
+        donor.setNID(scanner.nextLine());
         System.out.printf(RED + "6." + RESET + " Password: ");
         donor.setPassword(scanner.nextLine());
         System.out.printf(RED + "7." + RESET + " Do you agree to the term and conditions (" + RED + "Yes" + RESET + "/No)");

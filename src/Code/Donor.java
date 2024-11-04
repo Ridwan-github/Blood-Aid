@@ -121,6 +121,31 @@ public class Donor implements User {
         }
     }
 
+    public void loginDonor(String phoneNumber, String password) {
+        try {
+            File file = new File("src/filemanagement/Donor.txt");
+            BufferedReader bufferedReader = new BufferedReader(new java.io.FileReader(file));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] data = line.split("\t");
+                if (data[1].equals(phoneNumber) && data[6].equals(password)) {
+                    setName(data[0]);
+                    setPhoneNumber(data[1]);
+                    setcity(data[2]);
+                    setArea(data[3]);
+                    setBloodGroup(data[4]);
+                    setNID(data[5]);
+                    setPassword(data[6]);
+                    setEligible(true);
+                    break;
+                }
+            }
+            bufferedReader.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         Donor donor = new Donor();
         donor.setName("John Doe");

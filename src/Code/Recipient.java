@@ -1,5 +1,6 @@
 package Code;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -70,6 +71,29 @@ public class Recipient {
             bufferedWriter.write(getName() + "\t" + getPhoneNumber() + "\t" + getCity() + "\t" + getArea() + "\t" + getBloodGroup() + "\t" + getPassword());
             bufferedWriter.newLine();
             bufferedWriter.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void loginRecipient(String phoneNumber, String password) {
+        try {
+            File file = new File("src/filemanagement/Recipient.txt");
+            BufferedReader bufferedReader = new BufferedReader(new java.io.FileReader(file));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] data = line.split("\t");
+                if (data[1].equals(phoneNumber) && data[5].equals(password)) {
+                    setName(data[0]);
+                    setPhoneNumber(data[1]);
+                    setCity(data[2]);
+                    setArea(data[3]);
+                    setBloodGroup(data[4]);
+                    setPassword(data[5]);
+                    break;
+                }
+            }
+            bufferedReader.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

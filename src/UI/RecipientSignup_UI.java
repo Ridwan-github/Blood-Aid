@@ -33,6 +33,7 @@ public class RecipientSignup_UI {
             System.out.printf(RED + "4." + RESET + " Blood Group: ");
             bloodGroup = scanner.nextLine();
         }
+        recipient.setBloodGroup(bloodGroup);
         System.out.println("Enter your password: ");
         recipient.setPassword(scanner.nextLine());
         System.out.println("==============================================================================================");

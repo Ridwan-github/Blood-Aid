@@ -12,7 +12,13 @@ public class Donor_UI {
         this.donor = donor;
     }
 
-    public static void main(String[] args) {
+    public static void main(String phone, String password, String[] args) {
+        String phoneNumber = phone;
+        String pass = password;
+
+        donor = new Donor();
+        donor.loginDonor(phoneNumber, pass);
+
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
 
