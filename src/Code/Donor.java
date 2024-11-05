@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.FileWriter;
 
 import external_Functions.UserID_generate;
-import external_Functions.PasswordCipher;
 
 public class Donor implements User {
 

@@ -1,9 +1,10 @@
 package UI;
 
+import Code.Donor;
+
 import java.util.Scanner;
 
 class DonationHistory_UI {
-    private Donor_UI donor;
     private String donationType;
 
     public boolean checkCooldown() {
@@ -15,10 +16,15 @@ class DonationHistory_UI {
         // Implementation
     }
 
-    public static void main(String[] args) {
-        DonationHistory_UI donationHistory = new DonationHistory_UI();
-//        donationHistory.donor = new Donor_UI();
-        donationHistory.donationType = "Whole Blood";
+
+
+    public static void main(String phoneNumber, String password, String[] args) {
+        String phone = phoneNumber;
+        String pass = password;
+
+        Donor donor = new Donor();
+        donor.loginDonor(phoneNumber, password);
+
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
 
@@ -44,7 +50,7 @@ class DonationHistory_UI {
 
         switch (choice) {
             case 0:
-//                Donor_UI.main(args);
+                Donor_UI.main(phone, pass, args);
                 break;
             default:
                 System.out.println("Invalid choice. Please select 0.");

@@ -66,15 +66,16 @@ public class DonorSignup_UI {
         donor.setNID(scanner.nextLine());
         System.out.printf(RED + "11." + RESET + " Password: ");
         donor.setPassword(scanner.nextLine());
+
         System.out.println("==============================================================================================");
         System.out.println("By signing up you are agreeing to our " + RED + "Terms and Conditions ");
         System.out.println(RED + "[1]" + RESET + " Signup");
         System.out.println(RED + "[0]" + RESET + " Back");
         System.out.println("==============================================================================================");
 
-        int choice = scanner.nextInt();
+        int choice1 = scanner.nextInt();
 
-        switch (choice) {
+        switch (choice1) {
             case 1:
                 donor.registerDonor();
                 Login_UI.main(args);

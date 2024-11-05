@@ -5,3 +5,4 @@ mahadi;0182;rangpur;rangpur;AB+;125422;qwerty;2;0;false;rangpur;1242;mahadi;23;m
 name;01992;dhaka;area;A+;1232;wasd;1;0;false;area;1232;username;20;email@gmail.com;null
 name;01992;city1;area1;A-;1342;vbvv;2;0;false;area2;1232;user2;23;email2@gmail.com;null
 name4;01882;city;area;A+;1232;wasd;3;0;false;area;1232;user3;21;email@gmail.com;null
+Haseeb;1234;dhaka;banani;A+;09876;qwert;4;0;true;banani;32;CG4;21;haseeb@gmail.com;null
