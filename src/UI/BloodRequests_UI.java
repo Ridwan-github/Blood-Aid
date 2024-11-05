@@ -1,9 +1,15 @@
 package UI;
 
+import Code.Donor;
+
 import java.util.Scanner;
 
 public class BloodRequests_UI {
-    public static void main(String[] args) {
+    public static void main(String phoneNumber, String pass, String[] args) {
+        String phone = phoneNumber;
+        String password = pass;
+        Donor donor = new Donor();
+        donor.loginDonor(phoneNumber, password);
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
 
@@ -33,7 +39,7 @@ public class BloodRequests_UI {
                 System.out.println("Accept request of Recipient 3...");
                 break;
             case 4:
-//                Donor_UI.main(args);
+                Donor_UI.main(phoneNumber, password, args);
                 break;
             default:
                 System.out.println("Invalid choice. Please select 1, 2, or 3.");

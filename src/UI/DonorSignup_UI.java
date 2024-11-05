@@ -1,5 +1,7 @@
 package UI;
 import Code.Donor;
+import external_Functions.validateUsername;
+import external_Functions.ParseINT;
 
 import java.util.Scanner;
 
@@ -16,15 +18,40 @@ public class DonorSignup_UI {
         System.out.println("==============================================================================================");
         System.out.printf(RED + "1." + RESET + " Name: ");
         donor.setName(scanner.nextLine());
-        System.out.printf(RED + "2." + RESET + " Phone Number: ");
+        System.out.printf(RED + "2." + RESET + " Username: ");
+        String username = scanner.nextLine();
+        validateUsername validateUsername = new validateUsername();
+        while (!validateUsername.validate(username)) {
+            System.out.println("Username already exists. Please enter a different username.");
+            System.out.printf(RED + "2." + RESET + " Username: ");
+            username = scanner.nextLine();
+        }
+        donor.setUsername(username);
+        System.out.printf(RED + "3." + RESET + " Email: ");
+        donor.setEmail(scanner.nextLine());
+        System.out.printf(RED + "4." + RESET + " Age: ");
+        int age = scanner.nextInt();
+        while (age < 18) {
+            System.out.println("You must be at least 18 years old to donate blood.");
+            System.out.printf(RED + "4." + RESET + " Age: ");
+            age = scanner.nextInt();
+        }
+        scanner.nextLine();
+        ParseINT parseINT = new ParseINT();
+        donor.setAge(parseINT.intTOString(age));
+        System.out.printf(RED + "5." + RESET + " Phone Number: ");
         donor.setPhoneNumber(scanner.nextLine());
-        System.out.println(RED + "3." + RESET + " Address: ");
+        System.out.printf(RED + "6." + RESET + " Address: ");
         System.out.printf(RED + "City: ");
         donor.setcity(scanner.nextLine());
         System.out.printf(RED + "Area: ");
         donor.setArea(scanner.nextLine());
+        System.out.printf(RED + "7." + RESET + " Zipcode: ");
+        donor.setZipCode(scanner.nextLine());
+        System.out.printf(RED + "8." + RESET + " Preferred area for donation: ");
+        donor.setPreferedHospital(scanner.nextLine());
 
-        System.out.printf(RED + "4." + RESET + " Blood Group: ");
+        System.out.printf(RED + "9." + RESET + " Blood Group: ");
         String bloodGroup = scanner.nextLine();
         while (!bloodGroup.equals("A+") && !bloodGroup.equals("A-") && !bloodGroup.equals("B+") &&
                 !bloodGroup.equals("B-") && !bloodGroup.equals("AB+") && !bloodGroup.equals("AB-") &&
@@ -35,19 +62,20 @@ public class DonorSignup_UI {
         }
         donor.setBloodGroup(bloodGroup);
 
-        System.out.printf(RED + "5." + RESET + " NID Number: ");
+        System.out.printf(RED + "10." + RESET + " NID Number: ");
         donor.setNID(scanner.nextLine());
-        System.out.printf(RED + "6." + RESET + " Password: ");
+        System.out.printf(RED + "11." + RESET + " Password: ");
         donor.setPassword(scanner.nextLine());
-        System.out.printf(RED + "7." + RESET + " Do you agree to the term and conditions (" + RED + "Yes" + RESET + "/No)");
+
         System.out.println("==============================================================================================");
+        System.out.println("By signing up you are agreeing to our " + RED + "Terms and Conditions ");
         System.out.println(RED + "[1]" + RESET + " Signup");
         System.out.println(RED + "[0]" + RESET + " Back");
         System.out.println("==============================================================================================");
 
-        int choice = scanner.nextInt();
+        int choice1 = scanner.nextInt();
 
-        switch (choice) {
+        switch (choice1) {
             case 1:
                 donor.registerDonor();
                 Login_UI.main(args);

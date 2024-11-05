@@ -1,5 +1,6 @@
 package UI;
 import Code.Donor;
+import Code.DonorViewProfile;
 
 import java.util.List;
 import java.util.Scanner;
@@ -52,7 +53,8 @@ public class Donor_UI {
                 BloodRequests_UI.main(args);
                 break;
             case 3:
-
+                DonorViewProfile donorViewProfile = new DonorViewProfile(phoneNumber, pass);
+                DonorViewProfile_UI.main(donorViewProfile, args);
                 break;
             case 4:
                 System.out.printf("Logging out...");
