@@ -33,7 +33,7 @@ public class BloodRequests_UI {
                 System.out.println("Accept request of Recipient 3...");
                 break;
             case 4:
-                Donor_UI.main(args);
+//                Donor_UI.main(args);
                 break;
             default:
                 System.out.println("Invalid choice. Please select 1, 2, or 3.");
