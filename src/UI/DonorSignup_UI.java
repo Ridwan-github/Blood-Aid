@@ -16,15 +16,25 @@ public class DonorSignup_UI {
         System.out.println("==============================================================================================");
         System.out.printf(RED + "1." + RESET + " Name: ");
         donor.setName(scanner.nextLine());
-        System.out.printf(RED + "2." + RESET + " Phone Number: ");
+        System.out.println(RED + "2." + RESET + " Username: ");
+        donor.setUsername(scanner.nextLine());
+        System.out.println(RED + "3." + RESET + " Email: ");
+        donor.setEmail(scanner.nextLine());
+        System.out.println(RED + "4." + RESET + " Age: ");
+        donor.setAge(scanner.nextLine());
+        System.out.printf(RED + "5." + RESET + " Phone Number: ");
         donor.setPhoneNumber(scanner.nextLine());
-        System.out.println(RED + "3." + RESET + " Address: ");
+        System.out.println(RED + "6." + RESET + " Address: ");
         System.out.printf(RED + "City: ");
         donor.setcity(scanner.nextLine());
         System.out.printf(RED + "Area: ");
         donor.setArea(scanner.nextLine());
+        System.out.println(RED + "7." + RESET + " Zipcode: ");
+        donor.setZipCode(scanner.nextLine());
+        System.out.println(RED + "8." + RESET + " Preferred area for donation: ");
+        donor.setPreferedHospital(scanner.nextLine());
 
-        System.out.printf(RED + "4." + RESET + " Blood Group: ");
+        System.out.printf(RED + "9." + RESET + " Blood Group: ");
         String bloodGroup = scanner.nextLine();
         while (!bloodGroup.equals("A+") && !bloodGroup.equals("A-") && !bloodGroup.equals("B+") &&
                 !bloodGroup.equals("B-") && !bloodGroup.equals("AB+") && !bloodGroup.equals("AB-") &&
@@ -35,12 +45,12 @@ public class DonorSignup_UI {
         }
         donor.setBloodGroup(bloodGroup);
 
-        System.out.printf(RED + "5." + RESET + " NID Number: ");
+        System.out.printf(RED + "10." + RESET + " NID Number: ");
         donor.setNID(scanner.nextLine());
-        System.out.printf(RED + "6." + RESET + " Password: ");
+        System.out.printf(RED + "11." + RESET + " Password: ");
         donor.setPassword(scanner.nextLine());
-        System.out.printf(RED + "7." + RESET + " Do you agree to the term and conditions (" + RED + "Yes" + RESET + "/No)");
         System.out.println("==============================================================================================");
+        System.out.printf("By signing up you are agreeing to our " + RED + "Terms and Conditions ");
         System.out.println(RED + "[1]" + RESET + " Signup");
         System.out.println(RED + "[0]" + RESET + " Back");
         System.out.println("==============================================================================================");
