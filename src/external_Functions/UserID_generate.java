@@ -9,16 +9,16 @@ public class UserID_generate {
 
     public static String generateUserID() {
         ParseINT parseINT = new ParseINT();
-        String donorID = "0"; // Initialize with "0" to handle empty file or missing data
+        String donorID = "0";
 
         try {
             File file = new File("src/filemanagement/Donor.txt");
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] donor = line.split("\t");
+                String[] donor = line.split(";");
                 if (donor.length > 7) {
-                    donorID = donor[7]; // Get the donorID from the 8th column
+                    donorID = donor[7];
                 }
             }
             reader.close();
@@ -26,7 +26,6 @@ public class UserID_generate {
             e.printStackTrace();
         }
 
-        // Convert donorID to int and increment, then return as String
         int id = parseINT.stringToInt(donorID);
         id += 1;
         return parseINT.intTOString(id);

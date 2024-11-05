@@ -68,7 +68,7 @@ public class Recipient {
             File file = new File("src/filemanagement/Recipient.txt");
             FileWriter fileWriter = new FileWriter(file, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.write(getName() + "\t" + getPhoneNumber() + "\t" + getCity() + "\t" + getArea() + "\t" + getBloodGroup() + "\t" + getPassword());
+            bufferedWriter.write(getName() + ";" + getPhoneNumber() + ";" + getCity() + ";" + getArea() + ";" + getBloodGroup() + ";" + getPassword());
             bufferedWriter.newLine();
             bufferedWriter.close();
         } catch (Exception e) {
@@ -82,7 +82,7 @@ public class Recipient {
             BufferedReader bufferedReader = new BufferedReader(new java.io.FileReader(file));
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                String[] data = line.split("\t");
+                String[] data = line.split(";");
                 if (data[1].equals(phoneNumber) && data[5].equals(password)) {
                     setName(data[0]);
                     setPhoneNumber(data[1]);

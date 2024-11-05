@@ -6,7 +6,7 @@ import java.io.File;
 import java.io.FileWriter;
 
 import external_Functions.UserID_generate;
-import external_Functions.encryption;
+import external_Functions.PasswordCipher;
 
 public class Donor implements User {
 
@@ -180,21 +180,21 @@ public class Donor implements User {
             FileWriter fileWriter = new FileWriter(file, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             setDonorID(UserID_generate.generateUserID());
-            bufferedWriter.write(getName() + "\t"
-                    + getPhoneNumber() + "\t"
-                    + getcity() + "\t"
-                    + getArea() + "\t"
-                    +getBloodGroup() + "\t"
-                    + getNID() + "\t"
-                    + getPassword() + "\t"
-                    + getDonorID() + "\t"
-                    + getPoints() + "\t"
-                    + isEligible() + "\t"
-                    + getPreferedHospital() + "\t"
-                    + getZipCode() + "\t"
-                    + getUsername() + "\t"
-                    + getAge() + "\t"
-                    + getEmail() + "\t"
+            bufferedWriter.write(getName() + ";"
+                    + getPhoneNumber() + ";"
+                    + getcity() + ";"
+                    + getArea() + ";"
+                    +getBloodGroup() + ";"
+                    + getNID() + ";"
+                    + getPassword() + ";"
+                    + getDonorID() + ";"
+                    + getPoints() + ";"
+                    + isEligible() + ";"
+                    + getPreferedHospital() + ";"
+                    + getZipCode() + ";"
+                    + getUsername() + ";"
+                    + getAge() + ";"
+                    + getEmail() + ";"
                     + getLastDonated());
             bufferedWriter.newLine();
             bufferedWriter.close();

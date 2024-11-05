@@ -2,7 +2,7 @@ package external_Functions;
 
 import java.util.Scanner;
 
-public class encryption {
+public class PasswordCipher {
 
     private static final int SHIFT = 3;
 
