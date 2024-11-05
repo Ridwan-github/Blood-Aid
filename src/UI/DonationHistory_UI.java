@@ -1,5 +1,7 @@
 package UI;
 
+import java.util.Scanner;
+
 class DonationHistory_UI {
     private Donor_UI donor;
     private String donationType;
@@ -15,7 +17,7 @@ class DonationHistory_UI {
 
     public static void main(String[] args) {
         DonationHistory_UI donationHistory = new DonationHistory_UI();
-        donationHistory.donor = new Donor_UI();
+//        donationHistory.donor = new Donor_UI();
         donationHistory.donationType = "Whole Blood";
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
@@ -36,5 +38,16 @@ class DonationHistory_UI {
         System.out.println("\n" + RED + "0. Back" + RESET);
 
         System.out.println("==============================================================================================");
+
+        Scanner scanner = new Scanner(System.in);
+        int choice = scanner.nextInt();
+
+        switch (choice) {
+            case 0:
+//                Donor_UI.main(args);
+                break;
+            default:
+                System.out.println("Invalid choice. Please select 0.");
+        }
     }
 }

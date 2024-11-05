@@ -1,57 +1,17 @@
 package UI;
+import Code.Recipient;
 
 import java.util.Scanner;
 
 class Recipient_UI  {
-    private String name;
-    private String phoneNumber;
-    private String address;
 
-    // Methods: login, logout, postRequest, searchDonors, notifyUser, confirmDonation, etc.
+    public static void main(String phone, String password, String[] args) {
+        String phoneNumber = phone;
+        String pass = password;
 
-    public void login(String phoneNumber, String password) {
-        // Implementation
-    }
+        Recipient recipient = new Recipient();
+        recipient.loginRecipient(phoneNumber, pass);
 
-    public void logout() {
-        // Implementation
-    }
-
-    public void postRequest() {
-        // Implementation
-    }
-
-//    List<Donor> donors = new ArrayList<Donor>();
-//    public List<Donor> searchDonors(String bloodGroup, String region, DonationType donationType) {
-//        // Implementation
-//        return donors;
-//    }
-
-    public void notifyUser() {
-        // Implementation
-    }
-
-    public void confirmDonation() {
-        // Implementation
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-
-
-    public static void main(String[] args) {
-        Recipient_UI recipient = new Recipient_UI();
-        recipient.name = "Recipient 1";
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
 
@@ -71,7 +31,7 @@ class Recipient_UI  {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter your choice: ");
         choice = scanner.nextInt();
-        scanner.nextLine(); // Clear the newline character from input buffer
+        scanner.nextLine();
 
         switch (choice) {
             case 1:
@@ -86,11 +46,22 @@ class Recipient_UI  {
                         "\n" + RED + "5" + RESET + " AB+" +
                         "\t" + RED + "6" + RESET + " AB-" +
                         "\n" + RED + "7" + RESET + " O+" +
-                        "\t" + RED + "8" + RESET + " O-");
+                        "\t" + RED + "8" + RESET + " O-" +
+                        "\n" + RED + "9" + RESET + " Back");
                 System.out.println("Select blood group: ");
                 String bloodGroup = scanner.nextLine();
 
-                // Display search results
+                while (!bloodGroup.equals("1") && !bloodGroup.equals("2") && !bloodGroup.equals("3") &&
+                        !bloodGroup.equals("4") && !bloodGroup.equals("5") && !bloodGroup.equals("6") &&
+                        !bloodGroup.equals("7") && !bloodGroup.equals("8") && !bloodGroup.equals("9")) {
+                    System.out.println("Invalid choice. Please select 1, 2, 3, 4, 5, 6, 7, 8, or 9.");
+                    System.out.println("Select blood group: ");
+                    bloodGroup = scanner.nextLine();
+                }
+
+                if (bloodGroup.equals("9")) {
+                    main(phone, password, args);
+                }
                 break;
             case 2:
                 // View requests

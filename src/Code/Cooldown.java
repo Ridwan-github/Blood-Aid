@@ -1,5 +1,7 @@
+package Code;
+
 class Cooldown {
-   // private Map<DonationType, Integer> cooldownPeriods; // e.g., {WholeBloodDonation -> 60 days}
+   // private Map<Code.DonationType, Integer> cooldownPeriods; // e.g., {Code.WholeBloodDonation -> 60 days}
 
     public int getCooldown(DonationType donationType){
         return 0;

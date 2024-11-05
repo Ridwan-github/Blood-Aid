@@ -1,3 +1,5 @@
+package Code;
+
 class DonationHistory {
     private Donor donor;
     private String donationType;
