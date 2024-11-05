@@ -38,40 +38,35 @@ public class Login_UI {
                 System.out.println("==============================================================================================");
                 System.out.println(RED + "[1]" + RESET + " Donor");
                 System.out.println(RED + "[2]" + RESET + " Recipient");
+                System.out.println(RED + "[3]" + RESET + " Back");
                 System.out.println("==============================================================================================");
                 System.out.print("Enter your choice: ");
                 int userTypeLogin = scanner.nextInt();
                 scanner.nextLine();
 
+                while (userTypeLogin != 1 && userTypeLogin != 2 && userTypeLogin != 3) {
+                    System.out.println("Invalid choice. Please select 1 or 2.");
+                    System.out.print("Enter your choice: ");
+                    userTypeLogin = scanner.nextInt();
+                }
+
                 switch (userTypeLogin) {
                     case 1:
-                        try {
-                            File file = new File("src/filemanagement/Donor.txt");
-                            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-                            String line;
-                            System.out.print("Enter your phone number: ");
-                            String phoneNumber = scanner.nextLine();
-                            System.out.print("Enter your password: ");
-                            String password = scanner.nextLine();
-                            boolean loginSuccessful = false;
-
-                            while ((line = bufferedReader.readLine()) != null) {
-                                String[] data = line.split(";");
-                                if (data.length > 6) {
-                                    if (data[1].equals(phoneNumber) && data[6].equals(password)) {
-                                        System.out.println("Login successful.");
-                                        Donor_UI.main(phoneNumber, password, args);
-                                        loginSuccessful = true;
-                                        break;
-                                    }
-                                }
-                            }
-                            bufferedReader.close();
-                            if (!loginSuccessful) {
-                                System.out.println("Invalid phone number or password.");
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                        System.out.println("==============================================================================================");
+                        System.out.println(RED + "Donor Login" + RESET);
+                        System.out.println("==============================================================================================");
+                        System.out.println("Enter your phone number and password to login.");
+                        System.out.printf("Phone Number: ");
+                        String phoneNumber = scanner.nextLine();
+                        System.out.printf("Password: ");
+                        String password = scanner.nextLine();
+                        Donor donor = new Donor();
+                        donor.loginDonor(phoneNumber, password);
+                        if (donor.getName() != null) {
+                            Donor_UI.main(phoneNumber, password, args);
+                        } else {
+                            System.out.println("Invalid phone number or password.");
+                            main(args);
                         }
                         break;
 
@@ -81,9 +76,9 @@ public class Login_UI {
                             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
                             String line;
                             System.out.print("Enter your phone number: ");
-                            String phoneNumber = scanner.nextLine();
+                            phoneNumber = scanner.nextLine();
                             System.out.print("Enter your password: ");
-                            String password = scanner.nextLine();
+                            password = scanner.nextLine();
                             boolean loginSuccessful = false;
 
                             while ((line = bufferedReader.readLine()) != null) {
@@ -108,6 +103,9 @@ public class Login_UI {
                         }
                         break;
 
+                    case 3:
+                        main(args);
+                        break;
                     default:
                         System.out.println("Invalid choice. Please select 1 or 2.");
                 }
@@ -117,9 +115,15 @@ public class Login_UI {
                 System.out.println("==============================================================================================");
                 System.out.println(RED + "[1]" + RESET + " Donor");
                 System.out.println(RED + "[2]" + RESET + " Recipient");
+                System.out.println(RED + "[3]" + RESET + " Back");
                 System.out.println("==============================================================================================");
                 System.out.print("Enter your choice: ");
                 int userType = scanner.nextInt();
+                while (userType != 1 && userType != 2 && userType != 3) {
+                    System.out.println("Invalid choice. Please select 1 or 2.");
+                    System.out.print("Enter your choice: ");
+                    userType = scanner.nextInt();
+                }
                 scanner.nextLine();
 
                 switch (userType) {
@@ -129,6 +133,8 @@ public class Login_UI {
                     case 2:
                         RecipientSignup_UI.main(args);
                         break;
+                    case 3:
+                        main(args);
                     default:
                         System.out.println("Invalid choice. Please select 1 or 2.");
                 }

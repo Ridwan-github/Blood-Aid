@@ -180,6 +180,7 @@ public class Donor implements User {
             FileWriter fileWriter = new FileWriter(file, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             setDonorID(UserID_generate.generateUserID());
+            setEligible(true);
             bufferedWriter.write(getName() + ";"
                     + getPhoneNumber() + ";"
                     + getcity() + ";"
