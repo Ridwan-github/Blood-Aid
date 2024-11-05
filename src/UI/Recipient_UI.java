@@ -1,6 +1,9 @@
 package UI;
 import Code.Recipient;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.Scanner;
 
 class Recipient_UI  {
@@ -35,34 +38,34 @@ class Recipient_UI  {
 
         switch (choice) {
             case 1:
-                System.out.println("==============================================================================================");
-                System.out.println("Search for donors");
-                System.out.println("==============================================================================================");
-                System.out.println("Blood Groups:" +
-                        "\n" + RED + "1" + RESET + " A+" +
-                        "\t" + RED + "2" + RESET + " A-" +
-                        "\n" + RED + "3" + RESET + " B+" +
-                        "\t" + RED + "4" + RESET + " B-" +
-                        "\n" + RED + "5" + RESET + " AB+" +
-                        "\t" + RED + "6" + RESET + " AB-" +
-                        "\n" + RED + "7" + RESET + " O+" +
-                        "\t" + RED + "8" + RESET + " O-" +
-                        "\n" + RED + "9" + RESET + " Back");
-                System.out.println("Select blood group: ");
-                String bloodGroup = scanner.nextLine();
+                System.out.println("List of Donors: ");
+                try{
+                    File file = new File("src/filemanagement/Donor.txt");
+                    BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        String[] data = line.split(";");
+                        if(data[4].equals(recipient.getBloodGroup())){
 
-                while (!bloodGroup.equals("1") && !bloodGroup.equals("2") && !bloodGroup.equals("3") &&
-                        !bloodGroup.equals("4") && !bloodGroup.equals("5") && !bloodGroup.equals("6") &&
-                        !bloodGroup.equals("7") && !bloodGroup.equals("8") && !bloodGroup.equals("9")) {
-                    System.out.println("Invalid choice. Please select 1, 2, 3, 4, 5, 6, 7, 8, or 9.");
-                    System.out.println("Select blood group: ");
-                    bloodGroup = scanner.nextLine();
+                            System.out.println("Name: " + data[0]);
+                            System.out.println("Phone Number: " + data[1]);
+                            System.out.println("City: " + data[2]);
+                            System.out.println("Area: " + data[3]);
+                            System.out.println("Blood Group: " + data[4]);
+                            System.out.println("Points: " + data[6]);
+                            System.out.println("==============================================================================================");
+
+                        }
+                    }
+                    bufferedReader.close();
                 }
 
-                if (bloodGroup.equals("9")) {
-                    main(phone, password, args);
+                catch (Exception e) {
+                    System.out.println("An error occurred.");
+                    e.printStackTrace();
                 }
-                break;
+
+
             case 2:
                 // View requests
                 break;
