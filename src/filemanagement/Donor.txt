@@ -6,3 +6,4 @@ name;01992;dhaka;area;A+;1232;wasd;1;0;false;area;1232;username;20;email@gmail.c
 name;01992;city1;area1;A-;1342;vbvv;2;0;false;area2;1232;user2;23;email2@gmail.com;null
 name4;01882;city;area;A+;1232;wasd;3;0;false;area;1232;user3;21;email@gmail.com;null
 Haseeb;1234;dhaka;banani;A+;09876;qwert;4;0;true;banani;32;CG4;21;haseeb@gmail.com;null
+Mahadi;01305070854;Rangpur;Bordhon Kuthi;O+;220004212;Pdkdglvhd456;5;0;true;Dhap;5400;used;20;mahadiahmed@iut-dhaka.edu;null

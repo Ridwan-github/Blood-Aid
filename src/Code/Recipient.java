@@ -1,5 +1,7 @@
 package Code;
 
+import external_Functions.PasswordCipher;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -62,6 +64,8 @@ public class Recipient {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    PasswordCipher passwordCipher = new PasswordCipher();
 
     public void registerRecipient() {
         try{

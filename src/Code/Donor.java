@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 
+import external_Functions.PasswordCipher;
 import external_Functions.UserID_generate;
 
 public class Donor implements User {
@@ -173,6 +174,8 @@ public class Donor implements User {
         this.lastDonated = lastDonated;
     }
 
+    PasswordCipher passwordCipher = new PasswordCipher();
+
     public void registerDonor() {
         try{
             File file = new File("src/filemanagement/Donor.txt");
@@ -180,13 +183,14 @@ public class Donor implements User {
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             setDonorID(UserID_generate.generateUserID());
             setEligible(true);
+            String password = passwordCipher.encryptPassword(getPassword());
             bufferedWriter.write(getName() + ";"
                     + getPhoneNumber() + ";"
                     + getcity() + ";"
                     + getArea() + ";"
                     +getBloodGroup() + ";"
                     + getNID() + ";"
-                    + getPassword() + ";"
+                    + password + ";"
                     + getDonorID() + ";"
                     + getPoints() + ";"
                     + isEligible() + ";"
@@ -210,7 +214,7 @@ public class Donor implements User {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(";");
-                if (data[1].equals(phoneNumber) && data[6].equals(password)) {
+                if (data[1].equals(phoneNumber) && passwordCipher.decryptPassword(data[6]).equals(password)) {
                     setName(data[0]);
                     setPhoneNumber(data[1]);
                     setcity(data[2]);

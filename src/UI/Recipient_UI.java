@@ -52,7 +52,7 @@ class Recipient_UI  {
                             System.out.println("City: " + data[2]);
                             System.out.println("Area: " + data[3]);
                             System.out.println("Blood Group: " + data[4]);
-                            System.out.println("Points: " + data[6]);
+                            System.out.println("Points: " + data[8]);
                             System.out.println("==============================================================================================");
 
                         }

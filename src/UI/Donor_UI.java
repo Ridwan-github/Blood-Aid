@@ -47,10 +47,10 @@ public class Donor_UI {
 
         switch (choice) {
             case 1:
-                DonationHistory_UI.main(args);
+                DonationHistory_UI.main(phoneNumber, pass, args);
                 break;
             case 2:
-                BloodRequests_UI.main(args);
+                BloodRequests_UI.main(phoneNumber, pass, args);
                 break;
             case 3:
                 DonorViewProfile donorViewProfile = new DonorViewProfile(phoneNumber, pass);
