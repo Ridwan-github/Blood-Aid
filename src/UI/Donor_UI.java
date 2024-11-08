@@ -29,10 +29,15 @@ public class Donor_UI {
         System.out.println("Welcome, " + donor.getName());
         System.out.println("Donor ID: " + donor.getDonorID());
         System.out.println("Points: " + donor.getPoints());
+        if (donor.getLastDonatedDate().isNull()){
+            System.out.println("Last Donated Date: Never donated blood before.");
+        } else {
+            System.out.println("Last Donated Date: " + donor.getLastDonatedDate().toString());
+        }
         if (donor.isEligible()) {
             System.out.println("You are eligible to donate blood.");
         } else {
-            System.out.println("You are not eligible to donate blood.");
+            System.out.println("You are not eligible to donate blood for now.");
         }
         System.out.println("==============================================================================================");
         System.out.println();

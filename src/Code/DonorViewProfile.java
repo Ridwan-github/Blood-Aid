@@ -48,6 +48,6 @@ public class DonorViewProfile {
         else{
             System.out.println("Eligible: No");
         }
-        System.out.println("Last Donated: " +donor.getLastDonated());
+        System.out.println("Last Donated: " + donor.getLastDonatedDate().toString());
     }
 }

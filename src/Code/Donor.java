@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 
+import external_Functions.MyDate;
 import external_Functions.PasswordCipher;
 import external_Functions.UserID_generate;
 
@@ -26,8 +27,7 @@ public class Donor implements User {
     private String username;
     private String age;
     private String email;
-    private String lastDonated;
-
+    private MyDate lastDonatedDate;
 
 
     public String getName() {
@@ -166,13 +166,18 @@ public class Donor implements User {
         this.email = email;
     }
 
-    public String getLastDonated() {
-        return lastDonated;
+    public void setLastDonatedDate(String lastDonated) {
+        if (lastDonated.equals("0/0/0000")) {
+            this.lastDonatedDate = new MyDate(0, 0, 0);
+        } else {
+            this.lastDonatedDate = new MyDate(lastDonated);
+        }
     }
 
-    public void setLastDonated(String lastDonated) {
-        this.lastDonated = lastDonated;
+    public MyDate getLastDonatedDate() {
+        return lastDonatedDate;
     }
+
     PasswordCipher passwordCipher = new PasswordCipher();
     public void registerDonor() {
         try{
@@ -181,7 +186,6 @@ public class Donor implements User {
             String encryptedPassword = passwordCipher.encryptPassword(getPassword());
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             setDonorID(UserID_generate.generateUserID());
-            setEligible(true);
             bufferedWriter.write(getName() + ";"
                     + getPhoneNumber() + ";"
                     + getcity() + ";"
@@ -196,8 +200,8 @@ public class Donor implements User {
                     + getZipCode() + ";"
                     + getUsername() + ";"
                     + getAge() + ";"
-                    + getEmail() + ";"
-                    + getLastDonated());
+                    + getEmail() + ";" +
+                    (getLastDonatedDate() == null ? "0/0/0000" : getLastDonatedDate().toString()));
             bufferedWriter.newLine();
             bufferedWriter.close();
         } catch (Exception e) {
@@ -229,7 +233,7 @@ public class Donor implements User {
                     setUsername(data[12]);
                     setAge(data[13]);
                     setEmail(data[14]);
-                    setLastDonated(data[15]);
+                    setLastDonatedDate(data[15]);
                     break;
                 }
             }

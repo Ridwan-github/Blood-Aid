@@ -1,11 +1,4 @@
 Name;Phone Number;City;Area;Blood Group;NID;Password;Donor_ID;Points;Eligibility;Preferred_Donation_Area;ZipCode;Username;Age;Email;Last_Donation_Date
-nuren fahmid;0197;dhaka;uttara;A+;1234;wasd;1;0;false;uttara;1234;fahmid65;22;nurenfahmid65@gmail.com;null
-ridwan;0199;dhaka;uttara;B+;123555;wasd;1;0;false;uttara;1232;ridwan;21;ridwan@gmail.com;null
-mahadi;0182;rangpur;rangpur;AB+;125422;qwerty;2;0;false;rangpur;1242;mahadi;23;mahadi@gmail.com;null
-name;01992;dhaka;area;A+;1232;wasd;1;0;false;area;1232;username;20;email@gmail.com;null
-name;01992;city1;area1;A-;1342;vbvv;2;0;false;area2;1232;user2;23;email2@gmail.com;null
-name4;01882;city;area;A+;1232;wasd;3;0;false;area;1232;user3;21;email@gmail.com;null
-Haseeb;1234;dhaka;banani;A+;09876;qwert;4;0;true;banani;32;CG4;21;haseeb@gmail.com;null
-dfsg;54;asdasd;adsasd;O+;1234;Pdkdglvhd456;5;0;true;dfsas;dfa;dersf;21;123;null
-sdfa;45;DF;DFS;O+;123;Pdkdglvhd456;6;0;true;dfs;asdf;234;45;adw;null
-adfs;77;ssda;ASDF;O+;1234;dgv;7;0;true;DF;AS;afs;23;ADFS;null
+Nuren;01974;city;area;B+;1248123424;456tzh;1;0;false;Uttara;1221;fahmid;21;nurenfahmid@iut-dhak.edu;10/10/2024
+Ridwan;010101;city;area;B+;12341234;456tzh;2;0;true;Uttara;1221;ridwan;22;ridwanraees@iut-dhaka.edu;1/2/2024
+Mahadi;019101;city;area;A-;123123;456tzh;3;0;true;Uttara;12312;mahadi;23;mahadi@iut-dhaka.edu;0/0/0000

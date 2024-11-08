@@ -50,6 +50,7 @@ public class Login_UI {
                     System.out.println("Invalid choice. Please select 1 or 2.");
                     System.out.print("Enter your choice: ");
                     userTypeLogin = scanner.nextInt();
+                    scanner.nextLine();
                 }
 
                 switch (userTypeLogin) {
