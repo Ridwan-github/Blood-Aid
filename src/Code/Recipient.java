@@ -1,5 +1,7 @@
 package Code;
 
+import external_Functions.PasswordCipher;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -62,13 +64,14 @@ public class Recipient {
     public void setPassword(String password) {
         this.password = password;
     }
-
+    PasswordCipher passwordCipher = new PasswordCipher();
     public void registerRecipient() {
         try{
             File file = new File("src/filemanagement/Recipient.txt");
             FileWriter fileWriter = new FileWriter(file, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.write(getName() + ";" + getPhoneNumber() + ";" + getCity() + ";" + getArea() + ";" + getBloodGroup() + ";" + getPassword());
+            String encryptedPassword = passwordCipher.encryptPassword(getPassword());
+            bufferedWriter.write(getName() + ";" + getPhoneNumber() + ";" + getCity() + ";" + getArea() + ";" + getBloodGroup() + ";" + encryptedPassword);
             bufferedWriter.newLine();
             bufferedWriter.close();
         } catch (Exception e) {
@@ -83,7 +86,8 @@ public class Recipient {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(";");
-                if (data[1].equals(phoneNumber) && data[5].equals(password)) {
+                String decryptedPassword = passwordCipher.decryptPassword(data[5]);
+                if (data[1].equals(phoneNumber) && decryptedPassword.equals(password)) {
                     setName(data[0]);
                     setPhoneNumber(data[1]);
                     setCity(data[2]);
