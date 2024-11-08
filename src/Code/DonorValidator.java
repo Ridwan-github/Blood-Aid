@@ -13,4 +13,17 @@ public class DonorValidator {
         }
         return true;
     }
+    public static boolean validatePhoneNumber(String phoneNumber) {
+        if (phoneNumber == null || phoneNumber.length() < 10 || phoneNumber.length() > 15) {
+            return false;
+        }
+        for (int i = 0; i < phoneNumber.length(); i++) {
+            if (!Character.isDigit(phoneNumber.charAt(i))) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 }
