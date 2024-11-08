@@ -1,5 +1,7 @@
 package Code;
 
+import external_Functions.validateUsername;
+
 public class DonorValidator {
     public static boolean validateName(String name){
         if(name == null || name.length() < 2 || name.length() > 100){
@@ -41,6 +43,18 @@ public class DonorValidator {
         }
         return true;
     }
-    
+
+    public static boolean validateCity(String city){
+        if(city == null || city.length() < 2 || city.length() > 50){
+            return false;
+        }
+        for(int i = 0; i < city.length(); i++){
+            char c = city.charAt(i);
+            if(!Character.isAlphabetic(c)){
+                return false;
+            }
+        }
+        return true;
+    }
 
 }
