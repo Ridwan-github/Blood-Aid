@@ -1,6 +1,8 @@
 package UI;
 
 import Code.Donor;
+import Code.Recipient;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -71,35 +73,20 @@ public class Login_UI {
                         break;
 
                     case 2:
-                        try {
-                            File file = new File("src/filemanagement/Recipient.txt");
-                            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-                            String line;
-                            System.out.print("Enter your phone number: ");
-                            phoneNumber = scanner.nextLine();
-                            System.out.print("Enter your password: ");
-                            password = scanner.nextLine();
-                            boolean loginSuccessful = false;
-
-                            while ((line = bufferedReader.readLine()) != null) {
-                                String[] data = line.split(";");
-                                if (data.length > 5) {
-                                    System.out.println("Checking: " + data[1] + " and " + data[5]); // Debugging line
-
-                                    if (data[1].trim().equals(phoneNumber) && data[5].trim().equals(password)) {
-                                        System.out.println("Login successful.");
-                                        Recipient_UI.main(phoneNumber, password, args);
-                                        loginSuccessful = true;
-                                        break;
-                                    }
-                                }
-                            }
-                            bufferedReader.close();
-                            if (!loginSuccessful) {
-                                System.out.println("Invalid phone number or password.");
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                        System.out.println("==============================================================================================");
+                        System.out.println(RED + "Recipient Login" + RESET);
+                        System.out.println("==============================================================================================");
+                        System.out.print("Enter your phone number: ");
+                        phoneNumber = scanner.nextLine();
+                        System.out.print("Enter your password: ");
+                        password = scanner.nextLine();
+                        Recipient recipient = new Recipient();
+                        recipient.loginRecipient(phoneNumber, password);
+                        if (recipient.getName() != null) {
+                            Recipient_UI.main(phoneNumber, password, args);
+                        } else {
+                            System.out.println("Invalid phone number or password.");
+                            main(args);
                         }
                         break;
 
