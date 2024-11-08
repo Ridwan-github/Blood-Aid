@@ -25,5 +25,22 @@ public class DonorValidator {
 
         return true;
     }
+    public static boolean validateEmail(String email){
+        if(email == null || email.length() < 5){
+            return false;
+        }
+
+        int atIndex = email.indexOf('@');
+        if(atIndex == 1 || atIndex == 0 || atIndex == email.length() -1){
+            return false;
+        }
+
+        String domain = email.substring(atIndex + 1);
+        if(domain.indexOf('.') == -1){
+            return  false;
+        }
+        return true;
+    }
+    
 
 }
