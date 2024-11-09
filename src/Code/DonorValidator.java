@@ -140,4 +140,18 @@ public class DonorValidator {
         return true;
     }
 
+    public static boolean validateBloodGroup(String bloodgroup){
+        if(bloodgroup == null){
+            return false;
+        }
+
+        String[] validBloodGroups = {"A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"};
+        for(String validGroup: validBloodGroups){
+            if(bloodgroup.equals(validGroup)){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
