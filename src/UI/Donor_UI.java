@@ -1,8 +1,6 @@
 package UI;
 import Code.Donor;
 import Code.DonorViewProfile;
-
-import java.util.List;
 import java.util.Scanner;
 
 public class Donor_UI {
@@ -52,10 +50,10 @@ public class Donor_UI {
 
         switch (choice) {
             case 1:
-                DonationHistory_UI.main(phoneNumber, password, args);
+                DonationHistory_UI.main(phoneNumber, pass, args);
                 break;
             case 2:
-                BloodRequests_UI.main(phoneNumber, password, args);
+                BloodRequests_UI.main(phoneNumber, pass, args);
                 break;
             case 3:
                 DonorViewProfile donorViewProfile = new DonorViewProfile(phoneNumber, pass);

@@ -1,13 +1,12 @@
 package Code;
 
+import external_Functions.MyDate;
+import external_Functions.PasswordCipher;
+import external_Functions.UserID_generate;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-
-import external_Functions.MyDate;
-import external_Functions.PasswordCipher;
-import external_Functions.UserID_generate;
 
 public class Donor implements User {
 
@@ -186,13 +185,15 @@ public class Donor implements User {
             String encryptedPassword = passwordCipher.encryptPassword(getPassword());
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             setDonorID(UserID_generate.generateUserID());
+            setEligible(true);
+            String password = passwordCipher.encryptPassword(getPassword());
             bufferedWriter.write(getName() + ";"
                     + getPhoneNumber() + ";"
                     + getcity() + ";"
                     + getArea() + ";"
                     +getBloodGroup() + ";"
                     + getNID() + ";"
-                    + encryptedPassword + ";"
+                    + password + ";"
                     + getDonorID() + ";"
                     + getPoints() + ";"
                     + isEligible() + ";"
@@ -216,8 +217,7 @@ public class Donor implements User {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(";");
-                String decryptedPassword = passwordCipher.decryptPassword(data[6]);
-                if (data[1].equals(phoneNumber) && decryptedPassword.equals(password)) {
+                if (data[1].equals(phoneNumber) && passwordCipher.decryptPassword(data[6]).equals(password)) {
                     setName(data[0]);
                     setPhoneNumber(data[1]);
                     setcity(data[2]);
