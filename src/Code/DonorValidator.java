@@ -132,4 +132,11 @@ public class DonorValidator {
         }
         return !date.after(new Date());
     }
+
+    public static boolean validateAge(int age){
+        if (age < 18 || age > 65) {
+            return false;
+        }
+        return true;
+    }
 }

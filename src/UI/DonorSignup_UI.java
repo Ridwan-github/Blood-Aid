@@ -53,8 +53,8 @@ public class DonorSignup_UI {
         donor.setEmail(email);
         System.out.printf(RED + "4." + RESET + " Age: ");
         int age = scanner.nextInt();
-        while (age < 18) {
-            System.out.println("You must be at least 18 years old to donate blood.");
+        while (!donorValidator.validateAge(age)) {
+            System.out.println("You must be 18-65 years old to donate blood.");
             System.out.printf(RED + "4." + RESET + " Age: ");
             age = scanner.nextInt();
         }
