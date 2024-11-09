@@ -14,18 +14,4 @@ public class ConsoleUtils {
             System.out.println("Error clearing the console.");
         }
     }
-
-    public static void main(String[] args) {
-        System.out.println("Welcome to Page 1");
-        System.out.println("Press Enter to go to the next page...");
-        try {
-            System.in.read();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        // Clear the screen and display Page 2 content
-        clearScreen();
-        System.out.println("Welcome to Page 2");
-    }
 }
