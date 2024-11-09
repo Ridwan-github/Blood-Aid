@@ -1,11 +1,9 @@
 package UI;
 
 import Code.Donor;
+import Code.PasswordMasking;
 import Code.Recipient;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.util.Scanner;
 
 public class Login_UI {
@@ -13,7 +11,7 @@ public class Login_UI {
     public static void main(String[] args) {
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
-
+        PasswordMasking passwordMasking = new PasswordMasking();
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("==============================================================================================");
@@ -61,7 +59,7 @@ public class Login_UI {
                         System.out.printf("Phone Number: ");
                         String phoneNumber = scanner.nextLine();
                         System.out.printf("Password: ");
-                        String password = scanner.nextLine();
+                        String password = passwordMasking.getPassword();
                         Donor donor = new Donor();
                         donor.loginDonor(phoneNumber, password);
                         if (donor.getName() != null) {
@@ -79,7 +77,7 @@ public class Login_UI {
                         System.out.print("Enter your phone number: ");
                         phoneNumber = scanner.nextLine();
                         System.out.print("Enter your password: ");
-                        password = scanner.nextLine();
+                        password = passwordMasking.getPassword();
                         Recipient recipient = new Recipient();
                         recipient.loginRecipient(phoneNumber, password);
                         if (recipient.getName() != null) {

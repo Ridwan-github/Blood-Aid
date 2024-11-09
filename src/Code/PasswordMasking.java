@@ -2,7 +2,7 @@ package Code;
 
 import java.io.Console;
 
-public class PasswordInput {
+public class PasswordMasking {
     public static String getPassword() {
         Console console = System.console();
 
