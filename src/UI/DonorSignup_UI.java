@@ -73,7 +73,7 @@ public class DonorSignup_UI {
         System.out.printf(RED + "6." + RESET + " Address - ");
         System.out.printf(RED + "City: ");
         String city = scanner.nextLine();
-        while (!donorValidator.validateCity(phoneNumber)) {
+        while (!donorValidator.validateCity(city)) {
             System.out.println("Please input 2-50 letters & only alphabetic letters");
             System.out.printf(" City: ");
             city = scanner.nextLine();
