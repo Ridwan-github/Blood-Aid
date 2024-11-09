@@ -71,9 +71,21 @@ public class DonorSignup_UI {
         donor.setPhoneNumber(phoneNumber);
         System.out.printf(RED + "6." + RESET + " Address - ");
         System.out.printf(RED + "City: ");
-        donor.setcity(scanner.nextLine());
+        String city = scanner.nextLine();
+        while (!donorValidator.validateCity(phoneNumber)) {
+            System.out.println("Please input 2-50 letters & only alphabetic letters");
+            System.out.printf(" City: ");
+            city = scanner.nextLine();
+        }
+        donor.setcity(city);
         System.out.printf(RED + "Area: ");
-        donor.setArea(scanner.nextLine());
+        String area = scanner.nextLine();
+        while (!donorValidator.validateArea(area)) {
+            System.out.println("Please input at max 50 letters");
+            System.out.printf(" Area: ");
+            area = scanner.nextLine();
+        }
+        donor.setArea(area);
         System.out.printf(RED + "7." + RESET + " Zipcode: ");
         donor.setZipCode(scanner.nextLine());
         System.out.printf(RED + "8." + RESET + " Preferred area for donation: ");
