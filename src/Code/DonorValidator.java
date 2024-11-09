@@ -75,4 +75,27 @@ public class DonorValidator {
         }
         return true;
     }
+
+    public static boolean validatePassword(String password){
+        if (password == null || password.length() < 8 || password.length() > 32) {
+            return false;
+        }
+        boolean hasUpper = false;
+        boolean hasLower = false;
+        boolean hasDigit = false;
+        boolean hasSpecial = false;
+        for(int i = 0; i < password.length(); i++){
+            char c = password.charAt(i);
+            if(Character.isUpperCase(c)){
+                hasUpper = true;
+            } else if (Character.isLowerCase(c)) {
+                hasLower = true;
+            } else if (Character.isDigit(c)) {
+                hasDigit = true;
+            } else if (!Character.isLetterOrDigit(c)) {
+                hasSpecial = true;
+            }
+        }
+        return hasUpper && hasLower && hasDigit && hasSpecial;
+    }
 }
