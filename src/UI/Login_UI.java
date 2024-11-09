@@ -12,6 +12,7 @@ public class Login_UI {
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
         PasswordMasking passwordMasking = new PasswordMasking();
+        ConsoleUtils consoleUtils = new ConsoleUtils();
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("==============================================================================================");
@@ -35,6 +36,7 @@ public class Login_UI {
 
         switch (choice) {
             case 1:
+                consoleUtils.clearScreen();
                 System.out.println("==============================================================================================");
                 System.out.println(RED + "[1]" + RESET + " Donor");
                 System.out.println(RED + "[2]" + RESET + " Recipient");
@@ -52,6 +54,7 @@ public class Login_UI {
 
                 switch (userTypeLogin) {
                     case 1:
+                        consoleUtils.clearScreen();
                         System.out.println("==============================================================================================");
                         System.out.println(RED + "Donor Login" + RESET);
                         System.out.println("==============================================================================================");
@@ -71,6 +74,7 @@ public class Login_UI {
                         break;
 
                     case 2:
+                        consoleUtils.clearScreen();
                         System.out.println("==============================================================================================");
                         System.out.println(RED + "Recipient Login" + RESET);
                         System.out.println("==============================================================================================");
@@ -89,6 +93,7 @@ public class Login_UI {
                         break;
 
                     case 3:
+                        consoleUtils.clearScreen();
                         main(args);
                         break;
                     default:
@@ -97,6 +102,7 @@ public class Login_UI {
                 break;
 
             case 2:
+                consoleUtils.clearScreen();
                 System.out.println("==============================================================================================");
                 System.out.println(RED + "[1]" + RESET + " Donor");
                 System.out.println(RED + "[2]" + RESET + " Recipient");
@@ -113,12 +119,15 @@ public class Login_UI {
 
                 switch (userType) {
                     case 1:
+                        consoleUtils.clearScreen();
                         DonorSignup_UI.main(args);
                         break;
                     case 2:
+                        consoleUtils.clearScreen();
                         RecipientSignup_UI.main(args);
                         break;
                     case 3:
+                        consoleUtils.clearScreen();
                         main(args);
                     default:
                         System.out.println("Invalid choice. Please select 1 or 2.");
@@ -126,6 +135,7 @@ public class Login_UI {
                 break;
 
             case 3:
+                consoleUtils.clearScreen();
                 System.out.println("Exiting...");
                 break;
 
