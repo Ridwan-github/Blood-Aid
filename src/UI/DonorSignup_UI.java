@@ -73,7 +73,7 @@ public class DonorSignup_UI {
             phoneNumber = scanner.nextLine();
         }
         donor.setPhoneNumber(phoneNumber);
-        System.out.printf(RED + "6." + RESET + " Address - ");
+        System.out.println(RED + "6." + RESET + " Address - ");
         System.out.printf(RED + "City: ");
         String city = scanner.nextLine();
         while (!authorizationConstraintsValidator.validateCity(city)) {
@@ -153,32 +153,14 @@ public class DonorSignup_UI {
         if (choice == 1) {
             System.out.println("When did you donate blood last? (dd/mm/yyyy)");
             String date = scanner.nextLine();
-
-            while (date.length() != 10) {
-                System.out.println("Invalid date. Please enter a valid date.");
-                System.out.println("When did you donate blood last? (dd/mm/yyyy)");
+            while (!authorizationConstraintsValidator.validateLastDonationDate(date)) {
+                System.out.println("Please input valid Date (dd/mm/yyyy)");
+                System.out.printf(RESET + " Date: ");
                 date = scanner.nextLine();
             }
-
             MyDate myDate = new MyDate(date);
-            while (!myDate.isValidDate()) {
-                System.out.println("Invalid date. Please enter a valid date.");
-                System.out.println("When did you donate blood last? (dd/mm/yyyy)");
-                date = scanner.nextLine();
-                myDate = new MyDate(date);
-            }
-
             DateDifference dateDifference = new DateDifference(myDate);
             int difference = dateDifference.getDifference();
-
-            while (dateDifference.isFutureDate()) {
-                System.out.println("Invalid date. Please enter a valid date.");
-                System.out.println("When did you donate blood last? (dd/mm/yyyy)");
-                date = scanner.nextLine();
-                myDate = new MyDate(date);
-                dateDifference = new DateDifference(myDate);
-                difference = dateDifference.getDifference();
-            }
 
             if (difference < 90) {
                 System.out.println("You are not eligible to donate blood for the next " + (90 - difference) + " days.");
@@ -190,9 +172,14 @@ public class DonorSignup_UI {
             }
 
             donor.setLastDonatedDate(date);
-        } else {
+        } else if(choice == 2){
             System.out.println("You are eligible to donate blood.");
             donor.setEligible(true);
+        }
+        else{
+            System.out.println("Enter a valid option");
+            choice = scanner.nextInt();
+            scanner.nextLine();
         }
 
         System.out.println("==============================================================================================");
