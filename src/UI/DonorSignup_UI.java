@@ -14,6 +14,7 @@ public class DonorSignup_UI {
         Donor donor = new Donor();
         AuthorizationConstraintsValidator authorizationConstraintsValidator = new AuthorizationConstraintsValidator();
         PasswordMasking passwordMasking = new PasswordMasking();
+        ConsoleUtils consoleUtils = new ConsoleUtils();
         Scanner scanner = new Scanner(System.in);
 
 
@@ -141,10 +142,12 @@ public class DonorSignup_UI {
 
         switch (choice1) {
             case 1:
+                consoleUtils.clearScreen();
                 donor.registerDonor();
                 Login_UI.main(args);
                 break;
             case 0:
+                consoleUtils.clearScreen();
                 Login_UI.main(args);
                 break;
             default:
