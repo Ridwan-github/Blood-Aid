@@ -63,4 +63,16 @@ public class DonorValidator {
         }
         return true;
     }
+
+    public static boolean validateNID(String NID){
+        if (NID == null || NID.length() < 10 || NID.length() > 10) {
+            return false;
+        }
+        for (int i = 0; i < NID.length(); i++) {
+            if (!Character.isDigit(NID.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
