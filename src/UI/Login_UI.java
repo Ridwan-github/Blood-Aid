@@ -1,11 +1,9 @@
 package UI;
 
 import Code.Donor;
+import Code.PasswordMasking;
 import Code.Recipient;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.util.Scanner;
 
 public class Login_UI {
@@ -13,7 +11,8 @@ public class Login_UI {
     public static void main(String[] args) {
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
-
+        PasswordMasking passwordMasking = new PasswordMasking();
+        ConsoleUtils consoleUtils = new ConsoleUtils();
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("==============================================================================================");
@@ -37,6 +36,7 @@ public class Login_UI {
 
         switch (choice) {
             case 1:
+                consoleUtils.clearScreen();
                 System.out.println("==============================================================================================");
                 System.out.println(RED + "[1]" + RESET + " Donor");
                 System.out.println(RED + "[2]" + RESET + " Recipient");
@@ -55,6 +55,7 @@ public class Login_UI {
 
                 switch (userTypeLogin) {
                     case 1:
+                        consoleUtils.clearScreen();
                         System.out.println("==============================================================================================");
                         System.out.println(RED + "Donor Login" + RESET);
                         System.out.println("==============================================================================================");
@@ -62,7 +63,7 @@ public class Login_UI {
                         System.out.printf("Phone Number: ");
                         String phoneNumber = scanner.nextLine();
                         System.out.printf("Password: ");
-                        String password = scanner.nextLine();
+                        String password = passwordMasking.getPassword();
                         Donor donor = new Donor();
                         donor.loginDonor(phoneNumber, password);
                         if (donor.getName() != null) {
@@ -74,13 +75,14 @@ public class Login_UI {
                         break;
 
                     case 2:
+                        consoleUtils.clearScreen();
                         System.out.println("==============================================================================================");
                         System.out.println(RED + "Recipient Login" + RESET);
                         System.out.println("==============================================================================================");
                         System.out.print("Enter your phone number: ");
                         phoneNumber = scanner.nextLine();
                         System.out.print("Enter your password: ");
-                        password = scanner.nextLine();
+                        password = passwordMasking.getPassword();
                         Recipient recipient = new Recipient();
                         recipient.loginRecipient(phoneNumber, password);
                         if (recipient.getName() != null) {
@@ -92,6 +94,7 @@ public class Login_UI {
                         break;
 
                     case 3:
+                        consoleUtils.clearScreen();
                         main(args);
                         break;
                     default:
@@ -100,6 +103,7 @@ public class Login_UI {
                 break;
 
             case 2:
+                consoleUtils.clearScreen();
                 System.out.println("==============================================================================================");
                 System.out.println(RED + "[1]" + RESET + " Donor");
                 System.out.println(RED + "[2]" + RESET + " Recipient");
@@ -116,12 +120,15 @@ public class Login_UI {
 
                 switch (userType) {
                     case 1:
+                        consoleUtils.clearScreen();
                         DonorSignup_UI.main(args);
                         break;
                     case 2:
+                        consoleUtils.clearScreen();
                         RecipientSignup_UI.main(args);
                         break;
                     case 3:
+                        consoleUtils.clearScreen();
                         main(args);
                     default:
                         System.out.println("Invalid choice. Please select 1 or 2.");
@@ -129,6 +136,7 @@ public class Login_UI {
                 break;
 
             case 3:
+                consoleUtils.clearScreen();
                 System.out.println("Exiting...");
                 break;
 
