@@ -98,4 +98,16 @@ public class DonorValidator {
         }
         return hasUpper && hasLower && hasDigit && hasSpecial;
     }
+
+    public static boolean validateZipCode(String zip){
+        if (zip == null || zip.length() < 4 || zip.length() > 4) {
+            return false;
+        }
+        for (int i = 0; i < zip.length(); i++) {
+            if (!Character.isDigit(zip.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
