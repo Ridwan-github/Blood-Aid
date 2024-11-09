@@ -13,6 +13,7 @@ public class DonorSignup_UI {
         final String RESET = "\033[0m";
         Donor donor = new Donor();
         DonorValidator donorValidator = new DonorValidator();
+        PasswordMasking passwordMasking = new PasswordMasking();
         Scanner scanner = new Scanner(System.in);
 
 
@@ -113,10 +114,22 @@ public class DonorSignup_UI {
         donor.setBloodGroup(bloodGroup);
 
         System.out.printf(RED + "10." + RESET + " NID Number: ");
-        donor.setNID(scanner.nextLine());
+        String NID = scanner.nextLine();
+        while (!donorValidator.validateNID(NID)) {
+            System.out.println("Please input min-max 10 numeric letters");
+            System.out.printf(RED + "10." + RESET + " NID: ");
+            NID = scanner.nextLine();
+        }
+        donor.setNID(NID);
         System.out.printf(RED + "11." + RESET + " Password: ");
-        PasswordMasking passwordMasking = new PasswordMasking();
-        donor.setPassword(passwordMasking.getPassword());
+        String password = passwordMasking.getPassword();
+        while (!donorValidator.validatePassword(password)) {
+            System.out.println("Please input 8-32 character");
+            System.out.println("Please include at least one uppercase,lowercase,numeric and special character");
+            System.out.printf(RED + "11." + RESET + " Password: ");
+            password = passwordMasking.getPassword();
+        }
+        donor.setPassword(password);
 
         System.out.println("==============================================================================================");
         System.out.println("By signing up you are agreeing to our " + RED + "Terms and Conditions ");
