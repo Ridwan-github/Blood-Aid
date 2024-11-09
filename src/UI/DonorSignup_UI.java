@@ -44,7 +44,13 @@ public class DonorSignup_UI {
         }
         donor.setUsername(username);
         System.out.printf(RED + "3." + RESET + " Email: ");
-        donor.setEmail(scanner.nextLine());
+        String email = scanner.nextLine();
+        while(!donorValidator.validateEmail(email)){
+            System.out.println("Please input valid email format (example@domain.com)");
+            System.out.printf(RED + "3." + RESET + " Name: ");
+            email = scanner.nextLine();
+        }
+        donor.setEmail(email);
         System.out.printf(RED + "4." + RESET + " Age: ");
         int age = scanner.nextInt();
         while (age < 18) {
