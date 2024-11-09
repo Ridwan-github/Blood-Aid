@@ -1,6 +1,6 @@
 package UI;
 import Code.Donor;
-import Code.DonorValidator;
+import Code.AuthorizationConstraintsValidator;
 import Code.PasswordMasking;
 import external_Functions.validateUsername;
 import external_Functions.ParseINT;
@@ -12,7 +12,7 @@ public class DonorSignup_UI {
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
         Donor donor = new Donor();
-        DonorValidator donorValidator = new DonorValidator();
+        AuthorizationConstraintsValidator authorizationConstraintsValidator = new AuthorizationConstraintsValidator();
         PasswordMasking passwordMasking = new PasswordMasking();
         Scanner scanner = new Scanner(System.in);
 
@@ -22,7 +22,7 @@ public class DonorSignup_UI {
         System.out.println("==============================================================================================");
         System.out.printf(RED + "1." + RESET + " Name: ");
         String name = scanner.nextLine();
-        while(!donorValidator.validateName(name)){
+        while(!authorizationConstraintsValidator.validateName(name)){
             System.out.println("Please input 2-100 letter & only alphabetic letters");
             System.out.printf(RED + "1." + RESET + " Name: ");
             name = scanner.nextLine();
@@ -31,13 +31,13 @@ public class DonorSignup_UI {
         System.out.printf(RED + "2." + RESET + " Username: ");
         String username = scanner.nextLine();
         validateUsername validateUsername = new validateUsername();
-        while (!validateUsername.validate(username) || !donorValidator.validateUserName(username)) {
+        while (!validateUsername.validate(username) || !authorizationConstraintsValidator.validateUserName(username)) {
             if(!validateUsername.validate(username)){
                 System.out.println("Username already exists. Please enter a different username.");
                 System.out.printf(RED + "2." + RESET + " Username: ");
                 username = scanner.nextLine();
             }
-            else if(!donorValidator.validateUserName(username)){
+            else if(!authorizationConstraintsValidator.validateUserName(username)){
                 System.out.println("Please input 5-30 letters & only alphanumeric letters or underscore with no spaces");
                 System.out.printf(RED + "2." + RESET + " Username: ");
                 username = scanner.nextLine();
@@ -46,7 +46,7 @@ public class DonorSignup_UI {
         donor.setUsername(username);
         System.out.printf(RED + "3." + RESET + " Email: ");
         String email = scanner.nextLine();
-        while(!donorValidator.validateEmail(email)){
+        while(!authorizationConstraintsValidator.validateEmail(email)){
             System.out.println("Please input valid email format (example@domain.com)");
             System.out.printf(RED + "3." + RESET + " Name: ");
             email = scanner.nextLine();
@@ -54,7 +54,7 @@ public class DonorSignup_UI {
         donor.setEmail(email);
         System.out.printf(RED + "4." + RESET + " Age: ");
         int age = scanner.nextInt();
-        while (!donorValidator.validateAge(age)) {
+        while (!authorizationConstraintsValidator.validateAge(age)) {
             System.out.println("You must be 18-65 years old to donate blood.");
             System.out.printf(RED + "4." + RESET + " Age: ");
             age = scanner.nextInt();
@@ -64,7 +64,7 @@ public class DonorSignup_UI {
         donor.setAge(parseINT.intTOString(age));
         System.out.printf(RED + "5." + RESET + " Phone Number: ");
         String phoneNumber = scanner.nextLine();
-        while (!donorValidator.validatePhoneNumber(phoneNumber)) {
+        while (!authorizationConstraintsValidator.validatePhoneNumber(phoneNumber)) {
             System.out.println("Please input valid phoneNumber of 11 digits only");
             System.out.printf(RED + "5." + RESET + " Phone Number: ");
             phoneNumber = scanner.nextLine();
@@ -73,7 +73,7 @@ public class DonorSignup_UI {
         System.out.printf(RED + "6." + RESET + " Address - ");
         System.out.printf(RED + "City: ");
         String city = scanner.nextLine();
-        while (!donorValidator.validateCity(city)) {
+        while (!authorizationConstraintsValidator.validateCity(city)) {
             System.out.println("Please input 2-50 letters & only alphabetic letters");
             System.out.printf(" City: ");
             city = scanner.nextLine();
@@ -81,7 +81,7 @@ public class DonorSignup_UI {
         donor.setcity(city);
         System.out.printf(RED + "Area: ");
         String area = scanner.nextLine();
-        while (!donorValidator.validateArea(area)) {
+        while (!authorizationConstraintsValidator.validateArea(area)) {
             System.out.println("Please input at max 50 letters");
             System.out.printf(" Area: ");
             area = scanner.nextLine();
@@ -89,7 +89,7 @@ public class DonorSignup_UI {
         donor.setArea(area);
         System.out.printf(RED + "7." + RESET + " Zipcode: ");
         String zipCode = scanner.nextLine();
-        while (!donorValidator.validateZipCode(zipCode)) {
+        while (!authorizationConstraintsValidator.validateZipCode(zipCode)) {
             System.out.println("Please input min-max 4 numeric letters only");
             System.out.printf(RED + "7." + RESET + " Zipcode: ");
             zipCode = scanner.nextLine();
@@ -97,7 +97,7 @@ public class DonorSignup_UI {
         donor.setZipCode(zipCode);
         System.out.printf(RED + "8." + RESET + " Preferred area for donation: ");
         String preferedHospitalArea = scanner.nextLine();
-        while (!donorValidator.validateArea(preferedHospitalArea)) {
+        while (!authorizationConstraintsValidator.validateArea(preferedHospitalArea)) {
             System.out.println("Please input at max 50 letters");
             System.out.printf(RED + "8." + RESET + " Preferred Hospital Area: ");
             preferedHospitalArea = scanner.nextLine();
@@ -106,7 +106,7 @@ public class DonorSignup_UI {
 
         System.out.printf(RED + "9." + RESET + " Blood Group: ");
         String bloodGroup = scanner.nextLine();
-        while (!donorValidator.validateBloodGroup(bloodGroup)) {
+        while (!authorizationConstraintsValidator.validateBloodGroup(bloodGroup)) {
             System.out.println("Invalid blood group. Please enter a valid blood group.");
             System.out.printf(RED + "9." + RESET + " Blood Group: ");
             bloodGroup = scanner.nextLine();
@@ -115,7 +115,7 @@ public class DonorSignup_UI {
 
         System.out.printf(RED + "10." + RESET + " NID Number: ");
         String NID = scanner.nextLine();
-        while (!donorValidator.validateNID(NID)) {
+        while (!authorizationConstraintsValidator.validateNID(NID)) {
             System.out.println("Please input min-max 10 numeric letters");
             System.out.printf(RED + "10." + RESET + " NID: ");
             NID = scanner.nextLine();
@@ -123,7 +123,7 @@ public class DonorSignup_UI {
         donor.setNID(NID);
         System.out.printf(RED + "11." + RESET + " Password: ");
         String password = passwordMasking.getPassword();
-        while (!donorValidator.validatePassword(password)) {
+        while (!authorizationConstraintsValidator.validatePassword(password)) {
             System.out.println("Please input 8-32 character");
             System.out.println("Please include at least one uppercase,lowercase,numeric and special character");
             System.out.printf(RED + "11." + RESET + " Password: ");

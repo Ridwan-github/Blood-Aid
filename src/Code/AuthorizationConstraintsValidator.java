@@ -1,10 +1,8 @@
 package Code;
 
-import external_Functions.validateUsername;
-
 import java.util.Date;
 
-public class DonorValidator {
+public class AuthorizationConstraintsValidator {
     public static boolean validateName(String name){
         if(name == null || name.length() < 2 || name.length() > 100){
             return false;
