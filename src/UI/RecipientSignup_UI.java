@@ -1,5 +1,6 @@
 package UI;
 
+import Code.PasswordInput;
 import Code.Recipient;
 
 import java.util.Scanner;
@@ -35,7 +36,8 @@ public class RecipientSignup_UI {
         }
         recipient.setBloodGroup(bloodGroup);
         System.out.println("Enter your password: ");
-        recipient.setPassword(scanner.nextLine());
+        PasswordInput passwordInput = new PasswordInput();
+        recipient.setPassword(passwordInput.getPassword());
         System.out.println("==============================================================================================");
         System.out.println(RED + "[1]" + RESET + " Signup");
         System.out.println(RED + "[2]" + RESET + " Back");
