@@ -1,6 +1,13 @@
 package UI;
 import Code.Donor;
 import Code.DonorViewProfile;
+<<<<<<< Updated upstream
+=======
+import external_Functions.DateDifference;
+import external_Functions.MyDate;
+
+import java.util.List;
+>>>>>>> Stashed changes
 import java.util.Scanner;
 
 public class Donor_UI {
@@ -12,11 +19,17 @@ public class Donor_UI {
     }
 
     public static void main(String phone, String password, String[] args) {
+        MyDate date;
+        DateDifference dateDifference;
         String phoneNumber = phone;
         String pass = password;
 
         donor = new Donor();
         donor.loginDonor(phoneNumber, pass);
+
+        date = new MyDate(donor.getLastDonatedDate().getDay(), donor.getLastDonatedDate().getMonth(), donor.getLastDonatedDate().getYear());
+        dateDifference = new DateDifference(date);
+        int days = dateDifference.getDifference();
 
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
@@ -24,17 +37,18 @@ public class Donor_UI {
         System.out.println("==============================================================================================");
         System.out.println("             Dashboard");
         System.out.println("==============================================================================================");
-        System.out.println("Welcome, " + donor.getName());
-        System.out.println("Donor ID: " + donor.getDonorID());
-        System.out.println("Points: " + donor.getPoints());
+        System.out.println(RED + "Welcome, " + RESET + donor.getName());
+        System.out.println(RED + "Donor ID: " + RESET + donor.getDonorID());
+        System.out.println(RED + "Points: " + RESET  + donor.getPoints());
         if (donor.getLastDonatedDate().isNull()){
-            System.out.println("Last Donated Date: Never donated blood before.");
+            System.out.println(RED + "Last Donated:" + RESET + " Never donated blood before.");
         } else {
-            System.out.println("Last Donated Date: " + donor.getLastDonatedDate().toString());
+            System.out.println(RED + "Last Donated: " + RESET  + donor.getLastDonatedDate().toString());
         }
         if (donor.isEligible()) {
             System.out.println("You are eligible to donate blood.");
         } else {
+            System.out.println("Days left before next donation: " + RED + (90 - days) + RESET);
             System.out.println("You are not eligible to donate blood for now.");
         }
         System.out.println("==============================================================================================");

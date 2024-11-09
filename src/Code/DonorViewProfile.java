@@ -27,21 +27,24 @@ public class DonorViewProfile {
         donor.loginDonor(phoneNumber, password);
     }
 
+    final String RED = "\033[31m";
+    final String RESET = "\033[0m";
+
     public void viewProfile(){
-        System.out.println("Personal Information -- ");
-        System.out.println("Name: " +donor.getName());
-        System.out.println("ID: " +donor.getDonorID());
-        System.out.println("Age: " +donor.getAge());
-        System.out.println("Blood Group: " +donor.getBloodGroup());
-        System.out.println("Phone: " +donor.getPhoneNumber());
-        System.out.println("Email: " +donor.getEmail());
-        System.out.println("Location -- ");
-        System.out.println("City: " +donor.getCity());
-        System.out.println("Area: " +donor.getArea());
-        System.out.println("Zip Code: " +donor.getZipCode());
-        System.out.println("Preferred Hospital: " +donor.getPreferedHospital());
-        System.out.println("Others -- ");
-        System.out.println("Points: " +donor.getPoints());
+        System.out.println(RED + "Personal Information -- " + RESET);
+        System.out.println(RED + "Name: " + RESET +donor.getName());
+        System.out.println(RED + "ID: " + RESET +donor.getDonorID());
+        System.out.println(RED + "Age: " + RESET+donor.getAge());
+        System.out.println(RED + "Blood Group: " + RESET +donor.getBloodGroup());
+        System.out.println(RED + "Phone: " + RESET +donor.getPhoneNumber());
+        System.out.println(RED + "Email: " + RESET +donor.getEmail());
+        System.out.println(RED + "Location -- " + RESET);
+        System.out.println(RED + "City: " + RESET +donor.getCity());
+        System.out.println(RED + "Area: " + RESET +donor.getArea());
+        System.out.println(RED + "Zip Code: " + RESET +donor.getZipCode());
+        System.out.println(RED + "Preferred Hospital: " + RESET +donor.getPreferedHospital());
+        System.out.println(RED + "Others -- " + RESET);
+        System.out.println(RED + "Points: " + RESET +donor.getPoints());
         if(donor.isEligible()){
             System.out.println("Eligible: Yes");
         }

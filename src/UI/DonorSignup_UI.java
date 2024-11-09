@@ -43,7 +43,7 @@ public class DonorSignup_UI {
         donor.setAge(parseINT.intTOString(age));
         System.out.printf(RED + "5." + RESET + " Phone Number: ");
         donor.setPhoneNumber(scanner.nextLine());
-        System.out.printf(RED + "6." + RESET + " Address: ");
+        System.out.println(RED + "6." + RESET + " Address: ");
         System.out.printf(RED + "City: ");
         donor.setcity(scanner.nextLine());
         System.out.printf(RED + "Area: ");

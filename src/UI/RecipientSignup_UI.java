@@ -15,16 +15,16 @@ public class RecipientSignup_UI {
         System.out.println("==============================================================================================");
         System.out.println("                                    Recipient Signup");
         System.out.println("==============================================================================================");
-        System.out.println("Enter your name: ");
+        System.out.printf("Enter your name: ");
         recipient.setName(scanner.nextLine());
-        System.out.println("Enter your phone number: ");
+        System.out.printf("Enter your phone number: ");
         recipient.setPhoneNumber(scanner.nextLine());
         System.out.println("Enter your address: ");
-        System.out.println("Enter your city: ");
+        System.out.printf("Enter your city: ");
         recipient.setCity(scanner.nextLine());
-        System.out.println("Enter your area: ");
+        System.out.printf("Enter your area: ");
         recipient.setArea(scanner.nextLine());
-        System.out.println("Enter your blood group: ");
+        System.out.printf("Enter your blood group: ");
         String bloodGroup = scanner.nextLine();
         while (!bloodGroup.equals("A+") && !bloodGroup.equals("A-") && !bloodGroup.equals("B+") &&
                 !bloodGroup.equals("B-") && !bloodGroup.equals("AB+") && !bloodGroup.equals("AB-") &&
@@ -34,7 +34,7 @@ public class RecipientSignup_UI {
             bloodGroup = scanner.nextLine();
         }
         recipient.setBloodGroup(bloodGroup);
-        System.out.println("Enter your password: ");
+        System.out.printf("Enter your password: ");
         recipient.setPassword(scanner.nextLine());
         System.out.println("==============================================================================================");
         System.out.println(RED + "[1]" + RESET + " Signup");
