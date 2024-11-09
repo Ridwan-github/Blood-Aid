@@ -95,7 +95,13 @@ public class DonorSignup_UI {
         }
         donor.setZipCode(zipCode);
         System.out.printf(RED + "8." + RESET + " Preferred area for donation: ");
-        donor.setPreferedHospital(scanner.nextLine());
+        String preferedHospitalArea = scanner.nextLine();
+        while (!donorValidator.validateArea(preferedHospitalArea)) {
+            System.out.println("Please input at max 50 letters");
+            System.out.printf(RED + "8." + RESET + " Preferred Hospital Area: ");
+            preferedHospitalArea = scanner.nextLine();
+        }
+        donor.setPreferedHospital(preferedHospitalArea);
 
         System.out.printf(RED + "9." + RESET + " Blood Group: ");
         String bloodGroup = scanner.nextLine();
