@@ -43,7 +43,13 @@ public class RecipientSignup_UI {
         }
         recipient.setCity(city);
         System.out.println("Enter your area: ");
-        recipient.setArea(scanner.nextLine());
+        String area = scanner.nextLine();
+        while (!recieptentValidator.validateArea(area)) {
+            System.out.println("Please input at max 50 letters");
+            System.out.printf(" Area: ");
+            area = scanner.nextLine();
+        }
+        recipient.setArea(area);
         System.out.println("Enter your blood group: ");
         String bloodGroup = scanner.nextLine();
         while (!bloodGroup.equals("A+") && !bloodGroup.equals("A-") && !bloodGroup.equals("B+") &&
