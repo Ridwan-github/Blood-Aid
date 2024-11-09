@@ -1,5 +1,8 @@
 package Code;
 
+import external_Functions.DateDifference;
+import external_Functions.MyDate;
+
 import java.util.Date;
 
 public class AuthorizationConstraintsValidator {
@@ -124,11 +127,16 @@ public class AuthorizationConstraintsValidator {
         return true;
     }
 
-    public static boolean validateLastDonationDate(Date date){
-        if(date == null){
+    public static boolean validateLastDonationDate(String date){
+        if(date == null || date.length() !=10){
             return false;
         }
-        return !date.after(new Date());
+        MyDate myDate = new MyDate(date);
+        DateDifference dateDifference = new DateDifference(myDate);
+        if(!myDate.isValidDate() || dateDifference.isFutureDate()){
+            return false;
+        }
+        return true;
     }
 
     public static boolean validateAge(int age){

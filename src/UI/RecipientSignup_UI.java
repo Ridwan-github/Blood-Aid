@@ -19,7 +19,7 @@ public class RecipientSignup_UI {
         System.out.println("==============================================================================================");
         System.out.println("                                    Recipient Signup");
         System.out.println("==============================================================================================");
-        System.out.println("Enter your name: ");
+        System.out.printf("Enter your name: ");
         String name = scanner.nextLine();
         while(!recieptentValidator.validateName(name)){
             System.out.println("Please input 2-100 letter & only alphabetic letters");
@@ -27,7 +27,7 @@ public class RecipientSignup_UI {
             name = scanner.nextLine();
         }
         recipient.setName(name);
-        System.out.println("Enter your phone number: ");
+        System.out.printf("Enter your phone number: ");
         String phoneNumber = scanner.nextLine();
         while(!recieptentValidator.validatePhoneNumber(phoneNumber)){
             System.out.println("Please input valid phoneNumber of 11 digits only");
@@ -36,7 +36,7 @@ public class RecipientSignup_UI {
         }
         recipient.setPhoneNumber(phoneNumber);
         System.out.println("Enter your address - ");
-        System.out.println("Enter your city: ");
+        System.out.printf("Enter your city: ");
         String city = scanner.nextLine();
         while (!recieptentValidator.validateCity(city)) {
             System.out.println("Please input 2-50 letters & only alphabetic letters");
@@ -44,7 +44,7 @@ public class RecipientSignup_UI {
             city = scanner.nextLine();
         }
         recipient.setCity(city);
-        System.out.println("Enter your area: ");
+        System.out.printf("Enter your area: ");
         String area = scanner.nextLine();
         while (!recieptentValidator.validateArea(area)) {
             System.out.println("Please input at max 50 letters");
@@ -52,7 +52,7 @@ public class RecipientSignup_UI {
             area = scanner.nextLine();
         }
         recipient.setArea(area);
-        System.out.println("Enter your blood group: ");
+        System.out.printf("Enter your blood group: ");
         String bloodGroup = scanner.nextLine();
         while (!recieptentValidator.validateBloodGroup(bloodGroup)) {
             System.out.println("Invalid blood group. Please enter a valid blood group.");
@@ -60,7 +60,7 @@ public class RecipientSignup_UI {
             bloodGroup = scanner.nextLine();
         }
         recipient.setBloodGroup(bloodGroup);
-        System.out.println("Enter your password: ");
+        System.out.printf("Enter your password: ");
         String password = passwordMasking.getPassword();
         while (!recieptentValidator.validatePassword(password)) {
             System.out.println("Please input 8-32 character");
