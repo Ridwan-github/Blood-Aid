@@ -57,5 +57,10 @@ public class DonorValidator {
         return true;
     }
 
-
+    public static boolean validateArea(String area){
+        if(area == null || area.length() < 2 || area.length() > 50){
+            return false;
+        }
+        return true;
+    }
 }
