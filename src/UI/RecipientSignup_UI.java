@@ -52,11 +52,9 @@ public class RecipientSignup_UI {
         recipient.setArea(area);
         System.out.println("Enter your blood group: ");
         String bloodGroup = scanner.nextLine();
-        while (!bloodGroup.equals("A+") && !bloodGroup.equals("A-") && !bloodGroup.equals("B+") &&
-                !bloodGroup.equals("B-") && !bloodGroup.equals("AB+") && !bloodGroup.equals("AB-") &&
-                !bloodGroup.equals("O+") && !bloodGroup.equals("O-")) {
+        while (!recieptentValidator.validateBloodGroup(bloodGroup)) {
             System.out.println("Invalid blood group. Please enter a valid blood group.");
-            System.out.printf(RED + "4." + RESET + " Blood Group: ");
+            System.out.printf(" Blood Group: ");
             bloodGroup = scanner.nextLine();
         }
         recipient.setBloodGroup(bloodGroup);
