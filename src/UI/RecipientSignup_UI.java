@@ -1,5 +1,6 @@
 package UI;
 
+import Code.AuthorizationConstraintsValidator;
 import Code.PasswordMasking;
 import Code.Recipient;
 
@@ -11,16 +12,28 @@ public class RecipientSignup_UI {
         Scanner scanner = new Scanner(System.in);
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
-
+        AuthorizationConstraintsValidator recieptentValidator = new AuthorizationConstraintsValidator();
 
         System.out.println("==============================================================================================");
         System.out.println("                                    Recipient Signup");
         System.out.println("==============================================================================================");
         System.out.println("Enter your name: ");
-        recipient.setName(scanner.nextLine());
+        String name = scanner.nextLine();
+        while(!recieptentValidator.validateName(name)){
+            System.out.println("Please input 2-100 letter & only alphabetic letters");
+            System.out.printf(" Name: ");
+            name = scanner.nextLine();
+        }
+        recipient.setName(name);
         System.out.println("Enter your phone number: ");
-        recipient.setPhoneNumber(scanner.nextLine());
-        System.out.println("Enter your address: ");
+        String phoneNumber = scanner.nextLine();
+        while(!recieptentValidator.validatePhoneNumber(phoneNumber)){
+            System.out.println("Please input valid phoneNumber of 11 digits only");
+            System.out.printf(" Phone Number: ");
+            phoneNumber = scanner.nextLine();
+        }
+        recipient.setPhoneNumber(phoneNumber);
+        System.out.println("Enter your address - ");
         System.out.println("Enter your city: ");
         recipient.setCity(scanner.nextLine());
         System.out.println("Enter your area: ");
