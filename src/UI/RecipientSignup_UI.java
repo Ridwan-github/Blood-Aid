@@ -10,6 +10,7 @@ public class RecipientSignup_UI {
     public static void main(String[] args) {
         Recipient recipient = new Recipient();
         PasswordMasking passwordMasking = new PasswordMasking();
+        ConsoleUtils consoleUtils = new ConsoleUtils();
         Scanner scanner = new Scanner(System.in);
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
@@ -83,10 +84,12 @@ public class RecipientSignup_UI {
 
         switch (choice) {
             case 1:
+                consoleUtils.clearScreen();
                 recipient.registerRecipient();
                 Login_UI.main(args);
                 break;
             case 2:
+                consoleUtils.clearScreen();
                 Login_UI.main(args);
                 break;
             default:
