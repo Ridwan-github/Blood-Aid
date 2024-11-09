@@ -35,7 +35,13 @@ public class RecipientSignup_UI {
         recipient.setPhoneNumber(phoneNumber);
         System.out.println("Enter your address - ");
         System.out.println("Enter your city: ");
-        recipient.setCity(scanner.nextLine());
+        String city = scanner.nextLine();
+        while (!recieptentValidator.validateCity(city)) {
+            System.out.println("Please input 2-50 letters & only alphabetic letters");
+            System.out.printf(" City: ");
+            city = scanner.nextLine();
+        }
+        recipient.setCity(city);
         System.out.println("Enter your area: ");
         recipient.setArea(scanner.nextLine());
         System.out.println("Enter your blood group: ");
