@@ -87,7 +87,13 @@ public class DonorSignup_UI {
         }
         donor.setArea(area);
         System.out.printf(RED + "7." + RESET + " Zipcode: ");
-        donor.setZipCode(scanner.nextLine());
+        String zipCode = scanner.nextLine();
+        while (!donorValidator.validateZipCode(zipCode)) {
+            System.out.println("Please input min-max 4 numeric letters only");
+            System.out.printf(RED + "7." + RESET + " Zipcode: ");
+            zipCode = scanner.nextLine();
+        }
+        donor.setZipCode(zipCode);
         System.out.printf(RED + "8." + RESET + " Preferred area for donation: ");
         donor.setPreferedHospital(scanner.nextLine());
 
