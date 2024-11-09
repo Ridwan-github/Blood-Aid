@@ -2,6 +2,8 @@ package Code;
 
 import external_Functions.validateUsername;
 
+import java.util.Date;
+
 public class DonorValidator {
     public static boolean validateName(String name){
         if(name == null || name.length() < 2 || name.length() > 100){
@@ -122,5 +124,12 @@ public class DonorValidator {
             return false;
         }
         return true;
+    }
+
+    public static boolean validateLastDonationDate(Date date){
+        if(date == null){
+            return false;
+        }
+        return !date.after(new Date());
     }
 }

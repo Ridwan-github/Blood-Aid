@@ -1,5 +1,6 @@
 package UI;
 import Code.Donor;
+import Code.DonorValidator;
 import Code.PasswordMasking;
 import external_Functions.validateUsername;
 import external_Functions.ParseINT;
@@ -11,6 +12,7 @@ public class DonorSignup_UI {
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
         Donor donor = new Donor();
+        DonorValidator donorValidator = new DonorValidator();
         Scanner scanner = new Scanner(System.in);
 
 
@@ -18,14 +20,27 @@ public class DonorSignup_UI {
         System.out.println("                                    Donor Signup");
         System.out.println("==============================================================================================");
         System.out.printf(RED + "1." + RESET + " Name: ");
-        donor.setName(scanner.nextLine());
+        String name = scanner.nextLine();
+        while(!donorValidator.validateName(name)){
+            System.out.println("Please input 2-100 letter & only alphabetic letters");
+            System.out.printf(RED + "1." + RESET + " Name: ");
+            name = scanner.nextLine();
+        }
+        donor.setName(name);
         System.out.printf(RED + "2." + RESET + " Username: ");
         String username = scanner.nextLine();
         validateUsername validateUsername = new validateUsername();
-        while (!validateUsername.validate(username)) {
-            System.out.println("Username already exists. Please enter a different username.");
-            System.out.printf(RED + "2." + RESET + " Username: ");
-            username = scanner.nextLine();
+        while (!validateUsername.validate(username) || !donorValidator.validateUserName(username)) {
+            if(!validateUsername.validate(username)){
+                System.out.println("Username already exists. Please enter a different username.");
+                System.out.printf(RED + "2." + RESET + " Username: ");
+                username = scanner.nextLine();
+            }
+            else if(!donorValidator.validateUserName(username)){
+                System.out.println("Please input 5-30 letters & only alphanumeric letters or underscore with no spaces");
+                System.out.printf(RED + "2." + RESET + " Username: ");
+                username = scanner.nextLine();
+            }
         }
         donor.setUsername(username);
         System.out.printf(RED + "3." + RESET + " Email: ");
