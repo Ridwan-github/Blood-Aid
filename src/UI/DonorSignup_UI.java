@@ -57,7 +57,7 @@ public class DonorSignup_UI {
                 !bloodGroup.equals("B-") && !bloodGroup.equals("AB+") && !bloodGroup.equals("AB-") &&
                 !bloodGroup.equals("O+") && !bloodGroup.equals("O-")) {
             System.out.println("Invalid blood group. Please enter a valid blood group.");
-            System.out.printf(RED + "4." + RESET + " Blood Group: ");
+            System.out.printf(RED + "9." + RESET + " Blood Group: ");
             bloodGroup = scanner.nextLine();
         }
         donor.setBloodGroup(bloodGroup);
