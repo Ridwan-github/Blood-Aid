@@ -1,5 +1,6 @@
 package UI;
 import Code.Donor;
+import Code.PasswordInput;
 import external_Functions.validateUsername;
 import external_Functions.ParseINT;
 
@@ -65,7 +66,8 @@ public class DonorSignup_UI {
         System.out.printf(RED + "10." + RESET + " NID Number: ");
         donor.setNID(scanner.nextLine());
         System.out.printf(RED + "11." + RESET + " Password: ");
-        donor.setPassword(scanner.nextLine());
+        PasswordInput passwordInput = new PasswordInput();
+        donor.setPassword(passwordInput.getPassword());
 
         System.out.println("==============================================================================================");
         System.out.println("By signing up you are agreeing to our " + RED + "Terms and Conditions ");
