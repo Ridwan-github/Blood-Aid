@@ -110,4 +110,17 @@ public class DonorValidator {
         }
         return true;
     }
+
+    public static boolean validateUserName(String name){
+        if (name == null || name.length() < 5 || name.length() > 30) {
+            return false;
+        }
+        else if (!name.matches("^[a-zA-Z0-9_-]+$")) {
+            return false;
+        }
+        else if (name.startsWith(" ") || name.endsWith(" ") || name.matches(" ")){
+            return false;
+        }
+        return true;
+    }
 }
