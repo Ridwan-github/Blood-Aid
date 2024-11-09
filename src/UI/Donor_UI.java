@@ -1,13 +1,8 @@
 package UI;
 import Code.Donor;
 import Code.DonorViewProfile;
-<<<<<<< Updated upstream
-=======
 import external_Functions.DateDifference;
 import external_Functions.MyDate;
-
-import java.util.List;
->>>>>>> Stashed changes
 import java.util.Scanner;
 
 public class Donor_UI {
