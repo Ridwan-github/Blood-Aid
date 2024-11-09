@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class RecipientSignup_UI {
     public static void main(String[] args) {
         Recipient recipient = new Recipient();
+        PasswordMasking passwordMasking = new PasswordMasking();
         Scanner scanner = new Scanner(System.in);
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
@@ -59,8 +60,14 @@ public class RecipientSignup_UI {
         }
         recipient.setBloodGroup(bloodGroup);
         System.out.println("Enter your password: ");
-        PasswordMasking passwordMasking = new PasswordMasking();
-        recipient.setPassword(passwordMasking.getPassword());
+        String password = passwordMasking.getPassword();
+        while (!recieptentValidator.validatePassword(password)) {
+            System.out.println("Please input 8-32 character");
+            System.out.println("Please include at least one uppercase,lowercase,numeric and special character");
+            System.out.printf(" Password: ");
+            password = passwordMasking.getPassword();
+        }
+        recipient.setPassword(password);
         System.out.println("==============================================================================================");
         System.out.println(RED + "[1]" + RESET + " Signup");
         System.out.println(RED + "[2]" + RESET + " Back");
