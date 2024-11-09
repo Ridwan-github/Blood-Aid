@@ -62,8 +62,14 @@ public class DonorSignup_UI {
         ParseINT parseINT = new ParseINT();
         donor.setAge(parseINT.intTOString(age));
         System.out.printf(RED + "5." + RESET + " Phone Number: ");
-        donor.setPhoneNumber(scanner.nextLine());
-        System.out.printf(RED + "6." + RESET + " Address: ");
+        String phoneNumber = scanner.nextLine();
+        while (!donorValidator.validatePhoneNumber(phoneNumber)) {
+            System.out.println("Please input valid phoneNumber of 11 digits only");
+            System.out.printf(RED + "5." + RESET + " Phone Number: ");
+            phoneNumber = scanner.nextLine();
+        }
+        donor.setPhoneNumber(phoneNumber);
+        System.out.printf(RED + "6." + RESET + " Address - ");
         System.out.printf(RED + "City: ");
         donor.setcity(scanner.nextLine());
         System.out.printf(RED + "Area: ");
