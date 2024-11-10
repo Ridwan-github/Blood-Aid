@@ -180,7 +180,7 @@ public class Donor implements User {
     PasswordCipher passwordCipher = new PasswordCipher();
     public void registerDonor() {
         try{
-            File file = new File("src/filemanagement/Donor.txt");
+            File file = new File("Donor.txt");
             FileWriter fileWriter = new FileWriter(file, true);
             String encryptedPassword = passwordCipher.encryptPassword(getPassword());
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
@@ -212,7 +212,7 @@ public class Donor implements User {
 
     public void loginDonor(String phoneNumber, String password) {
         try {
-            File file = new File("src/filemanagement/Donor.txt");
+            File file = new File("Donor.txt");
             BufferedReader bufferedReader = new BufferedReader(new java.io.FileReader(file));
             String line;
             while ((line = bufferedReader.readLine()) != null) {

@@ -69,7 +69,7 @@ public class Recipient {
 
     public void registerRecipient() {
         try{
-            File file = new File("src/filemanagement/Recipient.txt");
+            File file = new File("Recipient.txt");
             FileWriter fileWriter = new FileWriter(file, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             String encryptedPassword = passwordCipher.encryptPassword(getPassword());
@@ -83,7 +83,7 @@ public class Recipient {
 
     public void loginRecipient(String phoneNumber, String password) {
         try {
-            File file = new File("src/filemanagement/Recipient.txt");
+            File file = new File("Recipient.txt");
             BufferedReader bufferedReader = new BufferedReader(new java.io.FileReader(file));
             String line;
             while ((line = bufferedReader.readLine()) != null) {
