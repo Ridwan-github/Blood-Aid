@@ -67,6 +67,7 @@ public class Login_UI {
                         Donor donor = new Donor();
                         donor.loginDonor(phoneNumber, password);
                         if (donor.getName() != null) {
+                            consoleUtils.clearScreen();
                             Donor_UI.main(phoneNumber, password, args);
                         } else {
                             System.out.println("Invalid phone number or password.");
@@ -86,6 +87,7 @@ public class Login_UI {
                         Recipient recipient = new Recipient();
                         recipient.loginRecipient(phoneNumber, password);
                         if (recipient.getName() != null) {
+                            consoleUtils.clearScreen();
                             Recipient_UI.main(phoneNumber, password, args);
                         } else {
                             System.out.println("Invalid phone number or password.");
