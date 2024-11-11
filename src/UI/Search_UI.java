@@ -24,6 +24,7 @@ public class Search_UI {
         System.out.println(RED + "Enter your choice: " + RESET);
 
         Scanner scanner = new Scanner(System.in);
+        ConsoleUtils consoleUtils = new ConsoleUtils();
         int choice = scanner.nextInt();
 
         switch (choice) {
@@ -40,6 +41,7 @@ public class Search_UI {
                 System.out.println("Searching for Power Red donors...");
                 break;
             case 0:
+                consoleUtils.clearScreen();
 //                Recipient_UI.main(args);
                 break;
             default:
