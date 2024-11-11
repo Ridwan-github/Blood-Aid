@@ -74,6 +74,7 @@ public class Donor_UI {
                 break;
             case 4:
                 System.out.printf("Logging out...");
+                consoleUtils.holdTime();
                 consoleUtils.clearScreen();
                 Login_UI.main(args);
                 break;

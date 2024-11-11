@@ -144,6 +144,8 @@ class Recipient_UI  {
                 main(phone, password, args);
                 break;
             case 4:
+                System.out.println("Logging out...");
+                consoleUtils.holdTime();
                 consoleUtils.clearScreen();
                 Login_UI.main(args);
                 break;

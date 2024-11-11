@@ -71,6 +71,8 @@ public class Login_UI {
                             Donor_UI.main(phoneNumber, password, args);
                         } else {
                             System.out.println("Invalid phone number or password.");
+                            consoleUtils.holdTime();
+                            consoleUtils.clearScreen();
                             main(args);
                         }
                         break;
@@ -91,6 +93,8 @@ public class Login_UI {
                             Recipient_UI.main(phoneNumber, password, args);
                         } else {
                             System.out.println("Invalid phone number or password.");
+                            consoleUtils.holdTime();
+                            consoleUtils.clearScreen();
                             main(args);
                         }
                         break;
