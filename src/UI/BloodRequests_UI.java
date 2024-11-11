@@ -8,6 +8,8 @@ public class BloodRequests_UI {
     public static void main(String phoneNumber, String pass, String[] args) {
         String phone = phoneNumber;
         String password = pass;
+
+        ConsoleUtils consoleUtils = new ConsoleUtils();
         Donor donor = new Donor();
         donor.loginDonor(phoneNumber, password);
         final String RED = "\033[31m";
@@ -39,6 +41,7 @@ public class BloodRequests_UI {
                 System.out.println("Accept request of Recipient 3...");
                 break;
             case 4:
+                consoleUtils.clearScreen();
                 Donor_UI.main(phoneNumber, password, args);
                 break;
             default:

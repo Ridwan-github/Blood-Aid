@@ -6,10 +6,17 @@ public class MyDate {
     private int year;
 
     public MyDate(String date) {
-        String[] dateParts = date.split("/");
-        this.day = Integer.parseInt(dateParts[0]);
-        this.month = Integer.parseInt(dateParts[1]);
-        this.year = Integer.parseInt(dateParts[2]);
+        if (date.equals("00/00/0000") || date.equals("null")) {
+            // Treat "00/00/0000" or "null" as an invalid date
+            this.day = 0;
+            this.month = 0;
+            this.year = 0;
+        } else {
+            String[] dateParts = date.split("/");
+            this.day = Integer.parseInt(dateParts[0]);
+            this.month = Integer.parseInt(dateParts[1]);
+            this.year = Integer.parseInt(dateParts[2]);
+        }
     }
 
     public MyDate(int day, int month, int year) {

@@ -21,7 +21,7 @@ class DonorList_UI {
     public static void main(String[] args) {
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
-
+        ConsoleUtils consoleUtils = new ConsoleUtils();
 
         System.out.println("==============================================================================================");
         System.out.println("                                    Eligibile Donor List");
@@ -54,6 +54,7 @@ class DonorList_UI {
                 break;
             case 0:
                 System.out.println("Going back...");
+                consoleUtils.clearScreen();
                 break;
             default:
                 System.out.println("Invalid choice. Please select 1, 2, 3, or 0.");

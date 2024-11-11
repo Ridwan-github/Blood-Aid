@@ -12,7 +12,7 @@ public class UserID_generate {
         String donorID = "0";
 
         try {
-            File file = new File("src/filemanagement/Donor.txt");
+            File file = new File("Donor.txt");
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String line;
             while ((line = reader.readLine()) != null) {

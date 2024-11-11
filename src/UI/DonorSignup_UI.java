@@ -51,7 +51,7 @@ public class DonorSignup_UI {
         String email = scanner.nextLine();
         while(!authorizationConstraintsValidator.validateEmail(email)){
             System.out.println("Please input valid email format (example@domain.com)");
-            System.out.printf(RED + "3." + RESET + " Name: ");
+            System.out.printf(RED + "3." + RESET + " Email: ");
             email = scanner.nextLine();
         }
         donor.setEmail(email);
@@ -138,19 +138,17 @@ public class DonorSignup_UI {
         System.out.println(RED + "[1]" + RESET + " Yes");
         System.out.println(RED + "[2]" + RESET + " No");
         System.out.println("==============================================================================================");
-        int choice = scanner.nextInt();
-        scanner.nextLine();
-        while (choice != 1 && choice != 2) {
+        String choice = scanner.nextLine();
+        while(!choice.equals("1") && !choice.equals("2")){
             System.out.println("Invalid choice. Please select 1 or 2.");
             System.out.println("==============================================================================================");
             System.out.println("Have you donated blood in the last 3 months?");
             System.out.println(RED + "[1]" + RESET + " Yes");
             System.out.println(RED + "[2]" + RESET + " No");
             System.out.println("==============================================================================================");
-            choice = scanner.nextInt();
-            scanner.nextLine();
+            choice = scanner.nextLine();
         }
-        if (choice == 1) {
+        if (choice.equals("1")) {
             System.out.println("When did you donate blood last? (dd/mm/yyyy)");
             String date = scanner.nextLine();
             while (!authorizationConstraintsValidator.validateLastDonationDate(date)) {
@@ -170,18 +168,12 @@ public class DonorSignup_UI {
                 System.out.println("You are eligible to donate blood.");
                 donor.setEligible(true);
             }
-
             donor.setLastDonatedDate(date);
-        } else if(choice == 2){
+        } else if(choice.equals("2")){
             System.out.println("You are eligible to donate blood.");
+            donor.setLastDonatedDate("null");
             donor.setEligible(true);
         }
-        else{
-            System.out.println("Enter a valid option");
-            choice = scanner.nextInt();
-            scanner.nextLine();
-        }
-
         System.out.println("==============================================================================================");
         System.out.println("By signing up you are agreeing to our " + RED + "Terms and Conditions ");
         System.out.println(RED + "[1]" + RESET + " Signup");
@@ -189,6 +181,7 @@ public class DonorSignup_UI {
         System.out.println("==============================================================================================");
 
         int choice1 = scanner.nextInt();
+        scanner.nextLine();
 
         switch (choice1) {
             case 1:

@@ -16,7 +16,11 @@ public class DateDifference {
     }
 
     public int getDifference(){
+
         int difference = 0;
+        if (date1.getMonth() < 1 || date1.getMonth() > 12 || date2.getMonth() < 1 || date2.getMonth() > 12) {
+            return -1;
+        }
         int daysInMonth[] = {31, date1.isLeapYear(date1.getYear()) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
         if(date1.getYear() == date2.getYear()){

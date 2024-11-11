@@ -8,7 +8,7 @@ import java.io.IOException;
 public class validateUsername {
     public boolean validate(String username) {
         try{
-            File file = new File("src/filemanagement/Donor.txt");
+            File file = new File("Donor.txt");
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
             String line;
             while ((line = bufferedReader.readLine()) != null) {
