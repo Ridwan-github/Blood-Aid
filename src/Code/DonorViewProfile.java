@@ -45,12 +45,47 @@ public class DonorViewProfile {
         System.out.println(RED + "Preferred Hospital: " + RESET +donor.getPreferedHospital());
         System.out.println(RED + "Others -- " + RESET);
         System.out.println(RED + "Points: " + RESET +donor.getPoints());
-        if(donor.isEligible()){
-            System.out.println("Eligible: Yes");
+        System.out.println(RED + "NID: " + RESET +donor.getNID());
+        if (donor.isEligibleForWholeBlood()){
+            System.out.println(RED + "Eligible for Whole Blood: " + RESET + "Yes");
+        } else {
+            System.out.println(RED + "Eligible for Whole Blood: " + RESET + "No");
         }
-        else{
-            System.out.println("Eligible: No");
+        if (donor.isEligibleForPlatelets()){
+            System.out.println(RED + "Eligible for Platelets: " + RESET + "Yes");
+        } else {
+            System.out.println(RED + "Eligible for Platelets: " + RESET + "No");
         }
-        System.out.println("Last Donated: " + donor.getLastDonatedDate().toString());
+        if (donor.isEligibleForPlasma()){
+            System.out.println(RED + "Eligible for Plasma: " + RESET + "Yes");
+        } else {
+            System.out.println(RED + "Eligible for Plasma: " + RESET + "No");
+        }
+        if (donor.isEligibleForPowerRed()){
+            System.out.println(RED + "Eligible for Power Red: " + RESET + "Yes");
+        } else {
+            System.out.println(RED + "Eligible for Power Red: " + RESET + "No");
+        }
+        System.out.println(RED + "Last Donated -- " + RESET);
+        if (donor.getLastDonatedDateWholeBlood().isNull()){
+            System.out.println(RED + "Whole Blood: " + RESET + "Never donated");
+        } else {
+            System.out.println(RED + "Whole Blood: " + RESET + donor.getLastDonatedDateWholeBlood().toString());
+        }
+        if (donor.getLastDonatedDatePlatelets().isNull()){
+            System.out.println(RED + "Platelets: " + RESET + "Never donated");
+        } else {
+            System.out.println(RED + "Platelets: " + RESET + donor.getLastDonatedDatePlatelets().toString());
+        }
+        if (donor.getLastDonatedDatePlasma().isNull()){
+            System.out.println(RED + "Plasma: " + RESET + "Never donated");
+        } else {
+            System.out.println(RED + "Plasma: " + RESET + donor.getLastDonatedDatePlasma().toString());
+        }
+        if (donor.getLastDonatedDatePowerRed().isNull()){
+            System.out.println(RED + "Power Red: " + RESET + "Never donated");
+        } else {
+            System.out.println(RED + "Power Red: " + RESET + donor.getLastDonatedDatePowerRed().toString());
+        }
     }
 }

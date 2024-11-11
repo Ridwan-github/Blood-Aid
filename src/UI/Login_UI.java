@@ -33,6 +33,12 @@ public class Login_UI {
         System.out.print("Enter your choice: ");
         int choice = scanner.nextInt();
         scanner.nextLine();
+        while (choice != 1 && choice != 2 && choice != 3) {
+            System.out.println("Invalid choice. Please select 1, 2, or 3.");
+            System.out.print("Enter your choice: ");
+            choice = scanner.nextInt();
+            scanner.nextLine();
+        }
 
         switch (choice) {
             case 1:
@@ -67,9 +73,12 @@ public class Login_UI {
                         Donor donor = new Donor();
                         donor.loginDonor(phoneNumber, password);
                         if (donor.getName() != null) {
+                            consoleUtils.clearScreen();
                             Donor_UI.main(phoneNumber, password, args);
                         } else {
                             System.out.println("Invalid phone number or password.");
+                            consoleUtils.holdTime();
+                            consoleUtils.clearScreen();
                             main(args);
                         }
                         break;
@@ -86,9 +95,12 @@ public class Login_UI {
                         Recipient recipient = new Recipient();
                         recipient.loginRecipient(phoneNumber, password);
                         if (recipient.getName() != null) {
+                            consoleUtils.clearScreen();
                             Recipient_UI.main(phoneNumber, password, args);
                         } else {
                             System.out.println("Invalid phone number or password.");
+                            consoleUtils.holdTime();
+                            consoleUtils.clearScreen();
                             main(args);
                         }
                         break;

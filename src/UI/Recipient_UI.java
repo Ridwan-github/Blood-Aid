@@ -11,7 +11,7 @@ class Recipient_UI  {
     public static void main(String phone, String password, String[] args) {
         String phoneNumber = phone;
         String pass = password;
-
+        ConsoleUtils consoleUtils = new ConsoleUtils();
         Recipient recipient = new Recipient();
         recipient.loginRecipient(phoneNumber, pass);
 
@@ -38,6 +38,7 @@ class Recipient_UI  {
 
         switch (choice) {
             case 1:
+                consoleUtils.clearScreen();
                 System.out.println("List of Donors: ");
                 try{
                     File file = new File("src/filemanagement/Donor.txt");
@@ -74,6 +75,7 @@ class Recipient_UI  {
                 main(phone, password, args);
 
             case 2:
+                consoleUtils.clearScreen();
                 System.out.println("==============================================================================================");
                 System.out.println("Date of Request: 1/11/2024");
                 System.out.println("Blood Group: B+");
@@ -95,6 +97,7 @@ class Recipient_UI  {
                 main(phone, password, args);
                 break;
             case 3:
+                consoleUtils.clearScreen();
                 System.out.println("==============================================================================================");
                 System.out.println("Date of Donation: 1/11/2024");
                 System.out.println("Blood Group: B+");
@@ -141,6 +144,9 @@ class Recipient_UI  {
                 main(phone, password, args);
                 break;
             case 4:
+                System.out.println("Logging out...");
+                consoleUtils.holdTime();
+                consoleUtils.clearScreen();
                 Login_UI.main(args);
                 break;
             default:

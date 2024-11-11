@@ -22,6 +22,7 @@ class DonationHistory_UI {
         String phone = phoneNumber;
         String pass = password;
 
+        ConsoleUtils consoleUtils = new ConsoleUtils();
         Donor donor = new Donor();
         donor.loginDonor(phoneNumber, password);
 
@@ -50,6 +51,7 @@ class DonationHistory_UI {
 
         switch (choice) {
             case 0:
+                consoleUtils.clearScreen();
                 Donor_UI.main(phone, pass, args);
                 break;
             default:

@@ -14,4 +14,11 @@ public class ConsoleUtils {
             System.out.println("Error clearing the console.");
         }
     }
+    public static void holdTime(){
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

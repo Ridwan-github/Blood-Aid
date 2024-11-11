@@ -1,6 +1,0 @@
-Name;Phone Number;City;Area;Blood Group;NID;Password;Donor_ID;Points;Eligibility;Preferred_Donation_Area;ZipCode;Username;Age;Email;Last_Donation_Date
-Nuren;01974;city;area;B+;1248123424;456tzh;1;0;false;Uttara;1221;fahmid;21;nurenfahmid@iut-dhak.edu;10/10/2024
-Ridwan;010101;city;area;B+;12341234;456tzh;2;0;true;Uttara;1221;ridwan;22;ridwanraees@iut-dhaka.edu;1/2/2024
-Mahadi;019101;city;area;A-;123123;456tzh;3;0;true;Uttara;12312;mahadi;23;mahadi@iut-dhaka.edu;0/0/0000
-asdasd;12345678999;asdas;asdas;O+;1234567899;Pdkdglvhd456C;4;0;true;asda;3333;aewdadw;33;ades@fgvs.;10/9/2024
-Nuru;12345678905;dsf;asd;A-;1122334488;Pdkdglvhd456C;5;0;true;dsfs;3432;nurua;20;asd@fgas.c;10/10/2023
