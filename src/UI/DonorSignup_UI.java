@@ -74,7 +74,7 @@ public class DonorSignup_UI {
         }
         donor.setPhoneNumber(phoneNumber);
         System.out.println(RED + "6." + RESET + " Address - ");
-        System.out.printf(RED + "City: ");
+        System.out.printf("City: ");
         String city = scanner.nextLine();
         while (!authorizationConstraintsValidator.validateCity(city)) {
             System.out.println("Please input 2-50 letters & only alphabetic letters");
@@ -82,7 +82,7 @@ public class DonorSignup_UI {
             city = scanner.nextLine();
         }
         donor.setcity(city);
-        System.out.printf(RED + "Area: ");
+        System.out.printf("Area: ");
         String area = scanner.nextLine();
         while (!authorizationConstraintsValidator.validateArea(area)) {
             System.out.println("Please input at max 50 letters");
