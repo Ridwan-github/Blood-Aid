@@ -27,6 +27,12 @@ public class Donor_UI {
         dateDifference = new DateDifference(date);
         int days = dateDifference.getDifference();
 
+        if (days > 90) {
+            donor.setEligible(true);
+        } else {
+            donor.setEligible(false);
+        }
+
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
 
