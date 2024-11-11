@@ -47,6 +47,7 @@ public class DonorSignup_UI {
             }
         }
         donor.setUsername(username);
+
         System.out.printf(RED + "3." + RESET + " Email: ");
         String email = scanner.nextLine();
         while(!authorizationConstraintsValidator.validateEmail(email)){
@@ -65,14 +66,16 @@ public class DonorSignup_UI {
         scanner.nextLine();
         ParseINT parseINT = new ParseINT();
         donor.setAge(parseINT.intTOString(age));
+
         System.out.printf(RED + "5." + RESET + " Phone Number: ");
         String phoneNumber = scanner.nextLine();
         while (!authorizationConstraintsValidator.validatePhoneNumber(phoneNumber)) {
-            System.out.println("Please input valid phoneNumber of 11 digits only");
+            System.out.println("Please input valid phoneNumber ");
             System.out.printf(RED + "5." + RESET + " Phone Number: ");
             phoneNumber = scanner.nextLine();
         }
         donor.setPhoneNumber(phoneNumber);
+
         System.out.println(RED + "6." + RESET + " Address - ");
         System.out.printf(RED + "City: ");
         String city = scanner.nextLine();
