@@ -51,7 +51,7 @@ public class DonorSignup_UI {
         String email = scanner.nextLine();
         while(!authorizationConstraintsValidator.validateEmail(email)){
             System.out.println("Please input valid email format (example@domain.com)");
-            System.out.printf(RED + "3." + RESET + " Name: ");
+            System.out.printf(RED + "3." + RESET + " Email: ");
             email = scanner.nextLine();
         }
         donor.setEmail(email);
