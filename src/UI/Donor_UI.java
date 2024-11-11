@@ -16,6 +16,7 @@ public class Donor_UI {
     public static void main(String phone, String password, String[] args) {
         MyDate date;
         DateDifference dateDifference;
+        ConsoleUtils consoleUtils = new ConsoleUtils();
         String phoneNumber = phone;
         String pass = password;
 
@@ -59,17 +60,21 @@ public class Donor_UI {
 
         switch (choice) {
             case 1:
+                consoleUtils.clearScreen();
                 DonationHistory_UI.main(phoneNumber, pass, args);
                 break;
             case 2:
+                consoleUtils.clearScreen();
                 BloodRequests_UI.main(phoneNumber, pass, args);
                 break;
             case 3:
+                consoleUtils.clearScreen();
                 DonorViewProfile donorViewProfile = new DonorViewProfile(phoneNumber, pass);
                 DonorViewProfile_UI.main(donorViewProfile, args);
                 break;
             case 4:
                 System.out.printf("Logging out...");
+                consoleUtils.clearScreen();
                 Login_UI.main(args);
                 break;
             default:

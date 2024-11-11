@@ -8,6 +8,7 @@ public class DonorViewProfile_UI {
     public static void main(DonorViewProfile donorViewProfile, String[] args) {
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
+        ConsoleUtils consoleUtils = new ConsoleUtils();
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("==============================================================================================");
@@ -26,6 +27,7 @@ public class DonorViewProfile_UI {
 
         if (choice == 0) {
             // Return to Donor Dashboard
+            consoleUtils.clearScreen();
             Donor_UI.main(donorViewProfile.getPhoneNumber(), donorViewProfile.getPassword(), args);
         } else {
             System.out.println("Invalid choice. Please select 0.");
