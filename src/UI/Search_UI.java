@@ -10,9 +10,11 @@ public class Search_UI {
 
         System.out.println("==============================================================================================");
         System.out.println("                                    Search Donors");
-        System.out.println("                                 Your Blood Group: A+");
         System.out.println("==============================================================================================");
+        System.out.println(RED + "Enter the blood group you are looking for: " + RESET);
         System.out.println(RED + "Enter your location: " + RESET);
+        System.out.printf("City: ");
+        System.out.printf("Area: ");
         System.out.println("==============================================================================================");
         System.out.println(RED + "Which type of blood donation are you looking for?" + RESET);
         System.out.println(RED + "1." + RESET + " Whole Blood");
