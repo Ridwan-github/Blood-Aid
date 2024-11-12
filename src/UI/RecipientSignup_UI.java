@@ -27,14 +27,22 @@ public class RecipientSignup_UI {
             name = scanner.nextLine();
         }
         recipient.setName(name);
+
         System.out.printf("Enter your phone number: ");
         String phoneNumber = scanner.nextLine();
-        while(!recieptentValidator.validatePhoneNumber(phoneNumber)){
-            System.out.println("Please input valid phoneNumber of 11 digits only");
-            System.out.printf(" Phone Number: ");
-            phoneNumber = scanner.nextLine();
+        while(!recieptentValidator.validatePhoneNumber(phoneNumber) || !recieptentValidator.recipientRepeatPhone(phoneNumber)){
+            if (!recieptentValidator.validatePhoneNumber(phoneNumber)) {
+                System.out.println("Please input valid phoneNumber of 11 digits only");
+                System.out.printf(" Phone Number: ");
+                phoneNumber = scanner.nextLine();
+            } else {
+                System.out.println("Phone number already exists. Please enter a new phone number.");
+                System.out.printf(" Phone Number: ");
+                phoneNumber = scanner.nextLine();
+            }
         }
         recipient.setPhoneNumber(phoneNumber);
+
         System.out.println("Enter your address - ");
         System.out.printf("Enter your city: ");
         String city = scanner.nextLine();
@@ -52,6 +60,7 @@ public class RecipientSignup_UI {
             area = scanner.nextLine();
         }
         recipient.setArea(area);
+
         System.out.printf("Enter your blood group: ");
         String bloodGroup = scanner.nextLine();
         while (!recieptentValidator.validateBloodGroup(bloodGroup)) {
@@ -60,6 +69,7 @@ public class RecipientSignup_UI {
             bloodGroup = scanner.nextLine();
         }
         recipient.setBloodGroup(bloodGroup);
+
         System.out.printf("Enter your password: ");
         String password = passwordMasking.getPassword();
         while (!recieptentValidator.validatePassword(password)) {
@@ -69,6 +79,7 @@ public class RecipientSignup_UI {
             password = passwordMasking.getPassword();
         }
         recipient.setPassword(password);
+
         System.out.println("==============================================================================================");
         System.out.println(RED + "[1]" + RESET + " Signup");
         System.out.println(RED + "[2]" + RESET + " Back");

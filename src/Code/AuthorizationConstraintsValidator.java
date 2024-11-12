@@ -53,6 +53,23 @@ public class AuthorizationConstraintsValidator {
         return  true;
     }
 
+    public static boolean recipientRepeatPhone(String phoneNumber){
+        try{
+            File file = new File("Recipient.txt");
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] recipient = line.split(";");
+                if (recipient[1].equals(phoneNumber)) {
+                    return false;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return  true;
+    }
+
     public static boolean validatePhoneNumber(String phoneNumber) {
         if (phoneNumber == null || (phoneNumber.length() != 11 && phoneNumber.length() != 14)) {
             return false;

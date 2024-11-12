@@ -2,6 +2,7 @@ package UI;
 
 import Code.AuthorizationConstraintsValidator;
 import Code.Donor;
+import external_Functions.toLower;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -88,6 +89,7 @@ public class Search_UI {
         String city, area, bloodGroup;
         Search_UI s = new Search_UI();
         Scanner scanner = new Scanner(System.in);
+        toLower toLower = new toLower();
 
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
@@ -104,8 +106,10 @@ public class Search_UI {
         System.out.println(RED + "Enter your location: " + RESET);
         System.out.printf("City: ");
         city = scanner.nextLine();
+        city = toLower.toLower(city);
         System.out.printf("Area: ");
         area = scanner.nextLine();
+        area = toLower.toLower(area);
         System.out.println("==============================================================================================");
         System.out.println(RED + "Which type of blood donation are you looking for?" + RESET);
         System.out.println(RED + "1." + RESET + " Whole Blood");
