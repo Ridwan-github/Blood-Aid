@@ -18,18 +18,65 @@ public class AuthorizationConstraintsValidator {
         }
         return true;
     }
+    public static boolean validateFirstThreeDigits(String PhoneNumber){
+        if(PhoneNumber.length() == 11){
+            if (PhoneNumber.charAt(0) == '0' && PhoneNumber.charAt(1) == '1' && (PhoneNumber.charAt(2) == '9' || PhoneNumber.charAt(2) == '7' ||
+                            PhoneNumber.charAt(2) == '3' || PhoneNumber.charAt(2) == '4' ||
+                            PhoneNumber.charAt(2) == '5' || PhoneNumber.charAt(2)=='6')) {
+                return true;
+            }
+
+        }
+        return false;
+    }
     public static boolean validatePhoneNumber(String phoneNumber) {
-        if (phoneNumber == null || phoneNumber.length() < 10 || phoneNumber.length() > 15) {
+        if (phoneNumber == null || (phoneNumber.length() != 11 && phoneNumber.length() != 14)) {
             return false;
         }
-        for (int i = 0; i < phoneNumber.length(); i++) {
-            if (!Character.isDigit(phoneNumber.charAt(i))) {
+
+        if (phoneNumber.length() == 11) {
+            if (validateFirstThreeDigits(phoneNumber)==true){
+                for (int i = 0; i < phoneNumber.length(); i++) {
+                    if (!Character.isDigit(phoneNumber.charAt(i))) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        if (phoneNumber.length() == 14) {
+            if (phoneNumber.charAt(0) == '+' && phoneNumber.charAt(1) == '8' && phoneNumber.charAt(2) == '8') {
+
+                String s = "";
+                for (int i = 3; i < 14; i++) {
+                    s += phoneNumber.charAt(i);
+                }
+
+                if (validateFirstThreeDigits(s)==true){
+                    for (int i = 0; i < s.length(); i++) {
+                        if (!Character.isDigit(s.charAt(i))) {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            else {
                 return false;
             }
         }
 
         return true;
     }
+
+
     public static boolean validateEmail(String email){
         if(email == null || email.length() < 5){
             return false;
@@ -41,7 +88,8 @@ public class AuthorizationConstraintsValidator {
         }
 
         String domain = email.substring(atIndex + 1);
-        if(domain.indexOf('.') == -1){
+        int dotindex = domain.indexOf('.');
+        if(dotindex == 1 || dotindex == domain.length() -1){
             return  false;
         }
         return true;
