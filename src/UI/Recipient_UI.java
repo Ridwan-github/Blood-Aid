@@ -39,39 +39,7 @@ class Recipient_UI  {
         switch (choice) {
             case 1:
                 consoleUtils.clearScreen();
-                System.out.println("List of Donors: ");
-                try{
-                    File file = new File("src/filemanagement/Donor.txt");
-                    BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-                    String line;
-                    while ((line = bufferedReader.readLine()) != null) {
-                        String[] data = line.split(";");
-                        if(data[4].equals(recipient.getBloodGroup())){
-
-                            System.out.println("Name: " + data[0]);
-                            System.out.println("Phone Number: " + data[1]);
-                            System.out.println("City: " + data[2]);
-                            System.out.println("Area: " + data[3]);
-                            System.out.println("Blood Group: " + data[4]);
-                            System.out.println("Points: " + data[8]);
-                            System.out.println("==============================================================================================");
-
-                        }
-                    }
-                    bufferedReader.close();
-                }
-
-                catch (Exception e) {
-                    System.out.println("An error occurred.");
-                    e.printStackTrace();
-                }
-                System.out.println(RED + "[0]" + RESET + " Back");
-                int c = scanner.nextInt();
-                while (c!=0){
-                    System.out.println("Input a valid option: ");
-                    c = scanner.nextInt();
-                }
-
+                Search_UI.main(phone, password, args);
                 main(phone, password, args);
 
             case 2:
