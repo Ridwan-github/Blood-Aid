@@ -34,8 +34,8 @@ public class DonorSignup_UI {
         System.out.printf(RED + "2." + RESET + " Username: ");
         String username = scanner.nextLine();
         validateUsername validateUsername = new validateUsername();
-        while (!validateUsername.validate(username) || !authorizationConstraintsValidator.validateUserName(username)) {
-            if(!validateUsername.validate(username)){
+        while (!authorizationConstraintsValidator.repeatUserName(username) || !authorizationConstraintsValidator.validateUserName(username)) {
+            if(!authorizationConstraintsValidator.repeatUserName(username)){
                 System.out.println("Username already exists. Please enter a different username.");
                 System.out.printf(RED + "2." + RESET + " Username: ");
                 username = scanner.nextLine();
@@ -50,10 +50,17 @@ public class DonorSignup_UI {
 
         System.out.printf(RED + "3." + RESET + " Email: ");
         String email = scanner.nextLine();
-        while(!authorizationConstraintsValidator.validateEmail(email)){
-            System.out.println("Please input valid email format (example@domain.com)");
-            System.out.printf(RED + "3." + RESET + " Email: ");
-            email = scanner.nextLine();
+        while(!authorizationConstraintsValidator.validateEmail(email) || !authorizationConstraintsValidator.repeatEmail(email)){
+            if(!authorizationConstraintsValidator.validateEmail(email)){
+                System.out.println("Please input valid email format (example@domain.com)");
+                System.out.printf(RED + "3." + RESET + " Email: ");
+                email = scanner.nextLine();
+            }
+            else if(!authorizationConstraintsValidator.repeatEmail(email)){
+                System.out.println("Email already exists. Please enter a different email.");
+                System.out.printf(RED + "3." + RESET + " Email: ");
+                email = scanner.nextLine();
+            }
         }
         donor.setEmail(email);
         System.out.printf(RED + "4." + RESET + " Age: ");
@@ -69,10 +76,29 @@ public class DonorSignup_UI {
 
         System.out.printf(RED + "5." + RESET + " Phone Number: ");
         String phoneNumber = scanner.nextLine();
-        while (!authorizationConstraintsValidator.validatePhoneNumber(phoneNumber)) {
-            System.out.println("Please input valid phoneNumber ");
-            System.out.printf(RED + "5." + RESET + " Phone Number: ");
-            phoneNumber = scanner.nextLine();
+        if (phoneNumber.length() == 14){
+            if (phoneNumber.charAt(0) == '+' && phoneNumber.charAt(1) == '8' && phoneNumber.charAt(2) == '8') {
+                String s = "";
+                for (int i = 3; i < 14; i++) {
+                    s += phoneNumber.charAt(i);
+                }
+                phoneNumber = s;
+            } else {
+                System.out.println("Please input valid phone number");
+                System.out.printf(RED + "5." + RESET + " Phone Number: ");
+                phoneNumber = scanner.nextLine();
+            }
+        }
+        while (!authorizationConstraintsValidator.validatePhoneNumber(phoneNumber) || !authorizationConstraintsValidator.repeatPhoneNumber(phoneNumber)) {
+            if (!authorizationConstraintsValidator.validatePhoneNumber(phoneNumber)) {
+                System.out.println("Please input valid phone number");
+                System.out.printf(RED + "5." + RESET + " Phone Number: ");
+                phoneNumber = scanner.nextLine();
+            } else if (!authorizationConstraintsValidator.repeatPhoneNumber(phoneNumber)) {
+                System.out.println("Phone number already exists. Please enter a different phone number.");
+                System.out.printf(RED + "5." + RESET + " Phone Number: ");
+                phoneNumber = scanner.nextLine();
+            }
         }
         donor.setPhoneNumber(phoneNumber);
 
@@ -131,10 +157,16 @@ public class DonorSignup_UI {
 
         System.out.printf(RED + "10." + RESET + " NID Number: ");
         String NID = scanner.nextLine();
-        while (!authorizationConstraintsValidator.validateNID(NID)) {
-            System.out.println("Please input min-max 10 numeric letters");
-            System.out.printf(RED + "10." + RESET + " NID: ");
-            NID = scanner.nextLine();
+        while (!authorizationConstraintsValidator.validateNID(NID) || !authorizationConstraintsValidator.repeatNID(NID)) {
+            if (!authorizationConstraintsValidator.validateNID(NID)) {
+                System.out.println("Please input min-max 10 numeric letters");
+                System.out.printf(RED + "10." + RESET + " NID: ");
+                NID = scanner.nextLine();
+            } else if (!authorizationConstraintsValidator.repeatNID(NID)) {
+                System.out.println("NID already exists. Please enter a different NID.");
+                System.out.printf(RED + "10." + RESET + " NID Number: ");
+                NID = scanner.nextLine();
+            }
         }
         donor.setNID(NID);
 

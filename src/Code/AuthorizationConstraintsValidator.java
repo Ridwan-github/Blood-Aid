@@ -3,6 +3,10 @@ package Code;
 import external_Functions.DateDifference;
 import external_Functions.MyDate;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Date;
 
 public class AuthorizationConstraintsValidator {
@@ -29,6 +33,26 @@ public class AuthorizationConstraintsValidator {
         }
         return false;
     }
+
+    public static boolean repeatPhoneNumber(String phoneNumber){
+        try{
+            File file = new File("Donor.txt");
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] donor = line.split(";");
+                if (donor.length > 12) {
+                    if (donor[1].equals(phoneNumber)) {
+                        return false;
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return  true;
+    }
+
     public static boolean validatePhoneNumber(String phoneNumber) {
         if (phoneNumber == null || (phoneNumber.length() != 11 && phoneNumber.length() != 14)) {
             return false;
@@ -76,6 +100,24 @@ public class AuthorizationConstraintsValidator {
         return true;
     }
 
+    public static boolean repeatEmail(String email){
+        try{
+            File file = new File("Donor.txt");
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] donor = line.split(";");
+                if (donor.length > 12) {
+                    if (donor[13].equals(email)) {
+                        return false;
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
 
     public static boolean validateEmail(String email){
         if(email == null || email.length() < 5){
@@ -111,6 +153,25 @@ public class AuthorizationConstraintsValidator {
     public static boolean validateArea(String area){
         if(area == null || area.length() > 50){
             return false;
+        }
+        return true;
+    }
+
+    public static boolean repeatNID(String NID){
+        try{
+            File file = new File("Donor.txt");
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] donor = line.split(";");
+                if (donor.length > 12) {
+                    if (donor[5].equals(NID)) {
+                        return false;
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return true;
     }
@@ -158,6 +219,25 @@ public class AuthorizationConstraintsValidator {
             if (!Character.isDigit(zip.charAt(i))) {
                 return false;
             }
+        }
+        return true;
+    }
+
+    public static boolean repeatUserName(String name){
+        try{
+            File file = new File("Donor.txt");
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] donor = line.split(";");
+                if (donor.length > 12) {
+                    if (donor[11].equals(name)) {
+                        return false;
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return true;
     }
