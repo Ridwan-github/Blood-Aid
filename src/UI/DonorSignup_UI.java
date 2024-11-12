@@ -1,11 +1,8 @@
 package UI;
 import Code.Donor;
-import external_Functions.DateDifference;
-import external_Functions.MyDate;
+import external_Functions.*;
 import Code.AuthorizationConstraintsValidator;
 import Code.PasswordMasking;
-import external_Functions.validateUsername;
-import external_Functions.ParseINT;
 
 import java.util.Scanner;
 
@@ -102,17 +99,22 @@ public class DonorSignup_UI {
         }
         donor.setPhoneNumber(phoneNumber);
 
+        toLower toLower = new toLower();
+
         System.out.println(RED + "6." + RESET + " Address - ");
         System.out.printf("City: ");
         String city = scanner.nextLine();
+        city = toLower.toLower(city);
         while (!authorizationConstraintsValidator.validateCity(city)) {
             System.out.println("Please input 2-50 letters & only alphabetic letters");
             System.out.printf(" City: ");
             city = scanner.nextLine();
         }
         donor.setcity(city);
+
         System.out.printf("Area: ");
         String area = scanner.nextLine();
+        area = toLower.toLower(area);
         while (!authorizationConstraintsValidator.validateArea(area)) {
             System.out.println("Please input at max 50 letters");
             System.out.printf(" Area: ");
