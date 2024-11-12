@@ -134,47 +134,6 @@ public class DonorSignup_UI {
             NID = scanner.nextLine();
         }
         donor.setNID(NID);
-//        System.out.println("==============================================================================================");
-//        System.out.println("Have you donated blood in the last 3 months?");
-//        System.out.println(RED + "[1]" + RESET + " Yes");
-//        System.out.println(RED + "[2]" + RESET + " No");
-//        System.out.println("==============================================================================================");
-//        String choice = scanner.nextLine();
-//        while(!choice.equals("1") && !choice.equals("2")){
-//            System.out.println("Invalid choice. Please select 1 or 2.");
-//            System.out.println("==============================================================================================");
-//            System.out.println("Have you donated blood in the last 3 months?");
-//            System.out.println(RED + "[1]" + RESET + " Yes");
-//            System.out.println(RED + "[2]" + RESET + " No");
-//            System.out.println("==============================================================================================");
-//            choice = scanner.nextLine();
-//        }
-//        if (choice.equals("1")) {
-//            System.out.println("When did you donate blood last? (dd/mm/yyyy)");
-//            String date = scanner.nextLine();
-//            while (!authorizationConstraintsValidator.validateLastDonationDate(date)) {
-//                System.out.println("Please input valid Date (dd/mm/yyyy)");
-//                System.out.printf(RESET + " Date: ");
-//                date = scanner.nextLine();
-//            }
-//            MyDate myDate = new MyDate(date);
-//            DateDifference dateDifference = new DateDifference(myDate);
-//            int difference = dateDifference.getDifference();
-//
-//            if (difference < 90) {
-//                System.out.println("You are not eligible to donate blood for the next " + (90 - difference) + " days.");
-//                donor.setEligible(false);
-//            } else {
-//                System.out.println("You donated blood " + difference + " days ago.");
-//                System.out.println("You are eligible to donate blood.");
-//                donor.setEligible(true);
-//            }
-//            donor.setLastDonatedDate(date);
-//        } else if(choice.equals("2")){
-//            System.out.println("You are eligible to donate blood.");
-//            donor.setLastDonatedDate("null");
-//            donor.setEligible(true);
-//        }
 
         System.out.println("==============================================================================================");
         System.out.println("Have you donated blood recently?");
@@ -196,143 +155,6 @@ public class DonorSignup_UI {
         }
 
         if (choice == 1){
-            System.out.println("Did you donate Whole Blood in the last 3 months?");
-            System.out.println(RED + "[1]" + RESET + " Yes");
-            System.out.println(RED + "[2]" + RESET + " No");
-            System.out.println("==============================================================================================");
-            choice = scanner.nextInt();
-            scanner.nextLine();
-
-            while (choice != 1 && choice != 2) {
-                System.out.println("Invalid choice. Please select 1 or 2.");
-                System.out.println("==============================================================================================");
-                System.out.println("Did you donate Whole Blood in the last 3 months?");
-                System.out.println(RED + "[1]" + RESET + " Yes");
-                System.out.println(RED + "[2]" + RESET + " No");
-                System.out.println("==============================================================================================");
-                choice = scanner.nextInt();
-                scanner.nextLine();
-            }
-
-            if (choice == 1){
-                System.out.println("When did you donate Whole Blood last? (dd/mm/yyyy)");
-                String date = scanner.nextLine();
-                while (!authorizationConstraintsValidator.validateLastDonationDate(date)) {
-                    System.out.println("Please input valid Date (dd/mm/yyyy)");
-                    System.out.printf("Date: ");
-                    date = scanner.nextLine();
-                }
-                MyDate myDate = new MyDate(date);
-                DateDifference dateDifference = new DateDifference(myDate);
-                int difference = dateDifference.getDifference();
-
-                if (difference < 90) {
-                    System.out.println("You are not eligible to donate blood for the next " + (90 - difference) + " days.");
-                    donor.setEligibleForWholeBlood(false);
-                } else {
-                    System.out.println("You donated blood " + difference + " days ago.");
-                    System.out.println("You are eligible to donate blood.");
-                    donor.setEligibleForWholeBlood(true);
-                }
-                donor.setLastDonatedDateWholeBlood(date);
-            } else {
-                System.out.println("You are eligible to donate blood.");
-                donor.setLastDonatedDateWholeBlood("null");
-                donor.setEligibleForWholeBlood(true);
-            }
-
-            System.out.println("==============================================================================================");
-            System.out.println("Did you donate Platelets in the last 15 days?");
-            System.out.println(RED + "[1]" + RESET + " Yes");
-            System.out.println(RED + "[2]" + RESET + " No");
-            System.out.println("==============================================================================================");
-            choice = scanner.nextInt();
-            scanner.nextLine();
-
-            while (choice != 1 && choice != 2) {
-                System.out.println("Invalid choice. Please select 1 or 2.");
-                System.out.println("==============================================================================================");
-                System.out.println("Did you donate Platelets in the last 7 days?");
-                System.out.println(RED + "[1]" + RESET + " Yes");
-                System.out.println(RED + "[2]" + RESET + " No");
-                System.out.println("==============================================================================================");
-                choice = scanner.nextInt();
-                scanner.nextLine();
-            }
-
-            if (choice == 1){
-                System.out.println("When did you donate Platelets last? (dd/mm/yyyy)");
-                String date = scanner.nextLine();
-                while (!authorizationConstraintsValidator.validateLastDonationDate(date)) {
-                    System.out.println("Please input valid Date (dd/mm/yyyy)");
-                    System.out.printf("Date: ");
-                    date = scanner.nextLine();
-                }
-
-                MyDate myDate = new MyDate(date);
-                DateDifference dateDifference = new DateDifference(myDate);
-                int difference = dateDifference.getDifference();
-
-                if (difference < 15) {
-                    System.out.println("You are not eligible to donate blood for the next " + (15 - difference) + " days.");
-                    donor.setEligibleForPlatelets(false);
-                } else {
-                    System.out.println("You donated blood " + difference + " days ago.");
-                    System.out.println("You are eligible to donate blood.");
-                    donor.setEligibleForPlatelets(true);
-                }
-                donor.setLastDonatedDatePlatelets(date);
-            } else if (choice == 2){
-                donor.setEligibleForPlatelets(true);
-                donor.setLastDonatedDatePlatelets("null");
-            }
-
-            System.out.println("==============================================================================================");
-            System.out.println("Did you donate Plasma in the last 1 month?");
-            System.out.println(RED + "[1]" + RESET + " Yes");
-            System.out.println(RED + "[2]" + RESET + " No");
-            System.out.println("==============================================================================================");
-            choice = scanner.nextInt();
-            scanner.nextLine();
-
-            while (choice != 1 && choice != 2) {
-                System.out.println("Invalid choice. Please select 1 or 2.");
-                System.out.println("==============================================================================================");
-                System.out.println("Did you donate Plasma in the last 1 month?");
-                System.out.println(RED + "[1]" + RESET + " Yes");
-                System.out.println(RED + "[2]" + RESET + " No");
-                System.out.println("==============================================================================================");
-                choice = scanner.nextInt();
-                scanner.nextLine();
-            }
-
-            if (choice == 1){
-                System.out.println("When did you donate Plasma last? (dd/mm/yyyy)");
-                String date = scanner.nextLine();
-                while (!authorizationConstraintsValidator.validateLastDonationDate(date)) {
-                    System.out.println("Please input valid Date (dd/mm/yyyy)");
-                    System.out.printf("Date: ");
-                    date = scanner.nextLine();
-                }
-
-                MyDate myDate = new MyDate(date);
-                DateDifference dateDifference = new DateDifference(myDate);
-                int difference = dateDifference.getDifference();
-
-                if (difference < 30) {
-                    System.out.println("You are not eligible to donate blood for the next " + (30 - difference) + " days.");
-                    donor.setEligibleForPlasma(false);
-                } else {
-                    System.out.println("You donated blood " + difference + " days ago.");
-                    System.out.println("You are eligible to donate blood.");
-                    donor.setEligibleForPlasma(true);
-                }
-                donor.setLastDonatedDatePlasma(date);
-            } else if (choice == 2){
-                donor.setEligibleForPlasma(true);
-                donor.setLastDonatedDatePlasma("null");
-            }
-
             System.out.println("==============================================================================================");
             System.out.println("Did you donate Power Red in the last 4 months?");
             System.out.println(RED + "[1]" + RESET + " Yes");
@@ -368,6 +190,12 @@ public class DonorSignup_UI {
                 if (difference < 120) {
                     System.out.println("You are not eligible to donate blood for the next " + (120 - difference) + " days.");
                     donor.setEligibleForPowerRed(false);
+                    donor.setEligibleForPlatelets(false);
+                    donor.setEligibleForWholeBlood(false);
+                    donor.setEligibleForPlasma(false);
+                    donor.setLastDonatedDatePlatelets("null");
+                    donor.setLastDonatedDateWholeBlood("null");
+                    donor.setLastDonatedDatePlasma("null");
                 } else {
                     System.out.println("You donated blood " + difference + " days ago.");
                     System.out.println("You are eligible to donate blood.");
@@ -377,6 +205,150 @@ public class DonorSignup_UI {
             } else if (choice == 2){
                 donor.setEligibleForPowerRed(true);
                 donor.setLastDonatedDatePowerRed("null");
+            }
+
+            if (donor.isEligibleForPowerRed()){
+                System.out.println("Did you donate Whole Blood in the last 3 months?");
+                System.out.println(RED + "[1]" + RESET + " Yes");
+                System.out.println(RED + "[2]" + RESET + " No");
+                System.out.println("==============================================================================================");
+                choice = scanner.nextInt();
+                scanner.nextLine();
+
+                while (choice != 1 && choice != 2) {
+                    System.out.println("Invalid choice. Please select 1 or 2.");
+                    System.out.println("==============================================================================================");
+                    System.out.println("Did you donate Whole Blood in the last 3 months?");
+                    System.out.println(RED + "[1]" + RESET + " Yes");
+                    System.out.println(RED + "[2]" + RESET + " No");
+                    System.out.println("==============================================================================================");
+                    choice = scanner.nextInt();
+                    scanner.nextLine();
+                }
+
+                if (choice == 1){
+                    System.out.println("When did you donate Whole Blood last? (dd/mm/yyyy)");
+                    String date = scanner.nextLine();
+                    while (!authorizationConstraintsValidator.validateLastDonationDate(date)) {
+                        System.out.println("Please input valid Date (dd/mm/yyyy)");
+                        System.out.printf("Date: ");
+                        date = scanner.nextLine();
+                    }
+                    MyDate myDate = new MyDate(date);
+                    DateDifference dateDifference = new DateDifference(myDate);
+                    int difference = dateDifference.getDifference();
+
+                    if (difference < 90) {
+                        System.out.println("You are not eligible to donate blood for the next " + (90 - difference) + " days.");
+                        donor.setEligibleForWholeBlood(false);
+                    } else {
+                        System.out.println("You donated blood " + difference + " days ago.");
+                        System.out.println("You are eligible to donate blood.");
+                        donor.setEligibleForWholeBlood(true);
+                    }
+                    donor.setLastDonatedDateWholeBlood(date);
+                } else {
+                    System.out.println("You are eligible to donate blood.");
+                    donor.setLastDonatedDateWholeBlood("null");
+                    donor.setEligibleForWholeBlood(true);
+                }
+
+                System.out.println("==============================================================================================");
+                System.out.println("Did you donate Platelets in the last 15 days?");
+                System.out.println(RED + "[1]" + RESET + " Yes");
+                System.out.println(RED + "[2]" + RESET + " No");
+                System.out.println("==============================================================================================");
+                choice = scanner.nextInt();
+                scanner.nextLine();
+
+                while (choice != 1 && choice != 2) {
+                    System.out.println("Invalid choice. Please select 1 or 2.");
+                    System.out.println("==============================================================================================");
+                    System.out.println("Did you donate Platelets in the last 7 days?");
+                    System.out.println(RED + "[1]" + RESET + " Yes");
+                    System.out.println(RED + "[2]" + RESET + " No");
+                    System.out.println("==============================================================================================");
+                    choice = scanner.nextInt();
+                    scanner.nextLine();
+                }
+
+                if (choice == 1){
+                    System.out.println("When did you donate Platelets last? (dd/mm/yyyy)");
+                    String date = scanner.nextLine();
+                    while (!authorizationConstraintsValidator.validateLastDonationDate(date)) {
+                        System.out.println("Please input valid Date (dd/mm/yyyy)");
+                        System.out.printf("Date: ");
+                        date = scanner.nextLine();
+                    }
+
+                    MyDate myDate = new MyDate(date);
+                    DateDifference dateDifference = new DateDifference(myDate);
+                    int difference = dateDifference.getDifference();
+
+                    if (difference < 15) {
+                        System.out.println("You are not eligible to donate blood for the next " + (15 - difference) + " days.");
+                        donor.setEligibleForPlatelets(false);
+                    } else {
+                        System.out.println("You donated blood " + difference + " days ago.");
+                        System.out.println("You are eligible to donate blood.");
+                        donor.setEligibleForPlatelets(true);
+                    }
+                    donor.setLastDonatedDatePlatelets(date);
+                } else if (choice == 2){
+                    donor.setEligibleForPlatelets(true);
+                    donor.setLastDonatedDatePlatelets("null");
+                }
+
+                System.out.println("==============================================================================================");
+                System.out.println("Did you donate Plasma in the last 1 month?");
+                System.out.println(RED + "[1]" + RESET + " Yes");
+                System.out.println(RED + "[2]" + RESET + " No");
+                System.out.println("==============================================================================================");
+                choice = scanner.nextInt();
+                scanner.nextLine();
+
+                while (choice != 1 && choice != 2) {
+                    System.out.println("Invalid choice. Please select 1 or 2.");
+                    System.out.println("==============================================================================================");
+                    System.out.println("Did you donate Plasma in the last 1 month?");
+                    System.out.println(RED + "[1]" + RESET + " Yes");
+                    System.out.println(RED + "[2]" + RESET + " No");
+                    System.out.println("==============================================================================================");
+                    choice = scanner.nextInt();
+                    scanner.nextLine();
+                }
+
+                if (choice == 1){
+                    System.out.println("When did you donate Plasma last? (dd/mm/yyyy)");
+                    String date = scanner.nextLine();
+                    while (!authorizationConstraintsValidator.validateLastDonationDate(date)) {
+                        System.out.println("Please input valid Date (dd/mm/yyyy)");
+                        System.out.printf("Date: ");
+                        date = scanner.nextLine();
+                    }
+
+                    MyDate myDate = new MyDate(date);
+                    DateDifference dateDifference = new DateDifference(myDate);
+                    int difference = dateDifference.getDifference();
+
+                    if (difference < 30) {
+                        System.out.println("You are not eligible to donate blood for the next " + (30 - difference) + " days.");
+                        donor.setEligibleForPlasma(false);
+                    } else {
+                        System.out.println("You donated blood " + difference + " days ago.");
+                        System.out.println("You are eligible to donate blood.");
+                        donor.setEligibleForPlasma(true);
+                    }
+                    donor.setLastDonatedDatePlasma(date);
+                } else if (choice == 2){
+                    donor.setEligibleForPlasma(true);
+                    donor.setLastDonatedDatePlasma("null");
+                }
+            } else {
+                System.out.println("As you have donated Power Red in the last 4 months, you are not eligible to donate Whole Blood, Platelets and Plasma.");
+                donor.setEligibleForWholeBlood(false);
+                donor.setEligibleForPlatelets(false);
+                donor.setEligibleForPlasma(false);
             }
         } else if (choice == 2){
             donor.setEligibleForWholeBlood(true);

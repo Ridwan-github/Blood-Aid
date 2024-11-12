@@ -1,1 +1,3 @@
+name;phoneNumber;city;area;bloodGroup;NID;password;donorID;points;prefferredDonationArea;zioCode;username;age;email;wbcEligible;plateletsEligible;plasmaEligible;powerRedEligible;lastDonatedWBC;lastDonatedPlatelets;lastDonatedPlasma;lastDonatedPowerRed;nextDonationWBC;nextDonationPlatelets;nextDonationPlasma;nextDonationPowerRed
 nuren fahmid;01901901901;city;area;A+;1234567890;ICkplg98;13;0;uttara;1234;nuren;25;nuren@email.com;false;true;true;true;10/10/2024;10/10/2024;0/0/0;0/0/0
+sfsgaf;01010101010;cd;fsdf;A+;1010101010;ICkplg98;14;0;sdg;1234;adsgag;29;adg@sgd.;false;true;false;true;10/10/2024;20/10/2024;10/11/2024;0/0/0;
