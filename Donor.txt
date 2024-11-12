@@ -1,10 +1,7 @@
-Name;Phone Number;City;Area;Blood Group;NID;Password;Donor_ID;Points;Eligibility;Preferred_Donation_Area;ZipCode;Username;Age;Email;Last_Donation_Date
-Nuren;01974;city;area;B+;1248123424;456tzh;1;0;false;Uttara;1221;fahmid;21;nurenfahmid@iut-dhak.edu;10/10/2024
-Ridwan;010101;city;area;B+;12341234;456tzh;2;0;true;Uttara;1221;ridwan;22;ridwanraees@iut-dhaka.edu;1/2/2024
-Mahadi;019101;city;area;A-;123123;456tzh;3;0;true;Uttara;12312;mahadi;23;mahadi@iut-dhaka.edu;0/0/0000
-asdasd;12345678999;asdas;asdas;O+;1234567899;Pdkdglvhd456C;4;0;true;asda;3333;aewdadw;33;ades@fgvs.;10/9/2024
-Nuru;12345678905;dsf;asd;A-;1122334488;Pdkdglvhd456C;5;0;true;dsfs;3432;nurua;20;asd@fgas.c;10/10/2023
-Mahadi;01877857484;sdasda;sdadsas;A-;1122335544;Pdkdglvhd456C;6;0;true;dasdas;5400;sdasdas;20;dasd@dfas.;10/11/2024
-sdasda;01877857485;sdasd;asdas;A-;1122334488;Pdkdglvhd456C;7;0;true;dasdas;2333;adwadsc;20;sda@sda.;0/0/0
-sdasd;01877857484;dsasd;dsasd;A-;2233441155;Pdkdglvhd456C;8;0;true;dasd;2332;dsadsq;23;sdas@sd.;0/0/0
-Mahadi;01305070854;dsad;dsd;A-;1122334455;Pdkdglvhd456C;9;0;true;dsds;2323;asdas;23;sada@sd.;0/0/0
+name;phoneNumber;city;area;bloodGroup;NID;password;donorID;points;prefferredDonationArea;zioCode;username;age;email;wbcEligible;plateletsEligible;plasmaEligible;powerRedEligible;lastDonatedWBC;lastDonatedPlatelets;lastDonatedPlasma;lastDonatedPowerRed;nextDonationWBC;nextDonationPlatelets;nextDonationPlasma;nextDonationPowerRed
+nuren fahmid;01901901901;city;area;A+;1234567890;ICkplg98;13;0;uttara;1234;nuren;25;nuren@email.com;false;true;true;true;10/10/2024;10/10/2024;0/0/0;0/0/0
+sfsgaf;01010101010;cd;fsdf;A+;1010101010;ICkplg98;14;0;sdg;1234;adsgag;29;adg@sgd.;false;true;false;true;10/10/2024;20/10/2024;10/11/2024;0/0/0;
+donor1;12345678901;dhaka;uttara;A+;1234567890;ICkplg98;15;0;uttara;1234;donor1;22;donor1@email.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;
+donor2;12345678902;dhaka;uttara;A+;1234567890;ICkplg98;16;0;uttara;1234;donor2;22;donor2@email.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;
+donor3;12345678903;dhaka;mirpur;A+;1234567890;ICkplg98;17;0;uttara;1234;donor3;22;donor3@email.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;
+donor4;12345678904;chittagong;panchlaish;A+;1234567890;ICkplg98;18;0;Uttara;1234;donor4;22;donor4@email.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;
