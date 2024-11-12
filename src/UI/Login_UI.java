@@ -77,6 +77,38 @@ public class Login_UI {
                             Donor_UI.main(phoneNumber, password, args);
                         } else {
                             System.out.println("Invalid phone number or password.");
+                            System.out.println("Forgot password?");
+                            System.out.println(RED + "[1]" + RESET + " Yes");
+                            System.out.println(RED + "[2]" + RESET + " Retry");
+                            System.out.println("==============================================================================================");
+                            System.out.print("Enter your choice: ");
+                            int forgotPassword = scanner.nextInt();
+                            scanner.nextLine();
+
+                            while (forgotPassword != 1 && forgotPassword != 2) {
+                                System.out.println("Invalid choice. Please select 1 or 2.");
+                                System.out.print("Enter your choice: ");
+                                forgotPassword = scanner.nextInt();
+                                scanner.nextLine();
+                            }
+
+                            if (forgotPassword == 1) {
+                                System.out.println("==============================================================================================");
+                                System.out.println("                                    Forgot Password");
+                                System.out.println("==============================================================================================");
+                                System.out.println("Enter your email: ");
+                                String email = scanner.nextLine();
+                                System.out.println("Enter your Phone Number: ");
+                                String phone = scanner.nextLine();
+                                System.out.println("Enter your username: ");
+                                String username = scanner.nextLine();
+
+                                ForgotPassword forgotPasswordObj = new ForgotPassword();
+                                forgotPasswordObj.forgotDonorPassword(email, phone, username);
+                                consoleUtils.holdTime();
+                                consoleUtils.clearScreen();
+                                Donor_UI.main(phoneNumber, password, args);
+                            }
                             consoleUtils.holdTime();
                             consoleUtils.clearScreen();
                             main(args);
