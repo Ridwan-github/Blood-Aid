@@ -2,18 +2,20 @@ package UI;
 
 import Code.AuthorizationConstraintsValidator;
 import Code.Donor;
+import external_Functions.MyVector;
 import external_Functions.toLower;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.Vector;
 
 public class Search_UI {
     final String RED = "\033[31m";
     final String RESET = "\033[0m";
 
-    public void searchDonors(String bloodGroup, String city, String area, String donationType) {
+    public void searchDonors(String bloodGroup, String city, String area, String donationType, MyVector donorData) {
         Donor donor = new Donor();
 
         try{
@@ -31,7 +33,9 @@ public class Search_UI {
                     System.out.println(RED + "City: " + RESET + data[2]);
                     System.out.println(RED + "Area: " + RESET + data[3]);
                     System.out.println(RED + "Blood Group: " + RESET + data[4]);
+                    System.out.println(RED + "Donor ID: " + RESET + data[7]);
                     System.out.println(RED + "Points: " + RESET + data[8]);
+                    donorData.add(data[7]);
                 }
             }
         } catch (IOException ae){
@@ -53,7 +57,9 @@ public class Search_UI {
                     System.out.println(RED + "City: " + RESET + data[2]);
                     System.out.println(RED + "Area: " + RESET + data[3]);
                     System.out.println(RED + "Blood Group: " + RESET + data[4]);
+                    System.out.println(RED + "Donor ID: " + RESET + data[7]);
                     System.out.println(RED + "Points: " + RESET + data[8]);
+                    donorData.add(data[7]);
                 }
             }
         } catch (IOException ae){
@@ -75,7 +81,9 @@ public class Search_UI {
                     System.out.println(RED + "City: " + RESET + data[2]);
                     System.out.println(RED + "Area: " + RESET + data[3]);
                     System.out.println(RED + "Blood Group: " + RESET + data[4]);
+                    System.out.println(RED + "Donor ID: " + RESET + data[7]);
                     System.out.println(RED + "Points: " + RESET + data[8]);
+                    donorData.add(data[7]);
                 }
             }
         } catch (IOException ae){
@@ -90,6 +98,7 @@ public class Search_UI {
         Search_UI s = new Search_UI();
         Scanner scanner = new Scanner(System.in);
         toLower toLower = new toLower();
+        MyVector donorData = new MyVector();
 
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
@@ -122,19 +131,31 @@ public class Search_UI {
 
         ConsoleUtils consoleUtils = new ConsoleUtils();
         int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        while (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 0) {
+            System.out.println("Invalid choice. Please select 1, 2, 3, 4, or 0.");
+            System.out.print("Enter your choice: ");
+            choice = scanner.nextInt();
+            scanner.nextLine();
+        }
 
         switch (choice) {
             case 1:
-                s.searchDonors(bloodGroup, city, area, "wbc");
+                consoleUtils.clearScreen();
+                s.searchDonors(bloodGroup, city, area, "wbc", donorData);
                 break;
             case 2:
-                s.searchDonors(bloodGroup, city, area, "platelet");
+                consoleUtils.clearScreen();
+                s.searchDonors(bloodGroup, city, area, "platelet", donorData);
                 break;
             case 3:
-                s.searchDonors(bloodGroup, city, area, "plasma");
+                consoleUtils.clearScreen();
+                s.searchDonors(bloodGroup, city, area, "plasma", donorData);
                 break;
             case 4:
-                s.searchDonors(bloodGroup, city, area, "powerRed");
+                consoleUtils.clearScreen();
+                s.searchDonors(bloodGroup, city, area, "powerRed", donorData);
                 break;
             case 0:
                 consoleUtils.clearScreen();
@@ -145,13 +166,37 @@ public class Search_UI {
         }
 
         System.out.println("==============================================================================================");
+        System.out.println("Enter the" + RED + " Donor ID" + RESET + " to view the donor's profile or press" + RED + " 0 " + RESET + "to go back.");
+        System.out.println("==============================================================================================");
+        System.out.println(RED + "Enter your choice: " + RESET);
+        String donorID = scanner.nextLine();
+        if (donorID.equals("0")){
+            consoleUtils.clearScreen();
+            Recipient_UI.main(phone, password, args);
+        }
+        while (!donorData.contains(donorID)){
+            System.out.println("Invalid donor ID. Please enter again: ");
+            donorID = scanner.nextLine();
+            if (donorID.equals("0")){
+                consoleUtils.clearScreen();
+                Recipient_UI.main(phone, password, args);
+            }
+        }
+
+        donor.viewProfile(donorID);
+
+        System.out.println("==============================================================================================");
         System.out.println(RED + "[0]" + RESET + " Back");
         System.out.println("==============================================================================================");
         System.out.println(RED + "Enter your choice: " + RESET);
-        int ch = scanner.nextInt();
-        while (ch!=0){
-            System.out.println("Input a valid option: ");
-            ch = scanner.nextInt();
+        int back = scanner.nextInt();
+        scanner.nextLine();
+
+        while (back != 0){
+            System.out.println("Invalid choice. Please select 0.");
+            System.out.print("Enter your choice: ");
+            back = scanner.nextInt();
+            scanner.nextLine();
         }
 
         consoleUtils.clearScreen();

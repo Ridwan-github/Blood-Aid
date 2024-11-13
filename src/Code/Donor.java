@@ -308,6 +308,35 @@ public class Donor implements User {
         }
     }
 
+    final String RED = "\033[31m";
+    final String RESET = "\033[0m";
+
+    public void viewProfile(String id) {
+        try {
+            File file = new File("Donor.txt");
+            BufferedReader bufferedReader = new BufferedReader(new java.io.FileReader(file));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] data = line.split(";");
+                if (data[7].equals(id)) {
+                    System.out.println("==============================================================================================");
+                    System.out.println("                    Donor's Profile");
+                    System.out.println("==============================================================================================");
+                    System.out.println(RED + "Name: " + RESET + data[0]);
+                    System.out.println(RED + "Phone Number: " + RESET + data[1]);
+                    System.out.println(RED + "City: " + RESET + data[2]);
+                    System.out.println(RED + "Area: " + RESET + data[3]);
+                    System.out.println(RED + "Blood Group: " + RESET + data[4]);
+                    System.out.println(RED + "Donor ID: " + RESET + data[7]);
+                    System.out.println(RED + "Points: " + RESET + data[8]);
+                    break;
+                }
+            }
+            bufferedReader.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public static void main(String[] args) {
 
     }
