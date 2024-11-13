@@ -99,6 +99,7 @@ public class Search_UI {
         Scanner scanner = new Scanner(System.in);
         toLower toLower = new toLower();
         MyVector donorData = new MyVector();
+        AuthorizationConstraintsValidator authorizationConstraintsValidator = new AuthorizationConstraintsValidator();
 
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
@@ -116,6 +117,11 @@ public class Search_UI {
         System.out.printf("City: ");
         city = scanner.nextLine();
         city = toLower.toLower(city);
+        while (!authorizationConstraintsValidator.validCity(city)){
+            System.out.printf("Invalid city. " + RED + "Enter again: " + RESET);
+            city = scanner.nextLine();
+            city = toLower.toLower(city);
+        }
         System.out.printf("Area: ");
         area = scanner.nextLine();
         area = toLower.toLower(area);

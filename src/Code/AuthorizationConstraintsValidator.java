@@ -305,4 +305,21 @@ public class AuthorizationConstraintsValidator {
         return false;
     }
 
+    public static boolean validCity(String city){
+        try{
+            File file = new File("Address.txt");
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] address = line.split("\n");
+                if (address[0].equals(city)) {
+                    return true;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 }

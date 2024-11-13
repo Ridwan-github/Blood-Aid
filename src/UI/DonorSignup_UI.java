@@ -20,6 +20,7 @@ public class DonorSignup_UI {
         System.out.println("==============================================================================================");
         System.out.println("                                    Donor Signup");
         System.out.println("==============================================================================================");
+
         System.out.printf(RED + "1." + RESET + " Name: ");
         String name = scanner.nextLine();
         while(!authorizationConstraintsValidator.validateName(name)){
@@ -28,6 +29,7 @@ public class DonorSignup_UI {
             name = scanner.nextLine();
         }
         donor.setName(name);
+
         System.out.printf(RED + "2." + RESET + " Username: ");
         String username = scanner.nextLine();
         validateUsername validateUsername = new validateUsername();
@@ -60,6 +62,7 @@ public class DonorSignup_UI {
             }
         }
         donor.setEmail(email);
+
         System.out.printf(RED + "4." + RESET + " Age: ");
         int age = scanner.nextInt();
         while (!authorizationConstraintsValidator.validateAge(age)) {
@@ -104,11 +107,17 @@ public class DonorSignup_UI {
         System.out.println(RED + "6." + RESET + " Address - ");
         System.out.printf("City: ");
         String city = scanner.nextLine();
-        city = toLower.toLower(city);
         while (!authorizationConstraintsValidator.validateCity(city)) {
             System.out.println("Please input 2-50 letters & only alphabetic letters");
             System.out.printf(" City: ");
             city = scanner.nextLine();
+        }
+        city = toLower.toLower(city);
+        while(!authorizationConstraintsValidator.validCity(city)){
+            System.out.println("Enter a valid city");
+            System.out.printf(" City: ");
+            city = scanner.nextLine();
+            city = toLower.toLower(city);
         }
         donor.setcity(city);
 
@@ -121,6 +130,7 @@ public class DonorSignup_UI {
             area = scanner.nextLine();
         }
         donor.setArea(area);
+
         System.out.printf(RED + "7." + RESET + " Zipcode: ");
         String zipCode = scanner.nextLine();
         while (!authorizationConstraintsValidator.validateZipCode(zipCode)) {
@@ -129,6 +139,7 @@ public class DonorSignup_UI {
             zipCode = scanner.nextLine();
         }
         donor.setZipCode(zipCode);
+
         System.out.printf(RED + "8." + RESET + " Preferred area for donation: ");
         String preferedHospitalArea = scanner.nextLine();
         while (!authorizationConstraintsValidator.validateArea(preferedHospitalArea)) {
