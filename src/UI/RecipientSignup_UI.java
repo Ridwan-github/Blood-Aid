@@ -3,6 +3,7 @@ package UI;
 import Code.AuthorizationConstraintsValidator;
 import Code.PasswordMasking;
 import Code.Recipient;
+import external_Functions.toLower;
 
 import java.util.Scanner;
 
@@ -12,6 +13,8 @@ public class RecipientSignup_UI {
         PasswordMasking passwordMasking = new PasswordMasking();
         ConsoleUtils consoleUtils = new ConsoleUtils();
         Scanner scanner = new Scanner(System.in);
+        toLower toLower = new toLower();
+
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
         AuthorizationConstraintsValidator recieptentValidator = new AuthorizationConstraintsValidator();
@@ -51,7 +54,15 @@ public class RecipientSignup_UI {
             System.out.printf(" City: ");
             city = scanner.nextLine();
         }
+        city = toLower.toLower(city);
+        while (!recieptentValidator.validCity(city)) {
+            System.out.println("Please input a valid city.");
+            System.out.printf(" City: ");
+            city = scanner.nextLine();
+            city = toLower.toLower(city);
+        }
         recipient.setCity(city);
+
         System.out.printf("Enter your area: ");
         String area = scanner.nextLine();
         while (!recieptentValidator.validateArea(area)) {
