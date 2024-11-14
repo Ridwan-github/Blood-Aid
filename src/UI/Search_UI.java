@@ -189,20 +189,95 @@ public class Search_UI {
             }
         }
 
+        consoleUtils.clearScreen();
         donor.viewProfile(donorID);
 
         System.out.println("==============================================================================================");
         System.out.println(RED + "[0]" + RESET + " Back");
+        System.out.println(RED + "[1]" + RESET + " Search for another donor");
         System.out.println("==============================================================================================");
         System.out.println(RED + "Enter your choice: " + RESET);
         int back = scanner.nextInt();
         scanner.nextLine();
 
-        while (back != 0){
+        while (back != 0 && back != 1) {
             System.out.println("Invalid choice. Please select 0.");
             System.out.print("Enter your choice: ");
             back = scanner.nextInt();
             scanner.nextLine();
+        }
+
+        if (back == 0){
+            consoleUtils.clearScreen();
+            Recipient_UI.main(phone, password, args);
+        }
+
+        while (back == 1){
+            switch (choice) {
+                case 1:
+                    consoleUtils.clearScreen();
+                    s.searchDonors(bloodGroup, city, area, "wbc", donorData);
+                    break;
+                case 2:
+                    consoleUtils.clearScreen();
+                    s.searchDonors(bloodGroup, city, area, "platelet", donorData);
+                    break;
+                case 3:
+                    consoleUtils.clearScreen();
+                    s.searchDonors(bloodGroup, city, area, "plasma", donorData);
+                    break;
+                case 4:
+                    consoleUtils.clearScreen();
+                    s.searchDonors(bloodGroup, city, area, "powerRed", donorData);
+                    break;
+                case 0:
+                    consoleUtils.clearScreen();
+                    Recipient_UI.main(phone, password, args);
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please select 1, 2, 3, 4, or 0.");
+            }
+
+            System.out.println("==============================================================================================");
+            System.out.println("Enter the" + RED + " Donor ID" + RESET + " to view the donor's profile or press" + RED + " 0 " + RESET + "to go back.");
+            System.out.println("==============================================================================================");
+            System.out.println(RED + "Enter your choice: " + RESET);
+            donorID = scanner.nextLine();
+            if (donorID.equals("0")){
+                consoleUtils.clearScreen();
+                Recipient_UI.main(phone, password, args);
+            }
+            while (!donorData.contains(donorID)){
+                System.out.println("Invalid donor ID. Please enter again: ");
+                donorID = scanner.nextLine();
+                if (donorID.equals("0")){
+                    consoleUtils.clearScreen();
+                    Recipient_UI.main(phone, password, args);
+                }
+            }
+
+            consoleUtils.clearScreen();
+            donor.viewProfile(donorID);
+
+            System.out.println("==============================================================================================");
+            System.out.println(RED + "[0]" + RESET + " Back");
+            System.out.println(RED + "[1]" + RESET + " Search for another donor");
+            System.out.println("==============================================================================================");
+            System.out.println(RED + "Enter your choice: " + RESET);
+            back = scanner.nextInt();
+            scanner.nextLine();
+
+            while (back != 0 && back != 1) {
+                System.out.println("Invalid choice. Please select 0.");
+                System.out.print("Enter your choice: ");
+                back = scanner.nextInt();
+                scanner.nextLine();
+            }
+
+            if (back == 0){
+                consoleUtils.clearScreen();
+                Recipient_UI.main(phone, password, args);
+            }
         }
 
         consoleUtils.clearScreen();
