@@ -285,7 +285,7 @@ public class Search_UI {
         }
 
         if(back == 2){
-            DonationManager donationManager = new DonationManager(donorID, recipient.getName());
+            DonationManager donationManager = new DonationManager(donorID, phone);
             donationManager.addRequest();
             System.out.println("Request sent to " +donorID);
             System.out.println("Returning to Dashboard");
