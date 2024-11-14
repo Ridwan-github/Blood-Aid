@@ -9,7 +9,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
-import java.util.Vector;
 
 public class Search_UI {
     final String RED = "\033[31m";
