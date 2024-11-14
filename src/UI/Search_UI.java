@@ -1,7 +1,9 @@
 package UI;
 
 import Code.AuthorizationConstraintsValidator;
+import Code.DonationManager;
 import Code.Donor;
+import Code.Recipient;
 import external_Functions.MyVector;
 import external_Functions.toLower;
 
@@ -93,11 +95,13 @@ public class Search_UI {
     public static void main(String phone, String password, String[] args) {
         AuthorizationConstraintsValidator validate = new AuthorizationConstraintsValidator();
         Donor donor = new Donor();
+        Recipient recipient = new Recipient();
         String city, area, bloodGroup;
         Search_UI s = new Search_UI();
         Scanner scanner = new Scanner(System.in);
         toLower toLower = new toLower();
         MyVector donorData = new MyVector();
+
         AuthorizationConstraintsValidator authorizationConstraintsValidator = new AuthorizationConstraintsValidator();
 
         final String RED = "\033[31m";
@@ -194,13 +198,14 @@ public class Search_UI {
         System.out.println("==============================================================================================");
         System.out.println(RED + "[0]" + RESET + " Back");
         System.out.println(RED + "[1]" + RESET + " Search for another donor");
+        System.out.println(RED + "[2]" + RESET + " Request this donor");
         System.out.println("==============================================================================================");
         System.out.println(RED + "Enter your choice: " + RESET);
         int back = scanner.nextInt();
         scanner.nextLine();
 
-        while (back != 0 && back != 1) {
-            System.out.println("Invalid choice. Please select 0.");
+        while (back != 0 && back != 1 && back != 2) {
+            System.out.println("Invalid choice. Please select 0 or 1 or 2.");
             System.out.print("Enter your choice: ");
             back = scanner.nextInt();
             scanner.nextLine();
@@ -279,8 +284,15 @@ public class Search_UI {
             }
         }
 
-        consoleUtils.clearScreen();
-        Recipient_UI.main(phone, password, args);
+        if(back == 2){
+            DonationManager donationManager = new DonationManager(donorID, recipient.getName());
+            donationManager.addRequest();
+            System.out.println("Request sent to " +donorID);
+            System.out.println("Returning to Dashboard");
+            consoleUtils.holdTime();
+            consoleUtils.clearScreen();
+            Recipient_UI.main(phone, password, args);
+        }
 
     }
 }

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class DonationManager {
     private String donorID;
-    private String recipientID;
+    private String recipientName;
     private String status;
 
     public String getDonorID() {
@@ -17,17 +17,17 @@ public class DonationManager {
         this.donorID = donorID;
     }
 
-    public String getRecipientID() {
-        return recipientID;
+    public String getRecipientName() {
+        return recipientName;
     }
 
-    public void setRecipientID(String recipientID) {
-        this.recipientID = recipientID;
+    public void setRecipientName(String recipientName) {
+        this.recipientName = recipientName;
     }
 
-    public DonationManager(String donorID, String recipientID){
+    public DonationManager(String donorID, String recipientName){
         this.donorID = donorID;
-        this.recipientID = recipientID;
+        this.recipientName = recipientName;
         this.status = "Pending";
     }
     public void addRequest(){
@@ -37,7 +37,7 @@ public class DonationManager {
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(
                     donorID + ";" +
-                            recipientID + ";" +
+                            recipientName + ";" +
                                 status
 
             );
