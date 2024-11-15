@@ -43,7 +43,7 @@ class Recipient_UI  {
 
             case 2:
                 consoleUtils.clearScreen();
-
+                RecipientBloodRequest_UI.main(phone, password, args);
                 break;
             case 3:
                 consoleUtils.clearScreen();
