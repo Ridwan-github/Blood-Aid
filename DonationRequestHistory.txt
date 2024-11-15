@@ -1,4 +1,1 @@
-20;Mahadi;01305070854;Whole Blood;Pending
-16;Mahadi;01305070854;Whole Blood;Pending
-18;Mahadi;01305070854;Whole Blood;Pending
-15;Mahadi;01305070854;Whole Blood;Pending
+20;Mahadi;01305070854;Whole Blood;Accepted

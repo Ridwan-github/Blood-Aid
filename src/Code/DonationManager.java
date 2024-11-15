@@ -93,5 +93,39 @@ public class DonationManager {
         }
         System.out.println("All pending requests removed for Donor ID: " + donorID);
     }
+    public void removePendingRequestsForRecipient() {
+        File file = new File("DonationRequestHistory.txt");
+        List<String> lines = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] requestData = line.split(";");
+                if (requestData.length == 5) {
+                    String fileDonorID = requestData[0];
+                    String recipientPhoneNumber = requestData[2];
+                    String status = requestData[4];
+
+                    // Only keep the accepted request for the recipient and remove other requests with pending status
+                    if (recipientPhoneNumber.equals(this.recipientPhoneNumber) && !status.equals("Accepted")) {
+                        continue; // Skip adding this line (it will be removed)
+                    }
+                }
+                lines.add(line);
+            }
+
+            // Write the updated list back to the file
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+                for (String updatedLine : lines) {
+                    writer.write(updatedLine);
+                    writer.newLine();
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
