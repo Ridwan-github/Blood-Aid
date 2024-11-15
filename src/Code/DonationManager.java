@@ -106,15 +106,13 @@ public class DonationManager {
                     String recipientPhoneNumber = requestData[2];
                     String status = requestData[4];
 
-                    // Only keep the accepted request for the recipient and remove other requests with pending status
                     if (recipientPhoneNumber.equals(this.recipientPhoneNumber) && !status.equals("Accepted")) {
-                        continue; // Skip adding this line (it will be removed)
+                        continue;
                     }
                 }
                 lines.add(line);
             }
 
-            // Write the updated list back to the file
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
                 for (String updatedLine : lines) {
                     writer.write(updatedLine);
