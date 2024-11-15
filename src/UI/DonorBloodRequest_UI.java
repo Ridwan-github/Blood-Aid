@@ -94,6 +94,7 @@ public class DonorBloodRequest_UI {
         DonationManager donationManager = new DonationManager(donorID, recipientPhoneNumber);
         donationManager.acceptRequest();
         donationManager.removePendingRequests();
+        donationManager.removePendingRequestsForRecipient();
 
         System.out.println("Donation request accepted for recipient with contact number " + recipientPhoneNumber);
     }

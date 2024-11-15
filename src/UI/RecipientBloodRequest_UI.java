@@ -63,12 +63,12 @@ public class RecipientBloodRequest_UI {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("==============================================================================================");
-        System.out.println("Enter 0 to Go back");
+        System.out.println("Enter 0 to Go back Or 1 to refresh");
 
         int choice = scanner.nextInt();
         scanner.nextLine();
 
-        while (choice < 0 || choice >= requestCount) {
+        while (choice != 0 && choice != 1) {
             System.out.println("Invalid choice. Please select a valid option.");
             choice = scanner.nextInt();
             scanner.nextLine();
@@ -76,10 +76,11 @@ public class RecipientBloodRequest_UI {
 
         if (choice == 0) {
             consoleUtils.clearScreen();
-            Donor_UI.main(phoneNumber, password, args);
-
+            Recipient_UI.main(phoneNumber, password, args);
         }
-
+        else {
+            consoleUtils.clearScreen();
+            RecipientBloodRequest_UI.main(phoneNumber, password, args);
+        }
     }
 }
-    
