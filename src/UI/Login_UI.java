@@ -93,7 +93,7 @@ public class Login_UI {
                         System.out.print("Enter your phone number: ");
                         phoneNumber = scanner.nextLine();
                         System.out.print("Enter your password: ");
-                        password = passwordMasking.getPassword();
+                        password = scanner.nextLine();
                         Recipient recipient = new Recipient();
                         recipient.loginRecipient(phoneNumber, password);
                         if (recipient.getName() != null) {
