@@ -77,11 +77,18 @@ public class DonationManager {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] requestData = line.split(";");
-                if (requestData.length == 3 && requestData[0].equals(donorID) && requestData[2].equals(recipientPhoneNumber)) {
-                    requestFound = true;
-                    continue;
+
+                if (requestData.length == 4) {
+                    String fileDonorID = requestData[0].trim();
+
+
+                    if (fileDonorID.equals(donorID.trim())) {
+                        requestFound = true;
+                        continue;
+                    }
+
+                    lines.add(line);
                 }
-                lines.add(line);
             }
             bufferedReader.close();
 
@@ -92,8 +99,9 @@ public class DonationManager {
                     bufferedWriter.newLine();
                 }
                 bufferedWriter.close();
+                System.out.println("All requests successfully removed for Donor ID: " + donorID);
             } else {
-                System.out.println("Request not found for Donor ID: " + donorID + ", Recipient ID: " + recipientPhoneNumber);
+                System.out.println("No requests found for Donor ID: " + donorID);
             }
 
         } catch (IOException e) {
