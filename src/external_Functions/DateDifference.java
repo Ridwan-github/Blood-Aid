@@ -70,9 +70,9 @@ public class DateDifference {
     }
 
     public static void main(String[] args) {
-        MyDate date1 = new MyDate("01/01/2020");
+        MyDate date1 = new MyDate("0/0/0");
         MyDate date2 = new MyDate("01/01/2021");
-        DateDifference dateDifference = new DateDifference(date1, date2);
+        DateDifference dateDifference = new DateDifference(date1);
         System.out.println(dateDifference.getDifference());
     }
 }

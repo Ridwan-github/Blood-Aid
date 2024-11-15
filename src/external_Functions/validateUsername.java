@@ -21,7 +21,7 @@ public class validateUsername {
             }
         } catch (IOException e) {
             e.printStackTrace();
-    }
+        }
         return true;
     }
 

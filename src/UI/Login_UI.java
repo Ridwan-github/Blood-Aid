@@ -44,6 +44,8 @@ public class Login_UI {
             case 1:
                 consoleUtils.clearScreen();
                 System.out.println("==============================================================================================");
+                System.out.println(RED + "                      Login" + RESET);
+                System.out.println("==============================================================================================");
                 System.out.println(RED + "[1]" + RESET + " Donor");
                 System.out.println(RED + "[2]" + RESET + " Recipient");
                 System.out.println(RED + "[3]" + RESET + " Back");
@@ -69,7 +71,7 @@ public class Login_UI {
                         System.out.printf("Phone Number: ");
                         String phoneNumber = scanner.nextLine();
                         System.out.printf("Password: ");
-                        String password = passwordMasking.getPassword();
+                        String password = scanner.nextLine();
                         Donor donor = new Donor();
                         donor.loginDonor(phoneNumber, password);
                         if (donor.getName() != null) {
@@ -91,7 +93,7 @@ public class Login_UI {
                         System.out.print("Enter your phone number: ");
                         phoneNumber = scanner.nextLine();
                         System.out.print("Enter your password: ");
-                        password = passwordMasking.getPassword();
+                        password = scanner.nextLine();
                         Recipient recipient = new Recipient();
                         recipient.loginRecipient(phoneNumber, password);
                         if (recipient.getName() != null) {
@@ -116,6 +118,8 @@ public class Login_UI {
 
             case 2:
                 consoleUtils.clearScreen();
+                System.out.println("==============================================================================================");
+                System.out.println(RED + "                      Signup" + RESET);
                 System.out.println("==============================================================================================");
                 System.out.println(RED + "[1]" + RESET + " Donor");
                 System.out.println(RED + "[2]" + RESET + " Recipient");
