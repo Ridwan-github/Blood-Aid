@@ -38,7 +38,7 @@ class Recipient_UI  {
         switch (choice) {
             case 1:
                 consoleUtils.clearScreen();
-                Search_UI.main(phone, password, args);
+                Search_UI.main(recipient.getName(), phone, password, args);
                 main(phone, password, args);
 
             case 2:

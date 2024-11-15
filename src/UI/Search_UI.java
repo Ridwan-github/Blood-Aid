@@ -92,7 +92,7 @@ public class Search_UI {
         }
     }
 
-    public static void main(String phone, String password, String[] args) {
+    public static void main(String name, String phone, String password, String[] args) {
         AuthorizationConstraintsValidator validate = new AuthorizationConstraintsValidator();
         Donor donor = new Donor();
         Recipient recipient = new Recipient();
@@ -285,7 +285,7 @@ public class Search_UI {
         }
 
         if(back == 2){
-            DonationManager donationManager = new DonationManager(donorID, phone);
+            DonationManager donationManager = new DonationManager(donorID, name, phone);
             donationManager.addRequest();
             System.out.println("Request sent to " +donorID);
             System.out.println("Returning to Dashboard");
