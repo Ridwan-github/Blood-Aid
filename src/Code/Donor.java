@@ -18,7 +18,6 @@ public class Donor implements User {
     private String bloodGroup;
     private String password;
     private String NID;
-//    private List<DonationHistory> donationHistory;
     private int points;
     private boolean isEligibleForWholeBlood;
     private boolean isEligibleForPlatelets;
@@ -76,13 +75,6 @@ public class Donor implements User {
         this.bloodGroup = bloodGroup;
     }
 
-//    public List<DonationHistory> getDonationHistory() {
-//        return donationHistory;
-//    }
-//
-//    public void setDonationHistory(List<DonationHistory> donationHistory) {
-//        this.donationHistory = donationHistory;
-//    }
 
     public int getPoints() {
         return points;

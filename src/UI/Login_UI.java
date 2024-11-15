@@ -71,7 +71,7 @@ public class Login_UI {
                         System.out.printf("Phone Number: ");
                         String phoneNumber = scanner.nextLine();
                         System.out.printf("Password: ");
-                        String password = passwordMasking.getPassword();
+                        String password = scanner.nextLine();
                         Donor donor = new Donor();
                         donor.loginDonor(phoneNumber, password);
                         if (donor.getName() != null) {
@@ -93,7 +93,7 @@ public class Login_UI {
                         System.out.print("Enter your phone number: ");
                         phoneNumber = scanner.nextLine();
                         System.out.print("Enter your password: ");
-                        password = passwordMasking.getPassword();
+                        password = scanner.nextLine();
                         Recipient recipient = new Recipient();
                         recipient.loginRecipient(phoneNumber, password);
                         if (recipient.getName() != null) {

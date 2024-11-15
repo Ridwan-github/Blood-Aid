@@ -157,7 +157,7 @@ public class Donor_UI {
                 break;
             case 2:
                 consoleUtils.clearScreen();
-                BloodRequests_UI.main(phoneNumber, pass, args);
+                DonorBloodRequest_UI.main(phoneNumber, pass, args);
                 break;
             case 3:
                 consoleUtils.clearScreen();

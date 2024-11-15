@@ -1,12 +1,15 @@
 package UI;
 
 import Code.AuthorizationConstraintsValidator;
+import Code.DonationManager;
 import Code.Donor;
+import Code.Recipient;
 import external_Functions.MyVector;
 import external_Functions.toLower;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -19,7 +22,7 @@ public class Search_UI {
 
         try{
             File file = new File("Donor.txt");
-            BufferedReader bufferedReader = new BufferedReader(new java.io.FileReader(file));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
             String line;
             System.out.println("==============================================================================================");
             System.out.println("                    Donor's in your Area");
@@ -43,7 +46,7 @@ public class Search_UI {
 
         try{
             File file = new File("Donor.txt");
-            BufferedReader bufferedReader = new BufferedReader(new java.io.FileReader(file));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
             String line;
             System.out.println("==============================================================================================");
             System.out.println("                    Donor's in your city");
@@ -67,13 +70,13 @@ public class Search_UI {
 
         try{
             File file = new File("Donor.txt");
-            BufferedReader bufferedReader = new BufferedReader(new java.io.FileReader(file));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
             String line;
             System.out.println("==============================================================================================");
             System.out.println("                    Donor's outside your city");
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(";");
-                if(data[4].equals(bloodGroup) && !data[2].equals(city) && !data[3].equals(area) && ((donationType == "wbc" && data[14].equals("true")) || (donationType == "platelet" && data[15].equals("true") || (donationType == "plasma" && data[16].equals("true")) || (donationType == "powerRed" && data[17].equals("true"))))){
+                if(data[4].equals(bloodGroup) && !data[2].equals(city) && !data[3].equals(area) && ((donationType.equals("wbc")  && data[14].equals("true")) || (donationType .equals("platelet")  && data[15].equals("true") || (donationType .equals("plasma") && data[16].equals("true")) || (donationType .equals("powerRed") && data[17].equals("true"))))){
                     System.out.println("==============================================================================================");
                     System.out.println(RED + "Name: " + RESET + data[0]);
                     System.out.println(RED + "Phone Number: " + RESET + data[1]);
@@ -90,14 +93,16 @@ public class Search_UI {
         }
     }
 
-    public static void main(String phone, String password, String[] args) {
+    public static void main(String name, String phone, String password, String[] args) {
         AuthorizationConstraintsValidator validate = new AuthorizationConstraintsValidator();
         Donor donor = new Donor();
+        Recipient recipient = new Recipient();
         String city, area, bloodGroup;
         Search_UI s = new Search_UI();
         Scanner scanner = new Scanner(System.in);
         toLower toLower = new toLower();
         MyVector donorData = new MyVector();
+
         AuthorizationConstraintsValidator authorizationConstraintsValidator = new AuthorizationConstraintsValidator();
 
         final String RED = "\033[31m";
@@ -144,7 +149,16 @@ public class Search_UI {
             choice = scanner.nextInt();
             scanner.nextLine();
         }
-
+        String donationType = "";
+        if(choice == 1){
+            donationType = "Whole Blood";
+        } else if (choice == 2) {
+            donationType = "Platelets";
+        } else if (choice == 3) {
+            donationType = "Plasma";
+        } else if (choice == 4) {
+            donationType = "Power Red";
+        }
         switch (choice) {
             case 1:
                 consoleUtils.clearScreen();
@@ -194,13 +208,14 @@ public class Search_UI {
         System.out.println("==============================================================================================");
         System.out.println(RED + "[0]" + RESET + " Back");
         System.out.println(RED + "[1]" + RESET + " Search for another donor");
+        System.out.println(RED + "[2]" + RESET + " Request this donor");
         System.out.println("==============================================================================================");
         System.out.println(RED + "Enter your choice: " + RESET);
         int back = scanner.nextInt();
         scanner.nextLine();
 
-        while (back != 0 && back != 1) {
-            System.out.println("Invalid choice. Please select 0.");
+        while (back != 0 && back != 1 && back != 2) {
+            System.out.println("Invalid choice. Please select 0 or 1 or 2.");
             System.out.print("Enter your choice: ");
             back = scanner.nextInt();
             scanner.nextLine();
@@ -279,8 +294,15 @@ public class Search_UI {
             }
         }
 
-        consoleUtils.clearScreen();
-        Recipient_UI.main(phone, password, args);
+        if(back == 2){
+            DonationManager donationManager = new DonationManager(donorID, name, phone, donationType);
+            donationManager.addRequest();
+            System.out.println("Request sent to " +donorID);
+            System.out.println("Returning to Dashboard");
+            consoleUtils.holdTime();
+            consoleUtils.clearScreen();
+            Recipient_UI.main(phone, password, args);
+        }
 
     }
 }
