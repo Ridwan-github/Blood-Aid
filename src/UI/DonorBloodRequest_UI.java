@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class BloodRequests_UI {
+public class DonorBloodRequest_UI {
     public static void main(String phoneNumber, String pass, String[] args) {
         String phone = phoneNumber;
         String password = pass;
@@ -33,7 +33,7 @@ public class BloodRequests_UI {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] requestData = line.split(";");
-                if (requestData.length == 5) {  // Updated to 5 fields
+                if (requestData.length == 5) {
                     String fileDonorID = requestData[0];
                     String recipientName = requestData[1];
                     String recipientPhoneNumber = requestData[2];
@@ -82,7 +82,7 @@ public class BloodRequests_UI {
             String recipientPhoneNumber = selectedRequest[1];
             String donationType = selectedRequest[2];
 
-            acceptRequest(recipientPhoneNumber, recipientName, donorID, donationType);
+            acceptRequest(recipientPhoneNumber, donorID);
             System.out.println("Accepted. Going back to Dashboard ......");
             consoleUtils.holdTime();
             consoleUtils.clearScreen();
@@ -90,10 +90,11 @@ public class BloodRequests_UI {
         }
     }
 
-    private static void acceptRequest(String recipientPhoneNumber, String recipientName, String donorID, String donationType) {
-        DonationManager donationManager = new DonationManager(donorID, recipientName, recipientPhoneNumber, donationType);
-        donationManager.removeRequest();
+    private static void acceptRequest(String recipientPhoneNumber, String donorID) {
+        DonationManager donationManager = new DonationManager(donorID, recipientPhoneNumber);
+        donationManager.acceptRequest();
+        donationManager.removePendingRequests();
 
-        System.out.println("Donation request accepted for " + recipientName + " with contact number " + recipientPhoneNumber);
+        System.out.println("Donation request accepted for recipient with contact number " + recipientPhoneNumber);
     }
 }

@@ -31,44 +31,67 @@ public class DonationManager {
             e.printStackTrace();
         }
     }
-
-    public void removeRequest() {
+    public DonationManager(String donorID, String recipientPhoneNumber) {
+        this.donorID = donorID;
+        this.recipientPhoneNumber = recipientPhoneNumber;
+    }
+    public void acceptRequest() {
         File file = new File("DonationRequestHistory.txt");
         List<String> lines = new ArrayList<>();
-        boolean requestFound = false;
+
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] requestData = line.split(";");
+                if (requestData.length == 5 && requestData[0].trim().equals(donorID.trim()) &&
+                        requestData[2].trim().equals(recipientPhoneNumber.trim()) &&
+                        requestData[4].trim().equals("Pending")) {
+
+                    requestData[4] = "Accepted";
+                    line = String.join(";", requestData);
+                }
+                lines.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))) {
+            for (String updatedLine : lines) {
+                bufferedWriter.write(updatedLine);
+                bufferedWriter.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Request status updated to 'Accepted' for Donor ID: " + donorID + ", Recipient Phone: " + recipientPhoneNumber);
+    }
+    public void removePendingRequests() {
+        File file = new File("DonationRequestHistory.txt");
+        List<String> lines = new ArrayList<>();
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] requestData = line.split(";");
 
-                if (requestData.length == 5) {
-                    String fileDonorID = requestData[0].trim();
-
-                    // Skip lines matching donorID to remove all requests for that donor
-                    if (fileDonorID.equals(donorID.trim())) {
-                        requestFound = true;
-                        continue;
-                    }
-
+                if (!(requestData[0].trim().equals(donorID.trim()) && requestData[4].trim().equals("Pending"))) {
                     lines.add(line);
                 }
             }
-
-            if (requestFound) {
-                try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))) {
-                    for (String remainingLine : lines) {
-                        bufferedWriter.write(remainingLine);
-                        bufferedWriter.newLine();
-                    }
-                }
-                System.out.println("All requests successfully removed for Donor ID: " + donorID);
-            } else {
-                System.out.println("No requests found for Donor ID: " + donorID);
-            }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))) {
+            for (String remainingLine : lines) {
+                bufferedWriter.write(remainingLine);
+                bufferedWriter.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("All pending requests removed for Donor ID: " + donorID);
     }
+
 }
