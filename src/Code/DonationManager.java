@@ -9,57 +9,22 @@ public class DonationManager {
     private String recipientName;
     private String recipientPhoneNumber;
     private String status;
+    private String donationType;
 
-    public String getRecipientPhoneNumber() {
-        return recipientPhoneNumber;
-    }
-
-    public void setRecipientPhoneNumber(String recipientPhoneNumber) {
-        this.recipientPhoneNumber = recipientPhoneNumber;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getDonorID() {
-        return donorID;
-    }
-
-    public void setDonorID(String donorID) {
-        this.donorID = donorID;
-    }
-
-    public String getRecipientName() {
-        return recipientName;
-    }
-
-    public void setRecipientName(String recipientName) {
-        this.recipientName = recipientName;
-    }
-
-    public DonationManager(String donorID, String recipientName, String recipientPhoneNumber){
+    public DonationManager(String donorID, String recipientName, String recipientPhoneNumber, String donationType) {
         this.donorID = donorID;
         this.recipientName = recipientName;
         this.recipientPhoneNumber = recipientPhoneNumber;
         this.status = "Pending";
+        this.donationType = donationType;
     }
-    public void addRequest(){
-        try{
+
+    public void addRequest() {
+        try {
             File file = new File("DonationRequestHistory.txt");
             FileWriter fileWriter = new FileWriter(file, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.write(
-                    donorID + ";" +
-                            recipientName + ";" +
-                                recipientPhoneNumber + ";" +
-                                    status
-
-            );
+            bufferedWriter.write(donorID + ";" + recipientName + ";" + recipientPhoneNumber + ";" + donationType + ";" + status);
             bufferedWriter.newLine();
             bufferedWriter.close();
         } catch (Exception e) {
@@ -72,16 +37,15 @@ public class DonationManager {
         List<String> lines = new ArrayList<>();
         boolean requestFound = false;
 
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] requestData = line.split(";");
 
-                if (requestData.length == 4) {
+                if (requestData.length == 5) {
                     String fileDonorID = requestData[0].trim();
 
-
+                    // Skip lines matching donorID to remove all requests for that donor
                     if (fileDonorID.equals(donorID.trim())) {
                         requestFound = true;
                         continue;
@@ -90,15 +54,14 @@ public class DonationManager {
                     lines.add(line);
                 }
             }
-            bufferedReader.close();
 
             if (requestFound) {
-                BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
-                for (String remainingLine : lines) {
-                    bufferedWriter.write(remainingLine);
-                    bufferedWriter.newLine();
+                try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))) {
+                    for (String remainingLine : lines) {
+                        bufferedWriter.write(remainingLine);
+                        bufferedWriter.newLine();
+                    }
                 }
-                bufferedWriter.close();
                 System.out.println("All requests successfully removed for Donor ID: " + donorID);
             } else {
                 System.out.println("No requests found for Donor ID: " + donorID);
@@ -109,4 +72,3 @@ public class DonationManager {
         }
     }
 }
-

@@ -2,7 +2,6 @@ package UI;
 
 import Code.Donor;
 import Code.DonationManager;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,17 +33,18 @@ public class BloodRequests_UI {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] requestData = line.split(";");
-                if (requestData.length == 4) {
+                if (requestData.length == 5) {  // Updated to 5 fields
                     String fileDonorID = requestData[0];
                     String recipientName = requestData[1];
                     String recipientPhoneNumber = requestData[2];
-                    String status = requestData[3];
+                    String donationType = requestData[3];
+                    String status = requestData[4];
 
                     if (fileDonorID.equals(donorID)) {
-                        matchingRequests.add(new String[]{recipientName, recipientPhoneNumber, status});
+                        matchingRequests.add(new String[]{recipientName, recipientPhoneNumber, donationType, status});
                         System.out.println(RED + "[" + recipientCount + "]" + RESET +
                                 " Recipient Name: " + RED + recipientName + RESET + " | Location: " + RED + "Hospital name, Address" + RESET +
-                                " | Contact Number: " + RED + recipientPhoneNumber + RESET + " | Status: " + RED + status + RESET);
+                                " | Contact Number: " + RED + recipientPhoneNumber + RESET + " | Donation Type: " + RED + donationType + RESET + " | Status: " + RED + status + RESET);
                         recipientCount++;
                     }
                 }
@@ -72,7 +72,7 @@ public class BloodRequests_UI {
             choice = scanner.nextInt();
             scanner.nextLine();
         }
-        System.out.println(choice);
+
         if (choice == 0) {
             consoleUtils.clearScreen();
             Donor_UI.main(phoneNumber, password, args);
@@ -80,8 +80,9 @@ public class BloodRequests_UI {
             String[] selectedRequest = matchingRequests.get(choice - 1);
             String recipientName = selectedRequest[0];
             String recipientPhoneNumber = selectedRequest[1];
+            String donationType = selectedRequest[2];
 
-            acceptRequest(recipientPhoneNumber, recipientName, donorID);
+            acceptRequest(recipientPhoneNumber, recipientName, donorID, donationType);
             System.out.println("Accepted. Going back to Dashboard ......");
             consoleUtils.holdTime();
             consoleUtils.clearScreen();
@@ -89,8 +90,8 @@ public class BloodRequests_UI {
         }
     }
 
-    private static void acceptRequest(String recipientPhoneNumber, String recipientName, String donorID) {
-        DonationManager donationManager = new DonationManager(donorID, recipientName, recipientPhoneNumber);
+    private static void acceptRequest(String recipientPhoneNumber, String recipientName, String donorID, String donationType) {
+        DonationManager donationManager = new DonationManager(donorID, recipientName, recipientPhoneNumber, donationType);
         donationManager.removeRequest();
 
         System.out.println("Donation request accepted for " + recipientName + " with contact number " + recipientPhoneNumber);
