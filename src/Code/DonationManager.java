@@ -6,16 +6,9 @@ import java.util.List;
 
 public class DonationManager {
     private String donorID;
+    private String recipientName;
     private String recipientPhoneNumber;
     private String status;
-
-    public String getDonorID() {
-        return donorID;
-    }
-
-    public void setDonorID(String donorID) {
-        this.donorID = donorID;
-    }
 
     public String getRecipientPhoneNumber() {
         return recipientPhoneNumber;
@@ -25,8 +18,33 @@ public class DonationManager {
         this.recipientPhoneNumber = recipientPhoneNumber;
     }
 
-    public DonationManager(String donorID, String recipientPhoneNumber){
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getDonorID() {
+        return donorID;
+    }
+
+    public void setDonorID(String donorID) {
         this.donorID = donorID;
+    }
+
+    public String getRecipientName() {
+        return recipientName;
+    }
+
+    public void setRecipientName(String recipientName) {
+        this.recipientName = recipientName;
+    }
+
+    public DonationManager(String donorID, String recipientName, String recipientPhoneNumber){
+        this.donorID = donorID;
+        this.recipientName = recipientName;
         this.recipientPhoneNumber = recipientPhoneNumber;
         this.status = "Pending";
     }
@@ -37,8 +55,9 @@ public class DonationManager {
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(
                     donorID + ";" +
-                            recipientPhoneNumber + ";" +
-                                status
+                            recipientName + ";" +
+                                recipientPhoneNumber + ";" +
+                                    status
 
             );
             bufferedWriter.newLine();
@@ -48,7 +67,7 @@ public class DonationManager {
         }
     }
 
-    public void removeRequest(String donorID, String recipientID) {
+    public void removeRequest() {
         File file = new File("DonationRequestHistory.txt");
         List<String> lines = new ArrayList<>();
         boolean requestFound = false;
@@ -58,7 +77,7 @@ public class DonationManager {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] requestData = line.split(";");
-                if (requestData.length == 3 && requestData[0].equals(donorID) && requestData[1].equals(recipientID)) {
+                if (requestData.length == 3 && requestData[0].equals(donorID) && requestData[2].equals(recipientPhoneNumber)) {
                     requestFound = true;
                     continue;
                 }
@@ -74,7 +93,7 @@ public class DonationManager {
                 }
                 bufferedWriter.close();
             } else {
-                System.out.println("Request not found for Donor ID: " + donorID + ", Recipient ID: " + recipientID);
+                System.out.println("Request not found for Donor ID: " + donorID + ", Recipient ID: " + recipientPhoneNumber);
             }
 
         } catch (IOException e) {
