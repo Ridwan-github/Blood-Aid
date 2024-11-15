@@ -4,6 +4,8 @@ import Code.Donor;
 import Code.DonationManager;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class BloodRequests_UI {
@@ -25,7 +27,9 @@ public class BloodRequests_UI {
         System.out.println("==============================================================================================");
 
         File file = new File("DonationRequestHistory.txt");
+        List<String[]> matchingRequests = new ArrayList<>();
         int recipientCount = 1;
+
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -37,9 +41,10 @@ public class BloodRequests_UI {
                     String status = requestData[3];
 
                     if (fileDonorID.equals(donorID)) {
+                        matchingRequests.add(new String[]{recipientName, recipientPhoneNumber, status});
                         System.out.println(RED + "[" + recipientCount + "]" + RESET +
                                 " Recipient Name: " + RED + recipientName + RESET + " | Location: " + RED + "Hospital name, Address" + RESET +
-                                " | Contact Number: " + RED + recipientPhoneNumber + RESET);
+                                " | Contact Number: " + RED + recipientPhoneNumber + RESET + " | Status: " + RED + status + RESET);
                         recipientCount++;
                     }
                 }
@@ -52,44 +57,40 @@ public class BloodRequests_UI {
 
         if (recipientCount == 1) {
             System.out.println("No donation requests found for this donor.");
+            return;
         }
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("==============================================================================================");
-        System.out.println(RED + "[0]" + RESET + " Go Back ");
-        System.out.println(RED + "[1]" + RESET + " Accept Request ");
-        System.out.println("Select an option: ");
+        System.out.println("Enter the serial number of the request to accept or 0 to Go back");
+
         int choice = scanner.nextInt();
         scanner.nextLine();
-        while(choice != 0 || choice != 1){
-            System.out.println("==============================================================================================");
-            System.out.println(RED + "[0]" + RESET + " Go Back ");
-            System.out.println(RED + "[1]" + RESET + " Accept Request ");
-            System.out.println("Select an option: ");
+
+        while (choice < 0 || choice >= recipientCount) {
+            System.out.println("Invalid choice. Please select a valid option.");
             choice = scanner.nextInt();
             scanner.nextLine();
         }
-        String recipientPhoneNumber = scanner.nextLine();
-        String recipientName = scanner.nextLine();
+        System.out.println(choice);
+        if (choice == 0) {
+            consoleUtils.clearScreen();
+            Donor_UI.main(phoneNumber, password, args);
+        } else {
+            String[] selectedRequest = matchingRequests.get(choice - 1);
+            String recipientName = selectedRequest[0];
+            String recipientPhoneNumber = selectedRequest[1];
 
-        switch (choice) {
-            case 1:
-
-                acceptRequest(recipientPhoneNumber, recipientName, donorID);
-
-                break;
-            case 0:
-                consoleUtils.clearScreen();
-                Donor_UI.main(phoneNumber, password, args);
-                break;
-            default:
-                System.out.println("Invalid choice. Please select a valid option.");
+            acceptRequest(recipientPhoneNumber, recipientName, donorID);
+            System.out.println("Accepted. Going back to Dashboard ......");
+            consoleUtils.holdTime();
+            consoleUtils.clearScreen();
+            Donor_UI.main(phoneNumber, password, args);
         }
     }
 
-
-    private static void acceptRequest(String recipientPhoneNumber,String recipientName, String donorID) {
+    private static void acceptRequest(String recipientPhoneNumber, String recipientName, String donorID) {
         DonationManager donationManager = new DonationManager(donorID, recipientName, recipientPhoneNumber);
-
         donationManager.removeRequest();
 
         System.out.println("Donation request accepted for " + recipientName + " with contact number " + recipientPhoneNumber);
