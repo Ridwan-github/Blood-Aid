@@ -1,1 +1,3 @@
 20;Mahadi;01305070854;Whole Blood;Accepted
+13;recipient;01901901901;Platelets;Accepted
+13;recipient;01901901901;Platelets;Accepted

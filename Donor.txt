@@ -1,5 +1,5 @@
-name;phoneNumber;city;area;bloodGroup;NID;password;donorID;points;prefferredDonationArea;zioCode;username;age;email;wbcEligible;plateletsEligible;plasmaEligible;powerRedEligible;lastDonatedWBC;lastDonatedPlatelets;lastDonatedPlasma;lastDonatedPowerRed;nextDonationWBC;nextDonationPlatelets;nextDonationPlasma;nextDonationPowerRed
-nuren fahmid;01901901901;city;area;A+;1234567890;ICkplg98;13;0;uttara;1234;nuren;25;nuren@email.com;false;true;true;true;10/10/2024;10/10/2024;0/0/0;0/0/0
+0name;1phoneNumber;2city;3area;4bloodGroup;5NID;6password;7donorID;8points;9prefferredDonationArea;10zioCode;11username;12age;13email;14wbcEligible;15plateletsEligible;16plasmaEligible;17powerRedEligible;18lastDonatedWBC;19lastDonatedPlatelets;20lastDonatedPlasma;21lastDonatedPowerRed;nextDonationWBC;nextDonationPlatelets;nextDonationPlasma;nextDonationPowerRed
+nuren fahmid;01901901901;city;area;A+;1234567890;ICkplg98;13;0;uttara;1234;nuren;25;nuren@email.com;false;true;false;true;10/10/2024;10/10/2024;25/11/2024;0/0/0
 sfsgaf;01010101010;cd;fsdf;A+;1010101010;ICkplg98;14;0;sdg;1234;adsgag;29;adg@sgd.;false;true;false;true;10/10/2024;20/10/2024;10/11/2024;0/0/0;
 donor1;12345678901;dhaka;uttara;A+;1234567890;ICkplg98;15;0;uttara;1234;donor1;22;donor1@email.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;
 donor2;12345678902;dhaka;uttara;A+;1234567890;ICkplg98;16;0;uttara;1234;donor2;22;donor2@email.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;
