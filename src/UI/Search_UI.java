@@ -23,6 +23,7 @@ public class Search_UI {
             System.out.println("                    Donor's in your Area");
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(";");
+<<<<<<< Updated upstream
                 if(data[4].equals(bloodGroup) && data[3].equals(area) && ((donationType == "wbc" && data[14].equals("true")) || (donationType == "platelet" && data[15].equals("true") || (donationType == "plasma" && data[16].equals("true")) || (donationType == "powerRed" && data[17].equals("true"))))){
                     System.out.println("==============================================================================================");
                     System.out.println(RED + "Name: " +RESET + data[0]);
@@ -31,6 +32,20 @@ public class Search_UI {
                     System.out.println(RED + "Area: " + RESET + data[3]);
                     System.out.println(RED + "Blood Group: " + RESET + data[4]);
                     System.out.println(RED + "Points: " + RESET + data[8]);
+=======
+                if (data.length > 0){
+                    if(data[4].equals(bloodGroup) && data[3].equals(area) && ((donationType == "wbc" && data[14].equals("true")) || (donationType == "platelet" && data[15].equals("true") || (donationType == "plasma" && data[16].equals("true")) || (donationType == "powerRed" && data[17].equals("true"))))){
+                        System.out.println("==============================================================================================");
+                        System.out.println(RED + "Name: " +RESET + data[0]);
+                        System.out.println(RED + "Phone Number: " + RESET + data[1]);
+                        System.out.println(RED + "City: " + RESET + data[2]);
+                        System.out.println(RED + "Area: " + RESET + data[3]);
+                        System.out.println(RED + "Blood Group: " + RESET + data[4]);
+                        System.out.println(RED + "Donor ID: " + RESET + data[7]);
+                        System.out.println(RED + "Points: " + RESET + data[8]);
+                        donorData.add(data[7]);
+                    }
+>>>>>>> Stashed changes
                 }
             }
         } catch (IOException ae){
