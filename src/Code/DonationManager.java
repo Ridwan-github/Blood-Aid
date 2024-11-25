@@ -1,5 +1,7 @@
 package Code;
 
+import external_Functions.CurrentDate;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -123,6 +125,51 @@ public class DonationManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+
+    public void updateEligibilityStatus(String donationType){
+        File file = new File("Donor.txt");
+        List<String> lines = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+
+            CurrentDate currentDate = new CurrentDate();
+            String currentdate = currentDate.getDateAsString();
+
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(";");
+                if (data.length > 0) {
+                    String donorId = data[7];
+
+                    if (donorId.equals(donorID)) {
+                        if (donationType.equals("Whole Blood")){
+                            lines.add(data[0] + ";" + data[1] + ";" + data[2] + ";" + data[3] + ";" + data[4] + ";" + data[5] + ";" + data[6] + ";" + data[7] + ";" + data[8] + ";" + data[9] + ";" + data[10] + ";" + data[11] + ";" + data[12] + ";" + data[13] + ";false;" + data[15] + ";" + data[16] + ";" + data[17] + ";" + currentdate + ";" + data[19] + ";" + data[20] + ";" + data[21]);
+                        } else if (donationType.equals("Plasma")){
+                            lines.add(data[0] + ";" + data[1] + ";" + data[2] + ";" + data[3] + ";" + data[4] + ";" + data[5] + ";" + data[6] + ";" + data[7] + ";" + data[8] + ";" + data[9] + ";" + data[10] + ";" + data[11] + ";" + data[12] + ";" + data[13] + ";" + data[14] + ";false;" + data[16] + ";" + data[17] + ";" + data[18] + ";" + currentdate + ";" + data[20] + ";" + data[21]);
+                        } else if (donationType.equals("Platelets")){
+                            lines.add(data[0] + ";" + data[1] + ";" + data[2] + ";" + data[3] + ";" + data[4] + ";" + data[5] + ";" + data[6] + ";" + data[7] + ";" + data[8] + ";" + data[9] + ";" + data[10] + ";" + data[11] + ";" + data[12] + ";" + data[13] + ";" + data[14] + ";" + data[15] + ";false;" + data[17] + ";" + data[18] + ";" + data[19] + ";" + currentdate + ";" + data[21]);
+                        } else if (donationType.equals("Power Red")){
+                            lines.add(data[0] + ";" + data[1] + ";" + data[2] + ";" + data[3] + ";" + data[4] + ";" + data[5] + ";" + data[6] + ";" + data[7] + ";" + data[8] + ";" + data[9] + ";" + data[10] + ";" + data[11] + ";" + data[12] + ";" + data[13] + ";" + data[14] + ";" + data[15] + ";" + data[16] + "false;" + data[18] + ";" + data[19] + ";" + data[20] + ";" + currentdate);
+                        }
+                    } else {
+                        lines.add(line);
+                    }
+                }
+            }
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, false))) {
+                for (String updatedLine : lines) {
+                    writer.write(updatedLine);
+                    writer.newLine();
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 

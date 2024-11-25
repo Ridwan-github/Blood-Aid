@@ -40,7 +40,7 @@ public class DonorBloodRequest_UI {
                     String donationType = requestData[3];
                     String status = requestData[4];
 
-                    if (fileDonorID.equals(donorID)) {
+                    if (fileDonorID.equals(donorID) && !status.equals("Accepted")) {
                         matchingRequests.add(new String[]{recipientName, recipientPhoneNumber, donationType, status});
                         System.out.println(RED + "[" + recipientCount + "]" + RESET +
                                 " Recipient Name: " + RED + recipientName + RESET + " | Location: " + RED + "Hospital name, Address" + RESET +
@@ -57,7 +57,10 @@ public class DonorBloodRequest_UI {
 
         if (recipientCount == 1) {
             System.out.println("No donation requests found for this donor.");
-            return;
+            System.out.println("Going back to Dashboard ......");
+            consoleUtils.holdTime();
+            consoleUtils.clearScreen();
+            Donor_UI.main(phoneNumber, password, args);
         }
 
         Scanner scanner = new Scanner(System.in);
@@ -82,7 +85,7 @@ public class DonorBloodRequest_UI {
             String recipientPhoneNumber = selectedRequest[1];
             String donationType = selectedRequest[2];
 
-            acceptRequest(recipientPhoneNumber, donorID);
+            acceptRequest(recipientPhoneNumber, donorID, donationType);
             System.out.println("Accepted. Going back to Dashboard ......");
             consoleUtils.holdTime();
             consoleUtils.clearScreen();
@@ -90,11 +93,12 @@ public class DonorBloodRequest_UI {
         }
     }
 
-    private static void acceptRequest(String recipientPhoneNumber, String donorID) {
+    private static void acceptRequest(String recipientPhoneNumber, String donorID, String donationType) {
         DonationManager donationManager = new DonationManager(donorID, recipientPhoneNumber);
         donationManager.acceptRequest();
         donationManager.removePendingRequests();
         donationManager.removePendingRequestsForRecipient();
+        donationManager.updateEligibilityStatus(donationType);
 
         System.out.println("Donation request accepted for recipient with contact number " + recipientPhoneNumber);
     }

@@ -300,6 +300,45 @@ public class Donor implements User {
         }
     }
 
+    public void loginDonor(String donorID) {
+        try {
+            File file = new File("Donor.txt");
+            BufferedReader bufferedReader = new BufferedReader(new java.io.FileReader(file));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] data = line.split(";");
+                if (data[7].equals(donorID)) {
+                    setName(data[0]);
+                    setPhoneNumber(data[1]);
+                    setcity(data[2]);
+                    setArea(data[3]);
+                    setBloodGroup(data[4]);
+                    setNID(data[5]);
+                    setPassword(data[6]);
+                    setDonorID(data[7]);
+                    setPoints(Integer.parseInt(data[8]));
+                    setPreferedHospital(data[9]);
+                    setZipCode(data[10]);
+                    setUsername(data[11]);
+                    setAge(data[12]);
+                    setEmail(data[13]);
+                    setEligibleForWholeBlood(Boolean.parseBoolean(data[14]));
+                    setEligibleForPlatelets(Boolean.parseBoolean(data[15]));
+                    setEligibleForPlasma(Boolean.parseBoolean(data[16]));
+                    setEligibleForPowerRed(Boolean.parseBoolean(data[17]));
+                    setLastDonatedDateWholeBlood(data[18]);
+                    setLastDonatedDatePlatelets(data[19]);
+                    setLastDonatedDatePlasma(data[20]);
+                    setLastDonatedDatePowerRed(data[21]);
+                    break;
+                }
+            }
+            bufferedReader.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     final String RED = "\033[31m";
     final String RESET = "\033[0m";
 

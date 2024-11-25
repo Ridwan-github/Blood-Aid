@@ -42,6 +42,10 @@ public class CurrentDate{
         System.out.println(date.toString());
     }
 
+    public String getDateAsString(){
+        return date.toString();
+    }
+
     public static void main(String[] args) {
         CurrentDate currentDate = new CurrentDate();
         System.out.println(currentDate.date.toString());
@@ -54,4 +58,5 @@ public class CurrentDate{
     public static int daysInYear(int year) {
         return isLeapYear(year) ? 366 : 365;
     }
+
 }
