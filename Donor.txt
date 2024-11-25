@@ -1,9 +1,9 @@
 0name;1phoneNumber;2city;3area;4bloodGroup;5NID;6password;7donorID;8points;9prefferredDonationArea;10zioCode;11username;12age;13email;14wbcEligible;15plateletsEligible;16plasmaEligible;17powerRedEligible;18lastDonatedWBC;19lastDonatedPlatelets;20lastDonatedPlasma;21lastDonatedPowerRed;nextDonationWBC;nextDonationPlatelets;nextDonationPlasma;nextDonationPowerRed
-nuren fahmid;01901901901;city;area;A+;1234567890;ICkplg98;13;0;uttara;1234;nuren;25;nuren@email.com;false;true;false;true;10/10/2024;10/10/2024;25/11/2024;0/0/0
-sfsgaf;01010101010;cd;fsdf;A+;1010101010;ICkplg98;14;0;sdg;1234;adsgag;29;adg@sgd.;false;true;false;true;10/10/2024;20/10/2024;10/11/2024;0/0/0;
-donor1;12345678901;dhaka;uttara;A+;1234567890;ICkplg98;15;0;uttara;1234;donor1;22;donor1@email.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;
-donor2;12345678902;dhaka;uttara;A+;1234567890;ICkplg98;16;0;uttara;1234;donor2;22;donor2@email.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;
-donor3;12345678903;dhaka;mirpur;A+;1234567890;ICkplg98;17;0;uttara;1234;donor3;22;donor3@email.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;
-donor4;12345678904;chittagong;panchlaish;A+;1234567890;ICkplg98;18;0;Uttara;1234;donor4;22;donor4@email.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;
-donor5;01901901902;dhaka;uttara;A+;1234123412;ICkplg98;19;0;uttara;1234;donor5;26;donor5@email.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;
-asdas;01305070854;dhaka;uttara;O+;1122332244;Pdkdglvhd456C;20;0;Uttara;5400;asdas;21;sdad@dsas.dsa;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;
+nuren fahmid;01901901901;city;area;A+;1234567890;ICkplg98;13;0;uttara;1234;nuren;25;nuren@email.com;false;true;false;true;10/10/2024;10/10/2024;25/11/2024;0/0/0;false;
+sfsgaf;01010101010;cd;fsdf;A+;1010101010;ICkplg98;14;0;sdg;1234;adsgag;29;adg@sgd.;false;true;false;true;10/10/2024;20/10/2024;10/11/2024;0/0/0;false;
+donor1;12345678901;dhaka;uttara;A+;1234567890;ICkplg98;15;0;uttara;1234;donor1;22;donor1@email.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;false;
+donor2;12345678902;dhaka;uttara;A+;1234567890;ICkplg98;16;0;uttara;1234;donor2;22;donor2@email.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;false;
+donor3;12345678903;dhaka;mirpur;A+;1234567890;ICkplg98;17;0;uttara;1234;donor3;22;donor3@email.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;false;
+donor4;12345678904;chittagong;panchlaish;A+;1234567890;ICkplg98;18;0;Uttara;1234;donor4;22;donor4@email.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;false;
+donor5;01901901902;dhaka;uttara;A+;1234123412;ICkplg98;19;0;uttara;1234;donor5;26;donor5@email.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;false;
+asdas;01305070854;dhaka;uttara;O+;1122332244;Pdkdglvhd456C;20;0;Uttara;5400;asdas;21;sdad@dsas.dsa;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;false;

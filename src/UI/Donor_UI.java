@@ -1,4 +1,5 @@
 package UI;
+import Code.DonationManager;
 import Code.Donor;
 import Code.DonorViewProfile;
 import external_Functions.DateDifference;
@@ -19,6 +20,7 @@ public class Donor_UI {
         ConsoleUtils consoleUtils = new ConsoleUtils();
         String phoneNumber = phone;
         String pass = password;
+        DonationManager donationManager = new DonationManager();
 
         donor = new Donor();
         donor.loginDonor(phoneNumber, pass);
@@ -138,6 +140,10 @@ public class Donor_UI {
             System.out.println("\n");
         }
 
+        if (donor.isRequestNotification()){
+            System.out.println(RED + "You have a new donation request." + RESET);
+        }
+
         System.out.println("==============================================================================================");
         System.out.println();
         System.out.println(RED + "[1]" + RESET + " View Donation History");
@@ -157,6 +163,7 @@ public class Donor_UI {
                 break;
             case 2:
                 consoleUtils.clearScreen();
+                donationManager.updateNotification(donor.getDonorID(), "false");
                 DonorBloodRequest_UI.main(phoneNumber, pass, args);
                 break;
             case 3:
@@ -168,7 +175,7 @@ public class Donor_UI {
                 consoleUtils.clearScreen();
                 Donor_UI.main(phoneNumber, pass, args);
                 break;
-            case 5:
+            case 0:
                 System.out.printf("Logging out...");
                 consoleUtils.holdTime();
                 consoleUtils.clearScreen();
