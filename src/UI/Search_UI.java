@@ -1,9 +1,6 @@
 package UI;
 
-import Code.AuthorizationConstraintsValidator;
-import Code.DonationManager;
-import Code.Donor;
-import Code.Recipient;
+import Code.*;
 import external_Functions.MyVector;
 import external_Functions.toLower;
 
@@ -12,6 +9,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.Vector;
 
 public class Search_UI {
     final String RED = "\033[31m";
@@ -320,7 +318,10 @@ public class Search_UI {
                 Recipient_UI.main(phone, password, args);
             } else if (chat == 1){
                 consoleUtils.clearScreen();
-                Recipient_Chat_UI.main(phone, password, args);
+                ChatSystem chatSystem = new ChatSystem();
+                Vector<String> list = chatSystem.availableDonorToChat(phone);
+                int c = list.indexOf(donorID) + 1;
+                Recipient_Chat_UI_2.main(phone, password, list, c, args);
             }
         }
 

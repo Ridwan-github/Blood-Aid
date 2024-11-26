@@ -141,14 +141,15 @@ public class Donor_UI {
             System.out.println("\n");
         }
 
-        if (donor.isRequestNotification()){
-            System.out.println(RED + "You have a new donation request." + RESET);
-        }
-
         System.out.println("==============================================================================================");
         System.out.println();
         System.out.println(RED + "[1]" + RESET + " View Donation History");
-        System.out.println(RED + "[2]" + RESET + " View Donation Requests");
+        System.out.printf(RED + "[2]" + RESET + " View Donation Requests");
+        if (donor.isRequestNotification()){
+            System.out.println(RED + " (New)" + RESET);
+        } else {
+            System.out.println();
+        }
         System.out.println(RED + "[3]" + RESET + " View Profile");
         System.out.println(RED + "[4]" + RESET + " Refresh");
         System.out.println(RED + "[5]" + RESET + " Chat");
