@@ -24,6 +24,7 @@ public class Donor_UI {
 
         donor = new Donor();
         donor.loginDonor(phoneNumber, pass);
+        String donorID = donor.getDonorID();
         int  days1, days2, days3, days4;
 
         lastWholeBloodDonationDate = new MyDate(donor.getLastDonatedDateWholeBlood().getDay(), donor.getLastDonatedDateWholeBlood().getMonth(), donor.getLastDonatedDateWholeBlood().getYear());
@@ -150,6 +151,7 @@ public class Donor_UI {
         System.out.println(RED + "[2]" + RESET + " View Donation Requests");
         System.out.println(RED + "[3]" + RESET + " View Profile");
         System.out.println(RED + "[4]" + RESET + " Refresh");
+        System.out.println(RED + "[5]" + RESET + " Chat");
         System.out.println(RED + "[0]" + RESET + " Logout");
         System.out.println("==============================================================================================");
         System.out.println("Enter your choice: ");
@@ -174,6 +176,10 @@ public class Donor_UI {
             case 4:
                 consoleUtils.clearScreen();
                 Donor_UI.main(phoneNumber, pass, args);
+                break;
+            case 5:
+                consoleUtils.clearScreen();
+                Donor_Chat_UI.main(donorID, pass,phoneNumber, args);
                 break;
             case 0:
                 System.out.printf("Logging out...");

@@ -179,9 +179,5 @@ public class Login_UI {
             consoleUtils.clearScreen();
             handleRecipientLogin(scanner, args);
         }
-
     }
-
-
-
 }

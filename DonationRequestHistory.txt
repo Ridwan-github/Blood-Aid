@@ -6,3 +6,5 @@
 13;da;123;Platelets;Pending
 13;da;123;Platelets;Pending
 13;recipient;01901901901;Platelets;Pending
+18;recipient;01901901901;Whole Blood;Pending
+19;recipient;12345;Whole Blood;Pending

@@ -26,7 +26,8 @@ class Recipient_UI  {
         System.out.println(RED + "[1]" + RESET + " Search for donors");
         System.out.println(RED + "[2]" + RESET + " View my requests");
         System.out.println(RED  + "[3]" + RESET + " View blood received history");
-        System.out.println(RED + "[4]" + RESET + " Logout");
+        System.out.println(RED + "[4]" + RESET + " Chat");
+        System.out.println(RED + "[0]" + RESET + " Logout");
         System.out.println("==============================================================================================");
 
         int choice;
@@ -93,6 +94,10 @@ class Recipient_UI  {
                 main(phone, password, args);
                 break;
             case 4:
+                consoleUtils.clearScreen();
+                Recipient_Chat_UI.main(phone, password, args);
+                break;
+            case 0:
                 System.out.println("Logging out...");
                 consoleUtils.holdTime();
                 consoleUtils.clearScreen();
@@ -101,7 +106,5 @@ class Recipient_UI  {
             default:
                 System.out.println("Invalid choice. Please select 1, 2, 3, or 4.");
         }
-
-
     }
 }

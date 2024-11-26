@@ -298,10 +298,30 @@ public class Search_UI {
             DonationManager donationManager = new DonationManager(donorID, name, phone, donationType);
             donationManager.addRequest();
             System.out.println("Request sent to " +donorID);
-            System.out.println("Returning to Dashboard");
-            consoleUtils.holdTime();
-            consoleUtils.clearScreen();
-            Recipient_UI.main(phone, password, args);
+
+            System.out.println("==============================================================================================");
+            System.out.println("Enter " + RED + "[0]" + RESET + " to go back to dashboard.");
+            System.out.println(RED + "[1]" + RESET + " to chat with the donor.");
+            System.out.println("==============================================================================================");
+
+            System.out.println(RED + "Enter your choice: " + RESET);
+            int chat = scanner.nextInt();
+            scanner.nextLine();
+
+            while (chat != 0 && chat != 1) {
+                System.out.println("Invalid choice. Please select 0 or 1.");
+                System.out.print("Enter your choice: ");
+                chat = scanner.nextInt();
+                scanner.nextLine();
+            }
+
+            if (chat == 0){
+                consoleUtils.clearScreen();
+                Recipient_UI.main(phone, password, args);
+            } else if (chat == 1){
+                consoleUtils.clearScreen();
+                Recipient_Chat_UI.main(phone, password, args);
+            }
         }
 
     }
