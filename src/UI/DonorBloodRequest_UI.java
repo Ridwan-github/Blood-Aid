@@ -1,5 +1,6 @@
 package UI;
 
+import Code.Donation_Confirmation;
 import Code.Donor;
 import Code.DonationManager;
 import java.io.*;
@@ -94,11 +95,8 @@ public class DonorBloodRequest_UI {
     }
 
     private static void acceptRequest(String recipientPhoneNumber, String donorID, String donationType) {
-        DonationManager donationManager = new DonationManager(donorID, recipientPhoneNumber);
-        donationManager.acceptRequest();
-        donationManager.removePendingRequests();
-        donationManager.removePendingRequestsForRecipient();
-        donationManager.updateEligibilityStatus(donationType);
+        Donation_Confirmation confirmation = new Donation_Confirmation();
+        confirmation.updateDonationState(recipientPhoneNumber, donorID, donationType, "Accepted");
 
         System.out.println("Donation request accepted for recipient with contact number " + recipientPhoneNumber);
     }

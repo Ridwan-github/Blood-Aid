@@ -54,9 +54,9 @@ public class DonationManager {
                 String[] requestData = line.split(";");
                 if (requestData.length == 5 && requestData[0].trim().equals(donorID.trim()) &&
                         requestData[2].trim().equals(recipientPhoneNumber.trim()) &&
-                        requestData[4].trim().equals("Pending")) {
+                        requestData[4].trim().equals("Accepted")) {
 
-                    requestData[4] = "Accepted";
+                    requestData[4] = "Donated";
                     line = String.join(";", requestData);
                 }
                 lines.add(line);
@@ -115,7 +115,7 @@ public class DonationManager {
                     String recipientPhoneNumber = requestData[2];
                     String status = requestData[4];
 
-                    if (recipientPhoneNumber.equals(this.recipientPhoneNumber) && !status.equals("Accepted")) {
+                    if (recipientPhoneNumber.equals(this.recipientPhoneNumber) && !status.equals("Donated")) {
                         continue;
                     }
                 }
@@ -209,6 +209,24 @@ public class DonationManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public String getDonationType(){
+        String donationType = "";
+        try{
+            File file = new File("DonationRequestHistory.txt");
+            BufferedReader reader = new BufferedReader(new java.io.FileReader(file));
+            String line;
+            while((line = reader.readLine()) != null){
+                String[] data = line.split(";");
+                if(data[2].equals(recipientPhoneNumber) && data[0].equals(donorID)){
+                    donationType = data[3];
+                }
+            }
+        } catch (Exception e){
+            System.out.println("Error: " + e.getMessage());
+        }
+        return donationType;
     }
 
 
