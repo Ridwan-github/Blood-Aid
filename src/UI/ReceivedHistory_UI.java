@@ -1,27 +1,28 @@
 package UI;
 
 import Code.Donor;
+import Code.Recipient;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.Scanner;
 
-class DonationHistory_UI {
+public class ReceivedHistory_UI {
     public static void main(String phoneNumber, String password, String[] args) {
         String phone = phoneNumber;
         String pass = password;
 
         ConsoleUtils consoleUtils = new ConsoleUtils();
-        Donor donor = new Donor();
-        donor.loginDonor(phoneNumber, password);
+        Recipient recipient = new Recipient();
+        recipient.loginRecipient(phone, pass);
 
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
 
 
         System.out.println("==============================================================================================");
-        System.out.println("                                    Donation History");
+        System.out.println("                                    Blood Received History");
         System.out.println("==============================================================================================");
 
         try{
@@ -40,8 +41,8 @@ class DonationHistory_UI {
                     String donationType = requestData[3];
                     String status = requestData[4];
 
-                    if (fileDonorID.equals(donor.getDonorID()) && !status.equals("Accepted") && !status.equals("Pending")) {
-                        System.out.println(RED + "[" + count + "]" + RESET +
+                    if (recipientPhoneNumber.equals(phone) && status.equals("Donated")) {
+                        System.out.println(RED + "[" + count + "]" + RESET + "Donor ID: " + RED + fileDonorID + RESET +
                                 " Recipient Name: " + RED + recipientName + RESET + " | Contact Number: " + RED + recipientPhoneNumber + RESET + " | Donation Type: " + RED + donationType + RESET + " | Status: " + RED + status + RESET);
                         System.out.println("==============================================================================================");
                         count++;
@@ -50,7 +51,7 @@ class DonationHistory_UI {
             }
 
             if (count == 1) {
-                System.out.println("No donation history found for this donor.");
+                System.out.println("No blood receive history found for this donor.");
             }
         } catch (Exception e) {
             System.out.println("Error reading the donation history file.");

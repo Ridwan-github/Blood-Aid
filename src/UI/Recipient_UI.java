@@ -49,50 +49,7 @@ class Recipient_UI  {
                 break;
             case 3:
                 consoleUtils.clearScreen();
-                System.out.println("==============================================================================================");
-                System.out.println("Date of Donation: 1/11/2024");
-                System.out.println("Blood Group: B+");
-                System.out.println("Status: Received");
-                System.out.println("Address: Uttara Hospital, Uttara, Dhaka");
-                System.out.println("Donated by: ");
-                System.out.println("Donor Name: John Doe");
-                System.out.println("Donor Phone Number: 01712345678");
-                System.out.println("Donor ID: 1234");
-                System.out.println("==============================================================================================");
-                System.out.println("Date of Donation: 28/10/2024");
-                System.out.println("Blood Group: A+");
-                System.out.println("Status: Received");
-                System.out.println("Address: Apollo Hospital, Bashundhara, Dhaka");
-                System.out.println("Donated by: ");
-                System.out.println("Donor Name: Jane Doe");
-                System.out.println("Donor Phone Number: 01787654321");
-                System.out.println("Donor ID: 5678");
-                System.out.println("==============================================================================================");
-                System.out.println("Date of Donation: 15/10/2024");
-                System.out.println("Blood Group: O+");
-                System.out.println("Status: Received");
-                System.out.println("Address: Square Hospital, Panthapath, Dhaka");
-                System.out.println("Donated by: ");
-                System.out.println("Donor Name: Ahmed Ali");
-                System.out.println("Donor Phone Number: 01712345678");
-                System.out.println("Donor ID: 1234");
-                System.out.println("==============================================================================================");
-                System.out.println("Date of Donation: 1/10/2024");
-                System.out.println("Blood Group: AB+");
-                System.out.println("Status: Received");
-                System.out.println("Address: Labaid Hospital, Dhanmondi, Dhaka");
-                System.out.println("Donated by: ");
-                System.out.println("Donor Name: Sarah Ali");
-                System.out.println("Donor Phone Number: 01787654321");
-                System.out.println("Donor ID: 5678");
-                System.out.println("==============================================================================================");
-                System.out.println(RED + "[0]" + RESET + " Back");
-                int chc = scanner.nextInt();
-                while (chc!=0){
-                    System.out.println("Input a valid option: ");
-                    chc = scanner.nextInt();
-                }
-                main(phone, password, args);
+                ReceivedHistory_UI.main(phone, password, args);
                 break;
             case 4:
                 consoleUtils.clearScreen();
