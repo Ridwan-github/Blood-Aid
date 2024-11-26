@@ -41,7 +41,7 @@ public class DonorBloodRequest_UI {
                     String donationType = requestData[3];
                     String status = requestData[4];
 
-                    if (fileDonorID.equals(donorID) && !status.equals("Accepted")) {
+                    if (fileDonorID.equals(donorID) && !status.equals("Accepted") && !status.equals("Donated")) {
                         matchingRequests.add(new String[]{recipientName, recipientPhoneNumber, donationType, status});
                         System.out.println(RED + "[" + recipientCount + "]" + RESET +
                                 " Recipient Name: " + RED + recipientName + RESET + " | Location: " + RED + "Hospital name, Address" + RESET +
