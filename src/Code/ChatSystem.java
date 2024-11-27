@@ -2,10 +2,10 @@ package Code;
 
 import external_Functions.CurrentDate;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
+import java.io.*;
 import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ChatSystem {
 
@@ -27,6 +27,17 @@ public class ChatSystem {
         } catch (Exception e){
             System.out.println("Error: " + e.getMessage());
         }
+
+        try{
+            File file = new File("ChatNotification.txt");
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
+
+            writer.write(donorID + ";" + recipientPhoneNumber + ";" + "true");
+            writer.newLine();
+            writer.close();
+        } catch (Exception e){
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
     public void sendMessageToDonor(String recipientPhoneNumber, String donorID, String message){
@@ -38,6 +49,17 @@ public class ChatSystem {
             String time = currentDate.getTimeAsString();
 
             writer.write(recipientPhoneNumber + ";" + donorID + ";" + message + ";" + date + ";" + time);
+            writer.newLine();
+            writer.close();
+        } catch (Exception e){
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        try{
+            File file = new File("ChatNotification.txt");
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
+
+            writer.write(recipientPhoneNumber + ";" + donorID + ";" + "true");
             writer.newLine();
             writer.close();
         } catch (Exception e){
@@ -63,6 +85,35 @@ public class ChatSystem {
         } catch (Exception e){
             System.out.println("Error: " + e.getMessage());
         }
+
+        try{
+            File file = new File("ChatNotification.txt");
+            List<String> lines = new ArrayList<>();
+
+            try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    String[] requestData = line.split(";");
+                    if (requestData[1].trim().equals(donorID.trim()) &&
+                            requestData[0].trim().equals(recipientPhoneNumber.trim()) &&
+                            requestData[2].trim().equals("true")
+                    ) {
+                        requestData[2] = "false";
+                        line = String.join(";", requestData);
+                    }
+                    lines.add(line);
+                }
+            }
+
+            try (BufferedWriter bufferedWriter = new BufferedWriter(new java.io.FileWriter(file, false))) {
+                for (String line : lines) {
+                    bufferedWriter.write(line);
+                    bufferedWriter.newLine();
+                }
+            }
+        } catch (Exception e){
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
     public void loadMessageForRecipient(String recipientPhoneNumber, String donorID){
@@ -80,6 +131,35 @@ public class ChatSystem {
                 }
             }
             reader.close();
+        } catch (Exception e){
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        try{
+            File file = new File("ChatNotification.txt");
+            List<String> lines = new ArrayList<>();
+
+            try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    String[] requestData = line.split(";");
+                    if (requestData[1].trim().equals(recipientPhoneNumber.trim()) &&
+                            requestData[0].trim().equals(donorID.trim()) &&
+                            requestData[2].trim().equals("true")
+                    ) {
+                        requestData[2] = "false";
+                        line = String.join(";", requestData);
+                    }
+                    lines.add(line);
+                }
+            }
+
+            try (BufferedWriter bufferedWriter = new BufferedWriter(new java.io.FileWriter(file, false))) {
+                for (String line : lines) {
+                    bufferedWriter.write(line);
+                    bufferedWriter.newLine();
+                }
+            }
         } catch (Exception e){
             System.out.println("Error: " + e.getMessage());
         }
@@ -123,6 +203,68 @@ public class ChatSystem {
             System.out.println("Error: " + e.getMessage());
         }
         return donorList;
+    }
+
+    public boolean checkChatNotificationForDonor(String phoneNumber, String donorID){
+        try{
+            File file = new File("ChatNotification.txt");
+            BufferedReader reader = new BufferedReader(new java.io.FileReader(file));
+
+            String line;
+            while((line = reader.readLine()) != null){
+                String[] data = line.split(";");
+                if(data[0].trim().equals(phoneNumber) && data[1].trim().equals(donorID) && data[2].trim().equals("true")){
+                    return true;
+                }
+            }
+            reader.close();
+        } catch (Exception e){
+            System.out.println("Error: " + e.getMessage());
+        }
+        return false;
+    }
+
+    public boolean checkChatNotificationForRecipient(String phoneNumber, String donorID){
+        try{
+            File file = new File("ChatNotification.txt");
+            BufferedReader reader = new BufferedReader(new java.io.FileReader(file));
+
+            String line;
+            while((line = reader.readLine()) != null){
+                String[] data = line.split(";");
+                if(data[0].trim().equals(donorID) && data[1].trim().equals(phoneNumber) && data[2].trim().equals("true")){
+                    return true;
+                }
+            }
+            reader.close();
+        } catch (Exception e){
+            System.out.println("Error: " + e.getMessage());
+        }
+        return false;
+    }
+
+    public boolean checkChatForDonor(String donorID){
+        Vector<String> recipientList = availableRecipientToChat(donorID);
+
+        for (String recipientPhoneNumber : recipientList){
+            if (checkChatNotificationForDonor(recipientPhoneNumber, donorID)){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean checkChatForRecipient(String recipientPhoneNumber){
+        Vector<String> donorList = availableDonorToChat(recipientPhoneNumber);
+
+        for (String donorID : donorList){
+            if (checkChatNotificationForRecipient(recipientPhoneNumber, donorID)){
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public static void main(String[] args) {

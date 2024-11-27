@@ -1,4 +1,5 @@
 package UI;
+import Code.ChatSystem;
 import Code.DonationManager;
 import Code.Donor;
 import Code.DonorViewProfile;
@@ -152,7 +153,13 @@ public class Donor_UI {
         }
         System.out.println(RED + "[3]" + RESET + " View Profile");
         System.out.println(RED + "[4]" + RESET + " Refresh");
-        System.out.println(RED + "[5]" + RESET + " Chat");
+        System.out.printf(RED + "[5]" + RESET + " Chat");
+        ChatSystem chatSystem = new ChatSystem();
+        if (chatSystem.checkChatForDonor(donorID)){
+            System.out.println(RED + " (New)" + RESET);
+        } else {
+            System.out.println();
+        }
         System.out.println(RED + "[0]" + RESET + " Logout");
         System.out.println("==============================================================================================");
         System.out.println("Enter your choice: ");

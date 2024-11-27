@@ -29,7 +29,12 @@ public class Recipient_Chat_UI {
         } else {
             System.out.println("Available donor to chat:");
             for (int i = 0; i < list.size(); i++) {
-                System.out.println((i + 1) + ". " + list.get(i));
+                System.out.printf((i + 1) + ". " + list.get(i));
+                if (chatSystem.checkChatNotificationForRecipient(phoneNumber, list.get(i))) {
+                    System.out.println(RED + " (New)" + RESET);
+                } else {
+                    System.out.println();
+                }
             }
 
             System.out.println("Enter the serial number of the donor to chat with or " + RED + "[0]" + RESET + " to Go back");

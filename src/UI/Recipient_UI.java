@@ -1,4 +1,5 @@
 package UI;
+import Code.ChatSystem;
 import Code.Recipient;
 
 import java.io.BufferedReader;
@@ -26,8 +27,15 @@ class Recipient_UI  {
         System.out.println(RED + "[1]" + RESET + " Search for donors");
         System.out.println(RED + "[2]" + RESET + " View my requests");
         System.out.println(RED  + "[3]" + RESET + " View blood received history");
-        System.out.println(RED + "[4]" + RESET + " Chat");
-        System.out.println(RED + "[5]" + RESET + " Donation Confirmation");
+        System.out.println(RED + "[4]" + RESET + " Refresh");
+        System.out.printf(RED + "[5]" + RESET + " Chat");
+        ChatSystem chatSystem = new ChatSystem();
+        if (chatSystem.checkChatForRecipient(phoneNumber)){
+            System.out.println(RED + " (New)" + RESET);
+        } else {
+            System.out.println();
+        }
+        System.out.println(RED + "[6]" + RESET + " Donation Confirmation");
         System.out.println(RED + "[0]" + RESET + " Logout");
         System.out.println("==============================================================================================");
 
@@ -53,9 +61,13 @@ class Recipient_UI  {
                 break;
             case 4:
                 consoleUtils.clearScreen();
-                Recipient_Chat_UI.main(phone, password, args);
+                main(phone, password, args);
                 break;
             case 5:
+                consoleUtils.clearScreen();
+                Recipient_Chat_UI.main(phone, password, args);
+                break;
+            case 6:
                 consoleUtils.clearScreen();
                 Donation_Confirmation_UI.main(phone, password, args);
                 break;
