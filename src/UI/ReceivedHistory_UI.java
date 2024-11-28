@@ -25,12 +25,13 @@ public class ReceivedHistory_UI {
         System.out.println("                                    Blood Received History");
         System.out.println("==============================================================================================");
 
+        int count = 1;
+
         try{
             File file = new File("DonationRequestHistory.txt");
             BufferedReader reader = new BufferedReader(new FileReader(file));
 
             String line;
-            int count = 1;
 
             while ((line = reader.readLine()) != null) {
                 String[] requestData = line.split(";");
@@ -50,27 +51,33 @@ public class ReceivedHistory_UI {
                 }
             }
 
-            if (count == 1) {
-                System.out.println("No blood receive history found for this donor.");
-            }
         } catch (Exception e) {
             System.out.println("Error reading the donation history file.");
             e.printStackTrace();
         }
 
-        System.out.println("==============================================================================================");
+        if (count == 1) {
+            System.out.println("No blood receive history found for this donor.");
+            System.out.println("Going back to Dashboard ......");
+            consoleUtils.holdTime();
+            consoleUtils.clearScreen();
+            Recipient_UI.main(phone, pass, args);
+        } else {
+            System.out.println("==============================================================================================");
 
-        System.out.println(RED + "[0]" + RESET + " Go back");
-        Scanner scanner = new Scanner(System.in);
-        int choice = scanner.nextInt();
+            System.out.println(RED + "[0]" + RESET + " Go back");
+            Scanner scanner = new Scanner(System.in);
+            int choice = scanner.nextInt();
 
-        switch (choice) {
-            case 0:
-                consoleUtils.clearScreen();
-                Donor_UI.main(phone, pass, args);
-                break;
-            default:
-                System.out.println("Invalid choice. Please select 0.");
+            while (choice != 0) {
+                System.out.println("Invalid choice. Please select a valid option.");
+                choice = scanner.nextInt();
+            }
+
+            consoleUtils.clearScreen();
+            Recipient_UI.main(phone, pass, args);
         }
+
+
     }
 }

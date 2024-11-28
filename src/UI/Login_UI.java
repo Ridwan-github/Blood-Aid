@@ -8,8 +8,6 @@ import java.util.Scanner;
 
 public class Login_UI {
 
-
-
     public static void main(String[] args) {
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
@@ -62,7 +60,6 @@ public class Login_UI {
                     userTypeLogin = scanner.nextInt();
                     scanner.nextLine();
                 }
-
 
                 switch (userTypeLogin) {
                     case 1:
@@ -125,8 +122,6 @@ public class Login_UI {
             default:
                 System.out.println("Invalid choice. Please select 1, 2, or 3.");
         }
-
-
 
         scanner.close();
     }

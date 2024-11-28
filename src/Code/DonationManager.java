@@ -52,7 +52,7 @@ public class DonationManager {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] requestData = line.split(";");
-                if (requestData.length == 5 && requestData[0].trim().equals(donorID.trim()) &&
+                if (requestData[0].trim().equals(donorID.trim()) &&
                         requestData[2].trim().equals(recipientPhoneNumber.trim()) &&
                         requestData[4].trim().equals("Accepted")) {
 

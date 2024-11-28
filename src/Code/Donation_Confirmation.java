@@ -22,8 +22,8 @@ public class Donation_Confirmation {
                     if (requestData[2].trim().equals(phoneNumber.trim()) &&
                             requestData[0].trim().equals(donorID.trim()) &&
                             requestData[3].trim().equals(donationType.trim()) &&
-                            (requestData[4].trim().equals("Pending") && status.equals("Accepted"))    ||
-                            (requestData[4].trim().equals("Accepted") && status.equals("Donated"))
+                            ((requestData[4].trim().equals("Pending") && status.equals("Accepted"))    ||
+                            (requestData[4].trim().equals("Accepted") && status.equals("Donated")))
                     ) {
                         requestData[4] = status;
                         line = String.join(";", requestData);
@@ -52,7 +52,7 @@ public class Donation_Confirmation {
             String line;
             while((line = reader.readLine()) != null){
                 String[] data = line.split(";");
-                if(data[2].equals(phoneNumber) && data[4].equals("Donated") && !donorList.contains(data[0])){
+                if(data[2].equals(phoneNumber) && data[4].equals("Accepted") && !donorList.contains(data[0])){
                     donorList.add(data[0]);
                 }
             }

@@ -62,35 +62,35 @@ public class DonorBloodRequest_UI {
             consoleUtils.holdTime();
             consoleUtils.clearScreen();
             Donor_UI.main(phoneNumber, password, args);
-        }
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("==============================================================================================");
-        System.out.println("Enter the serial number of the request to accept or 0 to Go back");
-
-        int choice = scanner.nextInt();
-        scanner.nextLine();
-
-        while (choice < 0 || choice >= recipientCount) {
-            System.out.println("Invalid choice. Please select a valid option.");
-            choice = scanner.nextInt();
-            scanner.nextLine();
-        }
-
-        if (choice == 0) {
-            consoleUtils.clearScreen();
-            Donor_UI.main(phoneNumber, password, args);
         } else {
-            String[] selectedRequest = matchingRequests.get(choice - 1);
-            String recipientName = selectedRequest[0];
-            String recipientPhoneNumber = selectedRequest[1];
-            String donationType = selectedRequest[2];
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("==============================================================================================");
+            System.out.println("Enter the serial number of the request to accept or 0 to Go back");
 
-            acceptRequest(recipientPhoneNumber, donorID, donationType);
-            System.out.println("Accepted. Going back to Dashboard ......");
-            consoleUtils.holdTime();
-            consoleUtils.clearScreen();
-            Donor_UI.main(phoneNumber, password, args);
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            while (choice < 0 || choice >= recipientCount) {
+                System.out.println("Invalid choice. Please select a valid option.");
+                choice = scanner.nextInt();
+                scanner.nextLine();
+            }
+
+            if (choice == 0) {
+                consoleUtils.clearScreen();
+                Donor_UI.main(phoneNumber, password, args);
+            } else {
+                String[] selectedRequest = matchingRequests.get(choice - 1);
+                String recipientName = selectedRequest[0];
+                String recipientPhoneNumber = selectedRequest[1];
+                String donationType = selectedRequest[2];
+
+                acceptRequest(recipientPhoneNumber, donorID, donationType);
+                System.out.println("Accepted. Going back to Dashboard ......");
+                consoleUtils.holdTime();
+                consoleUtils.clearScreen();
+                Donor_UI.main(phoneNumber, password, args);
+            }
         }
     }
 
