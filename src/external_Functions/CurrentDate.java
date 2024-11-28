@@ -83,6 +83,9 @@ public class CurrentDate {
     public static void main(String[] args) {
         CurrentDate currentDateTime = new CurrentDate();
         currentDateTime.getDateTime();
+        MyDate date = new MyDate("28/11/2024");
+        System.out.println(currentDateTime.isCurrentDate(date));
+        System.out.println("Checking with current date: " + currentDateTime.date.toString());
     }
 
     public static boolean isLeapYear(int year) {
@@ -91,5 +94,12 @@ public class CurrentDate {
 
     public static int daysInYear(int year) {
         return isLeapYear(year) ? 366 : 365;
+    }
+
+    public boolean isCurrentDate(MyDate date) {
+        if (this.date.getYear() == date.getYear() && this.date.getMonth() == date.getMonth() && this.date.getDay() == date.getDay()) {
+            return true;
+        }
+        return false;
     }
 }

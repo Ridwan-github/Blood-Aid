@@ -3,6 +3,7 @@ import Code.ChatSystem;
 import Code.DonationManager;
 import Code.Donor;
 import Code.DonorViewProfile;
+import external_Functions.CurrentDate;
 import external_Functions.DateDifference;
 import external_Functions.MyDate;
 import java.util.Scanner;
@@ -17,11 +18,18 @@ public class Donor_UI {
 
     public static void main(String phone, String password, String[] args) {
         MyDate lastWholeBloodDonationDate, lastPlateletsDonationDate, lastPlasmaDonationDate, lastPowerRedDonationDate;
+        CurrentDate currentDate = new CurrentDate();
         DateDifference dateDifference1, dateDifference2, dateDifference3, dateDifference4;
         ConsoleUtils consoleUtils = new ConsoleUtils();
         String phoneNumber = phone;
         String pass = password;
         DonationManager donationManager = new DonationManager();
+        String wbcText = "";
+        String plateletsText = "";
+        String plasmaText = "";
+
+        final String RED = "\033[31m";
+        final String RESET = "\033[0m";
 
         donor = new Donor();
         donor.loginDonor(phoneNumber, pass);
@@ -70,14 +78,50 @@ public class Donor_UI {
 
         if (days1 > 90){
             donor.setEligibleForWholeBlood(true);
+        } else if ((days1 > 0 && days1 < 14) || currentDate.isCurrentDate(donor.getLastDonatedDateWholeBlood())){
+            donor.setEligibleForWholeBlood(false);
+            donor.setEligibleForPlatelets(false);
+            donor.setEligibleForPlasma(false);
+            if (days1 == 0){
+                plateletsText = "Donated Whole Blood today";
+                plasmaText = "Donated Whole Blood today";
+            } else if (days1 == 1){
+                plateletsText = "Donated Whole Blood yesterday";
+                plasmaText = "Donated Whole Blood yesterday";
+
+            } else {
+                plasmaText = "Donated Whole Blood " + RED + days1 + RESET + " days ago";
+                plateletsText = "Donated Whole Blood " + RED + days1 + RESET + " days ago";
+            }
+
+        } else if ((days1 > 0 && days1 < 28) || currentDate.isCurrentDate(donor.getLastDonatedDateWholeBlood())){
+            donor.setEligibleForWholeBlood(false);
+            donor.setEligibleForPlatelets(false);
+            plateletsText = "Donated Whole Blood" + days1 + " days ago";
         }
 
         if (days4 > 112){
             donor.setEligibleForPowerRed(true);
+        } else if ((days4 > 0 && days4 < 112) || currentDate.isCurrentDate(donor.getLastDonatedDatePowerRed())){
+            donor.setEligibleForPowerRed(false);
+            donor.setEligibleForWholeBlood(false);
+            donor.setEligibleForPlatelets(false);
+            donor.setEligibleForPlasma(false);
+            if (days4 == 0){
+                wbcText = "Donated Power Red today";
+                plateletsText = "Donated Power Red today";
+                plasmaText = "Donated Power Red today";
+            } else if (days4 == 1){
+                wbcText = "Donated Power Red yesterday";
+                plateletsText = "Donated Power Red yesterday";
+                plasmaText = "Donated Power Red yesterday";
+                
+            } else {
+                wbcText = "Donated Power Red " + RED + days4 + RESET + " days ago";
+                plateletsText = "Donated Power Red " + RED + days4 + RESET + " days ago";
+                plasmaText = "Donated Power Red " + RED + days4 + RESET + " days ago";
+            }
         }
-
-        final String RED = "\033[31m";
-        final String RESET = "\033[0m";
 
         System.out.println("==============================================================================================");
         System.out.println("             Dashboard");
@@ -89,77 +133,47 @@ public class Donor_UI {
         System.out.println("==============================================================================================");
         System.out.println("Donation Status");
 
-        if (donor.getLastDonatedDatePlasma().isNull() && donor.getLastDonatedDatePlatelets().isNull() && donor.getLastDonatedDatePowerRed().isNull() && donor.getLastDonatedDateWholeBlood().isNull()){
-            System.out.println(RED + "Last Donated Blood: " + RESET + " Never donated blood before.");
-        }
-
-        if (!donor.isEligibleForWholeBlood() && !donor.getLastDonatedDateWholeBlood().isNull()){
-            System.out.println(RED + "Last Donated Whole Blood: " + RESET + donor.getLastDonatedDateWholeBlood().toString());
-            System.out.println("Days left before next donation: " + RED + (90 - days1) + RESET);
-            System.out.println("You are not eligible to donate whole blood for now.");
-            System.out.println(" ");
-        } else if (days4 > 0 && days4 < 112){
-            donor.setEligibleForPowerRed(false);
-            donor.setEligibleForWholeBlood(false);
-            System.out.println("You are not eligible to donate whole blood for now as you have donated power red " + days4 + " days ago.");
-        }
-
-        if (!donor.isEligibleForPlatelets() && !donor.getLastDonatedDatePlatelets().isNull()){
-            System.out.println(RED + "Last Donated Platelets: " + RESET + donor.getLastDonatedDatePlatelets().toString());
-            System.out.println("Days left before next donation: " + RED + (14 - days2) + RESET);
-            System.out.println("You are not eligible to donate platelets for now.");
-            System.out.println(" ");
-        } else if (days4 > 0 && days4 < 112){
-            donor.setEligibleForPowerRed(false);
-            donor.setEligibleForPlatelets(false);
-            System.out.println("You are not eligible to donate platelets for now as you have donated power red " + days4 + " days ago.");
-        } else if (days1 > 0 && days1 <= 14){
-            donor.setEligibleForWholeBlood(false);
-            donor.setEligibleForPlatelets(false);
-            System.out.println("You are not eligible to donate platelets for now as you have donated whole blood " + days1 + " days ago.");
-        }
-
-        if (!donor.isEligibleForPlasma() && !donor.getLastDonatedDatePlasma().isNull()){
-            System.out.println(RED + "Last Donated Plasma: " + RESET + donor.getLastDonatedDatePlasma().toString());
-            System.out.println("Days left before next donation: " + RED + (28 - days3) + RESET);
-            System.out.println("You are not eligible to donate plasma for now.");
-            System.out.println(" ");
-        } else if (days4 > 0 && days4 < 112){
-            donor.setEligibleForPowerRed(false);
-            donor.setEligibleForPlasma(false);
-            System.out.println("You are not eligible to donate plasma for now as you have donated power red " + days4 + " days ago.");
-        } else if (days1 > 0 && days1 <= 28){
-            donor.setEligibleForWholeBlood(false);
-            donor.setEligibleForPlasma(false);
-            System.out.println("You are not eligible to donate plasma for now as you have donated whole blood " + days1 + " days ago.");
-        }
-
-        if (!donor.isEligibleForPowerRed() && !donor.getLastDonatedDatePowerRed().isNull()){
-            System.out.println(RED + "Last Donated Power Red: " + RESET + donor.getLastDonatedDatePowerRed().toString());
-            System.out.println("Days left before next donation: " + RED + (112 - days4) + RESET);
-            System.out.println("You are not eligible to donate power red for now.");
-            System.out.println(" ");
-        }
-
-        if (donor.isEligibleForPowerRed() && donor.isEligibleForPlasma() && donor.isEligibleForPlatelets() && donor.isEligibleForWholeBlood()){
-            System.out.println("You are eligible to donate all types of blood.");
-        } else if (!donor.isEligibleForPowerRed() && !donor.isEligibleForPlasma() && !donor.isEligibleForPlatelets() && !donor.isEligibleForWholeBlood()){
-            System.out.println("You are not eligible to donate any type of blood for now.");
-        } else {
-            System.out.println(RED + "Eligible for donating:" + RESET);
-            if (donor.isEligibleForWholeBlood()){
-                System.out.println("Whole Blood");
+        System.out.printf("Whole Blood Donation: ");
+        if (donor.isEligibleForWholeBlood()){
+            System.out.println(RED + "Eligible" + RESET);
+        } else{
+            System.out.printf(RED + "Not Eligible" + RESET);
+            if (!wbcText.equals("")){
+                System.out.println(" - " + wbcText);
+            } else {
+                System.out.println();
             }
-            if (donor.isEligibleForPlatelets()){
-                System.out.println("Platelets");
+        }
+
+        System.out.printf("Platelets Donation: ");
+        if (donor.isEligibleForPlatelets()){
+            System.out.println(RED + "Eligible" + RESET);
+        } else{
+            System.out.printf(RED + "Not Eligible" + RESET);
+            if (!plateletsText.equals("")){
+                System.out.println(" - " + plateletsText);
+            } else {
+                System.out.println();
             }
-            if (donor.isEligibleForPlasma()){
-                System.out.println("Plasma");
+        }
+
+        System.out.printf("Plasma Donation: ");
+        if (donor.isEligibleForPlasma()){
+            System.out.println(RED + "Eligible" + RESET);
+        } else{
+            System.out.printf(RED + "Not Eligible" + RESET);
+            if (!plasmaText.equals("")){
+                System.out.println(" - " + plasmaText);
+            } else {
+                System.out.println();
             }
-            if (donor.isEligibleForPowerRed()){
-                System.out.println("Power Red");
-            }
-            System.out.println("\n");
+        }
+
+        System.out.printf("Power Red Donation: ");
+        if (donor.isEligibleForPowerRed()){
+            System.out.println(RED + "Eligible" + RESET);
+        } else{
+            System.out.println(RED + "Not Eligible" + RESET);
         }
 
         System.out.println("==============================================================================================");
