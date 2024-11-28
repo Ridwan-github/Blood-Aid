@@ -115,7 +115,7 @@ public class Donor_UI {
                 wbcText = "Donated Power Red yesterday";
                 plateletsText = "Donated Power Red yesterday";
                 plasmaText = "Donated Power Red yesterday";
-                
+
             } else {
                 wbcText = "Donated Power Red " + RED + days4 + RESET + " days ago";
                 plateletsText = "Donated Power Red " + RED + days4 + RESET + " days ago";
@@ -131,7 +131,7 @@ public class Donor_UI {
         System.out.println(RED + "Points: " + RESET  + donor.getPoints());
 
         System.out.println("==============================================================================================");
-        System.out.println("Donation Status");
+        System.out.println("\t\t\t\tDonation Status");
 
         System.out.printf("Whole Blood Donation: ");
         if (donor.isEligibleForWholeBlood()){

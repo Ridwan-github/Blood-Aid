@@ -7,6 +7,32 @@ import Code.PasswordMasking;
 import java.util.Scanner;
 
 public class DonorSignup_UI {
+    private static String getInput(Scanner scanner) {
+        String input = scanner.nextLine();
+        if ("0".equals(input)) {
+            RedirectClass.redirectMethod();
+            System.exit(0);
+        }
+        return input;
+    }
+
+    private static int getIntInput(Scanner scanner) {
+        int input = scanner.nextInt();
+        if (input == 0) {
+            RedirectClass.redirectMethod();
+            System.exit(0);
+        }
+        return input;
+    }
+
+    public class RedirectClass {
+        public static void redirectMethod() {
+            ConsoleUtils consoleUtils = new ConsoleUtils();
+            consoleUtils.clearScreen();
+            Login_UI.main(new String[0]);
+        }
+    }
+
     public static void main(String[] args) {
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
@@ -22,7 +48,7 @@ public class DonorSignup_UI {
         System.out.println("==============================================================================================");
 
         System.out.printf(RED + "1." + RESET + " Name: ");
-        String name = scanner.nextLine();
+        String name = getInput(scanner);
         while(!authorizationConstraintsValidator.validateName(name)){
             System.out.println("Please input 2-100 letter & only alphabetic letters");
             System.out.printf(RED + "1." + RESET + " Name: ");
@@ -31,8 +57,7 @@ public class DonorSignup_UI {
         donor.setName(name);
 
         System.out.printf(RED + "2." + RESET + " Username: ");
-        String username = scanner.nextLine();
-        validateUsername validateUsername = new validateUsername();
+        String username = getInput(scanner);
         while (!authorizationConstraintsValidator.repeatUserName(username) || !authorizationConstraintsValidator.validateUserName(username)) {
             if(!authorizationConstraintsValidator.repeatUserName(username)){
                 System.out.println("Username already exists. Please enter a different username.");
@@ -48,7 +73,7 @@ public class DonorSignup_UI {
         donor.setUsername(username);
 
         System.out.printf(RED + "3." + RESET + " Email: ");
-        String email = scanner.nextLine();
+        String email = getInput(scanner);
         while(!authorizationConstraintsValidator.validateEmail(email) || !authorizationConstraintsValidator.repeatEmail(email)){
             if(!authorizationConstraintsValidator.validateEmail(email)){
                 System.out.println("Please input valid email format (example@domain.com)");
@@ -64,7 +89,7 @@ public class DonorSignup_UI {
         donor.setEmail(email);
 
         System.out.printf(RED + "4." + RESET + " Age: ");
-        int age = scanner.nextInt();
+        int age = getIntInput(scanner);
         while (!authorizationConstraintsValidator.validateAge(age)) {
             System.out.println("You must be 18-65 years old to donate blood.");
             System.out.printf(RED + "4." + RESET + " Age: ");
@@ -75,7 +100,7 @@ public class DonorSignup_UI {
         donor.setAge(parseINT.intTOString(age));
 
         System.out.printf(RED + "5." + RESET + " Phone Number: ");
-        String phoneNumber = scanner.nextLine();
+        String phoneNumber = getInput(scanner);
         if (phoneNumber.length() == 14){
             if (phoneNumber.charAt(0) == '+' && phoneNumber.charAt(1) == '8' && phoneNumber.charAt(2) == '8') {
                 String s = "";
@@ -106,7 +131,7 @@ public class DonorSignup_UI {
 
         System.out.println(RED + "6." + RESET + " Address - ");
         System.out.printf("City: ");
-        String city = scanner.nextLine();
+        String city = getInput(scanner);
         while (!authorizationConstraintsValidator.validateCity(city)) {
             System.out.println("Please input 2-50 letters & only alphabetic letters");
             System.out.printf(" City: ");
@@ -132,7 +157,7 @@ public class DonorSignup_UI {
         donor.setArea(area);
 
         System.out.printf(RED + "7." + RESET + " Zipcode: ");
-        String zipCode = scanner.nextLine();
+        String zipCode = getInput(scanner);
         while (!authorizationConstraintsValidator.validateZipCode(zipCode)) {
             System.out.println("Please input min-max 4 numeric letters only");
             System.out.printf(RED + "7." + RESET + " Zipcode: ");
@@ -141,7 +166,7 @@ public class DonorSignup_UI {
         donor.setZipCode(zipCode);
 
         System.out.printf(RED + "8." + RESET + " Preferred area for donation: ");
-        String preferedHospitalArea = scanner.nextLine();
+        String preferedHospitalArea = getInput(scanner);
         while (!authorizationConstraintsValidator.validateArea(preferedHospitalArea)) {
             System.out.println("Please input at max 50 letters");
             System.out.printf(RED + "8." + RESET + " Preferred Hospital Area: ");
@@ -150,7 +175,7 @@ public class DonorSignup_UI {
         donor.setPreferedHospital(preferedHospitalArea);
 
         System.out.printf(RED + "9." + RESET + " Blood Group: ");
-        String bloodGroup = scanner.nextLine();
+        String bloodGroup = getInput(scanner);
         while (!authorizationConstraintsValidator.validateBloodGroup(bloodGroup)) {
             System.out.println("Invalid blood group. Please enter a valid blood group.");
             System.out.printf(RED + "9." + RESET + " Blood Group: ");
@@ -158,8 +183,8 @@ public class DonorSignup_UI {
         }
         donor.setBloodGroup(bloodGroup);
 
-        System.out.printf(RED + "11." + RESET + " Password: ");
-        String password = scanner.nextLine();
+        System.out.printf(RED + "10." + RESET + " Password: ");
+        String password = getInput(scanner);
         while (!authorizationConstraintsValidator.validatePassword(password)) {
             System.out.println("Please input 8-32 character");
             System.out.println("Please include at least one uppercase,lowercase,numeric and special character");
@@ -168,8 +193,8 @@ public class DonorSignup_UI {
         }
         donor.setPassword(password);
 
-        System.out.printf(RED + "10." + RESET + " NID Number: ");
-        String NID = scanner.nextLine();
+        System.out.printf(RED + "11." + RESET + " NID Number: ");
+        String NID = getInput(scanner);
         while (!authorizationConstraintsValidator.validateNID(NID) || !authorizationConstraintsValidator.repeatNID(NID)) {
             if (!authorizationConstraintsValidator.validateNID(NID)) {
                 System.out.println("Please input min-max 10 numeric letters");
@@ -188,7 +213,7 @@ public class DonorSignup_UI {
         System.out.println(RED + "[1]" + RESET + " Yes");
         System.out.println(RED + "[2]" + RESET + " No");
         System.out.println("==============================================================================================");
-        int choice = scanner.nextInt();
+        int choice = getIntInput(scanner);
         scanner.nextLine();
 
         while (choice != 1 && choice != 2) {
@@ -198,7 +223,7 @@ public class DonorSignup_UI {
             System.out.println(RED + "[1]" + RESET + " Yes");
             System.out.println(RED + "[2]" + RESET + " No");
             System.out.println("==============================================================================================");
-            choice = scanner.nextInt();
+            choice = getIntInput(scanner);
             scanner.nextLine();
         }
 
@@ -208,7 +233,7 @@ public class DonorSignup_UI {
             System.out.println(RED + "[1]" + RESET + " Yes");
             System.out.println(RED + "[2]" + RESET + " No");
             System.out.println("==============================================================================================");
-            choice = scanner.nextInt();
+            choice = getIntInput(scanner);
             scanner.nextLine();
 
             while (choice != 1 && choice != 2) {
@@ -218,7 +243,7 @@ public class DonorSignup_UI {
                 System.out.println(RED + "[1]" + RESET + " Yes");
                 System.out.println(RED + "[2]" + RESET + " No");
                 System.out.println("==============================================================================================");
-                choice = scanner.nextInt();
+                choice = getIntInput(scanner);
                 scanner.nextLine();
             }
 
@@ -228,7 +253,7 @@ public class DonorSignup_UI {
                 while (!authorizationConstraintsValidator.validateLastDonationDate(date)) {
                     System.out.println("Please input valid Date (dd/mm/yyyy)");
                     System.out.printf("Date: ");
-                    date = scanner.nextLine();
+                    date = getInput(scanner);
                 }
 
                 MyDate myDate = new MyDate(date);
@@ -260,7 +285,7 @@ public class DonorSignup_UI {
                 System.out.println(RED + "[1]" + RESET + " Yes");
                 System.out.println(RED + "[2]" + RESET + " No");
                 System.out.println("==============================================================================================");
-                choice = scanner.nextInt();
+                choice =getIntInput(scanner);
                 scanner.nextLine();
 
                 while (choice != 1 && choice != 2) {
@@ -270,7 +295,7 @@ public class DonorSignup_UI {
                     System.out.println(RED + "[1]" + RESET + " Yes");
                     System.out.println(RED + "[2]" + RESET + " No");
                     System.out.println("==============================================================================================");
-                    choice = scanner.nextInt();
+                    choice = getIntInput(scanner);
                     scanner.nextLine();
                 }
 
@@ -280,7 +305,7 @@ public class DonorSignup_UI {
                     while (!authorizationConstraintsValidator.validateLastDonationDate(date)) {
                         System.out.println("Please input valid Date (dd/mm/yyyy)");
                         System.out.printf("Date: ");
-                        date = scanner.nextLine();
+                        date = getInput(scanner);
                     }
                     MyDate myDate = new MyDate(date);
                     DateDifference dateDifference = new DateDifference(myDate);
@@ -306,7 +331,7 @@ public class DonorSignup_UI {
                 System.out.println(RED + "[1]" + RESET + " Yes");
                 System.out.println(RED + "[2]" + RESET + " No");
                 System.out.println("==============================================================================================");
-                choice = scanner.nextInt();
+                choice = getIntInput(scanner);
                 scanner.nextLine();
 
                 while (choice != 1 && choice != 2) {
@@ -316,7 +341,7 @@ public class DonorSignup_UI {
                     System.out.println(RED + "[1]" + RESET + " Yes");
                     System.out.println(RED + "[2]" + RESET + " No");
                     System.out.println("==============================================================================================");
-                    choice = scanner.nextInt();
+                    choice = getIntInput(scanner);
                     scanner.nextLine();
                 }
 
@@ -352,7 +377,7 @@ public class DonorSignup_UI {
                 System.out.println(RED + "[1]" + RESET + " Yes");
                 System.out.println(RED + "[2]" + RESET + " No");
                 System.out.println("==============================================================================================");
-                choice = scanner.nextInt();
+                choice = getIntInput(scanner);
                 scanner.nextLine();
 
                 while (choice != 1 && choice != 2) {
@@ -362,7 +387,7 @@ public class DonorSignup_UI {
                     System.out.println(RED + "[1]" + RESET + " Yes");
                     System.out.println(RED + "[2]" + RESET + " No");
                     System.out.println("==============================================================================================");
-                    choice = scanner.nextInt();
+                    choice = getIntInput(scanner);
                     scanner.nextLine();
                 }
 
@@ -372,7 +397,7 @@ public class DonorSignup_UI {
                     while (!authorizationConstraintsValidator.validateLastDonationDate(date)) {
                         System.out.println("Please input valid Date (dd/mm/yyyy)");
                         System.out.printf("Date: ");
-                        date = scanner.nextLine();
+                        date = getInput(scanner);
                     }
 
                     MyDate myDate = new MyDate(date);
@@ -411,7 +436,7 @@ public class DonorSignup_UI {
         System.out.println(RED + "[0]" + RESET + " Cancel and go back to login");
         System.out.println("==============================================================================================");
 
-        int choice1 = scanner.nextInt();
+        int choice1 = getIntInput(scanner);
         scanner.nextLine();
 
         switch (choice1) {

@@ -7,6 +7,31 @@ import Code.Recipient;
 import java.util.Scanner;
 
 public class Login_UI {
+    private static String getInput(Scanner scanner) {
+        String input = scanner.nextLine();
+        if ("0".equals(input)) {
+            RedirectClass.redirectMethod();
+            System.exit(0);
+        }
+        return input;
+    }
+
+    private static int getIntInput(Scanner scanner) {
+        int input = scanner.nextInt();
+        if (input == 0) {
+            RedirectClass.redirectMethod();
+            System.exit(0);
+        }
+        return input;
+    }
+
+    public class RedirectClass {
+        public static void redirectMethod() {
+            ConsoleUtils consoleUtils = new ConsoleUtils();
+            consoleUtils.clearScreen();
+            Login_UI.main(new String[0]);
+        }
+    }
 
     public static void main(String[] args) {
         final String RED = "\033[31m";
@@ -133,11 +158,19 @@ public class Login_UI {
         final String RESET = "\033[0m";
         System.out.println(RED + "Donor Login" + RESET);
         System.out.println("==============================================================================================");
-        System.out.println("Enter your phone number and password to login.");
+        System.out.println("Enter your phone number and password to login. (Enter " + RED + "[0]" + RESET + " to go back)");
         System.out.printf("Phone Number: ");
-        String phoneNumber = scanner.nextLine();
+        String phoneNumber = getInput(scanner);
+        if (phoneNumber.equals("0")) {
+            consoleUtils.clearScreen();
+            main(args);
+        }
         System.out.printf("Password: ");
-        String password = scanner.nextLine();
+        String password = getInput(scanner);
+        if (password.equals("0")) {
+            consoleUtils.clearScreen();
+            main(args);
+        }
         Donor donor = new Donor();
         donor.loginDonor(phoneNumber, password);
         if (donor.getName() != null) {
@@ -159,10 +192,11 @@ public class Login_UI {
         final String RESET = "\033[0m";
         System.out.println(RED + "Recipient Login" + RESET);
         System.out.println("==============================================================================================");
+        System.out.println("Enter your phone number and password to login. (Enter " + RED + "[0]" + RESET + " to go back)");
         System.out.print("Enter your phone number: ");
-        String phoneNumber = scanner.nextLine();
+        String phoneNumber = getInput(scanner);
         System.out.print("Enter your password: ");
-        String password = scanner.nextLine();
+        String password = getInput(scanner);
         Recipient recipient = new Recipient();
         recipient.loginRecipient(phoneNumber, password);
         if (recipient.getName() != null) {

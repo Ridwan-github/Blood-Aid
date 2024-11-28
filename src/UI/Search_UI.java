@@ -15,88 +15,12 @@ public class Search_UI {
     final String RED = "\033[31m";
     final String RESET = "\033[0m";
 
-    public void searchDonors(String bloodGroup, String city, String area, String donationType, MyVector donorData) {
-        Donor donor = new Donor();
-
-        try{
-            File file = new File("Donor.txt");
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-            String line;
-            System.out.println("==============================================================================================");
-            System.out.println("                    Donor's in your Area");
-            while ((line = bufferedReader.readLine()) != null) {
-                String[] data = line.split(";");
-                if(data[4].equals(bloodGroup) && data[3].equals(area) && ((donationType == "wbc" && data[14].equals("true")) || (donationType == "platelet" && data[15].equals("true") || (donationType == "plasma" && data[16].equals("true")) || (donationType == "powerRed" && data[17].equals("true"))))){
-                    System.out.println("==============================================================================================");
-                    System.out.println(RED + "Name: " +RESET + data[0]);
-                    System.out.println(RED + "Phone Number: " + RESET + data[1]);
-                    System.out.println(RED + "City: " + RESET + data[2]);
-                    System.out.println(RED + "Area: " + RESET + data[3]);
-                    System.out.println(RED + "Blood Group: " + RESET + data[4]);
-                    System.out.println(RED + "Donor ID: " + RESET + data[7]);
-                    System.out.println(RED + "Points: " + RESET + data[8]);
-                    donorData.add(data[7]);
-                }
-            }
-        } catch (IOException ae){
-            ae.printStackTrace();
-        }
-
-        try{
-            File file = new File("Donor.txt");
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-            String line;
-            System.out.println("==============================================================================================");
-            System.out.println("                    Donor's in your city");
-            while ((line = bufferedReader.readLine()) != null) {
-                String[] data = line.split(";");
-                if(data[4].equals(bloodGroup) && data[2].equals(city) && !data[3].equals(area) && ((donationType == "wbc" && data[14].equals("true")) || (donationType == "platelet" && data[15].equals("true") || (donationType == "plasma" && data[16].equals("true")) || (donationType == "powerRed" && data[17].equals("true"))))){
-                    System.out.println("==============================================================================================");
-                    System.out.println(RED + "Name: " + RESET + data[0]);
-                    System.out.println(RED + "Phone Number: " + RESET + data[1]);
-                    System.out.println(RED + "City: " + RESET + data[2]);
-                    System.out.println(RED + "Area: " + RESET + data[3]);
-                    System.out.println(RED + "Blood Group: " + RESET + data[4]);
-                    System.out.println(RED + "Donor ID: " + RESET + data[7]);
-                    System.out.println(RED + "Points: " + RESET + data[8]);
-                    donorData.add(data[7]);
-                }
-            }
-        } catch (IOException ae){
-            ae.printStackTrace();
-        }
-
-        try{
-            File file = new File("Donor.txt");
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-            String line;
-            System.out.println("==============================================================================================");
-            System.out.println("                    Donor's outside your city");
-            while ((line = bufferedReader.readLine()) != null) {
-                String[] data = line.split(";");
-                if(data[4].equals(bloodGroup) && !data[2].equals(city) && !data[3].equals(area) && ((donationType.equals("wbc")  && data[14].equals("true")) || (donationType .equals("platelet")  && data[15].equals("true") || (donationType .equals("plasma") && data[16].equals("true")) || (donationType .equals("powerRed") && data[17].equals("true"))))){
-                    System.out.println("==============================================================================================");
-                    System.out.println(RED + "Name: " + RESET + data[0]);
-                    System.out.println(RED + "Phone Number: " + RESET + data[1]);
-                    System.out.println(RED + "City: " + RESET + data[2]);
-                    System.out.println(RED + "Area: " + RESET + data[3]);
-                    System.out.println(RED + "Blood Group: " + RESET + data[4]);
-                    System.out.println(RED + "Donor ID: " + RESET + data[7]);
-                    System.out.println(RED + "Points: " + RESET + data[8]);
-                    donorData.add(data[7]);
-                }
-            }
-        } catch (IOException ae){
-            ae.printStackTrace();
-        }
-    }
-
     public static void main(String name, String phone, String password, String[] args) {
         AuthorizationConstraintsValidator validate = new AuthorizationConstraintsValidator();
         Donor donor = new Donor();
         Recipient recipient = new Recipient();
         String city, area, bloodGroup;
-        Search_UI s = new Search_UI();
+        SearchDonor s = new SearchDonor();
         Scanner scanner = new Scanner(System.in);
         toLower toLower = new toLower();
         MyVector donorData = new MyVector();

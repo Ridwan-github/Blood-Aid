@@ -227,6 +227,8 @@ public class Donor implements User {
         this.requestNotification = requestNotification;
     }
 
+
+
     PasswordCipher passwordCipher = new PasswordCipher();
     public void registerDonor() {
         try{
