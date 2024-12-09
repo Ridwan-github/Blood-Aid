@@ -13,7 +13,28 @@ import java.util.Comparator;
 import java.util.List;
 
 public class SearchDonor {
-    public void searchDonors(String bloodGroup, String city, String area, String donationType, MyVector donorData) {
+    public List<Donor> getListOfDonor(String bloodGroup, String city, String area, String donationType, String phoneNumber) {
+        List<Donor> donorList = new ArrayList<>();
+        try{
+            File file = new File("Donor.txt");
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            PasswordCipher passwordCipher = new PasswordCipher();
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] data = line.split(";");
+                if(data[4].equals(bloodGroup) && data[23].equals("true") && data[3].equals(area) && !data[1].equals(phoneNumber) && ((donationType == "wbc" && data[14].equals("true")) || (donationType == "platelet" && data[15].equals("true") || (donationType == "plasma" && data[16].equals("true")) || (donationType == "powerRed" && data[17].equals("true"))))){
+                    Donor donor = new Donor();
+                    donor.loginDonor(data[1], passwordCipher.decryptPassword(data[6]));
+                    donorList.add(donor);
+                }
+            }
+        } catch (IOException ae){
+            ae.printStackTrace();
+        }
+        return donorList;
+    }
+
+    public void searchDonors(String bloodGroup, String city, String area, String donationType, MyVector donorData, String phoneNumber) {
 
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
@@ -28,7 +49,7 @@ public class SearchDonor {
             System.out.println("                    Donor's in your Area");
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(";");
-                if(data[4].equals(bloodGroup) && data[3].equals(area) && ((donationType == "wbc" && data[14].equals("true")) || (donationType == "platelet" && data[15].equals("true") || (donationType == "plasma" && data[16].equals("true")) || (donationType == "powerRed" && data[17].equals("true"))))){
+                if(data[4].equals(bloodGroup) && data[23].equals("true") && data[3].equals(area) && !data[1].equals(phoneNumber) && ((donationType == "wbc" && data[14].equals("true")) || (donationType == "platelet" && data[15].equals("true") || (donationType == "plasma" && data[16].equals("true")) || (donationType == "powerRed" && data[17].equals("true"))))){
                     Donor donor = new Donor();
                     donor.loginDonor(data[1], passwordCipher.decryptPassword(data[6]));
                     donorList.add(donor);
@@ -62,7 +83,7 @@ public class SearchDonor {
             System.out.println("                    Donor's in your city");
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(";");
-                if(data[4].equals(bloodGroup) && data[2].equals(city) && !data[3].equals(area) && ((donationType == "wbc" && data[14].equals("true")) || (donationType == "platelet" && data[15].equals("true") || (donationType == "plasma" && data[16].equals("true")) || (donationType == "powerRed" && data[17].equals("true"))))){
+                if(data[4].equals(bloodGroup) && data[23].equals("true") && data[2].equals(city) && !data[3].equals(area) && !data[1].equals(phoneNumber) && ((donationType == "wbc" && data[14].equals("true")) || (donationType == "platelet" && data[15].equals("true") || (donationType == "plasma" && data[16].equals("true")) || (donationType == "powerRed" && data[17].equals("true"))))){
                     Donor donor = new Donor();
                     donor.loginDonor(data[1], passwordCipher.decryptPassword(data[6]));
                     donorList.add(donor);
@@ -96,7 +117,7 @@ public class SearchDonor {
             System.out.println("                    Donor's outside your city");
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(";");
-                if(data[4].equals(bloodGroup) && !data[2].equals(city) && !data[3].equals(area) && ((donationType.equals("wbc")  && data[14].equals("true")) || (donationType .equals("platelet")  && data[15].equals("true") || (donationType .equals("plasma") && data[16].equals("true")) || (donationType .equals("powerRed") && data[17].equals("true"))))){
+                if(data[4].equals(bloodGroup) && data[23].equals("true") && !data[2].equals(city) && !data[3].equals(area) && !data[1].equals(phoneNumber) && (donationType.equals("wbc")  && data[14].equals("true")) || (donationType .equals("platelet")  && data[15].equals("true") || (donationType .equals("plasma") && data[16].equals("true")) || (donationType .equals("powerRed") && data[17].equals("true")))){
                     Donor donor = new Donor();
                     donor.loginDonor(data[1], passwordCipher.decryptPassword(data[6]));
                     donorList.add(donor);

@@ -130,6 +130,12 @@ public class Donor_UI {
         System.out.println(RED + "Donor ID: " + RESET + donor.getDonorID());
         System.out.println(RED + "Points: " + RESET  + donor.getPoints());
 
+        if (donor.isAvailability() && (donor.isEligibleForWholeBlood() || donor.isEligibleForPlatelets() || donor.isEligibleForPlasma() || donor.isEligibleForPowerRed())){
+            System.out.println(RED + "Availability: " + RESET + "Available");
+        } else {
+            System.out.println(RED + "Availability: " + RESET + "Not Available");
+        }
+
         System.out.println("==============================================================================================");
         System.out.println("\t\t\t\tDonation Status");
 
@@ -194,6 +200,7 @@ public class Donor_UI {
         } else {
             System.out.println();
         }
+        System.out.println(RED + "[6]" + RESET + " Change Availability Status");
         System.out.println(RED + "[0]" + RESET + " Logout");
         System.out.println("==============================================================================================");
         System.out.println("Enter your choice: ");
@@ -222,6 +229,10 @@ public class Donor_UI {
             case 5:
                 consoleUtils.clearScreen();
                 Donor_Chat_UI.main(donorID, pass,phoneNumber, args);
+                break;
+            case 6:
+                consoleUtils.clearScreen();
+                ChangeAvailabilityStatus.main(phoneNumber, pass, args);
                 break;
             case 0:
                 System.out.printf("Logging out...");

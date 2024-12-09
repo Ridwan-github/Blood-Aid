@@ -3,11 +3,6 @@ package UI;
 import Code.*;
 import external_Functions.MyVector;
 import external_Functions.toLower;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -84,19 +79,19 @@ public class Search_UI {
         switch (choice) {
             case 1:
                 consoleUtils.clearScreen();
-                s.searchDonors(bloodGroup, city, area, "wbc", donorData);
+                s.searchDonors(bloodGroup, city, area, "wbc", donorData, phone);
                 break;
             case 2:
                 consoleUtils.clearScreen();
-                s.searchDonors(bloodGroup, city, area, "platelet", donorData);
+                s.searchDonors(bloodGroup, city, area, "platelet", donorData, phone);
                 break;
             case 3:
                 consoleUtils.clearScreen();
-                s.searchDonors(bloodGroup, city, area, "plasma", donorData);
+                s.searchDonors(bloodGroup, city, area, "plasma", donorData, phone);
                 break;
             case 4:
                 consoleUtils.clearScreen();
-                s.searchDonors(bloodGroup, city, area, "powerRed", donorData);
+                s.searchDonors(bloodGroup, city, area, "powerRed", donorData, phone);
                 break;
             case 0:
                 consoleUtils.clearScreen();
@@ -152,19 +147,19 @@ public class Search_UI {
             switch (choice) {
                 case 1:
                     consoleUtils.clearScreen();
-                    s.searchDonors(bloodGroup, city, area, "wbc", donorData);
+                    s.searchDonors(bloodGroup, city, area, "wbc", donorData, phone);
                     break;
                 case 2:
                     consoleUtils.clearScreen();
-                    s.searchDonors(bloodGroup, city, area, "platelet", donorData);
+                    s.searchDonors(bloodGroup, city, area, "platelet", donorData, phone);
                     break;
                 case 3:
                     consoleUtils.clearScreen();
-                    s.searchDonors(bloodGroup, city, area, "plasma", donorData);
+                    s.searchDonors(bloodGroup, city, area, "plasma", donorData, phone);
                     break;
                 case 4:
                     consoleUtils.clearScreen();
-                    s.searchDonors(bloodGroup, city, area, "powerRed", donorData);
+                    s.searchDonors(bloodGroup, city, area, "powerRed", donorData, phone);
                     break;
                 case 0:
                     consoleUtils.clearScreen();

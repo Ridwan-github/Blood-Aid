@@ -8,7 +8,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 
-public class Donor implements User {
+public class Donor {
 
     private String name;
     private String phoneNumber;
@@ -33,6 +33,7 @@ public class Donor implements User {
     private MyDate lastDonatedDatePlasma;
     private MyDate lastDonatedDatePowerRed;
     private boolean requestNotification;
+    private boolean availability;
 
     public String getName() {
         return name;
@@ -227,7 +228,13 @@ public class Donor implements User {
         this.requestNotification = requestNotification;
     }
 
+    public boolean isAvailability() {
+        return availability;
+    }
 
+    public void setAvailability(boolean availability) {
+        this.availability = availability;
+    }
 
     PasswordCipher passwordCipher = new PasswordCipher();
     public void registerDonor() {
@@ -262,6 +269,7 @@ public class Donor implements User {
                     + (getLastDonatedDatePlasma() == null ? "0/0/0000" : getLastDonatedDatePlasma().toString()) + ";"
                     + (getLastDonatedDatePowerRed() == null ? "0/0/0000" : getLastDonatedDatePowerRed().toString()) + ";"
                     + isRequestNotification() + ";"
+                    + isAvailability() + ";"
             );
             bufferedWriter.newLine();
             bufferedWriter.close();
@@ -301,6 +309,7 @@ public class Donor implements User {
                     setLastDonatedDatePlasma(data[20]);
                     setLastDonatedDatePowerRed(data[21]);
                     setRequestNotification(Boolean.parseBoolean(data[22]));
+                    setAvailability(Boolean.parseBoolean(data[23]));
                     break;
                 }
             }
