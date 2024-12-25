@@ -68,6 +68,30 @@ public class SearchDonor {
                 System.out.println(RED + "Blood Group: " + RESET + d.getBloodGroup());
                 System.out.println(RED + "Donor ID: " + RESET + d.getDonorID());
                 System.out.println(RED + "Points: " + RESET + d.getPoints());
+
+                BadgeManagement badgeManagement = new BadgeManagement();
+                badgeManagement.updateFrequentDonorBadge(d.getDonorID());
+                badgeManagement.updateLifeSaverBadge(d.getDonorID());
+                if (badgeManagement.checkForFirstDropBadge(d.getDonorID()) || badgeManagement.checkForFrequentDonorBadge(d.getDonorID()) || badgeManagement.checkForLifeSaverBadge(d.getDonorID()) || badgeManagement.checkForPioneerBadge(d.getDonorID()) || badgeManagement.checkForRareBloodHeroBadge(d.getDonorID())) {
+                    System.out.println();
+                    System.out.println(RED + "\t\t\t\tBadges: " + RESET);
+                    if (badgeManagement.checkForFirstDropBadge(d.getDonorID())) {
+                        System.out.printf("  |" + RED + "First Drop" + RESET);
+                    }
+                    if (badgeManagement.checkForFrequentDonorBadge(d.getDonorID())) {
+                        System.out.printf("  |" + RED + "Frequent Donor" + RESET);
+                    }
+                    if (badgeManagement.checkForLifeSaverBadge(d.getDonorID())) {
+                        System.out.printf("  |" + RED + "Life Saver" + RESET);
+                    }
+                    if (badgeManagement.checkForPioneerBadge(d.getDonorID())) {
+                        System.out.printf("  |" + RED + "Pioneer" + RESET);
+                    }
+                    if (badgeManagement.checkForRareBloodHeroBadge(d.getDonorID())) {
+                        System.out.printf("  |" + RED + "Rare Blood Hero" + RESET);
+                    }
+                    System.out.println("|");
+                }
             }
         } catch (IOException ae){
             ae.printStackTrace();
@@ -102,6 +126,30 @@ public class SearchDonor {
                 System.out.println(RED + "Blood Group: " + RESET + d.getBloodGroup());
                 System.out.println(RED + "Donor ID: " + RESET + d.getDonorID());
                 System.out.println(RED + "Points: " + RESET + d.getPoints());
+
+                BadgeManagement badgeManagement = new BadgeManagement();
+                badgeManagement.updateFrequentDonorBadge(d.getDonorID());
+                badgeManagement.updateLifeSaverBadge(d.getDonorID());
+                if (badgeManagement.checkForFirstDropBadge(d.getDonorID()) || badgeManagement.checkForFrequentDonorBadge(d.getDonorID()) || badgeManagement.checkForLifeSaverBadge(d.getDonorID()) || badgeManagement.checkForPioneerBadge(d.getDonorID()) || badgeManagement.checkForRareBloodHeroBadge(d.getDonorID())) {
+                    System.out.println();
+                    System.out.println(RED + "\t\t\t\tBadges: " + RESET);
+                    if (badgeManagement.checkForFirstDropBadge(d.getDonorID())) {
+                        System.out.printf("  |" + RED + "First Drop" + RESET);
+                    }
+                    if (badgeManagement.checkForFrequentDonorBadge(d.getDonorID())) {
+                        System.out.printf("  |" + RED + "Frequent Donor" + RESET);
+                    }
+                    if (badgeManagement.checkForLifeSaverBadge(d.getDonorID())) {
+                        System.out.printf("  |" + RED + "Life Saver" + RESET);
+                    }
+                    if (badgeManagement.checkForPioneerBadge(d.getDonorID())) {
+                        System.out.printf("  |" + RED + "Pioneer" + RESET);
+                    }
+                    if (badgeManagement.checkForRareBloodHeroBadge(d.getDonorID())) {
+                        System.out.printf("  |" + RED + "Rare Blood Hero" + RESET);
+                    }
+                    System.out.println("|");
+                }
             }
         } catch (IOException ae){
             ae.printStackTrace();
@@ -136,6 +184,30 @@ public class SearchDonor {
                 System.out.println(RED + "Blood Group: " + RESET + d.getBloodGroup());
                 System.out.println(RED + "Donor ID: " + RESET + d.getDonorID());
                 System.out.println(RED + "Points: " + RESET + d.getPoints());
+
+                BadgeManagement badgeManagement = new BadgeManagement();
+                badgeManagement.updateFrequentDonorBadge(d.getDonorID());
+                badgeManagement.updateLifeSaverBadge(d.getDonorID());
+                if (badgeManagement.checkForFirstDropBadge(d.getDonorID()) || badgeManagement.checkForFrequentDonorBadge(d.getDonorID()) || badgeManagement.checkForLifeSaverBadge(d.getDonorID()) || badgeManagement.checkForPioneerBadge(d.getDonorID()) || badgeManagement.checkForRareBloodHeroBadge(d.getDonorID())) {
+                    System.out.println();
+                    System.out.println(RED + "\t\t\t\tBadges: " + RESET);
+                    if (badgeManagement.checkForFirstDropBadge(d.getDonorID())) {
+                        System.out.printf("  |" + RED + "First Drop" + RESET);
+                    }
+                    if (badgeManagement.checkForFrequentDonorBadge(d.getDonorID())) {
+                        System.out.printf("  |" + RED + "Frequent Donor" + RESET);
+                    }
+                    if (badgeManagement.checkForLifeSaverBadge(d.getDonorID())) {
+                        System.out.printf("  |" + RED + "Life Saver" + RESET);
+                    }
+                    if (badgeManagement.checkForPioneerBadge(d.getDonorID())) {
+                        System.out.printf("  |" + RED + "Pioneer" + RESET);
+                    }
+                    if (badgeManagement.checkForRareBloodHeroBadge(d.getDonorID())) {
+                        System.out.printf("  |" + RED + "Rare Blood Hero" + RESET);
+                    }
+                    System.out.println("|");
+                }
             }
         } catch (IOException ae){
             ae.printStackTrace();

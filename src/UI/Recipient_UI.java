@@ -36,6 +36,7 @@ class Recipient_UI  {
             System.out.println();
         }
         System.out.println(RED + "[6]" + RESET + " Donation Confirmation");
+        System.out.println(RED + "[7]" + RESET + " View Top Donors");
         System.out.println(RED + "[0]" + RESET + " Logout");
         System.out.println("==============================================================================================");
 
@@ -70,6 +71,10 @@ class Recipient_UI  {
             case 6:
                 consoleUtils.clearScreen();
                 Donation_Confirmation_UI.main(phone, password, args);
+                break;
+            case 7:
+                consoleUtils.clearScreen();
+                TopDonor_UI.main(args);
                 break;
             case 0:
                 System.out.println("Logging out...");

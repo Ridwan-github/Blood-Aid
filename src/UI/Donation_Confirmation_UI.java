@@ -1,7 +1,9 @@
 package UI;
 
+import Code.BadgeManagement;
 import Code.DonationManager;
 import Code.Donation_Confirmation;
+import Code.Recipient;
 
 import java.util.Scanner;
 import java.util.Vector;
@@ -18,6 +20,8 @@ public class Donation_Confirmation_UI {
         System.out.println("==============================================================================================");
 
         Donation_Confirmation donationConfirmation = new Donation_Confirmation();
+        Recipient recipient = new Recipient();
+        recipient.loginRecipient(phoneNumber, password);
         Vector<String> list = donationConfirmation.donorsToConfirm(phoneNumber);
 
         if (list.isEmpty()) {
@@ -45,15 +49,20 @@ public class Donation_Confirmation_UI {
             if (choice == 0) {
                 Recipient_UI.main(phoneNumber, password, args);
             } else {
-                DonationManager donationManager = new DonationManager(list.get(choice - 1), phoneNumber);
+                String donorID = list.get(choice - 1);
+                DonationManager donationManager = new DonationManager(donorID, phoneNumber);
+                BadgeManagement badgeManagement = new BadgeManagement();
                 String donationType = donationManager.getDonationType();
-
-//            Donation_Confirmation.updateDonationState(phoneNumber, list.get(choice - 1), donationType, "Donated");
 
                 donationManager.acceptRequest();
                 donationManager.removePendingRequests();
                 donationManager.removePendingRequestsForRecipient();
                 donationManager.updateEligibilityStatus(donationType);
+
+                badgeManagement.updateFirstDropBadge(donorID);
+                if (recipient.getBloodGroup().equals("O-")) {
+                    badgeManagement.updateRareBloodHeroBadge(donorID);
+                }
 
                 System.out.println("Donation request confirmed for donor with contact number " + list.get(choice - 1));
                 System.out.println("Going back to Dashboard ......");

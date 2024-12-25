@@ -238,12 +238,13 @@ public class Donor {
 
     PasswordCipher passwordCipher = new PasswordCipher();
     public void registerDonor() {
+        String donorID = UserID_generate.generateUserID();
         try{
             File file = new File("Donor.txt");
             FileWriter fileWriter = new FileWriter(file, true);
             String encryptedPassword = passwordCipher.encryptPassword(getPassword());
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            setDonorID(UserID_generate.generateUserID());
+            setDonorID(donorID);
             setRequestNotification(false);
             String password = passwordCipher.encryptPassword(getPassword());
             bufferedWriter.write(getName() + ";"
@@ -276,6 +277,17 @@ public class Donor {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        try{
+            File file = new File("DonationCount_and_Badge.txt");
+            FileWriter fileWriter = new FileWriter(file, true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(getDonorID() + ";0;0;0;0;false;false;false;false;false");
+            bufferedWriter.newLine();
+            bufferedWriter.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void loginDonor(String phoneNumber, String password) {
@@ -285,7 +297,7 @@ public class Donor {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(";");
-                if (data[1].equals(phoneNumber) && passwordCipher.decryptPassword(data[6]).equals(password)) {
+                if (data[1].equals(phoneNumber) && passwordCipher.decryptPassword(data[6]).equals(password) && data.length < 27) {
                     setName(data[0]);
                     setPhoneNumber(data[1]);
                     setcity(data[2]);

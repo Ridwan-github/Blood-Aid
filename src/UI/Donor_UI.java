@@ -1,8 +1,5 @@
 package UI;
-import Code.ChatSystem;
-import Code.DonationManager;
-import Code.Donor;
-import Code.DonorViewProfile;
+import Code.*;
 import external_Functions.CurrentDate;
 import external_Functions.DateDifference;
 import external_Functions.MyDate;
@@ -182,6 +179,30 @@ public class Donor_UI {
             System.out.println(RED + "Not Eligible" + RESET);
         }
 
+        BadgeManagement badgeManagement = new BadgeManagement();
+        badgeManagement.updateFrequentDonorBadge(donorID);
+        badgeManagement.updateLifeSaverBadge(donorID);
+        if (badgeManagement.checkForFirstDropBadge(donorID) || badgeManagement.checkForFrequentDonorBadge(donorID) || badgeManagement.checkForLifeSaverBadge(donorID) || badgeManagement.checkForPioneerBadge(donorID) || badgeManagement.checkForRareBloodHeroBadge(donorID)){
+            System.out.println("==============================================================================================");
+            System.out.println("\t\t\t\tBadges");
+            if (badgeManagement.checkForFirstDropBadge(donorID)){
+                System.out.printf("|" + RED + "First Drop" + RESET);
+            }
+            if (badgeManagement.checkForFrequentDonorBadge(donorID)){
+                System.out.printf("  |" + RED + "Frequent Donor" + RESET);
+            }
+            if (badgeManagement.checkForLifeSaverBadge(donorID)){
+                System.out.printf("  |" + RED + "Life Saver" + RESET);
+            }
+            if (badgeManagement.checkForPioneerBadge(donorID)){
+                System.out.printf("  |" + RED + "Pioneer" + RESET);
+            }
+            if (badgeManagement.checkForRareBloodHeroBadge(donorID)){
+                System.out.printf("  |" + RED + "Rare Blood Hero" + RESET);
+            }
+            System.out.println("|");
+        }
+
         System.out.println("==============================================================================================");
         System.out.println();
         System.out.println(RED + "[1]" + RESET + " View Donation History");
@@ -201,6 +222,7 @@ public class Donor_UI {
             System.out.println();
         }
         System.out.println(RED + "[6]" + RESET + " Change Availability Status");
+        System.out.println(RED + "[7]" + RESET + " Top Donors");
         System.out.println(RED + "[0]" + RESET + " Logout");
         System.out.println("==============================================================================================");
         System.out.println("Enter your choice: ");
@@ -233,6 +255,10 @@ public class Donor_UI {
             case 6:
                 consoleUtils.clearScreen();
                 ChangeAvailabilityStatus.main(phoneNumber, pass, args);
+                break;
+            case 7:
+                consoleUtils.clearScreen();
+                TopDonor_UI.main(args);
                 break;
             case 0:
                 System.out.printf("Logging out...");

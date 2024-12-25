@@ -1,4 +1,4 @@
-0name;1phoneNumber;2city;3area;4bloodGroup;5NID;6password;7donorID;8points;9prefferredDonationArea;10zioCode;11username;12age;13email;14wbcEligible;15plateletsEligible;16plasmaEligible;17powerRedEligible;18lastDonatedWBC;19lastDonatedPlatelets;20lastDonatedPlasma;21lastDonatedPowerRed;22requestNotification;23availibity;
+0name;1phoneNumber;2city;3area;4bloodGroup;5NID;6password;7donorID;8points;9prefferredDonationArea;10zioCode;11username;12age;13email;14wbcEligible;15plateletsEligible;16plasmaEligible;17powerRedEligible;18lastDonatedWBC;19lastDonatedPlatelets;20lastDonatedPlasma;21lastDonatedPowerRed;22requestNotification;23availibity;24;25;26;27;
 abdul karim;01912848736;dhaka;mirpur;A+;1111111111;ICkplg98;1;0;gulshan;1234;abdul;30;abdul@gmail.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;false;true;
 rahima begum;01923749882;khulna;khalishpur;B-;2222222222;ICkplg98;2;0;mirpur;1234;rahima;28;rahima@gmail.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;false;true;
 jamal uddin;01844553558;rajshahi;sapura;AB+;3333333333;ICkplg98;3;0;dhanmondi;1234;jamal;35;jamal@gmail.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;false;true;
@@ -81,3 +81,4 @@ zohra parveen;01789012358;dhaka;motijheel;O+;3823456789;ICkplg98;79;0;sylhet;123
 sara akter;01690123459;chattogram;kadamtala;A-;3923456789;ICkplg98;80;0;kajla;1234;sara;26;sara@gmail.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;false;true;
 abidur rahman;01790123460;barisal;sonadanga;AB+;4023456789;ICkplg98;81;0;motijheel;1234;abidur;29;abidur@gmail.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;false;true;
 hina akter;01912345661;khulna;sonadanga;O-;4123456789;ICkplg98;82;0;sylhet;1234;hina;30;hina@gmail.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;false;true;
+Abul Miah;01901801701;dhaka;gulshan;A+;1290129010;ICkplg98;83;0;uttara;1234;abulmiah;22;abulmiah@gmail.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;false;false;
