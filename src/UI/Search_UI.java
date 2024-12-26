@@ -102,11 +102,36 @@ public class Search_UI {
         }
 
         System.out.println("==============================================================================================");
-        System.out.println("Enter the" + RED + " Donor ID" + RESET + " to view the donor's profile or press" + RED + " 0 " + RESET + "to go back.");
+        System.out.println("Enter the" + RED + " Donor ID" + RESET + " to view the donor's profile or \n" +
+                " press" + RED + " 0 " + RESET + "to go back. \n" +
+                " press" + RED + " 00 " + RESET + "to request to all available donor's. " );
         System.out.println("==============================================================================================");
         System.out.println(RED + "Enter your choice: " + RESET);
         String donorID = scanner.nextLine();
         if (donorID.equals("0")){
+            consoleUtils.clearScreen();
+            Recipient_UI.main(phone, password, args);
+        } else if (donorID.equals("00")){
+            for (int i = 0; i < donorData.size(); i++){
+                DonationManager donationManager = new DonationManager(donorData.get(i), name, phone, donationType);
+                donationManager.addRequest();
+            }
+            System.out.println("Request sent to all available donors.");
+            System.out.println("==============================================================================================");
+            System.out.println("Enter " + RED + "[0]" + RESET + " to go back to dashboard.");
+            System.out.println("==============================================================================================");
+
+            System.out.println(RED + "Enter your choice: " + RESET);
+            int chat = scanner.nextInt();
+            scanner.nextLine();
+
+            while (chat != 0) {
+                System.out.println("Invalid choice. Please select 0 or 1.");
+                System.out.print("Enter your choice: ");
+                chat = scanner.nextInt();
+                scanner.nextLine();
+            }
+
             consoleUtils.clearScreen();
             Recipient_UI.main(phone, password, args);
         }
@@ -170,11 +195,36 @@ public class Search_UI {
             }
 
             System.out.println("==============================================================================================");
-            System.out.println("Enter the" + RED + " Donor ID" + RESET + " to view the donor's profile or press" + RED + " 0 " + RESET + "to go back.");
+            System.out.println("Enter the" + RED + " Donor ID" + RESET + " to view the donor's profile or \n" +
+                    " press" + RED + " 0 " + RESET + "to go back. \n" +
+                    " press" + RED + " 00 " + RESET + "to request to all available donor's. " );
             System.out.println("==============================================================================================");
             System.out.println(RED + "Enter your choice: " + RESET);
             donorID = scanner.nextLine();
             if (donorID.equals("0")){
+                consoleUtils.clearScreen();
+                Recipient_UI.main(phone, password, args);
+            } else if (donorID.equals("00")){
+                for (int i = 0; i < donorData.size(); i++){
+                    DonationManager donationManager = new DonationManager(donorData.get(i), name, phone, donationType);
+                    donationManager.addRequest();
+                }
+                System.out.println("Request sent to all available donors.");
+                System.out.println("==============================================================================================");
+                System.out.println("Enter " + RED + "[0]" + RESET + " to go back to dashboard.");
+                System.out.println("==============================================================================================");
+
+                System.out.println(RED + "Enter your choice: " + RESET);
+                int chat = scanner.nextInt();
+                scanner.nextLine();
+
+                while (chat != 0) {
+                    System.out.println("Invalid choice. Please select 0 or 1.");
+                    System.out.print("Enter your choice: ");
+                    chat = scanner.nextInt();
+                    scanner.nextLine();
+                }
+
                 consoleUtils.clearScreen();
                 Recipient_UI.main(phone, password, args);
             }

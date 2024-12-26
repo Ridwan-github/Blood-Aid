@@ -21,6 +21,15 @@ public class DonationManager {
         this.donationType = donationType;
     }
 
+    public DonationManager(String donorID, String recipientPhoneNumber) {
+        this.donorID = donorID;
+        this.recipientPhoneNumber = recipientPhoneNumber;
+    }
+
+    public DonationManager(String recipientPhoneNumber) {
+        this.recipientPhoneNumber = recipientPhoneNumber;
+    }
+
     public void addRequest() {
         try {
             File file = new File("DonationRequestHistory.txt");
@@ -32,17 +41,10 @@ public class DonationManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         updateNotification(donorID, "true");
     }
-    public DonationManager(String donorID, String recipientPhoneNumber) {
-        this.donorID = donorID;
-        this.recipientPhoneNumber = recipientPhoneNumber;
-    }
 
-    public DonationManager(){
-
-    }
+    public DonationManager(){}
 
     public void acceptRequest() {
         File file = new File("DonationRequestHistory.txt");
@@ -75,6 +77,7 @@ public class DonationManager {
         }
         System.out.println("Request status updated to 'Accepted' for Donor ID: " + donorID + ", Recipient Phone: " + recipientPhoneNumber);
     }
+
     public void removePendingRequests() {
         File file = new File("DonationRequestHistory.txt");
         List<String> lines = new ArrayList<>();
@@ -102,6 +105,35 @@ public class DonationManager {
         }
         System.out.println("All pending requests removed for Donor ID: " + donorID);
     }
+
+    public void removeOnePendingRequests() {
+        File file = new File("DonationRequestHistory.txt");
+        List<String> lines = new ArrayList<>();
+
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] requestData = line.split(";");
+
+                if (!(requestData[0].trim().equals(donorID.trim()) && requestData[2].trim().equals(recipientPhoneNumber.trim()) && requestData[4].trim().equals("Pending"))) {
+                    lines.add(line);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))) {
+            for (String remainingLine : lines) {
+                bufferedWriter.write(remainingLine);
+                bufferedWriter.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("All pending requests removed");
+    }
+
     public void removePendingRequestsForRecipient() {
         File file = new File("DonationRequestHistory.txt");
         List<String> lines = new ArrayList<>();
@@ -111,7 +143,6 @@ public class DonationManager {
             while ((line = reader.readLine()) != null) {
                 String[] requestData = line.split(";");
                 if (requestData.length == 5) {
-                    String fileDonorID = requestData[0];
                     String recipientPhoneNumber = requestData[2];
                     String status = requestData[4];
 
