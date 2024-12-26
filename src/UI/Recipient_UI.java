@@ -2,9 +2,6 @@ package UI;
 import Code.ChatSystem;
 import Code.Recipient;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.util.Scanner;
 
 class Recipient_UI  {
@@ -80,7 +77,7 @@ class Recipient_UI  {
                 System.out.println("Logging out...");
                 consoleUtils.holdTime();
                 consoleUtils.clearScreen();
-                Login_UI.main(args);
+                HomePage.main(args);
                 break;
             default:
                 System.out.println("Invalid choice. Please select 1, 2, 3, or 4.");

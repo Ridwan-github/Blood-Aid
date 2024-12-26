@@ -113,7 +113,7 @@ public class Search_UI {
             Recipient_UI.main(phone, password, args);
         } else if (donorID.equals("00")){
             for (int i = 0; i < donorData.size(); i++){
-                DonationManager donationManager = new DonationManager(donorData.get(i), name, phone, donationType);
+                DonationManager donationManager = new DonationManager(donorData.get(i), name, phone, donationType, bloodGroup);
                 donationManager.addRequest();
             }
             System.out.println("Request sent to all available donors.");
@@ -206,7 +206,7 @@ public class Search_UI {
                 Recipient_UI.main(phone, password, args);
             } else if (donorID.equals("00")){
                 for (int i = 0; i < donorData.size(); i++){
-                    DonationManager donationManager = new DonationManager(donorData.get(i), name, phone, donationType);
+                    DonationManager donationManager = new DonationManager(donorData.get(i), name, phone, donationType, bloodGroup);
                     donationManager.addRequest();
                 }
                 System.out.println("Request sent to all available donors.");
@@ -262,7 +262,7 @@ public class Search_UI {
         }
 
         if(back == 2){
-            DonationManager donationManager = new DonationManager(donorID, name, phone, donationType);
+            DonationManager donationManager = new DonationManager(donorID, name, phone, donationType, bloodGroup);
             donationManager.addRequest();
             System.out.println("Request sent to " +donorID);
 

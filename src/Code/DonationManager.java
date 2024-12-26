@@ -12,13 +12,15 @@ public class DonationManager {
     private String recipientPhoneNumber;
     private String status;
     private String donationType;
+    private String bloodGroup;
 
-    public DonationManager(String donorID, String recipientName, String recipientPhoneNumber, String donationType) {
+    public DonationManager(String donorID, String recipientName, String recipientPhoneNumber, String donationType, String bloodGroup) {
         this.donorID = donorID;
         this.recipientName = recipientName;
         this.recipientPhoneNumber = recipientPhoneNumber;
         this.status = "Pending";
         this.donationType = donationType;
+        this.bloodGroup = bloodGroup;
     }
 
     public DonationManager(String donorID, String recipientPhoneNumber) {
@@ -30,12 +32,14 @@ public class DonationManager {
         this.recipientPhoneNumber = recipientPhoneNumber;
     }
 
+    public DonationManager(){}
+
     public void addRequest() {
         try {
             File file = new File("DonationRequestHistory.txt");
             FileWriter fileWriter = new FileWriter(file, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.write(donorID + ";" + recipientName + ";" + recipientPhoneNumber + ";" + donationType + ";" + status);
+            bufferedWriter.write(donorID + ";" + recipientName + ";" + recipientPhoneNumber + ";" + donationType + ";" + status + ";" + bloodGroup);
             bufferedWriter.newLine();
             bufferedWriter.close();
         } catch (Exception e) {
@@ -43,8 +47,6 @@ public class DonationManager {
         }
         updateNotification(donorID, "true");
     }
-
-    public DonationManager(){}
 
     public void acceptRequest() {
         File file = new File("DonationRequestHistory.txt");
@@ -142,7 +144,7 @@ public class DonationManager {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] requestData = line.split(";");
-                if (requestData.length == 5) {
+                if (requestData.length > 0) {
                     String recipientPhoneNumber = requestData[2];
                     String status = requestData[4];
 
@@ -259,6 +261,4 @@ public class DonationManager {
         }
         return donationType;
     }
-
-
 }

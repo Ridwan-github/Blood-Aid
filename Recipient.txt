@@ -1,5 +1,5 @@
 name;phone;city;area;blood;password
-recipient;01974289081;dhaka;uttata;A+;ICkplg98
+Nuren Fahmid;01974289081;dhaka;uttata;B+;ICkplg98
 Mahadi;01305070854;Dhaka;Mirpur 12;A-;Pdkdglvhd456C
 dasdas;01305070854;sadsd;asdas;A-;Pdkdglvhd456C
 recipient;01901901901;city;area;A+;ICkplg98

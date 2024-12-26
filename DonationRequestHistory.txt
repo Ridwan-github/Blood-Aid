@@ -1,9 +1,109 @@
-20;Mahadi;01305070854;Whole Blood;Accepted
-13;recipient;01901901901;Platelets;Accepted
-13;recipient;01901901901;Platelets;Accepted
-13;recipient;01901901901;Platelets;Donated
-13;recipient;01901901901;Platelets;Accepted
-19;recipient;12345;Whole Blood;Accepted
-17;recipient;12345;Whole Blood;Pending
-19;recipient;12345;Whole Blood;Accepted
-73;Rashedul Islam;01690319039;Whole Blood;Donated
+20;Mahadi;01305070854;Whole Blood;Accepted;A+
+13;Nuren Fahmid;01901901901;Platelets;Accepted;A+
+13;Nuren Fahmid;01901901901;Platelets;Accepted;A+
+13;Nuren Fahmid;01901901901;Platelets;Donated;A+
+13;Nuren Fahmid;01901901901;Platelets;Accepted;A+
+19;Nuren Fahmid;12345;Whole Blood;Accepted;A+
+17;Nuren Fahmid;12345;Whole Blood;Pending;A+
+19;Nuren Fahmid;12345;Whole Blood;Accepted;A+
+73;Rashedul Islam;01690319039;Whole Blood;Donated;A+
+26;Nazmul Alam;01750275027;Power Red;Donated;A+
+69;Mizanur Rahman;01860186018;Whole Blood;Accepted;A+
+76;Kamal Hossain;01810301031;Whole Blood;Donated;A+
+45;Fazlur Rahman;01930303033;Platelets;Accepted;A+
+6;Jamal Uddin;01940194019;Whole Blood;Donated;A+
+36;Tanvir Ahmed;01960196019;Whole Blood;Donated;A+
+9;Maruf Hossain;01840184018;Power Red;Pending;A+
+66;Rahim Uddin;01740174017;Whole Blood;Pending;B+
+8;Arman Ali;01790298029;Plasma;Donated;B+
+37;Nusrat Jahan;01830183018;Whole Blood;Pending;B+
+45;Habib Rahman;01670296029;Platelets;Accepted;B+
+9;Sohel Rana;01760176017;Power Red;Pending;B+
+21;Arman Ali;01790298029;Platelets;Donated;B+
+38;Fazlur Rahman;01930303033;Plasma;Accepted;B+
+46;Mamun Mia;01650315035;Platelets;Pending;B+
+41;Shahadat Hossain;01850305035;Whole Blood;Pending;B+
+12;Nusrat Jahan;01830183018;Power Red;Pending;B+
+83;Fahima Rahman;01890189018;Whole Blood;Pending;B+
+60;Rokeya Akter;01710171017;Whole Blood;Accepted;B+
+35;Shahadat Hossain;01850305035;Whole Blood;Donated;B+
+35;Sumaya Anwar;01830323033;Whole Blood;Accepted;B+
+11;Faruk Hossain;01720322032;Plasma;Donated;B+
+10;Habib Rahman;01670296029;Plasma;Accepted;B+
+72;Tariqul Islam;01820182018;Power Red;Pending;B+
+9;Hasan Mahmud;01910191019;Power Red;Donated;B+
+83;Abdul Halim;01640164016;Power Red;Pending;AB-
+60;Mohammad Morshed;01730173017;Plasma;Donated;AB-
+28;Hasan Mahmud;01910191019;Plasma;Accepted;AB-
+72;Ayesha Siddiqa;01610311031;Power Red;Pending;AB-
+45;Sharifa Akhter;01880318038;Whole Blood;Pending;AB-
+32;Fazlur Rahman;01930303033;Power Red;Pending;AB-
+35;Maruf Hossain;01840184018;Plasma;Accepted;AB-
+41;Rehana Jahan;01780308038;Whole Blood;Accepted;AB-
+39;Sajeda Begum;01960316036;Whole Blood;Accepted;AB-
+78;Maruf Hossain;01840184018;Whole Blood;Pending;AB-
+51;Shabnam Akter;01690169016;Power Red;Donated;AB-
+5;Mahbuba Rahman;01680168016;Plasma;Pending;AB-
+27;Nasima Begum;01970197019;Platelets;Pending;AB-
+68;Rubina Sultana;01910321031;Whole Blood;Pending;AB-
+48;Fahim Chowdhury;01870187018;Platelets;Accepted;AB-
+83;Taslima Akhter;01730313033;Plasma;Pending;AB-
+39;Shamim Akter;01660306036;Plasma;Donated;O+
+76;Jahanara Begum;01950195019;Platelets;Donated;O+
+59;Shamima Sultana;01770177017;Whole Blood;Accepted;O+
+46;Abdul Halim;01640164016;Plasma;Donated;O+
+51;Afsana Akter;01650165016;Power Red;Accepted;O+
+15;Nusrat Jahan;01830183018;Plasma;Pending;O+
+32;Latif Khan;01890309039;Power Red;Accepted;O-
+38;Alamgir Kabir;01770317037;Platelets;Accepted;AB+
+7;Shahidul Islam;01780178017;Platelets;Donated;AB+
+35;Habib Rahman;01670296029;Plasma;Pending;O-
+14;Maruf Hossain;01840184018;Plasma;Pending;A+
+31;Ayesha Siddiqa;01610311031;Whole Blood;Donated;AB+
+60;Sajeda Begum;01960316036;Power Red;Accepted;AB+
+59;Shahadat Hossain;01850305035;Whole Blood;Donated;O-
+21;Rokeya Akter;01710171017;Whole Blood;Donated;A-
+43;Sharifa Akhter;01880318038;Platelets;Donated;B+
+28;Habib Rahman;01670296029;Whole Blood;Accepted;AB+
+41;Mizanur Rahman;01860186018;Whole Blood;Donated;AB+
+44;Sumaya Anwar;01830323033;Plasma;Accepted;A+
+34;Alamgir Kabir;01770317037;Platelets;Pending;A-
+11;Abdul Halim;01640164016;Whole Blood;Accepted;B-
+45;Shamim Akter;01660306036;Power Red;Pending;O-
+47;Alamgir Kabir;01770317037;Plasma;Accepted;A-
+35;Maruf Hossain;01840184018;Power Red;Pending;AB-
+65;Rubina Sultana;01910321031;Power Red;Donated;O-
+4;Mohammad Morshed;01730173017;Whole Blood;Pending;AB-
+58;Sohel Rana;01760176017;Platelets;Pending;A-
+67;Fahima Rahman;01890189018;Plasma;Donated;A+
+7;Sumaya Anwar;01830323033;Power Red;Donated;B+
+16;Tanvir Ahmed;01960196019;Whole Blood;Accepted;B+
+28;Tariqul Islam;01820182018;Power Red;Accepted;O-
+59;Jahanara Begum;01950195019;Plasma;Pending;B+
+11;Shamima Sultana;01770177017;Plasma;Pending;A+
+12;Rubina Sultana;01910321031;Platelets;Accepted;O-
+9;Latif Khan;01890309039;Whole Blood;Donated;O-
+32;Hasan Mahmud;01910191019;Plasma;Accepted;AB+
+61;Afsana Akter;01650165016;Platelets;Donated;A-
+46;Jamal Uddin;01940194019;Platelets;Accepted;O-
+17;Jahanara Begum;01950195019;Platelets;Accepted;O-
+41;Ayesha Siddiqa;01610311031;Whole Blood;Donated;AB-
+31;Jahanara Begum;01950195019;Whole Blood;Pending;A+
+59;Alamgir Kabir;01770317037;Power Red;Donated;AB+
+64;Hasan Mahmud;01910191019;Plasma;Pending;O-
+74;Mamun Mia;01650315035;Power Red;Donated;AB-
+73;Faruk Hossain;01720322032;Plasma;Accepted;O+
+1;Jahanara Begum;01950195019;Platelets;Pending;O-
+62;Taslima Akhter;01730313033;Plasma;Pending;B-
+61;Nazmul Alam;01750275027;Platelets;Pending;B+
+19;Shamim Akter;01660306036;Plasma;Accepted;A-
+41;Maruf Hossain;01840184018;Power Red;Donated;AB+
+41;Shamima Sultana;01770177017;Plasma;Accepted;B+
+69;Mizanur Rahman;01860186018;Platelets;Pending;AB+
+45;Mizanur Rahman;01860186018;Power Red;Accepted;B-
+57;Alamgir Kabir;01770317037;Whole Blood;Pending;O+
+79;Mizanur Rahman;01860186018;Power Red;Donated;AB-
+39;Afsana Akter;01650165016;Whole Blood;Pending;O-
+43;Hasan Mahmud;01910191019;Platelets;Pending;AB+
+18;Taslima Akhter;01730313033;Whole Blood;Pending;O-
+38;Fahim Chowdhury;01870187018;Plasma;Donated;AB-

@@ -29,7 +29,7 @@ public class DonorSignup_UI {
         public static void redirectMethod() {
             ConsoleUtils consoleUtils = new ConsoleUtils();
             consoleUtils.clearScreen();
-            Login_UI.main(new String[0]);
+            HomePage.main(new String[0]);
         }
     }
 
@@ -443,11 +443,11 @@ public class DonorSignup_UI {
             case 1:
                 consoleUtils.clearScreen();
                 donor.registerDonor();
-                Login_UI.main(args);
+                HomePage.main(args);
                 break;
             case 0:
                 consoleUtils.clearScreen();
-                Login_UI.main(args);
+                HomePage.main(args);
                 break;
             default:
                 System.out.println("Invalid choice. Please select 1 or 0.");

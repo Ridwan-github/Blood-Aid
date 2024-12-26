@@ -108,11 +108,11 @@ public class RecipientSignup_UI {
             case 1:
                 consoleUtils.clearScreen();
                 recipient.registerRecipient();
-                Login_UI.main(args);
+                HomePage.main(args);
                 break;
             case 2:
                 consoleUtils.clearScreen();
-                Login_UI.main(args);
+                HomePage.main(args);
                 break;
             default:
                 System.out.println("Invalid choice. Please select 1 or 2.");

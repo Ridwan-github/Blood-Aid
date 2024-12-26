@@ -6,7 +6,7 @@ import Code.Recipient;
 
 import java.util.Scanner;
 
-public class Login_UI {
+public class HomePage {
     private static String getInput(Scanner scanner) {
         String input = scanner.nextLine();
         if ("0".equals(input)) {
@@ -29,7 +29,7 @@ public class Login_UI {
         public static void redirectMethod() {
             ConsoleUtils consoleUtils = new ConsoleUtils();
             consoleUtils.clearScreen();
-            Login_UI.main(new String[0]);
+            HomePage.main(new String[0]);
         }
     }
 

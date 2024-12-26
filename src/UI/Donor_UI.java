@@ -264,7 +264,7 @@ public class Donor_UI {
                 System.out.printf("Logging out...");
                 consoleUtils.holdTime();
                 consoleUtils.clearScreen();
-                Login_UI.main(args);
+                HomePage.main(args);
                 break;
             default:
                 System.out.println("Invalid choice. Please select 1, 2, 3, or 4.");
