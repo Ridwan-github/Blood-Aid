@@ -6,7 +6,32 @@ import Code.Recipient;
 
 import java.util.Scanner;
 
-public class Login_UI {
+public class HomePage {
+    private static String getInput(Scanner scanner) {
+        String input = scanner.nextLine();
+        if ("0".equals(input)) {
+            RedirectClass.redirectMethod();
+            System.exit(0);
+        }
+        return input;
+    }
+
+    private static int getIntInput(Scanner scanner) {
+        int input = scanner.nextInt();
+        if (input == 0) {
+            RedirectClass.redirectMethod();
+            System.exit(0);
+        }
+        return input;
+    }
+
+    public class RedirectClass {
+        public static void redirectMethod() {
+            ConsoleUtils consoleUtils = new ConsoleUtils();
+            consoleUtils.clearScreen();
+            HomePage.main(new String[0]);
+        }
+    }
 
     public static void main(String[] args) {
         final String RED = "\033[31m";
@@ -63,48 +88,11 @@ public class Login_UI {
 
                 switch (userTypeLogin) {
                     case 1:
-                        consoleUtils.clearScreen();
-                        System.out.println("==============================================================================================");
-                        System.out.println(RED + "Donor Login" + RESET);
-                        System.out.println("==============================================================================================");
-                        System.out.println("Enter your phone number and password to login.");
-                        System.out.printf("Phone Number: ");
-                        String phoneNumber = scanner.nextLine();
-                        System.out.printf("Password: ");
-                        String password = scanner.nextLine();
-                        Donor donor = new Donor();
-                        donor.loginDonor(phoneNumber, password);
-                        if (donor.getName() != null) {
-                            consoleUtils.clearScreen();
-                            Donor_UI.main(phoneNumber, password, args);
-                        } else {
-                            System.out.println("Invalid phone number or password.");
-                            consoleUtils.holdTime();
-                            consoleUtils.clearScreen();
-                            main(args);
-                        }
+                        handleDonorLogin(scanner, args);
                         break;
 
                     case 2:
-                        consoleUtils.clearScreen();
-                        System.out.println("==============================================================================================");
-                        System.out.println(RED + "Recipient Login" + RESET);
-                        System.out.println("==============================================================================================");
-                        System.out.print("Enter your phone number: ");
-                        phoneNumber = scanner.nextLine();
-                        System.out.print("Enter your password: ");
-                        password = scanner.nextLine();
-                        Recipient recipient = new Recipient();
-                        recipient.loginRecipient(phoneNumber, password);
-                        if (recipient.getName() != null) {
-                            consoleUtils.clearScreen();
-                            Recipient_UI.main(phoneNumber, password, args);
-                        } else {
-                            System.out.println("Invalid phone number or password.");
-                            consoleUtils.holdTime();
-                            consoleUtils.clearScreen();
-                            main(args);
-                        }
+                        handleRecipientLogin(scanner, args);
                         break;
 
                     case 3:
@@ -161,5 +149,64 @@ public class Login_UI {
         }
 
         scanner.close();
+    }
+    private static void handleDonorLogin(Scanner scanner, String[] args) {
+        ConsoleUtils consoleUtils = new ConsoleUtils();
+        consoleUtils.clearScreen();
+        System.out.println("==============================================================================================");
+        final String RED = "\033[31m";
+        final String RESET = "\033[0m";
+        System.out.println(RED + "Donor Login" + RESET);
+        System.out.println("==============================================================================================");
+        System.out.println("Enter your phone number and password to login. (Enter " + RED + "[0]" + RESET + " to go back)");
+        System.out.printf("Phone Number: ");
+        String phoneNumber = getInput(scanner);
+        if (phoneNumber.equals("0")) {
+            consoleUtils.clearScreen();
+            main(args);
+        }
+        System.out.printf("Password: ");
+        String password = getInput(scanner);
+        if (password.equals("0")) {
+            consoleUtils.clearScreen();
+            main(args);
+        }
+        Donor donor = new Donor();
+        donor.loginDonor(phoneNumber, password);
+        if (donor.getName() != null) {
+            consoleUtils.clearScreen();
+            Donor_UI.main(phoneNumber, password, args);
+        } else {
+            System.out.println("Invalid phone number or password.");
+            consoleUtils.holdTime();
+            consoleUtils.clearScreen();
+            handleDonorLogin(scanner, args);
+        }
+    }
+
+    private static void handleRecipientLogin(Scanner scanner, String[] args){
+        ConsoleUtils consoleUtils = new ConsoleUtils();
+        consoleUtils.clearScreen();
+        System.out.println("==============================================================================================");
+        final String RED = "\033[31m";
+        final String RESET = "\033[0m";
+        System.out.println(RED + "Recipient Login" + RESET);
+        System.out.println("==============================================================================================");
+        System.out.println("Enter your phone number and password to login. (Enter " + RED + "[0]" + RESET + " to go back)");
+        System.out.print("Enter your phone number: ");
+        String phoneNumber = getInput(scanner);
+        System.out.print("Enter your password: ");
+        String password = getInput(scanner);
+        Recipient recipient = new Recipient();
+        recipient.loginRecipient(phoneNumber, password);
+        if (recipient.getName() != null) {
+            consoleUtils.clearScreen();
+            Recipient_UI.main(phoneNumber, password, args);
+        } else {
+            System.out.println("Invalid phone number or password.");
+            consoleUtils.holdTime();
+            consoleUtils.clearScreen();
+            handleRecipientLogin(scanner, args);
+        }
     }
 }

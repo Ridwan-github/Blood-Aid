@@ -8,7 +8,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 
-public class Donor implements User {
+public class Donor {
 
     private String name;
     private String phoneNumber;
@@ -32,8 +32,8 @@ public class Donor implements User {
     private MyDate lastDonatedDatePlatelets;
     private MyDate lastDonatedDatePlasma;
     private MyDate lastDonatedDatePowerRed;
-
-
+    private boolean requestNotification;
+    private boolean availability;
 
     public String getName() {
         return name;
@@ -220,16 +220,32 @@ public class Donor implements User {
         this.lastDonatedDatePowerRed = new MyDate(lastDonatedDatePowerRed);
     }
 
+    public boolean isRequestNotification() {
+        return requestNotification;
+    }
 
+    public void setRequestNotification(boolean requestNotification) {
+        this.requestNotification = requestNotification;
+    }
+
+    public boolean isAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(boolean availability) {
+        this.availability = availability;
+    }
 
     PasswordCipher passwordCipher = new PasswordCipher();
     public void registerDonor() {
+        String donorID = UserID_generate.generateUserID();
         try{
             File file = new File("Donor.txt");
             FileWriter fileWriter = new FileWriter(file, true);
             String encryptedPassword = passwordCipher.encryptPassword(getPassword());
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            setDonorID(UserID_generate.generateUserID());
+            setDonorID(donorID);
+            setRequestNotification(false);
             String password = passwordCipher.encryptPassword(getPassword());
             bufferedWriter.write(getName() + ";"
                     + getPhoneNumber() + ";"
@@ -253,7 +269,20 @@ public class Donor implements User {
                     + (getLastDonatedDatePlatelets() == null ? "0/0/0000" : getLastDonatedDatePlatelets().toString()) + ";"
                     + (getLastDonatedDatePlasma() == null ? "0/0/0000" : getLastDonatedDatePlasma().toString()) + ";"
                     + (getLastDonatedDatePowerRed() == null ? "0/0/0000" : getLastDonatedDatePowerRed().toString()) + ";"
+                    + isRequestNotification() + ";"
+                    + isAvailability() + ";"
             );
+            bufferedWriter.newLine();
+            bufferedWriter.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try{
+            File file = new File("DonationCount_and_Badge.txt");
+            FileWriter fileWriter = new FileWriter(file, true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(getDonorID() + ";0;0;0;0;false;false;false;false;false");
             bufferedWriter.newLine();
             bufferedWriter.close();
         } catch (Exception e) {
@@ -268,7 +297,7 @@ public class Donor implements User {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(";");
-                if (data[1].equals(phoneNumber) && passwordCipher.decryptPassword(data[6]).equals(password)) {
+                if (data[1].equals(phoneNumber) && passwordCipher.decryptPassword(data[6]).equals(password) && data.length < 27) {
                     setName(data[0]);
                     setPhoneNumber(data[1]);
                     setcity(data[2]);
@@ -291,6 +320,8 @@ public class Donor implements User {
                     setLastDonatedDatePlatelets(data[19]);
                     setLastDonatedDatePlasma(data[20]);
                     setLastDonatedDatePowerRed(data[21]);
+                    setRequestNotification(Boolean.parseBoolean(data[22]));
+                    setAvailability(Boolean.parseBoolean(data[23]));
                     break;
                 }
             }

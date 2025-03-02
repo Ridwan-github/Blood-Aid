@@ -58,17 +58,23 @@ public class RecipientBloodRequest_UI {
 
         if (requestCount == 1) {
             System.out.println("No donation requests found for this recipient.");
+            System.out.println("Going back to Dashboard ......");
+            consoleUtils.holdTime();
+            consoleUtils.clearScreen();
+            Recipient_UI.main(phoneNumber, password, args);
             return;
         }
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("==============================================================================================");
-        System.out.println("Enter 0 to Go back Or 1 to refresh");
+        System.out.println(RED +  "[0]" + RESET + " Go back");
+        System.out.println(RED +  "[1]" + RESET + " Refresh");
+        System.out.println(RED +  "[2]" + RESET + " Cancel a request");
 
         int choice = scanner.nextInt();
         scanner.nextLine();
 
-        while (choice != 0 && choice != 1) {
+        while (choice != 0 && choice != 1 && choice != 2) {
             System.out.println("Invalid choice. Please select a valid option.");
             choice = scanner.nextInt();
             scanner.nextLine();
@@ -78,9 +84,44 @@ public class RecipientBloodRequest_UI {
             consoleUtils.clearScreen();
             Recipient_UI.main(phoneNumber, password, args);
         }
-        else {
+        else if (choice == 1) {
             consoleUtils.clearScreen();
             RecipientBloodRequest_UI.main(phoneNumber, password, args);
+        } else {
+            System.out.println("Enter the the donorID to cancel the request or\n" +
+                    RED + "[0]" + RESET + " to go back\n" +
+                    RED + "[00]" + RESET + " to cancel all the requests.");
+
+            String donorID = scanner.nextLine();
+
+            if (donorID.equals("0")) {
+                consoleUtils.clearScreen();
+                RecipientBloodRequest_UI.main(phoneNumber, password, args);
+            } else if (donorID.equals("00")) {
+                DonationManager donationManager = new DonationManager(phoneNumber);
+                donationManager.removePendingRequestsForRecipient();
+                System.out.println("All requests have been cancelled.");
+                consoleUtils.holdTime();
+                consoleUtils.clearScreen();
+                RecipientBloodRequest_UI.main(phoneNumber, password, args);
+            } else {
+                boolean found = false;
+                for (String[] request : matchingRequests) {
+                    if (request[0].equals(donorID)) {
+                        DonationManager donationManager = new DonationManager(donorID, phoneNumber);
+                        donationManager.removeOnePendingRequests();
+                        System.out.println("Request has been cancelled.");
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    System.out.println("Invalid donor ID. Please enter a valid donor ID.");
+                }
+                consoleUtils.holdTime();
+                consoleUtils.clearScreen();
+                RecipientBloodRequest_UI.main(phoneNumber, password, args);
+            }
         }
     }
 }
