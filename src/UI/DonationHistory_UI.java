@@ -33,7 +33,7 @@ class DonationHistory_UI {
 
             while ((line = reader.readLine()) != null) {
                 String[] requestData = line.split(";");
-                if (requestData.length == 5) {
+                if (requestData.length > 1) {
                     String fileDonorID = requestData[0];
                     String recipientName = requestData[1];
                     String recipientPhoneNumber = requestData[2];

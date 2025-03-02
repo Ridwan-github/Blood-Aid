@@ -71,7 +71,7 @@ class Recipient_UI  {
                 break;
             case 7:
                 consoleUtils.clearScreen();
-                TopDonor_UI.main(args);
+                TopDonor_UI.main(phoneNumber, pass, args);
                 break;
             case 0:
                 System.out.println("Logging out...");

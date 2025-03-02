@@ -15,7 +15,7 @@ public class DonorBloodRequest_UI {
 
         ConsoleUtils consoleUtils = new ConsoleUtils();
         Donor donor = new Donor();
-        donor.loginDonor(phoneNumber, password);
+        donor.loginDonor(phone, password);
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
 
@@ -34,12 +34,13 @@ public class DonorBloodRequest_UI {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] requestData = line.split(";");
-                if (requestData.length == 5) {
+                if (requestData.length > 1) {
                     String fileDonorID = requestData[0];
                     String recipientName = requestData[1];
                     String recipientPhoneNumber = requestData[2];
                     String donationType = requestData[3];
                     String status = requestData[4];
+
 
                     if (fileDonorID.equals(donorID) && !status.equals("Accepted") && !status.equals("Donated")) {
                         matchingRequests.add(new String[]{recipientName, recipientPhoneNumber, donationType, status});

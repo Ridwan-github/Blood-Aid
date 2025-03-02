@@ -3,7 +3,6 @@ Nuren Fahmid;01974289081;dhaka;uttata;B+;ICkplg98
 Mahadi;01305070854;Dhaka;Mirpur 12;A-;Pdkdglvhd456C
 dasdas;01305070854;sadsd;asdas;A-;Pdkdglvhd456C
 recipient;01901901901;city;area;A+;ICkplg98
-recipient;01901901901;city;area;A+;ICkplg98
 Mohammad Morshed;01730173017;chattogram;halishahar;B+;ICkplg98
 Rahim Uddin;01740174017;dhaka;mirpur;A+;ICkplg98
 Karim Khan;01850185018;khulna;khalishpur;B-;ICkplg98

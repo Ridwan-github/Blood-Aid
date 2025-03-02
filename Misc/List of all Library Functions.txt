@@ -1,0 +1,28 @@
+Character
+	isDigit
+	isAlphabetic
+	isUpperCase
+	isLowerCase
+	isLetterOrDigit
+
+String
+	length
+	charAt
+	IndexAt
+	substring
+	matches
+	equals
+	split
+
+File
+FileReader
+IOException
+printStackTrace
+
+
+
+Sout
+Scanner
+BufferedReader
+BufferedWriter
+

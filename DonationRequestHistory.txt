@@ -34,7 +34,6 @@
 9;Hasan Mahmud;01910191019;Power Red;Donated;B+
 83;Abdul Halim;01640164016;Power Red;Pending;AB-
 60;Mohammad Morshed;01730173017;Plasma;Donated;AB-
-28;Hasan Mahmud;01910191019;Plasma;Accepted;AB-
 72;Ayesha Siddiqa;01610311031;Power Red;Pending;AB-
 45;Sharifa Akhter;01880318038;Whole Blood;Pending;AB-
 32;Fazlur Rahman;01930303033;Power Red;Pending;AB-
@@ -83,14 +82,12 @@
 11;Shamima Sultana;01770177017;Plasma;Pending;A+
 12;Rubina Sultana;01910321031;Platelets;Accepted;O-
 9;Latif Khan;01890309039;Whole Blood;Donated;O-
-32;Hasan Mahmud;01910191019;Plasma;Accepted;AB+
 61;Afsana Akter;01650165016;Platelets;Donated;A-
 46;Jamal Uddin;01940194019;Platelets;Accepted;O-
 17;Jahanara Begum;01950195019;Platelets;Accepted;O-
 41;Ayesha Siddiqa;01610311031;Whole Blood;Donated;AB-
 31;Jahanara Begum;01950195019;Whole Blood;Pending;A+
 59;Alamgir Kabir;01770317037;Power Red;Donated;AB+
-64;Hasan Mahmud;01910191019;Plasma;Pending;O-
 74;Mamun Mia;01650315035;Power Red;Donated;AB-
 73;Faruk Hossain;01720322032;Plasma;Accepted;O+
 1;Jahanara Begum;01950195019;Platelets;Pending;O-
@@ -104,6 +101,7 @@
 57;Alamgir Kabir;01770317037;Whole Blood;Pending;O+
 79;Mizanur Rahman;01860186018;Power Red;Donated;AB-
 39;Afsana Akter;01650165016;Whole Blood;Pending;O-
-43;Hasan Mahmud;01910191019;Platelets;Pending;AB+
 18;Taslima Akhter;01730313033;Whole Blood;Pending;O-
 38;Fahim Chowdhury;01870187018;Plasma;Donated;AB-
+15;recipient;01901901901;Whole Blood;Pending;A+
+13;Hasan Mahmud;01910191019;Whole Blood;Donated;A+
