@@ -77,7 +77,7 @@ class Recipient_UI  {
                 System.out.println("Logging out...");
                 consoleUtils.holdTime();
                 consoleUtils.clearScreen();
-                HomePage.main(args);
+                User_UI.main(phone, password, args);
                 break;
             default:
                 System.out.println("Invalid choice. Please select 1, 2, 3, or 4.");

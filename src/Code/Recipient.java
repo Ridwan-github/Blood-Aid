@@ -105,6 +105,26 @@ public class Recipient {
         }
     }
 
+    public boolean findRecipient(String phoneNumber, String password) {
+        try {
+            File file = new File("Recipient.txt");
+            BufferedReader bufferedReader = new BufferedReader(new java.io.FileReader(file));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] data = line.split(";");
+                String decryptedPassword = passwordCipher.decryptPassword(data[5]);
+                if (data[1].equals(phoneNumber) && decryptedPassword.equals(password)) {
+                    bufferedReader.close();
+                    return true;
+                }
+            }
+            bufferedReader.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         Recipient recipient = new Recipient();
         recipient.setName("John Doe");

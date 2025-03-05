@@ -360,6 +360,25 @@ public class Donor {
             e.printStackTrace();
         }
     }
+
+    public boolean findDonor(String phone, String password){
+        try {
+            File file = new File("Donor.txt");
+            BufferedReader bufferedReader = new BufferedReader(new java.io.FileReader(file));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] data = line.split(";");
+                if (data[1].equals(phone) && passwordCipher.decryptPassword(data[6]).equals(password)) {
+                    return true;
+                }
+            }
+            bufferedReader.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
 
     }

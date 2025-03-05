@@ -1,11 +1,11 @@
 package Code;
 import UI.ConsoleUtils;
-import UI.HomePage;
+import UI.Home;
 
 public class Main {
     public static void main(String[] args) {
         ConsoleUtils consoleUtils = new ConsoleUtils();
         consoleUtils.clearScreen();
-        HomePage.main(args);
+        Home.main(args);
     }
 }
