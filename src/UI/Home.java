@@ -2,8 +2,11 @@ package UI;
 
 import Code.PasswordMasking;
 import Code.User;
+import Code.AuthorizationConstraintsValidator;
 
 import java.util.Scanner;
+
+
 
 public class Home {
     private static String getInput(Scanner scanner) {
@@ -73,10 +76,46 @@ public class Home {
         System.out.println("Enter your name, phone number, and password to signup. (Enter " + RED + "[0]" + RESET + " to go back)");
         System.out.print("Enter your name: ");
         String name = getInput(scanner);
+
         System.out.print("Enter your phone number: ");
         String phoneNumber = getInput(scanner);
+        if (phoneNumber.length() == 14){
+            if (phoneNumber.charAt(0) == '+' && phoneNumber.charAt(1) == '8' && phoneNumber.charAt(2) == '8') {
+                String s = "";
+                for (int i = 3; i < 14; i++) {
+                    s += phoneNumber.charAt(i);
+                }
+                phoneNumber = s;
+            } else {
+                System.out.println("Please input valid phone number");
+                System.out.printf(RED + RESET + " Phone Number: ");
+                phoneNumber = scanner.nextLine();
+            }
+        }
+
+        while (!AuthorizationConstraintsValidator.validatePhoneNumber(phoneNumber) || !AuthorizationConstraintsValidator.repeatPhoneNumber(phoneNumber)) {
+            if (!AuthorizationConstraintsValidator.validatePhoneNumber(phoneNumber)) {
+                System.out.println("Please input valid phone number");
+                System.out.printf(RED + RESET + " Phone Number: ");
+                phoneNumber = scanner.nextLine();
+            } else if (!AuthorizationConstraintsValidator.repeatPhoneNumber(phoneNumber)) {
+                System.out.println("Phone number already exists. Please enter a different phone number.");
+                System.out.printf(RED + RESET + " Phone Number: ");
+                phoneNumber = scanner.nextLine();
+            }
+        }
+
+
         System.out.print("Enter your password: ");
         String password = getInput(scanner);
+        while (!AuthorizationConstraintsValidator.validatePassword(password)) {
+            System.out.println("Please input 8-32 character");
+            System.out.println("Please include at least one uppercase,lowercase,numeric and special character");
+            System.out.printf(RED + RESET + " Password: ");
+            password = scanner.nextLine();
+        }
+
+
         User user = new User();
         user.setName(name);
         user.setPhoneNumber(phoneNumber);
