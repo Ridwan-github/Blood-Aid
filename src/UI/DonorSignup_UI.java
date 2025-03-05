@@ -1,5 +1,6 @@
 package UI;
 import Code.Donor;
+import Code.User;
 import external_Functions.*;
 import Code.AuthorizationConstraintsValidator;
 import Code.PasswordMasking;
@@ -54,7 +55,13 @@ public class DonorSignup_UI {
         //    System.out.printf(RED + "1." + RESET + " Name: ");
         //    name = scanner.nextLine();
         //}
-        //donor.setName(name);
+        User user = new User();
+        String name=user.getName();
+        String phoneNumber=user.getPhoneNumber();
+        String password=user.getPassword();
+        donor.setName(name);
+        donor.setPhoneNumber(phoneNumber);
+        donor.setPassword(password);
 
 
         System.out.printf(RED + "1." + RESET + " Username: ");
@@ -100,33 +107,33 @@ public class DonorSignup_UI {
         ParseINT parseINT = new ParseINT();
         donor.setAge(parseINT.intTOString(age));
 
-        System.out.printf(RED + "4." + RESET + " Phone Number: ");
-        String phoneNumber = getInput(scanner);
-        if (phoneNumber.length() == 14){
-            if (phoneNumber.charAt(0) == '+' && phoneNumber.charAt(1) == '8' && phoneNumber.charAt(2) == '8') {
-                String s = "";
-                for (int i = 3; i < 14; i++) {
-                    s += phoneNumber.charAt(i);
-                }
-                phoneNumber = s;
-            } else {
-                System.out.println("Please input valid phone number");
-                System.out.printf(RED + "4." + RESET + " Phone Number: ");
-                phoneNumber = scanner.nextLine();
-            }
-        }
-        while (!authorizationConstraintsValidator.validatePhoneNumber(phoneNumber) || !authorizationConstraintsValidator.repeatPhoneNumber(phoneNumber)) {
-            if (!authorizationConstraintsValidator.validatePhoneNumber(phoneNumber)) {
-                System.out.println("Please input valid phone number");
-                System.out.printf(RED + "4." + RESET + " Phone Number: ");
-                phoneNumber = scanner.nextLine();
-            } else if (!authorizationConstraintsValidator.repeatPhoneNumber(phoneNumber)) {
-                System.out.println("Phone number already exists. Please enter a different phone number.");
-                System.out.printf(RED + "4." + RESET + " Phone Number: ");
-                phoneNumber = scanner.nextLine();
-            }
-        }
-        donor.setPhoneNumber(phoneNumber);
+        //System.out.printf(RED + "4." + RESET + " Phone Number: ");
+        //String phoneNumber = getInput(scanner);
+        //if (phoneNumber.length() == 14){
+        //    if (phoneNumber.charAt(0) == '+' && phoneNumber.charAt(1) == '8' && phoneNumber.charAt(2) == '8') {
+        //        String s = "";
+        //       for (int i = 3; i < 14; i++) {
+        //            s += phoneNumber.charAt(i);
+        //        }
+        //       phoneNumber = s;
+        //    } else {
+        //        System.out.println("Please input valid phone number");
+        //        System.out.printf(RED + "4." + RESET + " Phone Number: ");
+        //        phoneNumber = scanner.nextLine();
+        //    }
+        //}
+        //while (!authorizationConstraintsValidator.validatePhoneNumber(phoneNumber) || !authorizationConstraintsValidator.repeatPhoneNumber(phoneNumber)) {
+        //    if (!authorizationConstraintsValidator.validatePhoneNumber(phoneNumber)) {
+        //        System.out.println("Please input valid phone number");
+        //        System.out.printf(RED + "4." + RESET + " Phone Number: ");
+        //        phoneNumber = scanner.nextLine();
+        //    } else if (!authorizationConstraintsValidator.repeatPhoneNumber(phoneNumber)) {
+        //        System.out.println("Phone number already exists. Please enter a different phone number.");
+        //        System.out.printf(RED + "4." + RESET + " Phone Number: ");
+        //        phoneNumber = scanner.nextLine();
+        //    }
+        //}
+        //donor.setPhoneNumber(phoneNumber);
 
         toLower toLower = new toLower();
 
@@ -432,8 +439,8 @@ public class DonorSignup_UI {
         }
 
         System.out.println("==============================================================================================");
-        System.out.println("By signing up you are agreeing to our " + RED + "Terms and Conditions ");
-        System.out.println(RED + "[1]" + RESET + " Signup");
+        System.out.println("By signing up as a donor you are agreeing to our " + RED + "Terms and Conditions ");
+        System.out.println(RED + "[1]" + RESET + "Continue");
         System.out.println(RED + "[0]" + RESET + " Cancel and go back to login");
         System.out.println("==============================================================================================");
 
