@@ -93,4 +93,21 @@ public class User {
         }
         return false;
     }
+    //public boolean findUser(String phone, String password){
+    //    try {
+    //        File file = new File("User.txt");
+    //       BufferedReader bufferedReader = new BufferedReader(new java.io.FileReader(file));
+    //        String line;
+    //        while ((line = bufferedReader.readLine()) != null) {
+    //            String[] data = line.split(";");
+    //            if (data[1].equals(phone) && PasswordCipher.decryptPassword(data[6]).equals(password)) {
+    //                return true;
+    //            }
+    //        }
+    //        bufferedReader.close();
+    //    } catch (Exception e) {
+    //        e.printStackTrace();
+    //    }
+    //    return false;
+    //}
 }

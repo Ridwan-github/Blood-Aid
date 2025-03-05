@@ -242,7 +242,7 @@ public class Donor {
         try{
             File file = new File("Donor.txt");
             FileWriter fileWriter = new FileWriter(file, true);
-            String encryptedPassword = passwordCipher.encryptPassword(getPassword());
+            //String encryptedPassword = passwordCipher.encryptPassword(getPassword());
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             setDonorID(donorID);
             setRequestNotification(false);

@@ -40,16 +40,16 @@ public class User_UI {
 
         switch (choice) {
             case 1:
-                if (!user.findUser(phone, password)){
-                    System.out.println("You are not a donor. Please sign up as a donor.");
+                //if (user.findUser(phone, password)){
+                    System.out.println("Please wait while we redirect you to the donor dashboard...");
                     consoleUtils.holdTime();
                     consoleUtils.clearScreen();
                     DonorSignup_UI.main(args);
-                } else {
-                    consoleUtils.clearScreen();
-                    Donor_UI.main(phone, password, args);
-                }
-                break;
+                //} else {
+                //    consoleUtils.clearScreen();
+                //    Donor_UI.main(phone, password, args);
+                //}
+                //break;
             case 2:
                 if (!user.findUser(phone, password)){
                     consoleUtils.clearScreen();

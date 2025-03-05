@@ -7,6 +7,9 @@ public class PasswordCipher {
     private static final int SHIFT = 3;
 
     public static String encryptPassword(String password) {
+        if (password == null) {
+            throw new IllegalArgumentException("Password cannot be null");
+        }
         StringBuilder encrypted = new StringBuilder();
 
         for (char c : password.toCharArray()) {
