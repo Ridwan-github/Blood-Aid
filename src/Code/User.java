@@ -83,7 +83,7 @@ public class User {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(";");
-                if (data[1].equals(phone) && PasswordCipher.decryptPassword(data[6]).equals(password)) {
+                if (data[1].equals(phone) && PasswordCipher.decryptPassword(data[2]).equals(password)) {
                     return true;
                 }
             }

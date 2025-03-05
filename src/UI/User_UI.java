@@ -52,10 +52,8 @@ public class User_UI {
                 break;
             case 2:
                 if (!user.findUser(phone, password)){
-                    System.out.println("You do not have a recipient account. Please sign up as a recipient.");
-                    consoleUtils.holdTime();
                     consoleUtils.clearScreen();
-                    RecipientSignup_UI.main(args);
+                    Recipient_UI.main(phone, password, args);
                 } else {
                     consoleUtils.clearScreen();
                     Recipient_UI.main(phone, password, args);
