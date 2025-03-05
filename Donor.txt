@@ -82,3 +82,5 @@ sara akter;01690123459;chattogram;kadamtala;A-;3923456789;ICkplg98;80;0;kajla;12
 abidur rahman;01790123460;barisal;sonadanga;AB+;4023456789;ICkplg98;81;0;motijheel;1234;abidur;29;abidur@gmail.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;false;true;
 hina akter;01912345661;khulna;sonadanga;O-;4123456789;ICkplg98;82;0;sylhet;1234;hina;30;hina@gmail.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;false;true;
 Abul Miah;01901801701;dhaka;gulshan;A+;1290129010;ICkplg98;83;0;uttara;1234;abulmiah;22;abulmiah@gmail.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;false;false;
+adfgr;01941095987;dhaka;badda;B+;0987123487;TzhuC5336;84;0;badda;1234;aefwe;21;ridwanraish2003@gmail.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;false;false;
+khan;01313131313;barishal;adsf;A+;1029384756;SrlxC5336;85;0;afsf;1235;khan2003;65;rrk2004@gmail.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;false;false;

@@ -11,8 +11,7 @@ public class User_UI {
         User user = new User();
         user.login(phone, password);
 
-        Donor donor = new Donor();
-        Recipient recipient = new Recipient();
+
         ConsoleUtils consoleUtils = new ConsoleUtils();
 
         final String RED = "\033[31m";
@@ -25,8 +24,8 @@ public class User_UI {
         System.out.println("==============================================================================================");
         System.out.println(RED + "Welcome, " + RESET + user.getName());
         System.out.println("==============================================================================================");
-        System.out.println(RED + "[1]" + RESET + " Donor");
-        System.out.println(RED + "[2]" + RESET + " Recipient");
+        System.out.println(RED + "[1]" + RESET + " Be a Donor");
+        System.out.println(RED + "[2]" + RESET + " Request Blood");
         System.out.println(RED + "[3]" + RESET + " Logout");
 
         System.out.print("Enter your choice: ");
@@ -41,7 +40,7 @@ public class User_UI {
 
         switch (choice) {
             case 1:
-                if (!donor.findDonor(phone, password)){
+                if (!user.findUser(phone, password)){
                     System.out.println("You are not a donor. Please sign up as a donor.");
                     consoleUtils.holdTime();
                     consoleUtils.clearScreen();
@@ -52,7 +51,7 @@ public class User_UI {
                 }
                 break;
             case 2:
-                if (!recipient.findRecipient(phone, password)){
+                if (!user.findUser(phone, password)){
                     System.out.println("You do not have a recipient account. Please sign up as a recipient.");
                     consoleUtils.holdTime();
                     consoleUtils.clearScreen();
