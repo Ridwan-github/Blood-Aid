@@ -137,7 +137,7 @@ public class DonorSignup_UI {
 
         toLower toLower = new toLower();
 
-        System.out.println(RED + "5." + RESET + " Address - ");
+        System.out.println(RED + "4." + RESET + " Address - ");
         System.out.printf("City: ");
         String city = getInput(scanner);
         while (!authorizationConstraintsValidator.validateCity(city)) {
@@ -164,29 +164,29 @@ public class DonorSignup_UI {
         }
         donor.setArea(area);
 
-        System.out.printf(RED + "6." + RESET + " Zipcode: ");
+        System.out.printf(RED + "5." + RESET + " Zipcode: ");
         String zipCode = getInput(scanner);
         while (!authorizationConstraintsValidator.validateZipCode(zipCode)) {
             System.out.println("Please input min-max 4 numeric letters only");
-            System.out.printf(RED + "6." + RESET + " Zipcode: ");
+            System.out.printf(RED + "5." + RESET + " Zipcode: ");
             zipCode = scanner.nextLine();
         }
         donor.setZipCode(zipCode);
 
-        System.out.printf(RED + "7." + RESET + " Preferred area for donation: ");
+        System.out.printf(RED + "6." + RESET + " Preferred area for donation: ");
         String preferedHospitalArea = getInput(scanner);
         while (!authorizationConstraintsValidator.validateArea(preferedHospitalArea)) {
             System.out.println("Please input at max 50 letters");
-            System.out.printf(RED + "7." + RESET + " Preferred Hospital Area: ");
+            System.out.printf(RED + "6." + RESET + " Preferred Hospital Area: ");
             preferedHospitalArea = scanner.nextLine();
         }
         donor.setPreferedHospital(preferedHospitalArea);
 
-        System.out.printf(RED + "8." + RESET + " Blood Group: ");
+        System.out.printf(RED + "7." + RESET + " Blood Group: ");
         String bloodGroup = getInput(scanner);
         while (!authorizationConstraintsValidator.validateBloodGroup(bloodGroup)) {
             System.out.println("Invalid blood group. Please enter a valid blood group.");
-            System.out.printf(RED + "8." + RESET + " Blood Group: ");
+            System.out.printf(RED + "7." + RESET + " Blood Group: ");
             bloodGroup = scanner.nextLine();
         }
         donor.setBloodGroup(bloodGroup);
@@ -201,16 +201,16 @@ public class DonorSignup_UI {
         //}
         //donor.setPassword(password);
 
-        System.out.printf(RED + "9." + RESET + " NID Number: ");
+        System.out.printf(RED + "8." + RESET + " NID Number: ");
         String NID = getInput(scanner);
         while (!authorizationConstraintsValidator.validateNID(NID) || !authorizationConstraintsValidator.repeatNID(NID)) {
             if (!authorizationConstraintsValidator.validateNID(NID)) {
                 System.out.println("Please input min-max 10 numeric letters");
-                System.out.printf(RED + "9." + RESET + " NID: ");
+                System.out.printf(RED + "8." + RESET + " NID: ");
                 NID = scanner.nextLine();
             } else if (!authorizationConstraintsValidator.repeatNID(NID)) {
                 System.out.println("NID already exists. Please enter a different NID.");
-                System.out.printf(RED + "9." + RESET + " NID Number: ");
+                System.out.printf(RED + "8." + RESET + " NID Number: ");
                 NID = scanner.nextLine();
             }
         }
