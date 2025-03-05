@@ -55,13 +55,6 @@ public class DonorSignup_UI {
         //    System.out.printf(RED + "1." + RESET + " Name: ");
         //    name = scanner.nextLine();
         //}
-        User user = new User();
-        String name=user.getName();
-        String phoneNumber=user.getPhoneNumber();
-        String password=user.getPassword();
-        donor.setName(name);
-        donor.setPhoneNumber(phoneNumber);
-        donor.setPassword(password);
 
 
         System.out.printf(RED + "1." + RESET + " Username: ");
