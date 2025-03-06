@@ -70,7 +70,7 @@ public class User_UI {
                 System.out.println("Press " + RED + "[0]" + RESET + " to go back to the main menu.");
                 int choice1 = scanner.nextInt();
                 if (choice1 == 0) {
-                    Home.handleLogin();
+                    Home.handleLogin(args);
                 }
         }
     }

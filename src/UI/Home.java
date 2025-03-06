@@ -32,7 +32,7 @@ public class Home {
         }
     }
 
-    public static void handleLogin() {
+    public static void handleLogin(String[] args) {
         ConsoleUtils consoleUtils = new ConsoleUtils();
         consoleUtils.clearScreen();
         Scanner scanner = new Scanner(System.in);
@@ -49,7 +49,7 @@ public class Home {
         User user1 = new User();
         if (user1.login(phoneNumber, password)) {
             consoleUtils.clearScreen();
-            User_UI.main(phoneNumber, password, new String[0]);
+            User_UI.main(phoneNumber, password, args);
 
         } else {
             System.out.println("Login failed! Please try again.");
@@ -61,7 +61,7 @@ public class Home {
         }
     }
 
-    public static void handleSignup(){
+    public static void handleSignup(String[] args){
         ConsoleUtils consoleUtils = new ConsoleUtils();
         consoleUtils.clearScreen();
         Scanner scanner = new Scanner(System.in);
@@ -84,7 +84,7 @@ public class Home {
 
         if (user.registerUser()){
             consoleUtils.clearScreen();
-            User_UI.main(phoneNumber, password, new String[0]);
+            User_UI.main(phoneNumber, password, args);
         } else {
             System.out.println("Signup failed! Please try again.");
             System.out.println("Press " + RED + "[0]" + RESET + " to go back to the main menu.");
@@ -132,10 +132,10 @@ public class Home {
 
         switch (choice) {
             case 1:
-                handleLogin();
+                handleLogin(args);
                 break;
             case 2:
-                handleSignup();
+                handleSignup(args);
                 break;
             case 3:
                 System.exit(0);
