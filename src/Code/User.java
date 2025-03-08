@@ -11,6 +11,9 @@ public class User {
     private String name;
     private String phoneNumber;
     private String password;
+    private String city;
+    private String area;
+    private String bloodGroup;
 
     public String getName() {
         return name;
@@ -36,19 +39,46 @@ public class User {
         this.password = password;
     }
 
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public void setBloodGroup(String bloodGroup) {
+        this.bloodGroup = bloodGroup;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public String getBloodGroup() {
+        return bloodGroup;
+    }
+
     public boolean login(String phoneNumber, String password) {
         PasswordCipher passwordCipher = new PasswordCipher();
-        try{
-            File file = new File("User.txt");
+        try {
+            File file = new File("Recipient.txt");
             BufferedReader bufferedReader = new BufferedReader(new java.io.FileReader(file));
             String line;
-            while ((line = bufferedReader.readLine()) != null){
+            while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(";");
-                String decryptedPassword = passwordCipher.decryptPassword(data[2]);
+                String decryptedPassword = passwordCipher.decryptPassword(data[5]);
                 if (data[1].equals(phoneNumber) && decryptedPassword.equals(password)) {
                     setName(data[0]);
                     setPhoneNumber(data[1]);
-                    setPassword(data[2]);
+                    setCity(data[2]);
+                    setArea(data[3]);
+                    setBloodGroup(data[4]);
+                    setPassword(decryptedPassword);
                     return true;
                 }
             }
@@ -60,6 +90,15 @@ public class User {
     }
 
     public boolean registerUser(){
+        Recipient recipient = new Recipient();
+        recipient.setName(getName());
+        recipient.setPhoneNumber(getPhoneNumber());
+        recipient.setCity(getCity());
+        recipient.setArea(getArea());
+        recipient.setBloodGroup(getBloodGroup());
+        recipient.setPassword(getPassword());
+        recipient.registerRecipient();
+
         PasswordCipher passwordCipher = new PasswordCipher();
         try{
             File file = new File("User.txt");

@@ -33,7 +33,7 @@ public class PasswordCipher {
         System.out.println("Original Password: " + password);
         System.out.println("Encrypted Password: " + encryptedPassword);
 
-        String decryptedPassword = decryptPassword(encryptedPassword);
+        String decryptedPassword = decryptPassword(password);
         System.out.println("Decrypted Password: " + decryptedPassword);
     }
 }

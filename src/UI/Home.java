@@ -2,6 +2,8 @@ package UI;
 
 import Code.PasswordMasking;
 import Code.User;
+import Code.AuthorizationConstraintsValidator;
+import external_Functions.toLower;
 
 import java.util.Scanner;
 
@@ -42,9 +44,9 @@ public class Home {
         System.out.println(RED + "\t\t\t\tUser Login" + RESET);
         System.out.println("==============================================================================================");
         System.out.println("Enter your phone number and password to login. (Enter " + RED + "[0]" + RESET + " to go back)");
-        System.out.print("Enter your phone number: ");
+        System.out.print(RED + "Phone number: " + RESET);
         String phoneNumber = getInput(scanner);
-        System.out.print("Enter your password: ");
+        System.out.print(RED + "Password: " + RESET);
         String password = getInput(scanner);
         User user1 = new User();
         if (user1.login(phoneNumber, password)) {
@@ -63,6 +65,7 @@ public class Home {
 
     public static void handleSignup(String[] args){
         ConsoleUtils consoleUtils = new ConsoleUtils();
+        toLower toLower = new toLower();
         consoleUtils.clearScreen();
         Scanner scanner = new Scanner(System.in);
         System.out.println("==============================================================================================");
@@ -70,17 +73,82 @@ public class Home {
         final String RESET = "\033[0m";
         System.out.println(RED + "\t\t\t\tUser Signup" + RESET);
         System.out.println("==============================================================================================");
-        System.out.println("Enter your name, phone number, and password to signup. (Enter " + RED + "[0]" + RESET + " to go back)");
-        System.out.print("Enter your name: ");
+        System.out.println("Enter your credentials to signup. (Enter " + RED + "[0]" + RESET + " to go back)");
+        System.out.print(RED + "Name: " + RESET);
         String name = getInput(scanner);
-        System.out.print("Enter your phone number: ");
+        System.out.print(RED + "Phone number: " + RESET);
         String phoneNumber = getInput(scanner);
-        System.out.print("Enter your password: ");
+        if (phoneNumber.length() == 14){
+            if (phoneNumber.charAt(0) == '+' && phoneNumber.charAt(1) == '8' && phoneNumber.charAt(2) == '8') {
+                String s = "";
+                for (int i = 3; i < 14; i++) {
+                    s += phoneNumber.charAt(i);
+                }
+                phoneNumber = s;
+            } else {
+                System.out.println("Please input valid phone number");
+                System.out.printf(RED + " Phone Number: " + RESET);
+                phoneNumber = scanner.nextLine();
+            }
+        }
+
+        while (!AuthorizationConstraintsValidator.validatePhoneNumber(phoneNumber) || !AuthorizationConstraintsValidator.repeatPhoneNumber(phoneNumber)) {
+            if (!AuthorizationConstraintsValidator.validatePhoneNumber(phoneNumber)) {
+                System.out.println("Please input valid phone number");
+                System.out.printf(RED + " Phone Number: " + RESET);
+                phoneNumber = scanner.nextLine();
+            } else if (!AuthorizationConstraintsValidator.repeatPhoneNumber(phoneNumber)) {
+                System.out.println("Phone number already exists. Please enter a different phone number.");
+                System.out.printf(RED + " Phone Number: " + RESET);
+                phoneNumber = scanner.nextLine();
+            }
+        }
+        System.out.println(RED + "Address - " + RESET);
+        System.out.printf(RED + "City: " + RESET);
+        String city = scanner.nextLine();
+        while (!AuthorizationConstraintsValidator.validateCity(city)) {
+            System.out.println("Please input 2-50 letters & only alphabetic letters");
+            System.out.printf(RED + " City: " + RESET);
+            city = scanner.nextLine();
+        }
+        city = toLower.toLower(city);
+        while (!AuthorizationConstraintsValidator.validCity(city)) {
+            System.out.println("Please input a valid city.");
+            System.out.printf(RED + " City: " + RESET);
+            city = scanner.nextLine();
+            city = toLower.toLower(city);
+        }
+
+        System.out.printf(RED + "Area: " + RESET);
+        String area = scanner.nextLine();
+        while (!AuthorizationConstraintsValidator.validateArea(area)) {
+            System.out.println("Please input at max 50 letters");
+            System.out.printf(RED + " Area: " + RESET);
+            area = scanner.nextLine();
+        }
+
+        System.out.printf(RED + "Blood group: " + RESET);
+        String bloodGroup = scanner.nextLine();
+        while (!AuthorizationConstraintsValidator.validateBloodGroup(bloodGroup)) {
+            System.out.println("Invalid blood group. Please enter a valid blood group.");
+            System.out.printf(RED + " Blood Group: " + RESET);
+            bloodGroup = scanner.nextLine();
+        }
+        System.out.print(RED + "Password: " + RESET);
         String password = getInput(scanner);
+        while (!AuthorizationConstraintsValidator.validatePassword(password)) {
+            System.out.println("Please input 8-32 character");
+            System.out.println("Please include at least one uppercase,lowercase,numeric and special character");
+            System.out.printf(RED + " Password: " + RESET);
+            password = scanner.nextLine();
+        }
         User user = new User();
         user.setName(name);
         user.setPhoneNumber(phoneNumber);
         user.setPassword(password);
+        user.setCity(city);
+        user.setArea(area);
+        user.setBloodGroup(bloodGroup);
 
         if (user.registerUser()){
             consoleUtils.clearScreen();

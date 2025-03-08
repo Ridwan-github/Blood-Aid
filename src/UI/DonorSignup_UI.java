@@ -25,15 +25,16 @@ public class DonorSignup_UI {
         return input;
     }
 
+
     public class RedirectClass {
         public static void redirectMethod() {
             ConsoleUtils consoleUtils = new ConsoleUtils();
             consoleUtils.clearScreen();
-            HomePage.main(new String[0]);
+            Home.main(new String[0]);
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String name, String phoneNumber, String password, String city, String area, String bloodGroup, String[] args) {
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
         Donor donor = new Donor();
@@ -47,162 +48,84 @@ public class DonorSignup_UI {
         System.out.println("                                    Donor Signup");
         System.out.println("==============================================================================================");
 
-        System.out.printf(RED + "1." + RESET + " Name: ");
-        String name = getInput(scanner);
-        while(!authorizationConstraintsValidator.validateName(name)){
-            System.out.println("Please input 2-100 letter & only alphabetic letters");
-            System.out.printf(RED + "1." + RESET + " Name: ");
-            name = scanner.nextLine();
-        }
         donor.setName(name);
+        donor.setPhoneNumber(phoneNumber);
+        donor.setPassword(password);
+        donor.setCity(city);
+        donor.setArea(area);
+        donor.setBloodGroup(bloodGroup);
 
-        System.out.printf(RED + "2." + RESET + " Username: ");
+        System.out.printf(RED + "1." + RESET + " Username: ");
         String username = getInput(scanner);
         while (!authorizationConstraintsValidator.repeatUserName(username) || !authorizationConstraintsValidator.validateUserName(username)) {
             if(!authorizationConstraintsValidator.repeatUserName(username)){
                 System.out.println("Username already exists. Please enter a different username.");
-                System.out.printf(RED + "2." + RESET + " Username: ");
+                System.out.printf(RED + "1." + RESET + " Username: ");
                 username = scanner.nextLine();
             }
             else if(!authorizationConstraintsValidator.validateUserName(username)){
                 System.out.println("Please input 5-30 letters & only alphanumeric letters or underscore with no spaces");
-                System.out.printf(RED + "2." + RESET + " Username: ");
+                System.out.printf(RED + "1." + RESET + " Username: ");
                 username = scanner.nextLine();
             }
         }
         donor.setUsername(username);
 
-        System.out.printf(RED + "3." + RESET + " Email: ");
+        System.out.printf(RED + "2." + RESET + " Email: ");
         String email = getInput(scanner);
         while(!authorizationConstraintsValidator.validateEmail(email) || !authorizationConstraintsValidator.repeatEmail(email)){
             if(!authorizationConstraintsValidator.validateEmail(email)){
                 System.out.println("Please input valid email format (example@domain.com)");
-                System.out.printf(RED + "3." + RESET + " Email: ");
+                System.out.printf(RED + "2." + RESET + " Email: ");
                 email = scanner.nextLine();
             }
             else if(!authorizationConstraintsValidator.repeatEmail(email)){
                 System.out.println("Email already exists. Please enter a different email.");
-                System.out.printf(RED + "3." + RESET + " Email: ");
+                System.out.printf(RED + "2." + RESET + " Email: ");
                 email = scanner.nextLine();
             }
         }
         donor.setEmail(email);
 
-        System.out.printf(RED + "4." + RESET + " Age: ");
+        System.out.printf(RED + "3." + RESET + " Age: ");
         int age = getIntInput(scanner);
         while (!authorizationConstraintsValidator.validateAge(age)) {
             System.out.println("You must be 18-65 years old to donate blood.");
-            System.out.printf(RED + "4." + RESET + " Age: ");
+            System.out.printf(RED + "3." + RESET + " Age: ");
             age = scanner.nextInt();
         }
         scanner.nextLine();
         ParseINT parseINT = new ParseINT();
         donor.setAge(parseINT.intTOString(age));
 
-        System.out.printf(RED + "5." + RESET + " Phone Number: ");
-        String phoneNumber = getInput(scanner);
-        if (phoneNumber.length() == 14){
-            if (phoneNumber.charAt(0) == '+' && phoneNumber.charAt(1) == '8' && phoneNumber.charAt(2) == '8') {
-                String s = "";
-                for (int i = 3; i < 14; i++) {
-                    s += phoneNumber.charAt(i);
-                }
-                phoneNumber = s;
-            } else {
-                System.out.println("Please input valid phone number");
-                System.out.printf(RED + "5." + RESET + " Phone Number: ");
-                phoneNumber = scanner.nextLine();
-            }
-        }
-        while (!authorizationConstraintsValidator.validatePhoneNumber(phoneNumber) || !authorizationConstraintsValidator.repeatPhoneNumber(phoneNumber)) {
-            if (!authorizationConstraintsValidator.validatePhoneNumber(phoneNumber)) {
-                System.out.println("Please input valid phone number");
-                System.out.printf(RED + "5." + RESET + " Phone Number: ");
-                phoneNumber = scanner.nextLine();
-            } else if (!authorizationConstraintsValidator.repeatPhoneNumber(phoneNumber)) {
-                System.out.println("Phone number already exists. Please enter a different phone number.");
-                System.out.printf(RED + "5." + RESET + " Phone Number: ");
-                phoneNumber = scanner.nextLine();
-            }
-        }
-        donor.setPhoneNumber(phoneNumber);
-
-        toLower toLower = new toLower();
-
-        System.out.println(RED + "6." + RESET + " Address - ");
-        System.out.printf("City: ");
-        String city = getInput(scanner);
-        while (!authorizationConstraintsValidator.validateCity(city)) {
-            System.out.println("Please input 2-50 letters & only alphabetic letters");
-            System.out.printf(" City: ");
-            city = scanner.nextLine();
-        }
-        city = toLower.toLower(city);
-        while(!authorizationConstraintsValidator.validCity(city)){
-            System.out.println("Enter a valid city");
-            System.out.printf(" City: ");
-            city = scanner.nextLine();
-            city = toLower.toLower(city);
-        }
-        donor.setcity(city);
-
-        System.out.printf("Area: ");
-        String area = scanner.nextLine();
-        area = toLower.toLower(area);
-        while (!authorizationConstraintsValidator.validateArea(area)) {
-            System.out.println("Please input at max 50 letters");
-            System.out.printf(" Area: ");
-            area = scanner.nextLine();
-        }
-        donor.setArea(area);
-
-        System.out.printf(RED + "7." + RESET + " Zipcode: ");
+        System.out.printf(RED + "4." + RESET + " Zipcode: ");
         String zipCode = getInput(scanner);
         while (!authorizationConstraintsValidator.validateZipCode(zipCode)) {
             System.out.println("Please input min-max 4 numeric letters only");
-            System.out.printf(RED + "7." + RESET + " Zipcode: ");
+            System.out.printf(RED + "4." + RESET + " Zipcode: ");
             zipCode = scanner.nextLine();
         }
         donor.setZipCode(zipCode);
 
-        System.out.printf(RED + "8." + RESET + " Preferred area for donation: ");
+        System.out.printf(RED + "5." + RESET + " Preferred area for donation: ");
         String preferedHospitalArea = getInput(scanner);
         while (!authorizationConstraintsValidator.validateArea(preferedHospitalArea)) {
             System.out.println("Please input at max 50 letters");
-            System.out.printf(RED + "8." + RESET + " Preferred Hospital Area: ");
+            System.out.printf(RED + "5." + RESET + " Preferred Hospital Area: ");
             preferedHospitalArea = scanner.nextLine();
         }
         donor.setPreferedHospital(preferedHospitalArea);
 
-        System.out.printf(RED + "9." + RESET + " Blood Group: ");
-        String bloodGroup = getInput(scanner);
-        while (!authorizationConstraintsValidator.validateBloodGroup(bloodGroup)) {
-            System.out.println("Invalid blood group. Please enter a valid blood group.");
-            System.out.printf(RED + "9." + RESET + " Blood Group: ");
-            bloodGroup = scanner.nextLine();
-        }
-        donor.setBloodGroup(bloodGroup);
-
-        System.out.printf(RED + "10." + RESET + " Password: ");
-        String password = getInput(scanner);
-        while (!authorizationConstraintsValidator.validatePassword(password)) {
-            System.out.println("Please input 8-32 character");
-            System.out.println("Please include at least one uppercase,lowercase,numeric and special character");
-            System.out.printf(RED + "11." + RESET + " Password: ");
-            password = scanner.nextLine();
-        }
-        donor.setPassword(password);
-
-        System.out.printf(RED + "11." + RESET + " NID Number: ");
+        System.out.printf(RED + "6." + RESET + " NID Number: ");
         String NID = getInput(scanner);
         while (!authorizationConstraintsValidator.validateNID(NID) || !authorizationConstraintsValidator.repeatNID(NID)) {
             if (!authorizationConstraintsValidator.validateNID(NID)) {
                 System.out.println("Please input min-max 10 numeric letters");
-                System.out.printf(RED + "10." + RESET + " NID: ");
+                System.out.printf(RED + "6." + RESET + " NID: ");
                 NID = scanner.nextLine();
             } else if (!authorizationConstraintsValidator.repeatNID(NID)) {
                 System.out.println("NID already exists. Please enter a different NID.");
-                System.out.printf(RED + "10." + RESET + " NID Number: ");
+                System.out.printf(RED + "6." + RESET + " NID Number: ");
                 NID = scanner.nextLine();
             }
         }
@@ -441,13 +364,15 @@ public class DonorSignup_UI {
 
         switch (choice1) {
             case 1:
-                consoleUtils.clearScreen();
                 donor.registerDonor();
-                HomePage.main(args);
+                System.out.println("You have successfully signed up as a donor.");
+                consoleUtils.holdTime();
+                consoleUtils.clearScreen();
+                Donor_UI.main(phoneNumber, password, args);
                 break;
             case 0:
                 consoleUtils.clearScreen();
-                HomePage.main(args);
+                Home.main(args);
                 break;
             default:
                 System.out.println("Invalid choice. Please select 1 or 0.");

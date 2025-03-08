@@ -45,22 +45,15 @@ public class User_UI {
                     System.out.println("You are not a donor. Please sign up as a donor.");
                     consoleUtils.holdTime();
                     consoleUtils.clearScreen();
-                    DonorSignup_UI.main(args);
+                    DonorSignup_UI.main(user.getName(), user.getPhoneNumber(), user.getPassword(), user.getCity(), user.getArea(), user.getBloodGroup(), args);
                 } else {
                     consoleUtils.clearScreen();
                     Donor_UI.main(phone, password, args);
                 }
                 break;
             case 2:
-                if (!recipient.findRecipient(phone, password)){
-                    System.out.println("You do not have a recipient account. Please sign up as a recipient.");
-                    consoleUtils.holdTime();
-                    consoleUtils.clearScreen();
-                    RecipientSignup_UI.main(args);
-                } else {
-                    consoleUtils.clearScreen();
-                    Recipient_UI.main(phone, password, args);
-                }
+                consoleUtils.clearScreen();
+                Recipient_UI.main(phone, password, args);
             case 3:
                 consoleUtils.clearScreen();
                 Home.main(args);

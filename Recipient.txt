@@ -64,3 +64,8 @@ Rashedul Islam;01690319039;comilla;brahmanpara;O-;ICkplg98
 Rubina Sultana;01910321031;chattogram;anwara;B+;ICkplg98
 Faruk Hossain;01720322032;sylhet;gowainghat;AB-;ICkplg98
 Sumaya Anwar;01830323033;mymensingh;nandail;A+;ICkplg98
+nuren;01984289081;null;null;null;ICkplg98
+fahmid;01874289081;dhaka;uttara;A+;ICkplg98
+koko;01301301301;chattogram;halishahar;A+;ICkplg98
+koko;01814289081;dhaka;mirpur;B+;ICkplg98
+Kuddus Miah;01713120904;chattogram;Agrabad;B+;ICkplg98

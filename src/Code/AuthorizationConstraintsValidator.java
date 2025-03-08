@@ -26,7 +26,7 @@ public class AuthorizationConstraintsValidator {
         if(PhoneNumber.length() == 11){
             if (PhoneNumber.charAt(0) == '0' && PhoneNumber.charAt(1) == '1' && (PhoneNumber.charAt(2) == '9' || PhoneNumber.charAt(2) == '7' ||
                             PhoneNumber.charAt(2) == '3' || PhoneNumber.charAt(2) == '4' ||
-                            PhoneNumber.charAt(2) == '5' || PhoneNumber.charAt(2)=='6')) {
+                            PhoneNumber.charAt(2) == '5' || PhoneNumber.charAt(2)=='6' || PhoneNumber.charAt(2) == '8')) {
                 return true;
             }
 

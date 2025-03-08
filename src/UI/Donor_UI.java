@@ -223,7 +223,7 @@ public class Donor_UI {
         }
         System.out.println(RED + "[6]" + RESET + " Change Availability Status");
         System.out.println(RED + "[7]" + RESET + " Top Donors");
-        System.out.println(RED + "[0]" + RESET + " Logout");
+        System.out.println(RED + "[0]" + RESET + " Back");
         System.out.println("==============================================================================================");
         System.out.println("Enter your choice: ");
         Scanner scanner = new Scanner(System.in);
@@ -261,8 +261,6 @@ public class Donor_UI {
                 TopDonor_UI.main(phoneNumber, pass, args);
                 break;
             case 0:
-                System.out.printf("Logging out...");
-                consoleUtils.holdTime();
                 consoleUtils.clearScreen();
                 User_UI.main(phoneNumber, pass, args);
                 break;
