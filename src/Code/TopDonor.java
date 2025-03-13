@@ -25,8 +25,8 @@ public class TopDonor {
             List<Donor> donorList = new ArrayList<>();
             PasswordCipher passwordCipher = new PasswordCipher();
             String line;
-            System.out.println("==============================================================================================");
-            System.out.println("                    Top Donor's");
+            System.out.println("==========================================================================");
+            System.out.println("                Top Donor's");
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(";");
                 if(!data[8].equals("0")){
@@ -41,7 +41,7 @@ public class TopDonor {
             int i = 1;
             for(Donor donor: donorList){
                 if (donor.getPoints() > 0){
-                    System.out.println("==============================================================================================");
+                    System.out.println("==========================================================================");
                     System.out.printf( RED + "%d. ", i++);
                     System.out.println(RESET + "Name: " + donor.getName());
                     System.out.println("Points: " + donor.getPoints());

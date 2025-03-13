@@ -342,9 +342,9 @@ public class Donor {
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(";");
                 if (data[7].equals(id)) {
-                    System.out.println("==============================================================================================");
+                    System.out.println("==========================================================================");
                     System.out.println("                    Donor's Profile");
-                    System.out.println("==============================================================================================");
+                    System.out.println("==========================================================================");
                     System.out.println(RED + "Name: " + RESET + data[0]);
                     System.out.println(RED + "Phone Number: " + RESET + data[1]);
                     System.out.println(RED + "City: " + RESET + data[2]);
@@ -360,6 +360,25 @@ public class Donor {
             e.printStackTrace();
         }
     }
+
+    public boolean findDonor(String phone, String password){
+        try {
+            File file = new File("Donor.txt");
+            BufferedReader bufferedReader = new BufferedReader(new java.io.FileReader(file));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] data = line.split(";");
+                if (data[1].equals(phone) && passwordCipher.decryptPassword(data[6]).equals(password)) {
+                    return true;
+                }
+            }
+            bufferedReader.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
 
     }

@@ -20,9 +20,9 @@ class DonationHistory_UI {
         final String RESET = "\033[0m";
 
 
-        System.out.println("==============================================================================================");
-        System.out.println("                                    Donation History");
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
+        System.out.println("\t\tDonation History");
+        System.out.println("==========================================================================");
 
         try{
             File file = new File("DonationRequestHistory.txt");
@@ -43,7 +43,7 @@ class DonationHistory_UI {
                     if (fileDonorID.equals(donor.getDonorID()) && !status.equals("Accepted") && !status.equals("Pending")) {
                         System.out.println(RED + "[" + count + "]" + RESET +
                                 " Recipient Name: " + RED + recipientName + RESET + " | Contact Number: " + RED + recipientPhoneNumber + RESET + " | Donation Type: " + RED + donationType + RESET + " | Status: " + RED + status + RESET);
-                        System.out.println("==============================================================================================");
+                        System.out.println("==========================================================================");
                         count++;
                     }
                 }
@@ -57,7 +57,7 @@ class DonationHistory_UI {
             e.printStackTrace();
         }
 
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
 
         System.out.println(RED + "[0]" + RESET + " Go back");
         Scanner scanner = new Scanner(System.in);

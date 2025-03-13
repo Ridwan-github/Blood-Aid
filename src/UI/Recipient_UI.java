@@ -16,11 +16,11 @@ class Recipient_UI  {
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
 
-        System.out.println("==============================================================================================");
-        System.out.println("                                    Dashboard");
-        System.out.println("==============================================================================================");
-        System.out.println("                                  Welcome," + RED + recipient.getName() + RESET + "!");
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
+        System.out.println("                          Dashboard");
+        System.out.println("==========================================================================");
+        System.out.println("                        Welcome," + RED + recipient.getName() + RESET + "!");
+        System.out.println("==========================================================================");
         System.out.println(RED + "[1]" + RESET + " Search for donors");
         System.out.println(RED + "[2]" + RESET + " View my requests");
         System.out.println(RED  + "[3]" + RESET + " View blood received history");
@@ -33,15 +33,20 @@ class Recipient_UI  {
             System.out.println();
         }
         System.out.println(RED + "[6]" + RESET + " Donation Confirmation");
-        System.out.println(RED + "[7]" + RESET + " View Top Donors");
-        System.out.println(RED + "[0]" + RESET + " Logout");
-        System.out.println("==============================================================================================");
+        System.out.println(RED + "[0]" + RESET + " Back");
+        System.out.println("==========================================================================");
 
         int choice;
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter your choice: ");
         choice = scanner.nextInt();
         scanner.nextLine();
+
+        while (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 5 && choice != 6 && choice != 0) {
+            System.out.println("Invalid choice! Please try again.");
+            choice = scanner.nextInt();
+            scanner.nextLine();
+        }
 
         switch (choice) {
             case 1:
@@ -69,15 +74,9 @@ class Recipient_UI  {
                 consoleUtils.clearScreen();
                 Donation_Confirmation_UI.main(phone, password, args);
                 break;
-            case 7:
-                consoleUtils.clearScreen();
-                TopDonor_UI.main(phoneNumber, pass, args);
-                break;
             case 0:
-                System.out.println("Logging out...");
-                consoleUtils.holdTime();
                 consoleUtils.clearScreen();
-                HomePage.main(args);
+                User_UI.main(phone, password, args);
                 break;
             default:
                 System.out.println("Invalid choice. Please select 1, 2, 3, or 4.");

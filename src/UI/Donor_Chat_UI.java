@@ -8,9 +8,9 @@ import java.util.Vector;
 public class Donor_Chat_UI {
 
     public static void main(String donorID,String pass,String phoneNumber, String[] args) {
-        System.out.println("==============================================================================================");
-        System.out.println("\t\t\t\t Chat System");
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
+        System.out.println("\t\t Chat System");
+        System.out.println("==========================================================================");
 
         ChatSystem chatSystem = new ChatSystem();
         Vector<String> list = chatSystem.availableRecipientToChat(donorID);

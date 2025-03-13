@@ -23,20 +23,20 @@ class DonorList_UI {
         final String RESET = "\033[0m";
         ConsoleUtils consoleUtils = new ConsoleUtils();
 
-        System.out.println("==============================================================================================");
-        System.out.println("                                    Eligibile Donor List");
-        System.out.println("==============================================================================================");
-        System.out.println("                                  Blood Group: " + RED + "A+" + RESET);
-        System.out.println("                                  Region: " + RED + "Dhaka" + RESET);
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
+        System.out.println("                          Eligibile Donor List");
+        System.out.println("==========================================================================");
+        System.out.println("                             Blood Group: " + RED + "A+" + RESET);
+        System.out.println("                             Region: " + RED + "Dhaka" + RESET);
+        System.out.println("==========================================================================");
         System.out.println(RED + "[1]" + RESET + " Donor: " + RED + "Donor 1" + RESET + " | Phone: " + RED + "017XXXXXXXX" + RESET + " | Address: " + RED + "Dhanmondi" + RESET);
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.println(RED + "[2]" + RESET + " Donor: " + RED + "Donor 2" + RESET + " | Phone: " + RED + "018XXXXXXXX" + RESET + " | Address: " + RED + "Gulshan" + RESET);
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.println(RED + "[3]" + RESET + " Donor: " + RED + "Donor 3" + RESET + " | Phone: " + RED + "019XXXXXXXX" + RESET + " | Address: " + RED + "Banani" + RESET);
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.println(RED + "[0]" + RESET + " Back");
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.println("Select a donor to send a request: ");
 
         Scanner scanner = new Scanner(System.in);

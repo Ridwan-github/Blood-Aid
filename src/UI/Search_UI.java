@@ -25,9 +25,9 @@ public class Search_UI {
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
 
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.println("                                    Search Donors");
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.printf(RED + "Enter the blood group you are looking for: " + RESET);
         bloodGroup = scanner.nextLine();
         while (!validate.validateBloodGroup(bloodGroup)){
@@ -46,14 +46,14 @@ public class Search_UI {
         System.out.printf("Area: ");
         area = scanner.nextLine();
         area = toLower.toLower(area);
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.println(RED + "Which type of blood donation are you looking for?" + RESET);
         System.out.println(RED + "1." + RESET + " Whole Blood");
         System.out.println(RED + "2." + RESET + " Platelets");
         System.out.println(RED + "3." + RESET + " Plasma");
         System.out.println(RED + "4." + RESET + " Power Red");
         System.out.println(RED + "0." + RESET + " Back");
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.println(RED + "Enter your choice: " + RESET);
 
         ConsoleUtils consoleUtils = new ConsoleUtils();
@@ -101,11 +101,11 @@ public class Search_UI {
                 System.out.println("Invalid choice. Please select 1, 2, 3, 4, or 0.");
         }
 
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.println("Enter the" + RED + " Donor ID" + RESET + " to view the donor's profile or \n" +
                 " press" + RED + " 0 " + RESET + "to go back. \n" +
                 " press" + RED + " 00 " + RESET + "to request to all available donor's. " );
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.println(RED + "Enter your choice: " + RESET);
         String donorID = scanner.nextLine();
         if (donorID.equals("0")){
@@ -117,9 +117,9 @@ public class Search_UI {
                 donationManager.addRequest();
             }
             System.out.println("Request sent to all available donors.");
-            System.out.println("==============================================================================================");
+            System.out.println("==========================================================================");
             System.out.println("Enter " + RED + "[0]" + RESET + " to go back to dashboard.");
-            System.out.println("==============================================================================================");
+            System.out.println("==========================================================================");
 
             System.out.println(RED + "Enter your choice: " + RESET);
             int chat = scanner.nextInt();
@@ -147,11 +147,11 @@ public class Search_UI {
         consoleUtils.clearScreen();
         donor.viewProfile(donorID);
 
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.println(RED + "[0]" + RESET + " Back");
         System.out.println(RED + "[1]" + RESET + " Search for another donor");
         System.out.println(RED + "[2]" + RESET + " Request this donor");
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.println(RED + "Enter your choice: " + RESET);
         int back = scanner.nextInt();
         scanner.nextLine();
@@ -194,11 +194,11 @@ public class Search_UI {
                     System.out.println("Invalid choice. Please select 1, 2, 3, 4, or 0.");
             }
 
-            System.out.println("==============================================================================================");
+            System.out.println("==========================================================================");
             System.out.println("Enter the" + RED + " Donor ID" + RESET + " to view the donor's profile or \n" +
                     " press" + RED + " 0 " + RESET + "to go back. \n" +
                     " press" + RED + " 00 " + RESET + "to request to all available donor's. " );
-            System.out.println("==============================================================================================");
+            System.out.println("==========================================================================");
             System.out.println(RED + "Enter your choice: " + RESET);
             donorID = scanner.nextLine();
             if (donorID.equals("0")){
@@ -210,9 +210,9 @@ public class Search_UI {
                     donationManager.addRequest();
                 }
                 System.out.println("Request sent to all available donors.");
-                System.out.println("==============================================================================================");
+                System.out.println("==========================================================================");
                 System.out.println("Enter " + RED + "[0]" + RESET + " to go back to dashboard.");
-                System.out.println("==============================================================================================");
+                System.out.println("==========================================================================");
 
                 System.out.println(RED + "Enter your choice: " + RESET);
                 int chat = scanner.nextInt();
@@ -240,10 +240,10 @@ public class Search_UI {
             consoleUtils.clearScreen();
             donor.viewProfile(donorID);
 
-            System.out.println("==============================================================================================");
+            System.out.println("==========================================================================");
             System.out.println(RED + "[0]" + RESET + " Back");
             System.out.println(RED + "[1]" + RESET + " Search for another donor");
-            System.out.println("==============================================================================================");
+            System.out.println("==========================================================================");
             System.out.println(RED + "Enter your choice: " + RESET);
             back = scanner.nextInt();
             scanner.nextLine();
@@ -266,10 +266,10 @@ public class Search_UI {
             donationManager.addRequest();
             System.out.println("Request sent to " +donorID);
 
-            System.out.println("==============================================================================================");
+            System.out.println("==========================================================================");
             System.out.println("Enter " + RED + "[0]" + RESET + " to go back to dashboard.");
             System.out.println(RED + "[1]" + RESET + " to chat with the donor.");
-            System.out.println("==============================================================================================");
+            System.out.println("==========================================================================");
 
             System.out.println(RED + "Enter your choice: " + RESET);
             int chat = scanner.nextInt();

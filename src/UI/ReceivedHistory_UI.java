@@ -21,9 +21,9 @@ public class ReceivedHistory_UI {
         final String RESET = "\033[0m";
 
 
-        System.out.println("==============================================================================================");
-        System.out.println("                                    Blood Received History");
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
+        System.out.println("                       Blood Received History");
+        System.out.println("==========================================================================");
 
         int count = 1;
 
@@ -35,7 +35,7 @@ public class ReceivedHistory_UI {
 
             while ((line = reader.readLine()) != null) {
                 String[] requestData = line.split(";");
-                if (requestData.length == 5) {
+                if (requestData.length > 1) {
                     String fileDonorID = requestData[0];
                     String recipientName = requestData[1];
                     String recipientPhoneNumber = requestData[2];
@@ -45,7 +45,7 @@ public class ReceivedHistory_UI {
                     if (recipientPhoneNumber.equals(phone) && status.equals("Donated")) {
                         System.out.println(RED + "[" + count + "]" + RESET + "Donor ID: " + RED + fileDonorID + RESET +
                                 " Recipient Name: " + RED + recipientName + RESET + " | Contact Number: " + RED + recipientPhoneNumber + RESET + " | Donation Type: " + RED + donationType + RESET + " | Status: " + RED + status + RESET);
-                        System.out.println("==============================================================================================");
+                        System.out.println("==========================================================================");
                         count++;
                     }
                 }
@@ -63,7 +63,7 @@ public class ReceivedHistory_UI {
             consoleUtils.clearScreen();
             Recipient_UI.main(phone, pass, args);
         } else {
-            System.out.println("==============================================================================================");
+            System.out.println("==========================================================================");
 
             System.out.println(RED + "[0]" + RESET + " Go back");
             Scanner scanner = new Scanner(System.in);

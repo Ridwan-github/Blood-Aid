@@ -21,10 +21,10 @@ public class RecipientBloodRequest_UI {
         final String RESET = "\033[0m";
 
 
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.println("                                    Blood Donation Requests");
         System.out.println("                                    Blood Group: " + recipient.getBloodGroup());
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
 
         File file = new File("DonationRequestHistory.txt");
         List<String[]> matchingRequests = new ArrayList<>();
@@ -66,7 +66,7 @@ public class RecipientBloodRequest_UI {
         }
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.println(RED +  "[0]" + RESET + " Go back");
         System.out.println(RED +  "[1]" + RESET + " Refresh");
         System.out.println(RED +  "[2]" + RESET + " Cancel a request");
