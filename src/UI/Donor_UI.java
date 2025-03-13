@@ -120,9 +120,9 @@ public class Donor_UI {
             }
         }
 
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.println("             Dashboard");
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.println(RED + "Welcome, " + RESET + donor.getName());
         System.out.println(RED + "Donor ID: " + RESET + donor.getDonorID());
         System.out.println(RED + "Points: " + RESET  + donor.getPoints());
@@ -133,7 +133,7 @@ public class Donor_UI {
             System.out.println(RED + "Availability: " + RESET + "Not Available");
         }
 
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.println("\t\t\t\tDonation Status");
 
         System.out.printf("Whole Blood Donation: ");
@@ -183,7 +183,7 @@ public class Donor_UI {
         badgeManagement.updateFrequentDonorBadge(donorID);
         badgeManagement.updateLifeSaverBadge(donorID);
         if (badgeManagement.checkForFirstDropBadge(donorID) || badgeManagement.checkForFrequentDonorBadge(donorID) || badgeManagement.checkForLifeSaverBadge(donorID) || badgeManagement.checkForPioneerBadge(donorID) || badgeManagement.checkForRareBloodHeroBadge(donorID)){
-            System.out.println("==============================================================================================");
+            System.out.println("==========================================================================");
             System.out.println("\t\t\t\tBadges");
             if (badgeManagement.checkForFirstDropBadge(donorID)){
                 System.out.printf("|" + RED + "First Drop" + RESET);
@@ -203,7 +203,7 @@ public class Donor_UI {
             System.out.println("|");
         }
 
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.println();
         System.out.println(RED + "[1]" + RESET + " View Donation History");
         System.out.printf(RED + "[2]" + RESET + " View Donation Requests");
@@ -222,12 +222,17 @@ public class Donor_UI {
             System.out.println();
         }
         System.out.println(RED + "[6]" + RESET + " Change Availability Status");
-        System.out.println(RED + "[7]" + RESET + " Top Donors");
         System.out.println(RED + "[0]" + RESET + " Back");
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.println("Enter your choice: ");
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
+
+        while (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 5 && choice != 6 && choice != 0) {
+            System.out.println("Invalid choice! Please try again.");
+            choice = scanner.nextInt();
+            scanner.nextLine();
+        }
 
         switch (choice) {
             case 1:
@@ -255,10 +260,6 @@ public class Donor_UI {
             case 6:
                 consoleUtils.clearScreen();
                 ChangeAvailabilityStatus.main(phoneNumber, pass, args);
-                break;
-            case 7:
-                consoleUtils.clearScreen();
-                TopDonor_UI.main(phoneNumber, pass, args);
                 break;
             case 0:
                 consoleUtils.clearScreen();

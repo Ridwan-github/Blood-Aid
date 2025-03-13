@@ -212,6 +212,44 @@ public class DonationManager {
 
     }
 
+    public void updatePoints(String donorId){
+        File file = new File("Donor.txt");
+        List<String> lines = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(";");
+                if (data.length > 0) {
+                    String donorID = data[7];
+
+                    if (donorID.equals(donorId)) {
+                        try {
+                            int points = Integer.parseInt(data[8]);
+                            points += 10;
+                            data[8] = String.valueOf(points);
+                        } catch (NumberFormatException e) {
+                            System.err.println("Invalid points for donor ID: " + donorId);
+                        }
+                    }
+
+                    lines.add(String.join(";", data));
+                }
+            }
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+                for (String updatedLine : lines) {
+                    writer.write(updatedLine);
+                    writer.newLine();
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void updateNotification(String donorID, String tf){
         File file = new File("Donor.txt");
         List<String> lines = new ArrayList<>();

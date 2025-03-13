@@ -38,11 +38,11 @@ public class Home {
         ConsoleUtils consoleUtils = new ConsoleUtils();
         consoleUtils.clearScreen();
         Scanner scanner = new Scanner(System.in);
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
         System.out.println(RED + "\t\t\t\tUser Login" + RESET);
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.println("Enter your phone number and password to login. (Enter " + RED + "[0]" + RESET + " to go back)");
         System.out.print(RED + "Phone number: " + RESET);
         String phoneNumber = getInput(scanner);
@@ -68,11 +68,11 @@ public class Home {
         toLower toLower = new toLower();
         consoleUtils.clearScreen();
         Scanner scanner = new Scanner(System.in);
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
         System.out.println(RED + "\t\t\t\tUser Signup" + RESET);
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.println("Enter your credentials to signup. (Enter " + RED + "[0]" + RESET + " to go back)");
         System.out.print(RED + "Name: " + RESET);
         String name = getInput(scanner);
@@ -172,20 +172,20 @@ public class Home {
         ConsoleUtils consoleUtils = new ConsoleUtils();
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("==============================================================================================");
-        System.out.println(RED + "\t\t\t\t  ____    _                       _               _       _ ");
-        System.out.println("\t\t\t\t |  _ \\  | |                     | |      /\\     (_)     | |");
-        System.out.println("\t\t\t\t | |_) | | |   ___     ___     __| |     /  \\     _    __| |");
-        System.out.println("\t\t\t\t |  _ <  | |  / _ \\   / _ \\   / _` |    / /\\ \\   | |  / _` |");
-        System.out.println("\t\t\t\t | |_) | | | | (_) | | (_) | | (_| |   / ____ \\  | | | (_| |");
-        System.out.println("\t\t\t\t |____/  |_|  \\___/   \\___/   \\__,_|  /_/    \\_\\ |_|  \\__,_|" + RESET);
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
+        System.out.println(RED + "\t\t  ____    _                       _               _       _ ");
+        System.out.println("\t\t |  _ \\  | |                     | |      /\\     (_)     | |");
+        System.out.println("\t\t | |_) | | |   ___     ___     __| |     /  \\     _    __| |");
+        System.out.println("\t\t |  _ <  | |  / _ \\   / _ \\   / _` |    / /\\ \\   | |  / _` |");
+        System.out.println("\t\t | |_) | | | | (_) | | (_) | | (_| |   / ____ \\  | | | (_| |");
+        System.out.println("\t\t |____/  |_|  \\___/   \\___/   \\__,_|  /_/    \\_\\ |_|  \\__,_|" + RESET);
+        System.out.println("==========================================================================");
 
         System.out.println("\nPlease choose an option:");
         System.out.println(RED + "[1]" + RESET + " Login");
         System.out.println(RED + "[2]" + RESET + " Signup");
         System.out.println(RED + "[3]" + RESET + " Exit");
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
 
         System.out.print("Enter your choice: ");
         int choice = scanner.nextInt();

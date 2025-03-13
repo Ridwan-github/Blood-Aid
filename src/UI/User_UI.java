@@ -20,20 +20,22 @@ public class User_UI {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.println("             Dashboard");
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.println(RED + "Welcome, " + RESET + user.getName());
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.println(RED + "[1]" + RESET + " Donor");
         System.out.println(RED + "[2]" + RESET + " Recipient");
-        System.out.println(RED + "[3]" + RESET + " Logout");
+        System.out.println(RED + "[3]" + RESET + " Show Top Donors");
+        System.out.println(RED + "[4]" + RESET + " Analytics");
+        System.out.println(RED + "[0]" + RESET + " Logout");
 
         System.out.print("Enter your choice: ");
         int choice = scanner.nextInt();
         scanner.nextLine();
 
-        while (choice != 1 && choice != 2 && choice != 3) {
+        while (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 0) {
             System.out.println("Invalid choice! Please try again.");
             choice = scanner.nextInt();
             scanner.nextLine();
@@ -55,6 +57,13 @@ public class User_UI {
                 consoleUtils.clearScreen();
                 Recipient_UI.main(phone, password, args);
             case 3:
+                consoleUtils.clearScreen();
+                TopDonor_UI.main(phone, password, args);
+            case 4:
+                consoleUtils.clearScreen();
+                Analytics_UI.main(phone, password, args);
+                break;
+            case 0:
                 consoleUtils.clearScreen();
                 Home.main(args);
                 break;

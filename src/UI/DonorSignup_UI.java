@@ -44,9 +44,9 @@ public class DonorSignup_UI {
         Scanner scanner = new Scanner(System.in);
 
 
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.println("                                    Donor Signup");
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
 
         donor.setName(name);
         donor.setPhoneNumber(phoneNumber);
@@ -131,41 +131,41 @@ public class DonorSignup_UI {
         }
         donor.setNID(NID);
 
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.println("Have you donated blood recently?");
         System.out.println(RED + "[1]" + RESET + " Yes");
         System.out.println(RED + "[2]" + RESET + " No");
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         int choice = getIntInput(scanner);
         scanner.nextLine();
 
         while (choice != 1 && choice != 2) {
             System.out.println("Invalid choice. Please select 1 or 2.");
-            System.out.println("==============================================================================================");
+            System.out.println("==========================================================================");
             System.out.println("Have you donated blood recently?");
             System.out.println(RED + "[1]" + RESET + " Yes");
             System.out.println(RED + "[2]" + RESET + " No");
-            System.out.println("==============================================================================================");
+            System.out.println("==========================================================================");
             choice = getIntInput(scanner);
             scanner.nextLine();
         }
 
         if (choice == 1){
-            System.out.println("==============================================================================================");
+            System.out.println("==========================================================================");
             System.out.println("Did you donate Power Red in the last 4 months?");
             System.out.println(RED + "[1]" + RESET + " Yes");
             System.out.println(RED + "[2]" + RESET + " No");
-            System.out.println("==============================================================================================");
+            System.out.println("==========================================================================");
             choice = getIntInput(scanner);
             scanner.nextLine();
 
             while (choice != 1 && choice != 2) {
                 System.out.println("Invalid choice. Please select 1 or 2.");
-                System.out.println("==============================================================================================");
+                System.out.println("==========================================================================");
                 System.out.println("Did you donate Power Red in the last 4 months?");
                 System.out.println(RED + "[1]" + RESET + " Yes");
                 System.out.println(RED + "[2]" + RESET + " No");
-                System.out.println("==============================================================================================");
+                System.out.println("==========================================================================");
                 choice = getIntInput(scanner);
                 scanner.nextLine();
             }
@@ -207,17 +207,17 @@ public class DonorSignup_UI {
                 System.out.println("Did you donate Whole Blood in the last 3 months?");
                 System.out.println(RED + "[1]" + RESET + " Yes");
                 System.out.println(RED + "[2]" + RESET + " No");
-                System.out.println("==============================================================================================");
+                System.out.println("==========================================================================");
                 choice =getIntInput(scanner);
                 scanner.nextLine();
 
                 while (choice != 1 && choice != 2) {
                     System.out.println("Invalid choice. Please select 1 or 2.");
-                    System.out.println("==============================================================================================");
+                    System.out.println("==========================================================================");
                     System.out.println("Did you donate Whole Blood in the last 3 months?");
                     System.out.println(RED + "[1]" + RESET + " Yes");
                     System.out.println(RED + "[2]" + RESET + " No");
-                    System.out.println("==============================================================================================");
+                    System.out.println("==========================================================================");
                     choice = getIntInput(scanner);
                     scanner.nextLine();
                 }
@@ -249,21 +249,21 @@ public class DonorSignup_UI {
                     donor.setEligibleForWholeBlood(true);
                 }
 
-                System.out.println("==============================================================================================");
+                System.out.println("==========================================================================");
                 System.out.println("Did you donate Platelets in the last 15 days?");
                 System.out.println(RED + "[1]" + RESET + " Yes");
                 System.out.println(RED + "[2]" + RESET + " No");
-                System.out.println("==============================================================================================");
+                System.out.println("==========================================================================");
                 choice = getIntInput(scanner);
                 scanner.nextLine();
 
                 while (choice != 1 && choice != 2) {
                     System.out.println("Invalid choice. Please select 1 or 2.");
-                    System.out.println("==============================================================================================");
+                    System.out.println("==========================================================================");
                     System.out.println("Did you donate Platelets in the last 7 days?");
                     System.out.println(RED + "[1]" + RESET + " Yes");
                     System.out.println(RED + "[2]" + RESET + " No");
-                    System.out.println("==============================================================================================");
+                    System.out.println("==========================================================================");
                     choice = getIntInput(scanner);
                     scanner.nextLine();
                 }
@@ -295,21 +295,21 @@ public class DonorSignup_UI {
                     donor.setLastDonatedDatePlatelets("null");
                 }
 
-                System.out.println("==============================================================================================");
+                System.out.println("==========================================================================");
                 System.out.println("Did you donate Plasma in the last 1 month?");
                 System.out.println(RED + "[1]" + RESET + " Yes");
                 System.out.println(RED + "[2]" + RESET + " No");
-                System.out.println("==============================================================================================");
+                System.out.println("==========================================================================");
                 choice = getIntInput(scanner);
                 scanner.nextLine();
 
                 while (choice != 1 && choice != 2) {
                     System.out.println("Invalid choice. Please select 1 or 2.");
-                    System.out.println("==============================================================================================");
+                    System.out.println("==========================================================================");
                     System.out.println("Did you donate Plasma in the last 1 month?");
                     System.out.println(RED + "[1]" + RESET + " Yes");
                     System.out.println(RED + "[2]" + RESET + " No");
-                    System.out.println("==============================================================================================");
+                    System.out.println("==========================================================================");
                     choice = getIntInput(scanner);
                     scanner.nextLine();
                 }
@@ -353,11 +353,11 @@ public class DonorSignup_UI {
             donor.setEligibleForPowerRed(true);
         }
 
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.println("By signing up you are agreeing to our " + RED + "Terms and Conditions ");
         System.out.println(RED + "[1]" + RESET + " Signup");
         System.out.println(RED + "[0]" + RESET + " Cancel and go back to login");
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
 
         int choice1 = getIntInput(scanner);
         scanner.nextLine();

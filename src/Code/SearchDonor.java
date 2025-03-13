@@ -45,7 +45,7 @@ public class SearchDonor {
             List<Donor> donorList = new ArrayList<>();
             PasswordCipher passwordCipher = new PasswordCipher();
             String line;
-            System.out.println("==============================================================================================");
+            System.out.println("==========================================================================");
             System.out.println("                    Donor's in your Area");
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(";");
@@ -60,7 +60,7 @@ public class SearchDonor {
             donorList = arrangeDonorByID(donorList);
 
             for(Donor d: donorList){
-                System.out.println("==============================================================================================");
+                System.out.println("==========================================================================");
                 System.out.println(RED + "Name: " + RESET + d.getName());
                 System.out.println(RED + "Phone Number: " + RESET + d.getPhoneNumber());
                 System.out.println(RED + "City: " + RESET + d.getCity());
@@ -103,7 +103,7 @@ public class SearchDonor {
             List<Donor> donorList = new ArrayList<>();
             PasswordCipher passwordCipher = new PasswordCipher();
             String line;
-            System.out.println("==============================================================================================");
+            System.out.println("==========================================================================");
             System.out.println("                    Donor's in your city");
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(";");
@@ -118,7 +118,7 @@ public class SearchDonor {
             donorList = arrangeDonorByID(donorList);
 
             for(Donor d: donorList){
-                System.out.println("==============================================================================================");
+                System.out.println("==========================================================================");
                 System.out.println(RED + "Name: " + RESET + d.getName());
                 System.out.println(RED + "Phone Number: " + RESET + d.getPhoneNumber());
                 System.out.println(RED + "City: " + RESET + d.getCity());
@@ -161,7 +161,7 @@ public class SearchDonor {
             List<Donor> donorList = new ArrayList<>();
             PasswordCipher passwordCipher = new PasswordCipher();
             String line;
-            System.out.println("==============================================================================================");
+            System.out.println("==========================================================================");
             System.out.println("                    Donor's outside your city");
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(";");
@@ -176,7 +176,7 @@ public class SearchDonor {
             donorList = arrangeDonorByID(donorList);
 
             for(Donor d: donorList){
-                System.out.println("==============================================================================================");
+                System.out.println("==========================================================================");
                 System.out.println(RED + "Name: " + RESET + d.getName());
                 System.out.println(RED + "Phone Number: " + RESET + d.getPhoneNumber());
                 System.out.println(RED + "City: " + RESET + d.getCity());

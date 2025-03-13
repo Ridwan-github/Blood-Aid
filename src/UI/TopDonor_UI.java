@@ -13,9 +13,9 @@ public class TopDonor_UI {
         final String RESET = "\033[0m";
         ConsoleUtils consoleUtils = new ConsoleUtils();
 
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
         System.out.println(RED + "[0]" + RESET + " Back");
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
 
         int choice;
         Scanner scanner = new Scanner(System.in);
@@ -25,7 +25,7 @@ public class TopDonor_UI {
 
         if (choice == 0) {
             consoleUtils.clearScreen();
-            Donor_UI.main(phoneNumber, pass, args);
+            User_UI.main(phoneNumber, pass, args);
         } else {
             System.out.println("Invalid choice. Please select 0.");
         }

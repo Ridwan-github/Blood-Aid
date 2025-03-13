@@ -21,10 +21,10 @@ public class DonorBloodRequest_UI {
 
         String donorID = donor.getDonorID();
 
-        System.out.println("==============================================================================================");
-        System.out.println("                                    Blood Donation Requests");
-        System.out.println("                                    Blood Group: " + donor.getBloodGroup());
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
+        System.out.println("                       Blood Donation Requests");
+        System.out.println("                       Blood Group: " + donor.getBloodGroup());
+        System.out.println("==========================================================================");
 
         File file = new File("DonationRequestHistory.txt");
         List<String[]> matchingRequests = new ArrayList<>();
@@ -65,7 +65,7 @@ public class DonorBloodRequest_UI {
             Donor_UI.main(phoneNumber, password, args);
         } else {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("==============================================================================================");
+            System.out.println("==========================================================================");
             System.out.println("Enter the serial number of the request to accept or 0 to Go back");
 
             int choice = scanner.nextInt();

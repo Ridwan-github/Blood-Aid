@@ -342,9 +342,9 @@ public class Donor {
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(";");
                 if (data[7].equals(id)) {
-                    System.out.println("==============================================================================================");
+                    System.out.println("==========================================================================");
                     System.out.println("                    Donor's Profile");
-                    System.out.println("==============================================================================================");
+                    System.out.println("==========================================================================");
                     System.out.println(RED + "Name: " + RESET + data[0]);
                     System.out.println(RED + "Phone Number: " + RESET + data[1]);
                     System.out.println(RED + "City: " + RESET + data[2]);

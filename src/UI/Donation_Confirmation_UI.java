@@ -15,9 +15,9 @@ public class Donation_Confirmation_UI {
         Scanner scanner = new Scanner(System.in);
         ConsoleUtils consoleUtils = new ConsoleUtils();
 
-        System.out.println("==============================================================================================");
-        System.out.println("\t\t\t\t Donation Confirmation");
-        System.out.println("==============================================================================================");
+        System.out.println("==========================================================================");
+        System.out.println("\t\t Donation Confirmation");
+        System.out.println("==========================================================================");
 
         Donation_Confirmation donationConfirmation = new Donation_Confirmation();
         Recipient recipient = new Recipient();
@@ -58,6 +58,7 @@ public class Donation_Confirmation_UI {
                 donationManager.removePendingRequests();
                 donationManager.removePendingRequestsForRecipient();
                 donationManager.updateEligibilityStatus(donationType);
+                donationManager.updatePoints(donorID);
 
                 badgeManagement.updateFirstDropBadge(donorID);
                 if (recipient.getBloodGroup().equals("O-")) {
@@ -72,7 +73,5 @@ public class Donation_Confirmation_UI {
                 Recipient_UI.main(phoneNumber, password, args);
             }
         }
-
-
     }
 }
