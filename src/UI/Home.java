@@ -173,12 +173,12 @@ public class Home {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("==========================================================================");
-        System.out.println(RED + "\t\t  ____    _                       _               _       _ ");
-        System.out.println("\t\t |  _ \\  | |                     | |      /\\     (_)     | |");
-        System.out.println("\t\t | |_) | | |   ___     ___     __| |     /  \\     _    __| |");
-        System.out.println("\t\t |  _ <  | |  / _ \\   / _ \\   / _` |    / /\\ \\   | |  / _` |");
-        System.out.println("\t\t | |_) | | | | (_) | | (_) | | (_| |   / ____ \\  | | | (_| |");
-        System.out.println("\t\t |____/  |_|  \\___/   \\___/   \\__,_|  /_/    \\_\\ |_|  \\__,_|" + RESET);
+        System.out.println(RED + "\t  ____    _                       _               _       _ ");
+        System.out.println("\t |  _ \\  | |                     | |      /\\     (_)     | |");
+        System.out.println("\t | |_) | | |   ___     ___     __| |     /  \\     _    __| |");
+        System.out.println("\t |  _ <  | |  / _ \\   / _ \\   / _` |    / /\\ \\   | |  / _` |");
+        System.out.println("\t | |_) | | | | (_) | | (_) | | (_| |   / ____ \\  | | | (_| |");
+        System.out.println("\t |____/  |_|  \\___/   \\___/   \\__,_|  /_/    \\_\\ |_|  \\__,_|" + RESET);
         System.out.println("==========================================================================");
 
         System.out.println("\nPlease choose an option:");
