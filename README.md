@@ -76,7 +76,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 👥 Authors
 
-- [Ridwan Raees Khan](https://github.com/Ridwan-github)
+- [Ridwan Raish Khan](https://github.com/Ridwan-github)
 - [Mahadi Ahmed](https://github.com/MahadiAhmed0)
 - [Nuren Fahmid](https://github.com/NFahmid) 
 
