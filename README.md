@@ -74,19 +74,14 @@ The system uses file-based storage to maintain:
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 👥 Authors
 
-- [Your Name]
+- [Ridwan Raees Khan](https://github.com/Ridwan-github)
+- [Mahadi Ahmed](https://github.com/MahadiAhmed0)
+- [Nuren Fahmid](https://github.com/NFahmid) 
 
 ## 🙏 Acknowledgments
 
 - Thanks to all contributors who have helped with the project
 - Special thanks to the blood donors who save lives
 
----
-
-<p align="center">Made with ❤️ for saving lives</p>
