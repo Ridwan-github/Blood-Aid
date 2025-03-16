@@ -13,6 +13,43 @@ public class ChatSystem {
     final String RESET = "\033[0m";
     final String BLUE = "\033[34m";
 
+    public void clearChat(String userID, String otherUserID) {
+        try {
+            File file = new File("ClearedChats.txt");
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
+            CurrentDate currentDate = new CurrentDate();
+            String date = currentDate.getDateAsString();
+            String time = currentDate.getTimeAsString();
+            writer.write(userID + ";" + otherUserID + ";" + date + ";" + time);
+            writer.newLine();
+            writer.close();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    private String getClearTime(String userID, String otherUserID) {
+        try {
+            File file = new File("ClearedChats.txt");
+            if (!file.exists()) return null;
+            
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            String line;
+            String latestClearTime = null;
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(";");
+                if (data.length >= 4 && data[0].equals(userID) && data[1].equals(otherUserID)) {
+                    latestClearTime = data[2] + " " + data[3];
+                }
+            }
+            reader.close();
+            return latestClearTime;
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        return null;
+    }
+
     public void sendMessageToRecipient(String donorID, String recipientPhoneNumber, String message){
         try{
             File file = new File("Chat.txt");
@@ -73,13 +110,23 @@ public class ChatSystem {
             BufferedReader reader = new BufferedReader(new java.io.FileReader(file));
 
             String line;
+            boolean hasMessages = false;
             while((line = reader.readLine()) != null){
                 String[] data = line.split(";");
-                if(data[0].equals(donorID) && data[1].equals(recipientPhoneNumber)){
-                    System.out.println("(" + data[3] + " " + data[4] +  ")" + BLUE + " You: " + RESET + data[2]);
-                } else if(data[0].equals(recipientPhoneNumber) && data[1].equals(donorID)){
-                    System.out.println("(" + data[3] + " " + data[4] +  ")" + RED + " Recipient: " + RESET + data[2]);
+                String clearTime = getClearTime(donorID, recipientPhoneNumber);
+                String messageTime = data[3] + " " + data[4];
+                if(clearTime == null || messageTime.compareTo(clearTime) > 0) {
+                    if(data[0].equals(donorID) && data[1].equals(recipientPhoneNumber)){
+                        System.out.println("(" + data[3] + " " + data[4] +  ")" + BLUE + " You: " + RESET + data[2]);
+                        hasMessages = true;
+                    } else if(data[0].equals(recipientPhoneNumber) && data[1].equals(donorID)){
+                        System.out.println("(" + data[3] + " " + data[4] +  ")" + RED + " Recipient: " + RESET + data[2]);
+                        hasMessages = true;
+                    }
                 }
+            }
+            if (!hasMessages) {
+                System.out.println("No messages to display.");
             }
             reader.close();
         } catch (Exception e){
@@ -122,13 +169,23 @@ public class ChatSystem {
             BufferedReader reader = new BufferedReader(new java.io.FileReader(file));
 
             String line;
+            boolean hasMessages = false;
             while((line = reader.readLine()) != null){
                 String[] data = line.split(";");
-                if(data[0].equals(recipientPhoneNumber) && data[1].equals(donorID)){
-                    System.out.println("(" + data[3] + " " + data[4] +  ")" + BLUE + " You: " + RESET + data[2]);
-                } else if(data[0].equals(donorID) && data[1].equals(recipientPhoneNumber)){
-                    System.out.println("(" + data[3] + " " + data[4] +  ")" + RED + " Donor: " + RESET + data[2]);
+                String clearTime = getClearTime(recipientPhoneNumber, donorID);
+                String messageTime = data[3] + " " + data[4];
+                if(clearTime == null || messageTime.compareTo(clearTime) > 0) {
+                    if(data[0].equals(recipientPhoneNumber) && data[1].equals(donorID)){
+                        System.out.println("(" + data[3] + " " + data[4] +  ")" + BLUE + " You: " + RESET + data[2]);
+                        hasMessages = true;
+                    } else if(data[0].equals(donorID) && data[1].equals(recipientPhoneNumber)){
+                        System.out.println("(" + data[3] + " " + data[4] +  ")" + RED + " Donor: " + RESET + data[2]);
+                        hasMessages = true;
+                    }
                 }
+            }
+            if (!hasMessages) {
+                System.out.println("No messages to display.");
             }
             reader.close();
         } catch (Exception e){

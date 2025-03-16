@@ -83,5 +83,5 @@ abidur rahman;01790123460;barisal;sonadanga;AB+;4023456789;ICkplg98;81;0;motijhe
 hina akter;01912345661;khulna;sonadanga;O-;4123456789;ICkplg98;82;0;sylhet;1234;hina;30;hina@gmail.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;false;true
 Abul Miah;01901801701;dhaka;gulshan;A+;1290129010;ICkplg98;83;0;uttara;1234;abulmiah;22;abulmiah@gmail.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;false;false
 fahmid;01874289081;dhaka;uttara;A+;1234432112;ICkplg98;84;0;uttara;1234;fahmid;22;fahmid@gmail.com;true;true;true;true;0/0/0000;0/0/0000;0/0/0000;0/0/0000;false;false
-koko;01814289081;dhaka;mirpur;B+;1234123512;ICkplg98;85;10;uttara;1235;koko1;23;koko@gmail.com;false;true;true;true;13/3/2025;0/0/0000;0/0/0000;0/0/0000;false;true
+koko;01814289081;chattogram;panchlaish;B+;1234123512;ICkplg98;85;10;uttara;1235;koko1;23;koko@gmail.com;false;true;true;true;13/3/2025;0/0/0000;0/0/0000;0/0/0000;false;true
 Kuddus Miah;01713120904;chattogram;Agrabad;B+;1231232312;ICkplg98;86;0;uttara;1231;kuddus;24;kuddus@gmail.com;false;true;true;true;12/3/2025;0/0/0000;0/0/0000;0/0/0000;false;true

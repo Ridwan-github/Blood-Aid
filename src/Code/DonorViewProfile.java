@@ -1,5 +1,10 @@
 package Code;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+
 public class DonorViewProfile {
     private String password;
     private String phoneNumber;
@@ -29,6 +34,60 @@ public class DonorViewProfile {
 
     final String RED = "\033[31m";
     final String RESET = "\033[0m";
+
+    public void updateProfile(String field, String newValue) {
+        switch (field.toLowerCase()) {
+            case "city":
+                donor.setCity(newValue);
+                break;
+            case "area":
+                donor.setArea(newValue);
+                break;
+            case "email":
+                donor.setEmail(newValue);
+                break;
+            default:
+                System.out.println("Invalid field to update");
+                return;
+        }
+
+        try {
+            File file = new File("Donor.txt");
+            BufferedReader reader = new BufferedReader(new java.io.FileReader(file));
+            StringBuilder content = new StringBuilder();
+            String line;
+            String header = reader.readLine();
+            content.append(header).append("\n");
+
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(";");
+                if (data[1].equals(this.phoneNumber)) {
+                    switch (field.toLowerCase()) {
+                        case "city":
+                            data[2] = newValue;
+                            break;
+                        case "area":
+                            data[3] = newValue;
+                            break;
+                        case "email":
+                            data[13] = newValue;
+                            break;
+                    }
+                    line = String.join(";", data);
+                }
+                content.append(line).append("\n");
+            }
+            reader.close();
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+            writer.write(content.toString());
+            writer.close();
+
+            System.out.println("Profile updated successfully!");
+        } catch (Exception e) {
+            System.out.println("Error updating profile: " + e.getMessage());
+        }
+    }
 
     public void viewProfile(){
         System.out.println(RED + "Personal Information -- " + RESET);
