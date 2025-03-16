@@ -38,6 +38,7 @@ public class Home {
         ConsoleUtils consoleUtils = new ConsoleUtils();
         consoleUtils.clearScreen();
         Scanner scanner = new Scanner(System.in);
+        PasswordMasking passwordMasking = new PasswordMasking();
         System.out.println("==========================================================================");
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
@@ -47,7 +48,7 @@ public class Home {
         System.out.print(RED + "Phone number: " + RESET);
         String phoneNumber = getInput(scanner);
         System.out.print(RED + "Password: " + RESET);
-        String password = getInput(scanner);
+        String password = passwordMasking.getPassword();
         User user1 = new User();
         if (user1.login(phoneNumber, password)) {
             consoleUtils.clearScreen();
@@ -68,6 +69,7 @@ public class Home {
         toLower toLower = new toLower();
         consoleUtils.clearScreen();
         Scanner scanner = new Scanner(System.in);
+        PasswordMasking passwordMasking = new PasswordMasking();
         System.out.println("==========================================================================");
         final String RED = "\033[31m";
         final String RESET = "\033[0m";
@@ -135,7 +137,7 @@ public class Home {
             bloodGroup = scanner.nextLine();
         }
         System.out.print(RED + "Password: " + RESET);
-        String password = getInput(scanner);
+        String password = passwordMasking.getPassword();
         while (!AuthorizationConstraintsValidator.validatePassword(password)) {
             System.out.println("Please input 8-32 character");
             System.out.println("Please include at least one uppercase,lowercase,numeric and special character");
