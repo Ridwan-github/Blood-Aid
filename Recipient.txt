@@ -153,3 +153,5 @@ hina akter;01912345661;chattogram;patenga;A-;ICkplg98
 Abul Miah;01901801701;rajshahi;charghat;B+;ICkplg98
 nur;12341234;barisal;bakerganj;O-;J&kplg98
 dsfsd;12341234;khulna;phultala;AB-;ICkplg98
+Abdul;01501501501;rajshahi;city;O+;ICkplg98
+Mohammad;01980198011;dhaka;mirpur;A+;ICkplg98

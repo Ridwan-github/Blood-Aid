@@ -21,10 +21,16 @@ public class Donor_Chat_UI_2 {
         chatSystem.loadMessagesForDonor(donorID, recipientPhoneNumber);
 
         System.out.println("==========================================================================");
-        System.out.println("Enter your message or " + RED + "[0]" + RESET + " to Go back or " + RED + "[1]" + RESET + " to Refresh");
+        System.out.println("Enter your message or " + RED + "[0]" + RESET + " to Go back or " + RED + "[1]" + RESET + " to Refresh or " + RED + "[2]" + RESET + " to Clear Chat");
         String message = scanner.nextLine();
 
-        while (!message.equals("0") && !message.equals("1")) {
+        if (message.equals("2")) {
+            chatSystem.clearChat(donorID, recipientPhoneNumber);
+            consoleUtils.clearScreen();
+            Donor_Chat_UI_2.main(donorID, pass, phoneNumber, list, choice, args);
+        }
+
+        while (!message.equals("0") && !message.equals("1") && !message.equals("2")) {
             consoleUtils.clearScreen();
             System.out.println("==========================================================================");
             System.out.println("\t\t Chat System");
@@ -33,7 +39,7 @@ public class Donor_Chat_UI_2 {
             chatSystem.sendMessageToRecipient(donorID, recipientPhoneNumber, message);
             chatSystem.loadMessagesForDonor(donorID, recipientPhoneNumber);
 
-            System.out.println("Enter your message or " + RED + "[0]" + RESET + " to Go back or " + RED + "[1]" + RESET + " to Refresh");
+            System.out.println("Enter your message or " + RED + "[0]" + RESET + " to Go back or " + RED + "[1]" + RESET + " to Refresh or " + RED + "[2]" + RESET + " to Clear Chat");
             message = scanner.nextLine();
         }
 
