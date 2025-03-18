@@ -1,8 +1,10 @@
 package UI;
 
-import Code.Donation_Confirmation;
-import Code.Donor;
+import Code.BadgeManagement;
 import Code.DonationManager;
+import Code.Donor;
+import Code.Recipient;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -96,9 +98,20 @@ public class DonorBloodRequest_UI {
     }
 
     private static void acceptRequest(String recipientPhoneNumber, String donorID, String donationType) {
-        Donation_Confirmation confirmation = new Donation_Confirmation();
-        confirmation.updateDonationState(recipientPhoneNumber, donorID, donationType, "Accepted");
+        DonationManager donationManager = new DonationManager(donorID, recipientPhoneNumber);
+        BadgeManagement badgeManagement = new BadgeManagement();
 
-        System.out.println("Donation request accepted for recipient with contact number " + recipientPhoneNumber);
+        donationManager.acceptRequest();
+        donationManager.removePendingRequests();
+        donationManager.removePendingRequestsForRecipient();
+        donationManager.updateEligibilityStatus(donationType);
+        donationManager.updatePoints(donorID);
+
+        badgeManagement.updateFirstDropBadge(donorID);
+        Recipient recipient = new Recipient();
+        recipient.loginRecipient(recipientPhoneNumber, "");
+        if (recipient.getBloodGroup().equals("O-")) {
+            badgeManagement.updateRareBloodHeroBadge(donorID);
+        }
     }
 }

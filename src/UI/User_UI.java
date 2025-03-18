@@ -25,8 +25,8 @@ public class User_UI {
         System.out.println("==========================================================================");
         System.out.println(RED + "Welcome, " + RESET + user.getName());
         System.out.println("==========================================================================");
-        System.out.println(RED + "[1]" + RESET + " Donor");
-        System.out.println(RED + "[2]" + RESET + " Recipient");
+        System.out.println(RED + "[1]" + RESET + " Donate Blood");
+        System.out.println(RED + "[2]" + RESET + " Request Blood");
         System.out.println(RED + "[3]" + RESET + " Show Top Donors");
         System.out.println(RED + "[4]" + RESET + " Analytics");
         System.out.println(RED + "[0]" + RESET + " Logout");
