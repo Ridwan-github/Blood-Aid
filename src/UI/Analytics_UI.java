@@ -18,10 +18,20 @@ public class Analytics_UI {
         System.out.println("==========================================================================");
         System.out.println(RED + "\t\tDonor" + RESET);
         System.out.println("Total Donors: " + analyticReport.totalNoOfDonor());
-        System.out.println("A+ : " + analyticReport.totalNoOfApositiveDonors() + "\t\tA- : " + analyticReport.totalNoOfAnegativeDonors());
-        System.out.println("B+ : " + analyticReport.totalNoOfBpositiveDonors() + "\t\tB- : " + analyticReport.totalNoOfBnegativeDonors());
-        System.out.println("O+ : " + analyticReport.totalNoOfOpositiveDonors() + "\t\tO- : " + analyticReport.totalNoOfOnegativeDonors());
-        System.out.println("AB+ : " + analyticReport.totalNoOfABpositiveDonors() + "\t\tAB- : " + analyticReport.totalNoOfABnegativeDonors());
+        
+        // Display blood group distribution as bar chart
+        String[] bloodGroups = {"A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"};
+        int[] donorCounts = {
+            analyticReport.totalNoOfApositiveDonors(),
+            analyticReport.totalNoOfAnegativeDonors(),
+            analyticReport.totalNoOfBpositiveDonors(),
+            analyticReport.totalNoOfBnegativeDonors(),
+            analyticReport.totalNoOfOpositiveDonors(),
+            analyticReport.totalNoOfOnegativeDonors(),
+            analyticReport.totalNoOfABpositiveDonors(),
+            analyticReport.totalNoOfABnegativeDonors()
+        };
+        ConsoleBarChart.drawBarChart("Blood Group Distribution", bloodGroups, donorCounts);
         System.out.println();
         System.out.println("==========================================================================");
         System.out.println(RED + "\t\tRecipient" + RESET);
@@ -29,10 +39,10 @@ public class Analytics_UI {
         System.out.println();
         System.out.println("==========================================================================");
         System.out.println(RED + "\t\tDonations" + RESET);
-        System.out.println("Total donation requests: " + analyticReport.totalNoOfRequests());
-        System.out.println("Donated: " + analyticReport.totalNoOfDonation());
-        System.out.println("Pending donations: " + analyticReport.totalPendingRequest());
-        System.out.println("To be confirmed: " + analyticReport.totalNoOfRequestToBeConfirmed());
+        System.out.println("Total Requests: " + analyticReport.totalNoOfRequests());
+        System.out.println("Total Donations: " + analyticReport.totalNoOfDonation());
+        System.out.println("Total Pending Requests: " + analyticReport.totalPendingRequest());
+        System.out.println("Total Requests to be Confirmed: " + analyticReport.totalNoOfRequestToBeConfirmed());
         System.out.println();
         System.out.println("==========================================================================");
         System.out.printf("Most Requested BloodGroup : ");
